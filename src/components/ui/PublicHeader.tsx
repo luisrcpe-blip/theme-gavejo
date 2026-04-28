@@ -122,7 +122,7 @@ export function PublicHeader() {
           </span>
         </Link>
 
-        <nav className="topnav" data-tour-id="header-nav-desktop">
+        <nav className="topnav">
           {NAV_LINKS.map((item) => (
             <Link
               key={`${item.href}-${item.label}`}
@@ -143,7 +143,7 @@ export function PublicHeader() {
           aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu-panel"
-          data-tour-id="mobile-menu-toggle"
+         
         >
           <span className="sr-only">{mobileOpen ? "Cerrar menu" : "Abrir menu"}</span>
           <span className="mobile-menu-bars" aria-hidden="true">
@@ -184,3 +184,4 @@ export function PublicHeader() {
     </header>
   );
 }
+
