@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 
 const manifest = JSON.parse(readFileSync(new URL("../nuklo.template.json", import.meta.url), "utf8"));
 const captureSurfaces = new Set(["LEAD_LANDING"]);
-const captureCapabilities = new Set(["tenant", "branding", "media", "tracking", "leadLanding", "leadForm", "singleLanding", "contentPage"]);
+const captureCapabilities = new Set(["tenant", "branding", "media", "tracking", "leadLanding", "leadForm", "singleLanding", "multiPageTheme", "contentPage"]);
 const forbidden = new Set(["catalog", "product", "collection", "cart", "checkout", "orders", "coupons", "reviews", "commerceLanding"]);
 const errors = [];
 

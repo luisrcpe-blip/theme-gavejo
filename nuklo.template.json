@@ -13,7 +13,7 @@
   "assetsBase": "/theme-gavejo/media/gavejo/",
   "previewUrl": "https://gavejo.nuklo.cloud",
   "surfaces": ["LEAD_LANDING"],
-  "capabilities": ["tenant", "branding", "media", "tracking", "leadLanding", "leadForm", "singleLanding"],
+  "capabilities": ["tenant", "branding", "media", "tracking", "leadLanding", "leadForm", "multiPageTheme", "contentPage"],
   "forbidden": ["catalog", "product", "collection", "cart", "checkout", "orders", "coupons", "reviews", "commerceLanding"],
   "requiredTenantSettings": ["domain", "mode=capture", "active=true", "landing.active=true"],
   "requiredEnvironment": ["NUKLO_PLATFORM_HOST"],
