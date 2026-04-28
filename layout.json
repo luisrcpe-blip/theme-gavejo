@@ -1,0 +1,69 @@
+{
+  "version": "capture-layout@1.0.0",
+  "mode": "capture",
+  "surface": "LEAD_LANDING",
+  "cssScope": "theme-gavejo",
+  "blocks": [
+    {
+      "id": "hero",
+      "type": "hero",
+      "eyebrow": "Maderas Gavejo",
+      "title": "{{landing.heroTitle}}",
+      "description": "{{landing.shortDescription}}",
+      "ctaLabel": "{{landing.whatsappCtaLabel}}",
+      "ctaHref": "#contacto",
+      "media": {
+        "source": "asset",
+        "src": "gavejo/landing/decking-hero.jpg",
+        "alt": "Proyecto de madera para exterior"
+      }
+    },
+    {
+      "id": "beneficios",
+      "type": "content",
+      "eyebrow": "Soluciones en madera",
+      "title": "Una landing enfocada en convertir consultas",
+      "description": "Esta plantilla usa la informacion del negocio y de la landing configurada en Nuklo.",
+      "items": [
+        {
+          "title": "Proyectos exteriores",
+          "description": "Decking, fachadas y revestimientos con una presentacion visual clara."
+        },
+        {
+          "title": "Captacion directa",
+          "description": "Formulario corto conectado a los leads del tenant."
+        },
+        {
+          "title": "Experiencia flexible",
+          "description": "El contenido se administra desde Nuklo sin redeploy del core."
+        }
+      ]
+    },
+    {
+      "id": "galeria",
+      "type": "gallery",
+      "eyebrow": "Inspiracion",
+      "title": "Aplicaciones destacadas",
+      "description": "Muestra las imagenes cargadas en la landing del cliente.",
+      "limit": 6
+    },
+    {
+      "id": "contacto",
+      "type": "leadForm",
+      "eyebrow": "Cotiza tu proyecto",
+      "title": "Cuentanos que necesitas",
+      "description": "Completa tus datos y el equipo se pondra en contacto contigo.",
+      "ctaLabel": "Enviar solicitud",
+      "fields": ["fullName", "phone", "email", "questions", "message"]
+    },
+    {
+      "id": "cta-final",
+      "type": "cta",
+      "eyebrow": "Maderas Gavejo",
+      "title": "Transforma tu espacio con madera",
+      "description": "Agenda una conversacion y recibe orientacion para tu proyecto.",
+      "ctaLabel": "Solicitar informacion",
+      "ctaHref": "#contacto"
+    }
+  ]
+}
