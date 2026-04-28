@@ -25,15 +25,23 @@ function getElementBottom(element: Element) {
 }
 
 function getContentHeight() {
-  const semanticContainers = Array.from(document.body.querySelectorAll("header, main, footer"));
-  const bodyChildren = Array.from(document.body.children);
-  const measuredBottom = Math.max(0, ...semanticContainers.map(getElementBottom), ...bodyChildren.map(getElementBottom));
+  const contentNodes = Array.from(
+    document.body.querySelectorAll("main > section, main > footer, body > footer")
+  );
+  const measuredBottom = Math.max(0, ...contentNodes.map(getElementBottom));
 
   if (measuredBottom > 0) {
-    return Math.ceil(measuredBottom);
+    return Math.ceil(measuredBottom + 24);
   }
 
-  return Math.ceil(document.body.scrollHeight || document.documentElement.scrollHeight || window.innerHeight);
+  const main = document.body.querySelector("main");
+  const mainBottom = main ? getElementBottom(main) : 0;
+
+  if (mainBottom > 0) {
+    return Math.ceil(mainBottom + 24);
+  }
+
+  return Math.ceil(window.innerHeight);
 }
 
 export function NukloEmbedBridge() {
@@ -66,9 +74,9 @@ export function NukloEmbedBridge() {
     postHeight();
 
     const observer = new ResizeObserver(postHeight);
-    observer.observe(document.documentElement);
-    observer.observe(document.body);
-    Array.from(document.body.children).forEach((child) => observer.observe(child));
+    Array.from(document.body.querySelectorAll("main > section, main > footer, body > footer")).forEach((child) =>
+      observer.observe(child)
+    );
     window.addEventListener("load", postHeight);
     window.addEventListener("resize", postHeight);
 
