@@ -10,7 +10,7 @@
   "entry": "/",
   "renderer": "remote-static-app",
   "appUrl": "https://luisrcpe-blip.github.io/theme-gavejo/",
-  "assetsBase": "/media/gavejo/",
+  "assetsBase": "/theme-gavejo/media/gavejo/",
   "previewUrl": "https://gavejo.nuklo.cloud",
   "surfaces": ["LEAD_LANDING"],
   "capabilities": ["tenant", "branding", "media", "tracking", "leadLanding", "leadForm", "singleLanding"],

@@ -4,6 +4,9 @@ const githubPagesBasePath = isGithubPages ? "/theme-gavejo" : "";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  env: {
+    NEXT_PUBLIC_THEME_BASE_PATH: githubPagesBasePath
+  },
   ...(isGithubPages
     ? {
         output: "export",

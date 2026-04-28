@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { withThemeBasePath } from "@/lib/runtime";
 
 type NeonPlaceholderProps = {
   label: string;
@@ -170,7 +171,7 @@ export function NeonPlaceholder({
   assetKey
 }: NeonPlaceholderProps) {
   const tone = visualTone(label, caption);
-  const photo = photoFor(tone, label, caption, assetKey);
+  const photo = withThemeBasePath(photoFor(tone, label, caption, assetKey));
   const style = {
     "--placeholder-min-height": `${minHeight}px`,
     "--placeholder-aspect-ratio": aspectRatio

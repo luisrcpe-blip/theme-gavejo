@@ -1,5 +1,13 @@
 ﻿export const DEFAULT_WHATSAPP_NUMBER = "+34963520806";
-export const PRIVACY_URL = "/privacidad";
+const THEME_BASE_PATH = process.env.NEXT_PUBLIC_THEME_BASE_PATH ?? "";
+
+export function withThemeBasePath(path: string) {
+  if (!path.startsWith("/") || path.startsWith("//")) return path;
+  if (!THEME_BASE_PATH || path.startsWith(`${THEME_BASE_PATH}/`)) return path;
+  return `${THEME_BASE_PATH}${path}`;
+}
+
+export const PRIVACY_URL = withThemeBasePath("/privacidad");
 
 export type TemplateEventName = "cta_click" | "whatsapp_click" | "form_submit";
 

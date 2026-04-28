@@ -6,7 +6,7 @@ import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { buildWhatsappHref, trackTemplateEvent } from "@/lib/runtime";
+import { buildWhatsappHref, trackTemplateEvent, withThemeBasePath } from "@/lib/runtime";
 import { LandingConfig } from "@/lib/types";
 
 type LandingPageProps = {
@@ -174,7 +174,7 @@ export function LandingPage({ config }: LandingPageProps) {
                       <p>{toSpanishVisibleText(item.text)}</p>
                       <a
                         className="btn btn-ghost"
-                        href={item.ctaHref}
+                        href={withThemeBasePath(item.ctaHref)}
                         target="_blank"
                         rel="noreferrer"
                         onClick={() =>
