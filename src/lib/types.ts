@@ -14,7 +14,7 @@ export type Lead = {
   utmCampaign?: string;
 };
 
-export type DemoSettings = {
+export type TemplateSettings = {
   whatsappNumber: string;
   notifyEmail: string;
   emailJsEnabled: boolean;

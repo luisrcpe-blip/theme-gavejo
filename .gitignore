@@ -10,3 +10,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 tsconfig.tsbuildinfo
+*.log
+screenshots/
+tmp-edge-profile/
+tmp-edge-footer-profile/
+tmp_extract/

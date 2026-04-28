@@ -1,129 +1,127 @@
 import { LandingConfig } from "@/lib/types";
 
 const COMMON_TECH_POINTS = [
-  "Cadena de suministro auditada desde bosque hasta instalacion final.",
-  "Cumplimiento EUTR y uso de certificaciones FSC, PEFC y OLB cuando aplica.",
-  "Diseno orientado a especificacion arquitectonica, no a formato tienda.",
-  "Integracion de documentos tecnicos dentro de cada bloque de material.",
-  "Soporte comercial para estudios, constructoras y promotores.",
-  "Modelo escalable para proyectos residenciales, hoteleros y contract."
+  "Asesoramiento tecnico para seleccionar material, seccion, acabado y sistema de instalacion.",
+  "Soluciones pensadas para arquitectura, villas, hoteles, restauracion y espacios comerciales.",
+  "Integracion de documentacion tecnica y documentos cuando el proyecto lo requiere.",
+  "Enfoque en estabilidad, durabilidad, mantenimiento y comportamiento real en obra.",
+  "Captacion directa por formulario y WhatsApp para valorar cada proyecto con agilidad."
 ];
 
 export const fachadasLanding: LandingConfig = {
   slug: "fachadas",
   route: "/soluciones/fachadas",
   navName: "Fachadas",
-  heroBadge: "Estrategia de envolvente arquitectonica",
-  heroTitle: "Fachadas y revestimientos de biomateriales avanzados",
+  heroBadge: "Revestimiento exterior",
+  heroTitle: "Fachadas de madera con presencia, tecnica y durabilidad",
   heroDescription:
-    "Landing orientada a captacion para proyectos de fachada ventilada, revestimiento continuo y rehabilitacion premium con trazabilidad y enfoque tecnico.",
+    "Soluciones para fachadas ventiladas y revestimientos exteriores con madera termo tratada, madera quemada, Mader Balear, WPC y sistemas de fijacion tecnica.",
   heroImage: "PH-HERO-FACHADAS-001",
-  introTitle: "Arquitectura de fachada con control tecnico y narrativa comercial",
+  introTitle: "La fachada no es solo piel: es sistema, material y comportamiento",
   introDescription:
-    "El enfoque combina imagen, argumento de desempeno y claridad de suministro. Se integra conocimiento de Prime Forest, Treecraft y soluciones termo modificadas para reducir riesgo de especificacion.",
+    "Trabajamos revestimientos exteriores desde una lectura tecnica y estetica. Seleccionamos material, subestructura, fijacion y acabado para que la envolvente mantenga estabilidad, lectura limpia y coherencia con el proyecto.",
   applications: [
     {
-      title: "Fachada ventilada de alta estabilidad",
-      text: "Sistemas para minimizar movimientos higrotermicos y mantener planimetria en exposicion severa.",
+      title: "Fachadas ventiladas",
+      text: "Revestimientos exteriores con camara, ventilacion y fijacion tecnica para mejorar comportamiento y durabilidad.",
       image: "PH-FACHADAS-APP-01",
-      alt: "Aplicacion en fachada ventilada"
+      alt: "Fachada ventilada de madera"
     },
     {
-      title: "Revestimiento continuo en hoteleria",
-      text: "Soluciones para proyectos contract con lectura sobria y mantenimiento planificado.",
+      title: "Villas y viviendas premium",
+      text: "Materiales naturales para proyectos residenciales donde la textura y la calidez forman parte de la arquitectura.",
       image: "PH-FACHADAS-APP-02",
-      alt: "Aplicacion hotelera"
+      alt: "Vivienda con revestimiento exterior"
+    },
+    {
+      title: "Hoteles y restauracion",
+      text: "Soluciones con alto impacto visual y comportamiento estable para espacios con uso intensivo y exposicion exterior.",
+      image: "PH-FACHADAS-APP-03",
+      alt: "Hotel con fachada de madera"
     },
     {
       title: "Rehabilitacion mediterranea",
-      text: "Materiales aptos para reforma costera con prioridad en durabilidad biologica y acabado.",
-      image: "PH-FACHADAS-APP-03",
-      alt: "Aplicacion en rehabilitacion"
-    },
-    {
-      title: "Interiores tecnicos conectados",
-      text: "Continuidad visual entre envolvente exterior e interior para proyectos premium.",
+      text: "Revestimientos que conectan material, entorno y caracter arquitectonico sin perder precision tecnica.",
       image: "PH-FACHADAS-APP-04",
-      alt: "Aplicacion en interior tecnico"
+      alt: "Rehabilitacion con madera"
     }
   ],
   systems: [
     {
       number: "01",
-      title: "Abastecimiento forestal y legalidad",
-      text: "Seleccion de frondosas europeas y tropicales controladas con cumplimiento normativo y trazabilidad documental.",
+      title: "Material adecuado",
+      text: "Definimos madera termo tratada, quemada, recuperada, composite o sistema mixto segun exposicion, estetica y uso.",
       image: "PH-FACHADAS-SYS-01",
-      alt: "Sistema de abastecimiento forestal"
+      alt: "Seleccion de materiales de fachada"
     },
     {
       number: "02",
-      title: "Ingenieria de panel y subestructura",
-      text: "Integracion de tableros de alto rendimiento, modulado de fachada y detalle de fijaciones para obra real.",
+      title: "Subestructura y ventilacion",
+      text: "El rendimiento depende de la camara, separacion, encuentros, ventilacion y compatibilidad entre materiales.",
       image: "PH-FACHADAS-SYS-02",
-      alt: "Sistema de panel y subestructura"
+      alt: "Subestructura de fachada"
     },
     {
       number: "03",
-      title: "Mantenimiento y ciclo de vida",
-      text: "Plan de mantenimiento preventivo para conservar apariencia, reducir reemplazos y mejorar costo total del sistema.",
+      title: "Fijacion oculta y mantenimiento",
+      text: "Sistemas como Grad permiten alineacion precisa, superficie limpia, mejor ventilacion y posibilidad de mantenimiento.",
       image: "PH-FACHADAS-SYS-03",
-      alt: "Sistema de mantenimiento"
+      alt: "Fijacion tecnica oculta"
     }
   ],
   materials: [
     {
-      title: "Ayous Termo Tratado",
-      subtitle: "TMT Ayous Cladding",
-      text: "Baja densidad, alta estabilidad y clase de durabilidad apta para aplicaciones exteriores especificadas.",
+      title: "Madera termo tratada",
+      subtitle: "Tantimber / Thermowood",
+      text: "Alta estabilidad dimensional, resistencia a humedad y comportamiento predecible para fachadas exteriores.",
       image: "PH-FACHADAS-MAT-01",
-      alt: "Material ayous termo tratado",
-      cta: "Descargar ficha tecnica",
-      ctaHref: "/documentos/tantimber.pdf"
+      alt: "Madera termo tratada en fachada",
+      cta: "Ver madera termo tratada",
+      ctaHref: "/materiales/termo-tratada"
     },
     {
-      title: "Frake e Iroko Termo Modificados",
-      subtitle: "LDCwood / Tantimber",
-      text: "Alternativas para fachada y deck con identidad visual marcada y respuesta tecnica consistente.",
+      title: "Madera quemada",
+      subtitle: "Shou Sugi Ban / Burned Wood",
+      text: "Acabado de fuerte presencia visual, superficie protegida y estetica singular para exterior e interior.",
       image: "PH-FACHADAS-MAT-02",
-      alt: "Material frake e iroko",
-      cta: "Ficha tecnica",
-      ctaHref: "/documentos/tantimber-ficha.pdf"
+      alt: "Madera quemada para fachada",
+      cta: "Consultar aplicacion",
+      ctaHref: "#contact"
     },
     {
-      title: "Madera Quemada",
-      subtitle: "Burned Wood Radiata",
-      text: "Acabado de alto impacto visual con enfoque en envolvente premium y narrativa material.",
+      title: "Mader Balear & Fusta Antiga",
+      subtitle: "Madera recuperada",
+      text: "Material con huellas, textura real y vinculo mediterraneo para proyectos con identidad propia.",
       image: "PH-FACHADAS-MAT-03",
-      alt: "Material burned wood",
-      cta: "Descargar ficha tecnica",
-      ctaHref: "/documentos/burned-wood.pdf"
+      alt: "Madera recuperada balear",
+      cta: "Ver Mader Balear",
+      ctaHref: "/mader-balear"
     }
   ],
   gallery: [
-    { image: "PH-FACHADAS-GAL-01", alt: "Galeria fachadas 1" },
-    { image: "PH-FACHADAS-GAL-02", alt: "Galeria fachadas 2" },
-    { image: "PH-FACHADAS-GAL-03", alt: "Galeria fachadas 3" },
-    { image: "PH-FACHADAS-GAL-04", alt: "Galeria fachadas 4" },
-    { image: "PH-FACHADAS-GAL-05", alt: "Galeria fachadas 5" },
-    { image: "PH-FACHADAS-GAL-06", alt: "Galeria fachadas 6" }
+    { image: "PH-FACHADAS-GAL-01", alt: "Fachada con lamas verticales" },
+    { image: "PH-FACHADAS-GAL-02", alt: "Detalle de textura exterior" },
+    { image: "PH-FACHADAS-GAL-03", alt: "Casa mediterranea con madera" },
+    { image: "PH-FACHADAS-GAL-04", alt: "Fachada ventilada contemporanea" },
+    { image: "PH-FACHADAS-GAL-05", alt: "Encuentro tecnico de fachada" },
+    { image: "PH-FACHADAS-GAL-06", alt: "Revestimiento exterior premium" }
   ],
   technicalPoints: [
     ...COMMON_TECH_POINTS,
-    "Adaptacion de sistema a clima mediterraneo y condicion de proyecto.",
-    "Alternativa real a materiales de alta huella de carbono en envolventes."
+    "Materiales: termo tratada, quemada, Mader Balear, WPC y fijaciones tecnicas.",
+    "Aplicaciones: fachadas, cladding exterior, celosias y revestimientos continuos."
   ],
   maderBalear: {
-    title: "Capa diferencial para proyectos de autor",
-    text: "Madera Balear se incorpora como bloque editorial para propuestas con caracter artesanal, sin perder la logica tecnica del sistema principal.",
+    title: "Mader Balear como capa diferencial",
+    text: "Cuando el proyecto necesita memoria, textura y caracter mediterraneo, la madera recuperada aporta una lectura que no puede reproducirse artificialmente.",
     image: "PH-FACHADAS-BANNER-01",
-    ctaLabel: "Consultar linea complementaria"
+    ctaLabel: "Consultar combinacion de materiales"
   },
   technicalSpecs: [
-    { label: "Normativa", value: "Marco EUTR y documentacion de origen auditada" },
-    { label: "Durabilidad objetivo", value: "Clase 1 a Clase 2 segun especie y proceso" },
     { label: "Uso principal", value: "Fachadas ventiladas y revestimientos exteriores" },
-    { label: "Mantenimiento", value: "Plan preventivo segun exposicion y acabado" },
-    { label: "Enfoque comercial", value: "Captacion de proyecto + WhatsApp + contacto directo" }
+    { label: "Materiales", value: "Tantimber, Burned Wood, Mader Balear, WPC y sistemas Grad" },
+    { label: "Sistema", value: "Subestructura, ventilacion, fijacion oculta y mantenimiento" },
+    { label: "Proyecto ideal", value: "Villas, hoteles, retail, restauracion y rehabilitacion" }
   ]
 };
 
@@ -131,120 +129,234 @@ export const termoLanding: LandingConfig = {
   slug: "termo-tratada",
   route: "/materiales/termo-tratada",
   navName: "Tantimber",
-  heroBadge: "Ciencia ThermoWood aplicada",
-  heroTitle: "Madera termo tratada para fachadas, deck y sistemas exteriores",
+  heroBadge: "Madera termo tratada",
+  heroTitle: "Madera termo tratada con maxima estabilidad y durabilidad",
   heroDescription:
-    "Landing centrada en el material: fundamentos termodinamicos, rendimiento biologico y especificaciones para arquitectura y paisajismo.",
+    "Thermowood para fachadas, decking y revestimientos con comportamiento tecnico controlado y larga vida util.",
   heroImage: "PH-HERO-TERMO-001",
-  introTitle: "Del proceso termico al rendimiento en obra",
+  introTitle: "La madera termo tratada lleva el material a un nivel superior de rendimiento",
   introDescription:
-    "El material se modifica con calor y vapor para reducir higroscopicidad, mejorar estabilidad dimensional y extender vida util sin biocidas pesados.",
+    "Mediante un proceso termico controlado, la madera mejora su estabilidad, durabilidad y resistencia frente a condiciones ambientales exigentes. Es una solucion tecnica para aplicaciones reales donde el material debe funcionar a largo plazo.",
   applications: [
     {
-      title: "Decking de alta exposicion",
-      text: "Perfiles de 26 y 42 mm para uso intensivo en terrazas residenciales y hospitality.",
+      title: "Fachadas ventiladas",
+      text: "Revestimientos exteriores con alta estabilidad dimensional y respuesta predecible ante humedad y clima.",
       image: "PH-TERMO-APP-01",
-      alt: "Decking termo tratado"
+      alt: "Fachada ventilada con madera termo tratada"
     },
     {
-      title: "Cladding arquitectonico",
-      text: "Sistemas para fachada con lectura minimalista y respuesta estable ante ciclos climaticos.",
+      title: "Decking exterior",
+      text: "Tarimas para terrazas, piscinas y espacios de uso intensivo con confort y bajo mantenimiento.",
       image: "PH-TERMO-APP-02",
-      alt: "Cladding termo tratado"
+      alt: "Decking exterior termo tratado"
     },
     {
-      title: "Interior tecnico premium",
-      text: "Revestimientos internos estables frente a variaciones de humedad por HVAC.",
+      title: "Revestimientos interiores",
+      text: "Superficies calidas y estables para interiores contemporaneos con control del material.",
       image: "PH-TERMO-APP-03",
-      alt: "Interior termo tratado"
+      alt: "Interior con madera termo tratada"
     },
     {
-      title: "Cerramientos y balustradas",
-      text: "Aplicaciones exteriores donde se requiere resistencia mecanica y baja deformacion.",
+      title: "Celosias y elementos arquitectonicos",
+      text: "Lamas, cerramientos y piezas especiales donde se busca precision, ligereza y durabilidad.",
       image: "PH-TERMO-APP-04",
-      alt: "Cerramiento termo tratado"
+      alt: "Celosias de madera termo tratada"
     }
   ],
   systems: [
     {
       number: "01",
-      title: "Secado termico inicial",
-      text: "Fase de 38 a 76 horas para reducir humedad y preparar la matriz celular para el tratamiento de pico.",
+      title: "Proceso Thermowood",
+      text: "La madera se somete a temperaturas entre 180 C y 212 C en un entorno controlado con vapor para modificar su comportamiento.",
       image: "PH-TERMO-SYS-01",
-      alt: "Fase 1 del proceso"
+      alt: "Proceso Thermowood"
     },
     {
       number: "02",
-      title: "Modificacion a 200-212 C",
-      text: "Degradacion selectiva de hemicelulosas para disminuir absorbencia y mejorar estabilidad dimensional.",
+      title: "Menor absorcion de humedad",
+      text: "Se reduce el contenido de humedad hasta aproximadamente un 4-7%, limitando movimientos y degradacion biologica.",
       image: "PH-TERMO-SYS-02",
-      alt: "Fase 2 del proceso"
+      alt: "Estabilidad por humedad controlada"
     },
     {
       number: "03",
-      title: "Acondicionamiento final",
-      text: "Enfriamiento con vapor y estabilizacion a 4-7% de humedad operativa para evitar colapso estructural.",
+      title: "Sistema completo",
+      text: "Perfiles tecnicos, subestructura termo tratada, clips ocultos, tornilleria especifica, aceites y acabados listos para instalar.",
       image: "PH-TERMO-SYS-03",
-      alt: "Fase 3 del proceso"
+      alt: "Sistema completo Tantimber"
     }
   ],
   materials: [
     {
-      title: "TMT Pine (Pinus Sylvestris)",
-      subtitle: "Decking y estructura ligera",
-      text: "Linea optimizada para exterior con durabilidad de referencia y buena disponibilidad industrial.",
+      title: "Fresno termo tratado",
+      subtitle: "Alta durabilidad - Clase 1",
+      text: "Opcion premium para proyectos donde importan veta, resistencia y presencia material.",
       image: "PH-TERMO-MAT-01",
-      alt: "Material pine",
-      cta: "Descargar ficha Tantimber",
+      alt: "Fresno termo tratado",
+      cta: "Descargar ficha tecnica",
       ctaHref: "/documentos/tantimber.pdf"
     },
     {
-      title: "TMT Ash",
-      subtitle: "Revestimiento de alto valor estetico",
-      text: "Perfil recomendado para proyectos de detalle donde importan veta, estabilidad y precision de acabado.",
+      title: "Pino termo tratado",
+      subtitle: "Versatil y equilibrado",
+      text: "Solucion adaptable para exterior e interior con buen equilibrio entre rendimiento y disponibilidad.",
       image: "PH-TERMO-MAT-02",
-      alt: "Material ash",
-      cta: "Ficha tecnica",
-      ctaHref: "/documentos/tantimber-ficha.pdf"
-    },
-    {
-      title: "TMT Ayous",
-      subtitle: "Cladding de baja densidad",
-      text: "Opcion favorita en fachada por facilidad de mecanizado, textura limpia y rendimiento exterior.",
-      image: "PH-TERMO-MAT-03",
-      alt: "Material ayous",
+      alt: "Pino termo tratado",
       cta: "Ver especificaciones",
       ctaHref: "/documentos/tantimber-specs.pdf"
+    },
+    {
+      title: "Ayous, Iroko y Poplar",
+      subtitle: "Texturas y prestaciones especificas",
+      text: "Cada especie ofrece un equilibrio distinto entre estetica, durabilidad, ligereza y comportamiento tecnico.",
+      image: "PH-TERMO-MAT-03",
+      alt: "Especies termo tratadas",
+      cta: "Solicitar asesoria",
+      ctaHref: "#contact"
     }
   ],
   gallery: [
-    { image: "PH-TERMO-GAL-01", alt: "Galeria termo 1" },
-    { image: "PH-TERMO-GAL-02", alt: "Galeria termo 2" },
-    { image: "PH-TERMO-GAL-03", alt: "Galeria termo 3" },
-    { image: "PH-TERMO-GAL-04", alt: "Galeria termo 4" },
-    { image: "PH-TERMO-GAL-05", alt: "Galeria termo 5" },
-    { image: "PH-TERMO-GAL-06", alt: "Galeria termo 6" }
+    { image: "PH-TERMO-GAL-01", alt: "Madera termo tratada en fachada" },
+    { image: "PH-TERMO-GAL-02", alt: "Decking termo tratado" },
+    { image: "PH-TERMO-GAL-03", alt: "Lamas termo tratadas" },
+    { image: "PH-TERMO-GAL-04", alt: "Detalle Thermowood" },
+    { image: "PH-TERMO-GAL-05", alt: "Interior con madera termo tratada" },
+    { image: "PH-TERMO-GAL-06", alt: "Acabados Tantimber" }
   ],
   technicalPoints: [
-    "Proceso libre de biocidas metalicos para aplicaciones arquitectonicas seguras.",
-    "Reduccion de higroscopicidad y control de deformacion por ciclos de humedad.",
-    "Durabilidad biologica equiparable a especies tradicionalmente exoticas.",
-    "Compatibilidad con estrategias de arquitectura bioclimatica y baja huella de carbono.",
-    "Rangos dimensionales industriales para deck, cladding y aplicaciones especiales.",
-    "Integracion directa con fichas tecnicas y documentos de proyecto."
+    "Alta estabilidad dimensional y reduccion de hinchamiento y contraccion.",
+    "Resistencia a humedad y clima exterior sin utilizar productos quimicos.",
+    "Durabilidad biologica Clase 1 o Clase 2 segun especie y configuracion.",
+    "Vida util que puede superar los 25 anos en exterior segun uso y mantenimiento.",
+    "Compatible con fijacion oculta, end-matching y sistemas como Grad.",
+    "Acabados cepillados, pre-envejecidos, aceitados en seis caras y texturas personalizadas."
   ],
   maderBalear: {
-    title: "Complemento de narrativa material",
-    text: "Cuando el proyecto pide una capa emocional adicional, Madera Balear se suma como recurso de identidad sin perder el eje tecnico del material principal.",
+    title: "Combinar tecnica y caracter",
+    text: "La madera termo tratada resuelve rendimiento; Mader Balear puede sumar textura, memoria y una lectura mas emocional del proyecto.",
     image: "PH-TERMO-BANNER-01",
-    ctaLabel: "Solicitar combinacion de lineas"
+    ctaLabel: "Consultar combinacion"
   },
   technicalSpecs: [
-    { label: "Temperatura de proceso", value: "Rango operativo aproximado 200-212 C" },
-    { label: "Humedad final", value: "Estabilizacion entre 4% y 7%" },
-    { label: "Durabilidad", value: "Clase 1 o Clase 2 segun especie y configuracion" },
-    { label: "Dimension deck referencia", value: "26 mm y 42 mm en lineas estructurales" },
-    { label: "Entorno de uso", value: "Fachada, deck, cerramientos e interior tecnico" }
+    { label: "Proceso", value: "Thermowood entre 180 C y 212 C con vapor" },
+    { label: "Humedad final", value: "Aproximadamente 4-7%" },
+    { label: "Aplicaciones", value: "Fachadas, decking, interiores, celosias y lamas" },
+    { label: "Sistema", value: "Perfiles, subestructura, clips, tornilleria, aceites y acabados" }
   ]
 };
 
+export const deckingLanding: LandingConfig = {
+  slug: "decking-exterior",
+  route: "/soluciones/decking-exterior",
+  navName: "Decking exterior",
+  heroBadge: "Suelos exterior",
+  heroTitle: "Tarimas de madera para exterior disenadas para durar",
+  heroDescription:
+    "Soluciones en decking para terrazas, piscinas y espacios exteriores con alto nivel de uso y exposicion.",
+  heroImage: "PH-HERO-DECKING-001",
+  introTitle: "El decking exterior exige algo mas que estetica",
+  introDescription:
+    "Debe resistir uso intensivo, exposicion constante y cambios de temperatura, manteniendo estabilidad y comportamiento a lo largo del tiempo. Trabajamos material, instalacion y fijacion como un conjunto.",
+  applications: [
+    { title: "Terrazas", text: "Superficies exteriores comodas, estables y preparadas para uso diario.", image: "PH-DECKING-APP-01", alt: "Terraza de madera exterior" },
+    { title: "Piscinas", text: "Materiales y sistemas pensados para humedad, transito y evacuacion de agua.", image: "PH-DECKING-APP-02", alt: "Piscina con decking exterior" },
+    { title: "Hoteles y restauracion", text: "Tarimas para espacios de alto uso donde importa la experiencia y el mantenimiento.", image: "PH-DECKING-APP-03", alt: "Decking para hotel" },
+    { title: "Jardines y exteriores intensivos", text: "Soluciones para zonas vividas, pisadas y expuestas al clima.", image: "PH-DECKING-APP-04", alt: "Jardin con tarima exterior" }
+  ],
+  systems: [
+    { number: "01", title: "Subestructura adecuada", text: "Base estable, separacion correcta y ventilacion para que la tarima trabaje bien.", image: "PH-DECKING-SYS-01", alt: "Subestructura decking" },
+    { number: "02", title: "Control de dilataciones", text: "El sistema debe prever movimiento, drenaje y exposicion para evitar patologias.", image: "PH-DECKING-SYS-02", alt: "Control tecnico decking" },
+    { number: "03", title: "Fijacion oculta", text: "Superficie limpia, mayor proteccion del material, mejor evacuacion de agua y montaje preciso con Grad System cuando aplica.", image: "PH-DECKING-SYS-03", alt: "Fijacion oculta decking" }
+  ],
+  materials: [
+    { title: "Madera termo tratada", subtitle: "Tantimber", text: "Alta estabilidad, resistencia a humedad, bajo mantenimiento y comportamiento predecible.", image: "PH-DECKING-MAT-01", alt: "Decking Tantimber", cta: "Ver Tantimber", ctaHref: "/materiales/termo-tratada" },
+    { title: "Madera tropical", subtitle: "Ipe", text: "Alta densidad, gran durabilidad natural, resistencia al desgaste e ideal para alto transito.", image: "PH-DECKING-MAT-02", alt: "Decking Ipe", cta: "Consultar disponibilidad", ctaHref: "#contact" },
+    { title: "WPC", subtitle: "Composite", text: "Material tecnico con resistencia a humedad, mantenimiento minimo y uso intensivo.", image: "PH-DECKING-MAT-03", alt: "Decking composite", cta: "Pedir asesoria", ctaHref: "#contact" }
+  ],
+  gallery: [
+    { image: "PH-DECKING-GAL-01", alt: "Tarima exterior" },
+    { image: "PH-DECKING-GAL-02", alt: "Deck piscina" },
+    { image: "PH-DECKING-GAL-03", alt: "Detalle fijacion" },
+    { image: "PH-DECKING-GAL-04", alt: "Decking hotel" },
+    { image: "PH-DECKING-GAL-05", alt: "Terraza mediterranea" },
+    { image: "PH-DECKING-GAL-06", alt: "Madera exterior" }
+  ],
+  technicalPoints: [
+    "Alta durabilidad y comportamiento estable en exterior.",
+    "Confort de uso y bajo mantenimiento segun material seleccionado.",
+    "Integracion con terrazas, piscinas, jardines, hoteles y restauracion.",
+    "Grad System aporta instalacion rapida, alineacion precisa y reduccion de errores.",
+    "El decking es una superficie que se pisa, se utiliza y se vive; debe responder como tal."
+  ],
+  maderBalear: {
+    title: "Exterior con caracter material",
+    text: "El decking puede dialogar con revestimientos, fachadas y piezas recuperadas para construir un proyecto exterior coherente.",
+    image: "PH-DECKING-BANNER-01",
+    ctaLabel: "Consultar decking para mi proyecto"
+  },
+  technicalSpecs: [
+    { label: "Materiales", value: "Tantimber, Ipe y WPC / Composite" },
+    { label: "Sistema", value: "Subestructura, ventilacion, dilataciones y fijacion tecnica" },
+    { label: "Aplicaciones", value: "Terrazas, piscinas, hoteles, restauracion y jardines" },
+    { label: "Fijacion", value: "Oculta y compatible con Grad System cuando el proyecto lo requiere" }
+  ]
+};
+
+export const interioresLanding: LandingConfig = {
+  slug: "revestimientos-interiores",
+  route: "/soluciones/revestimientos-interiores",
+  navName: "Interiores",
+  heroBadge: "Revestimientos interiores",
+  heroTitle: "Madera que transforma espacios interiores",
+  heroDescription:
+    "Revestimientos en madera natural, termo tratada, quemada y recuperada para crear interiores con textura, calidez y presencia material.",
+  heroImage: "PH-HERO-INTERIOR-001",
+  introTitle: "En interior, la madera no actua solo como revestimiento",
+  introDescription:
+    "Actua como materia que aporta ritmo, profundidad y temperatura al espacio. Trabajamos soluciones de pared y superficies interiores con material natural y sistemas de instalacion precisos.",
+  applications: [
+    { title: "Viviendas y villas", text: "Ambientes calidos, serenos y con identidad clara para espacios residenciales.", image: "PH-INTERIOR-APP-01", alt: "Interior de vivienda con madera" },
+    { title: "Hoteles", text: "Revestimientos que elevan zonas comunes, habitaciones y recorridos con textura real.", image: "PH-INTERIOR-APP-02", alt: "Hotel con revestimiento interior" },
+    { title: "Restauracion y retail", text: "Materialidad con presencia para espacios comerciales donde la atmasfera importa.", image: "PH-INTERIOR-APP-03", alt: "Retail con madera interior" },
+    { title: "Recepciones y zonas comunes", text: "Superficies continuas con encuentros precisos e integracion con iluminacion.", image: "PH-INTERIOR-APP-04", alt: "Recepcion con madera" }
+  ],
+  systems: [
+    { number: "01", title: "Lectura limpia", text: "Encuentros precisos, continuidad visual e integracion con iluminacion y otros elementos del proyecto.", image: "PH-INTERIOR-SYS-01", alt: "Sistema interior limpio" },
+    { number: "02", title: "Fijacion invisible", text: "La fijacion debe desaparecer para no interferir en la lectura del material.", image: "PH-INTERIOR-SYS-02", alt: "Fijacion invisible interior" },
+    { number: "03", title: "Acabado y mantenimiento", text: "Grad System permite alineacion, posibilidad de desmontaje y mayor calidad de acabado cuando el proyecto lo requiere.", image: "PH-INTERIOR-SYS-03", alt: "Acabado interior de madera" }
+  ],
+  materials: [
+    { title: "Madera termo tratada", subtitle: "Tantimber", text: "Madera estable, limpia y contemporanea para interiores donde se busca uniformidad y control.", image: "PH-INTERIOR-MAT-01", alt: "Tantimber interior", cta: "Ver Tantimber", ctaHref: "/materiales/termo-tratada" },
+    { title: "Madera quemada", subtitle: "Burned Wood", text: "Material de fuerte presencia visual, textura profunda y lectura expresiva del espacio.", image: "PH-INTERIOR-MAT-02", alt: "Burned Wood interior", cta: "Consultar aplicacion", ctaHref: "#contact" },
+    { title: "Mader Balear & Fusta Antiga", subtitle: "Madera recuperada", text: "Piezas unicas con huellas, matices y relacion directa con la arquitectura mediterranea.", image: "PH-INTERIOR-MAT-03", alt: "Mader Balear interior", cta: "Ver Mader Balear", ctaHref: "/mader-balear" }
+  ],
+  gallery: [
+    { image: "PH-INTERIOR-GAL-01", alt: "Revestimiento interior madera" },
+    { image: "PH-INTERIOR-GAL-02", alt: "Pared con lamas de madera" },
+    { image: "PH-INTERIOR-GAL-03", alt: "Interior mediterraneo" },
+    { image: "PH-INTERIOR-GAL-04", alt: "Textura interior" },
+    { image: "PH-INTERIOR-GAL-05", alt: "Madera quemada interior" },
+    { image: "PH-INTERIOR-GAL-06", alt: "Recepcion con madera" }
+  ],
+  technicalPoints: [
+    "Aporta calidez real y mejora la percepcion material del proyecto.",
+    "Se adapta a lenguajes contemporaneos, artesanales o mediterraneos.",
+    "Integra tecnica y diseno en una sola solucion.",
+    "Permite continuidad visual, encuentros precisos y fijacion oculta.",
+    "Un revestimiento interior no deberia cubrir una pared: deberia aportar atmasfera, materia y caracter."
+  ],
+  maderBalear: {
+    title: "Mader Balear como material diferencial",
+    text: "La madera recuperada suma textura real, piezas unicas y una dimension emocional dificil de replicar.",
+    image: "PH-INTERIOR-BANNER-01",
+    ctaLabel: "Consultar revestimiento interior"
+  },
+  technicalSpecs: [
+    { label: "Materiales", value: "Termo tratada, quemada y recuperada" },
+    { label: "Aplicaciones", value: "Viviendas, villas, hoteles, retail, restauracion y zonas comunes" },
+    { label: "Sistema", value: "Encuentros precisos, fijacion oculta e integracion con iluminacion" },
+    { label: "Objetivo", value: "Calidez, atmasfera, textura y presencia material" }
+  ]
+};
+
+export const allLandings = [fachadasLanding, termoLanding, deckingLanding, interioresLanding];

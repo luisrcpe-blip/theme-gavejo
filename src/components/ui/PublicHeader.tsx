@@ -15,12 +15,13 @@ type NavLink = {
 
 const NAV_LINKS: NavLink[] = [
   { href: "/", label: "Inicio", comingSoon: false },
-  { href: "/soluciones/fachadas", label: "Landing Fachadas", comingSoon: false },
-  { href: "/materiales/termo-tratada", label: "Landing Termotratada", comingSoon: false },
-  { href: "/mader-balear", label: "Madera Balear", comingSoon: true },
-  { href: "/blog", label: "Blog", comingSoon: true },
-  { href: "/contacto", label: "Contacto", comingSoon: true },
-  { href: "/contacto", label: "Admin", comingSoon: true }
+  { href: "/soluciones/fachadas", label: "Fachadas", comingSoon: false },
+  { href: "/soluciones/decking-exterior", label: "Decking", comingSoon: false },
+  { href: "/soluciones/revestimientos-interiores", label: "Interiores", comingSoon: false },
+  { href: "/materiales/termo-tratada", label: "Termotratada", comingSoon: false },
+  { href: "/mader-balear", label: "Madera Balear", comingSoon: false },
+  { href: "/blog", label: "Blog", comingSoon: false },
+  { href: "/contacto", label: "Contacto", comingSoon: false }
 ];
 
 export function PublicHeader() {
@@ -39,7 +40,7 @@ export function PublicHeader() {
     above: false
   });
 
-  const landingRoutes = ["/soluciones/fachadas", "/materiales/termo-tratada", "/mader-balear"];
+  const landingRoutes = ["/soluciones/fachadas", "/soluciones/decking-exterior", "/soluciones/revestimientos-interiores", "/materiales/termo-tratada", "/mader-balear"];
 
   const variant: HeaderVariant =
     pathname === "/" ? "solid" : landingRoutes.some((route) => pathname.startsWith(route)) ? "overlay" : "clean";
@@ -103,56 +104,57 @@ export function PublicHeader() {
   };
 
   return (
-    <header
-      className={`topbar topbar-${variant} ${scrolled ? "is-scrolled" : ""} ${
-        mobileOpen ? "is-mobile-open" : ""
-      }`}
-    >
-      <div className="container topbar-inner">
-        <Link href="/" className="brand-link" aria-label="Volver al inicio">
-          <span className="brand-logo-shell">
-            <Image
-              src="https://maderasgavejo.com/wp-content/uploads/2023/09/gavejo-logo4.png"
-              alt="Gavejo Maderas y Tableros"
-              width={180}
-              height={64}
-              priority
-              className="brand-logo"
-            />
-          </span>
-        </Link>
+    <>
+      <header
+        className={`topbar topbar-${variant} ${scrolled ? "is-scrolled" : ""} ${
+          mobileOpen ? "is-mobile-open" : ""
+        }`}
+      >
+        <div className="container topbar-inner">
+          <Link href="/" className="brand-link" aria-label="Volver al inicio">
+            <span className="brand-logo-shell">
+              <Image
+                src="https://maderasgavejo.com/wp-content/uploads/2023/09/gavejo-logo4.png"
+                alt="Gavejo Maderas y Tableros"
+                width={180}
+                height={64}
+                priority
+                className="brand-logo"
+              />
+            </span>
+          </Link>
 
-        <nav className="topnav">
-          {NAV_LINKS.map((item) => (
-            <Link
-              key={`${item.href}-${item.label}`}
-              href={item.href}
-              className={isActive(item.href) ? "is-active" : ""}
-              onClick={(event) => onMenuClick(event, item)}
-              aria-disabled={item.comingSoon ? "true" : undefined}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+          <nav className="topnav">
+            {NAV_LINKS.map((item) => (
+              <Link
+                key={`${item.href}-${item.label}`}
+                href={item.href}
+                className={isActive(item.href) ? "is-active" : ""}
+                onClick={(event) => onMenuClick(event, item)}
+                aria-disabled={item.comingSoon ? "true" : undefined}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        <button
-          type="button"
-          className={`mobile-menu-toggle ${mobileOpen ? "is-open" : ""}`}
-          onClick={() => setMobileOpen((prev) => !prev)}
-          aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-menu-panel"
-         
-        >
-          <span className="sr-only">{mobileOpen ? "Cerrar menu" : "Abrir menu"}</span>
-          <span className="mobile-menu-bars" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-        </button>
-      </div>
+          <button
+            type="button"
+            className={`mobile-menu-toggle ${mobileOpen ? "is-open" : ""}`}
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu-panel"
+          >
+            <span className="sr-only">{mobileOpen ? "Cerrar menu" : "Abrir menu"}</span>
+            <span className="mobile-menu-bars" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          </button>
+        </div>
+      </header>
 
       <div id="mobile-menu-panel" className={`mobile-menu-panel ${mobileOpen ? "is-open" : ""}`}>
         <nav className="container mobile-menu-nav" aria-label="Navegacion movil">
@@ -181,7 +183,7 @@ export function PublicHeader() {
         <span className="coming-soon-dot" />
         <span>{"\u00a1Pr\u00f3ximamente!"}</span>
       </div>
-    </header>
+    </>
   );
 }
 

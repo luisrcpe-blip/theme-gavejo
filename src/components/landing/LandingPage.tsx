@@ -75,7 +75,8 @@ export function LandingPage({ config }: LandingPageProps) {
             <Reveal delay={120}>
               <NeonPlaceholder
                 label="Imagen principal"
-                caption={`Referencia actual: ${config.heroImage}`}
+                caption="Visual de proyecto"
+                assetKey={config.heroImage}
                 minHeight={340}
                 aspectRatio="16 / 10"
               />
@@ -99,7 +100,7 @@ export function LandingPage({ config }: LandingPageProps) {
           <div className="container">
             <Reveal>
               <p className="section-kicker">Aplicaciones</p>
-              <h2>Escenarios de uso para arquitectura y proyectos profesionales</h2>
+              <h2>Aplicaciones principales</h2>
             </Reveal>
             <div className="grid grid-4">
               {config.applications.map((item, index) => (
@@ -107,7 +108,8 @@ export function LandingPage({ config }: LandingPageProps) {
                   <article className="card card-pad">
                     <NeonPlaceholder
                       label={toSpanishVisibleText(item.title)}
-                      caption={item.image}
+                      caption={item.alt}
+                      assetKey={item.image}
                       minHeight={220}
                       aspectRatio="4 / 3"
                     />
@@ -125,7 +127,7 @@ export function LandingPage({ config }: LandingPageProps) {
         <section id="systems" className="section container">
           <Reveal>
             <p className="section-kicker">Sistemas</p>
-            <h2>Metodologia tecnica y operativa</h2>
+            <h2>Sistema tecnico de trabajo</h2>
           </Reveal>
           <div className="stack">
             {config.systems.map((item, index) => (
@@ -133,7 +135,8 @@ export function LandingPage({ config }: LandingPageProps) {
                 <article className="system-card">
                   <NeonPlaceholder
                     label={`${item.number} ${toSpanishVisibleText(item.title)}`}
-                    caption={item.image}
+                    caption={item.alt}
+                    assetKey={item.image}
                     minHeight={260}
                     aspectRatio="4 / 3"
                   />
@@ -152,7 +155,7 @@ export function LandingPage({ config }: LandingPageProps) {
           <div className="container">
             <Reveal>
               <p className="section-kicker">Materiales</p>
-              <h2>Documentos tecnicos con descargas directas</h2>
+              <h2>Materiales y alternativas</h2>
             </Reveal>
             <div className="grid grid-3">
               {config.materials.map((item, index) => (
@@ -160,7 +163,8 @@ export function LandingPage({ config }: LandingPageProps) {
                   <article className="card card-pad">
                     <NeonPlaceholder
                       label={toSpanishVisibleText(item.subtitle)}
-                      caption={item.image}
+                      caption={item.alt}
+                      assetKey={item.image}
                       minHeight={220}
                       aspectRatio="4 / 3"
                     />
@@ -224,7 +228,7 @@ export function LandingPage({ config }: LandingPageProps) {
         <section className="section container">
           <Reveal>
             <p className="section-kicker">Galeria de referencia</p>
-            <h2>Bloques visuales para sustituir por contenido final</h2>
+            <h2>Inspiracion visual para el proyecto</h2>
           </Reveal>
           <div className="grid grid-3">
             {config.gallery.map((item, index) => (
@@ -232,7 +236,8 @@ export function LandingPage({ config }: LandingPageProps) {
                 <article className="card card-pad gallery-card">
                   <NeonPlaceholder
                     label={`Frame ${index + 1}`}
-                    caption={item.image}
+                    caption={item.alt}
+                    assetKey={item.image}
                     minHeight={230}
                     aspectRatio="4 / 3"
                   />
@@ -245,11 +250,10 @@ export function LandingPage({ config }: LandingPageProps) {
         <section className="section section-soft">
           <div className="container two-col">
             <Reveal>
-              <p className="section-kicker">Bloque tecnico</p>
-              <h2>Mensajes para arquitectos y direccion de proyecto</h2>
+              <p className="section-kicker">Criterio tecnico</p>
+              <h2>Claves para decidir con seguridad</h2>
               <p className="lead-text">
-                Argumentos de durabilidad, normativa, trazabilidad y operacion para soportar decisiones de
-                especificacion.
+                Argumentos de durabilidad, estabilidad, mantenimiento y sistema para valorar cada solucion antes de avanzar.
               </p>
             </Reveal>
             <Reveal delay={80}>
@@ -268,15 +272,16 @@ export function LandingPage({ config }: LandingPageProps) {
           <div className="two-col">
             <Reveal>
               <NeonPlaceholder
-                label="Bloque diferencial"
-                caption={config.maderBalear.image}
+                label="Linea complementaria"
+                caption="Material complementario"
+                assetKey={config.maderBalear.image}
                 minHeight={300}
                 aspectRatio="16 / 10"
               />
             </Reveal>
             <Reveal delay={80}>
               <div className="card card-pad">
-                <p className="section-kicker">Universo complementario</p>
+                <p className="section-kicker">Linea complementaria</p>
                 <h2>{config.maderBalear.title}</h2>
                 <p className="lead-text" style={{ marginBottom: "1rem" }}>
                   {toSpanishVisibleText(config.maderBalear.text)}
@@ -293,10 +298,9 @@ export function LandingPage({ config }: LandingPageProps) {
           <div className="container two-col contact-wrap">
             <Reveal>
               <p className="section-kicker section-kicker-light">Contacto</p>
-              <h2>Solicita evaluacion tecnica para tu proyecto</h2>
+              <h2>Solicita orientacion tecnica para tu proyecto</h2>
               <p className="lead-text">
-                Cierre comercial directo con formulario y WhatsApp para acelerar respuesta a cliente final,
-                arquitectura y prescripcion.
+                Cuentanos que tipo de proyecto estas preparando y el equipo podra orientarte sobre material, sistema y siguiente paso.
               </p>
               <div className="hero-actions" style={{ marginTop: "1rem" }}>
                 <Link className="btn btn-light" href="/contacto">

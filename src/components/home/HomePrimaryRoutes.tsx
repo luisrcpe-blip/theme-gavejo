@@ -15,7 +15,7 @@ const PRIMARY_ROUTES = [
   },
   {
     href: "/contacto",
-    buttonLabel: "Abrir panel admin",
+    buttonLabel: "Contactar ahora",
     buttonClass: "btn-ghost",
   }
 ] as const;

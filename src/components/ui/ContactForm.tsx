@@ -58,7 +58,7 @@ export function ContactForm({ originLanding }: ContactFormProps) {
           fullName: name.trim(),
           email: contactData.email,
           phone: contactData.phone,
-          phoneCountryCode: "+51",
+          phoneCountryCode: "+34",
           saveMode: "final",
           attribution: readLeadAttribution(),
           answers: [
@@ -126,7 +126,7 @@ export function ContactForm({ originLanding }: ContactFormProps) {
             type="text"
             inputMode="email"
             autoComplete="email"
-            placeholder="email@empresa.com o +51..."
+            placeholder="email@empresa.com o +34..."
             value={contact}
             onChange={(event) => setContact(event.target.value)}
           />

@@ -1,4 +1,4 @@
-﻿export const DEFAULT_WHATSAPP_NUMBER = "+51999999999";
+﻿export const DEFAULT_WHATSAPP_NUMBER = "+34963520806";
 export const PRIVACY_URL = "/privacidad";
 
 export type TemplateEventName = "cta_click" | "whatsapp_click" | "form_submit";
