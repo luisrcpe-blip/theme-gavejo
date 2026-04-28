@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-primary",
+  weight: ["400", "500", "700"]
+});
+
 export const metadata: Metadata = {
-  title: "Maderas Gavejo | Proyectos en madera premium",
-  description: "Landing CAPTURE para cotizar proyectos de madera a medida con Maderas Gavejo.",
-  metadataBase: new URL("https://gavejo.nuklo.cloud"),
-  openGraph: {
-    title: "Maderas Gavejo",
-    description: "Madera seleccionada, acabados premium y asesoria para proyectos residenciales y comerciales.",
-    url: "https://gavejo.nuklo.cloud",
-    siteName: "Maderas Gavejo",
-    type: "website"
-  }
+  title: "Maderas Gavejo | Front CAPTURE Nuklo",
+  description: "Front publico de Maderas Gavejo con enfoque comercial y tecnico para captacion de leads.",
+  metadataBase: new URL("https://gavejo.nuklo.cloud")
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body className={poppins.variable}>{children}</body>
     </html>
   );
 }
