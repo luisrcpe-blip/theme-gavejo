@@ -16,6 +16,21 @@ type LeadResponse = {
   error?: string;
 };
 
+type LeadPayload = {
+  landingId: string;
+  fullName: string;
+  email?: string;
+  phone?: string;
+  phoneCountryCode?: string;
+  saveMode: "final";
+  attribution?: ReturnType<typeof readLeadAttribution>;
+  answers: Array<{
+    questionKey: string;
+    questionLabel: string;
+    value: string;
+  }>;
+};
+
 function splitContact(contact: string) {
   const trimmed = contact.trim();
   const looksLikeEmail = trimmed.includes("@") && trimmed.includes(".");
@@ -24,6 +39,72 @@ function splitContact(contact: string) {
     email: looksLikeEmail ? trimmed : undefined,
     phone: looksLikeEmail ? undefined : trimmed
   };
+}
+
+function isEmbeddedInNuklo() {
+  return typeof window !== "undefined" && window.parent && window.parent !== window;
+}
+
+function submitLeadThroughParent(payload: LeadPayload) {
+  return new Promise<LeadResponse>((resolve, reject) => {
+    const requestId = `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const timeout = window.setTimeout(() => {
+      window.removeEventListener("message", handleMessage);
+      reject(new Error("Nuklo no respondio a tiempo. Intenta nuevamente."));
+    }, 15000);
+
+    function handleMessage(event: MessageEvent) {
+      const message = event.data as {
+        type?: string;
+        requestId?: string;
+        ok?: boolean;
+        payload?: LeadResponse;
+      };
+
+      if (message?.type !== "nuklo-template:lead-result" || message.requestId !== requestId) {
+        return;
+      }
+
+      window.clearTimeout(timeout);
+      window.removeEventListener("message", handleMessage);
+
+      if (!message.ok || !message.payload?.success) {
+        reject(new Error(message.payload?.error ?? "No se pudo registrar la consulta."));
+        return;
+      }
+
+      resolve(message.payload);
+    }
+
+    window.addEventListener("message", handleMessage);
+    window.parent.postMessage(
+      {
+        type: "nuklo-template:submit-lead",
+        requestId,
+        payload
+      },
+      "*"
+    );
+  });
+}
+
+async function submitLead(payload: LeadPayload) {
+  if (isEmbeddedInNuklo()) {
+    return submitLeadThroughParent(payload);
+  }
+
+  const response = await fetch("/api/leads", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+  const result = (await response.json()) as LeadResponse;
+
+  if (!response.ok || !result.success) {
+    throw new Error(result.error ?? "No se pudo registrar la consulta.");
+  }
+
+  return result;
 }
 
 export function ContactForm({ originLanding }: ContactFormProps) {
@@ -50,41 +131,32 @@ export function ContactForm({ originLanding }: ContactFormProps) {
     setFeedback("Enviando consulta a Nuklo Core...");
 
     try {
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          landingId: originLanding,
-          fullName: name.trim(),
-          email: contactData.email,
-          phone: contactData.phone,
-          phoneCountryCode: "+34",
-          saveMode: "final",
-          attribution: readLeadAttribution(),
-          answers: [
-            {
-              questionKey: "project_message",
-              questionLabel: "Proyecto",
-              value: message.trim()
-            },
-            {
-              questionKey: "origin_landing",
-              questionLabel: "Landing de origen",
-              value: originLanding
-            },
-            {
-              questionKey: "privacy_consent",
-              questionLabel: "Acepta politica de privacidad",
-              value: consent ? "si" : "no"
-            }
-          ]
-        })
+      const result = await submitLead({
+        landingId: originLanding,
+        fullName: name.trim(),
+        email: contactData.email,
+        phone: contactData.phone,
+        phoneCountryCode: "+34",
+        saveMode: "final",
+        attribution: readLeadAttribution(),
+        answers: [
+          {
+            questionKey: "project_message",
+            questionLabel: "Proyecto",
+            value: message.trim()
+          },
+          {
+            questionKey: "origin_landing",
+            questionLabel: "Landing de origen",
+            value: originLanding
+          },
+          {
+            questionKey: "privacy_consent",
+            questionLabel: "Acepta politica de privacidad",
+            value: consent ? "si" : "no"
+          }
+        ]
       });
-      const result = (await response.json()) as LeadResponse;
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.error ?? "No se pudo registrar la consulta.");
-      }
 
       trackTemplateEvent("form_submit", originLanding, { hasConsent: consent });
       setStatus("ok");

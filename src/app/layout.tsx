@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { NukloEmbedBridge } from "@/components/ui/NukloEmbedBridge";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={poppins.variable}>{children}</body>
+      <body className={poppins.variable}>
+        <NukloEmbedBridge />
+        {children}
+      </body>
     </html>
   );
 }

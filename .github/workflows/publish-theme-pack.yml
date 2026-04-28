@@ -25,7 +25,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare Theme Pack
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate template contract
+        run: npm run check:contract
+
+      - name: Build static theme app
+        run: npm run build
+        env:
+          GITHUB_PAGES: "true"
+
+      - name: Attach Nuklo manifest
         run: node scripts/prepare-pages.mjs
 
       - name: Configure Pages
@@ -34,7 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: out
 
       - name: Deploy to GitHub Pages
         id: deployment

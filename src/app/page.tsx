@@ -6,9 +6,6 @@ import { SiteFooter } from "@/components/ui/SiteFooter";
 import { Reveal } from "@/components/ui/Reveal";
 import { HomePrimaryRoutes } from "@/components/home/HomePrimaryRoutes";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 const kpiItems = [
   {
     kicker: "Especialistas",

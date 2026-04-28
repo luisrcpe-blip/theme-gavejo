@@ -3,15 +3,14 @@
   "name": "Theme Gavejo",
   "mode": "capture",
   "contractVersion": "capture@1.0.0",
-  "templateVersion": "1.1.0",
+  "templateVersion": "2.0.0",
   "description": "Plantilla CAPTURE premium para Maderas Gavejo con home completa, captacion de leads y narrativa tecnica para proyectos en madera.",
   "repository": "https://github.com/luisrcpe-blip/theme-gavejo",
   "sourceBranch": "main",
-  "entry": "layout.json",
-  "renderer": "universal-json-css",
-  "layout": "layout.json",
-  "stylesheet": "theme.css",
-  "assetsBase": "assets/",
+  "entry": "/",
+  "renderer": "remote-static-app",
+  "appUrl": "https://luisrcpe-blip.github.io/theme-gavejo/",
+  "assetsBase": "/media/gavejo/",
   "previewUrl": "https://gavejo.nuklo.cloud",
   "surfaces": ["LEAD_LANDING"],
   "capabilities": ["tenant", "branding", "media", "tracking", "leadLanding", "leadForm", "singleLanding"],
@@ -22,6 +21,6 @@
     "Plantilla CAPTURE: no implementar superficies SALES ni flujos comerciales.",
     "Las acciones publicas de captacion deben enviarse exclusivamente a /api/leads.",
     "El tenant, branding, media, landing activa y tracking son resueltos/configurados por Nuklo Core usando el Host header.",
-    "Este pack universal se publica por GitHub Pages. Nuklo importa snapshot y no consulta GitHub en cada visita."
+    "Esta plantilla se publica como app estatica en GitHub Pages y Nuklo la monta como remote-static-app."
   ]
 }
