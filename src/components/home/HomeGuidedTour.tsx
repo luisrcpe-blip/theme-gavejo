@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -39,7 +39,7 @@ const TOUR_STEPS: TourStep[] = [
   },
   {
     title: "Contacto",
-    description: "Este boton lleva al formulario publico compatible con /api/leads.",
+    description: "Este boton te lleva al panel de administracion para ver CRM, leads y estado operativo.",
     targets: ['[data-tour-id="cta-contact"]']
   },
   {
@@ -49,7 +49,7 @@ const TOUR_STEPS: TourStep[] = [
   },
   {
     title: "Bloque comercial de contacto",
-    description: "En esta seccion se explica el flujo visita > formulario > Nuklo Core para cerrar la narrativa comercial.",
+    description: "En esta seccion se explica el flujo visita > formulario > CRM para cerrar la narrativa comercial.",
     targets: ['[data-tour-id="section-contacto-head"]']
   },
   {
@@ -389,4 +389,5 @@ export function HomeGuidedTour() {
     </div>
   );
 }
+
 

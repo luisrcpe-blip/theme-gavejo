@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
@@ -28,7 +28,7 @@ const kpiItems = [
   {
     kicker: "Captación",
     value: "2 páginas",
-    description: "Embudo demo completo con contacto, WhatsApp y leads Nuklo."
+    description: "Embudo demo completo con contacto, WhatsApp y CRM."
   }
 ];
 
@@ -54,7 +54,7 @@ const solutionCards = [
     points: [
       "Proceso y ventajas técnicas",
       "Comparativa para decision de compra",
-      "Formulario conectado a /api/leads"
+      "Formulario conectado al flujo CRM"
     ]
   }
 ];
@@ -90,7 +90,8 @@ export default function HomePage() {
               <h1>Gavejo: plataforma comercial para fachadas y madera termotratada</h1>
               <p className="lead-text home-lead">
                 Una página de inicio más potente para presentar la propuesta al director: dos páginas
-                especializadas y un flujo de captación demostrable conectado al contrato CAPTURE de Nuklo.
+                especializadas, flujo de captación demostrable y panel de administración listo para
+                gestionar consultas en tiempo real.
               </p>
               <HomePrimaryRoutes />
               <div className="home-mini-points">
@@ -121,14 +122,14 @@ export default function HomePage() {
               <Reveal delay={200}>
                 <article className="home-highlight-card">
                   <p className="section-kicker">Prueba funcional visible</p>
-                  <h3>Formulario -&gt; /api/leads -&gt; Nuklo Core</h3>
+                  <h3>Formulario -&gt; CRM -&gt; panel de control en minutos</h3>
                   <ul className="home-highlight-list">
                     <li>La consulta se crea desde la página con origen correcto.</li>
-                    <li>La accion publica respeta el endpoint permitido del contrato CAPTURE.</li>
-                    <li>Nuklo Core resuelve tenant, tracking y landing activa por Host header.</li>
+                    <li>Estado editable en CRM: nuevo / en gestión / cerrado.</li>
+                    <li>Contadores y actividad reflejados en el panel de administración.</li>
                   </ul>
                   <Link href="/contacto" className="btn btn-secondary">
-                    Enviar consulta
+                    Ver consultas en CRM
                   </Link>
                 </article>
               </Reveal>
@@ -222,10 +223,10 @@ export default function HomePage() {
             <Reveal>
               <div data-tour-id="section-contacto-head">
                 <p className="section-kicker">Ruta comercial</p>
-                <h2>De la visita web al lead capturado por Nuklo</h2>
+                <h2>De la visita web a la gestión comercial en un mismo entorno</h2>
                 <p className="lead-text">
-                  El cliente final ve una experiencia limpia y Nuklo Core recibe informacion accionable sin que
-                  esta plantilla toque base de datos.
+                  El cliente final ve una experiencia limpia y el equipo comercial recibe información accionable
+                  sin depender de procesos manuales.
                 </p>
               </div>
               <div className="home-workflow-panel">
@@ -247,8 +248,8 @@ export default function HomePage() {
                   <li className="workflow-step">
                     <span>3</span>
                     <div>
-                      <strong>Seguimiento en Nuklo</strong>
-                      <p>Lead disponible para la operativa comercial desde el Core.</p>
+                      <strong>Seguimiento en CRM</strong>
+                      <p>Estado editable, notas y exportación CSV para la operativa comercial.</p>
                     </div>
                   </li>
                 </ol>
@@ -264,8 +265,8 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={100}>
               <NeonPlaceholder
-                label="Nuklo Core"
-                caption="Sustituir por visual real del flujo Nuklo"
+                label="Panel comercial"
+                caption="Sustituir por captura real del flujo CRM"
                 minHeight={320}
                 aspectRatio="16 / 10"
               />
@@ -281,14 +282,14 @@ export default function HomePage() {
                 <h2>Presentación lista para cliente: elegante, clara y accionable</h2>
                 <p className="lead-text">
                   La demo comunica visión comercial hoy y deja preparado el camino a la fase productiva
-                  con Nuklo Core, tracking y operacion continua.
+                  con backend real, integraciones y operación continua.
                 </p>
                 <div className="hero-actions">
                   <Link href="/soluciones/fachadas" className="btn btn-light">
                     Iniciar recorrido
                   </Link>
                   <Link href="/contacto" className="btn btn-outline-light">
-                    Solicitar informacion
+                    Abrir panel de administración
                   </Link>
                 </div>
               </div>

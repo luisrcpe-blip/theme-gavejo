@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -17,9 +17,10 @@ const NAV_LINKS: NavLink[] = [
   { href: "/", label: "Inicio", comingSoon: false },
   { href: "/soluciones/fachadas", label: "Landing Fachadas", comingSoon: false },
   { href: "/materiales/termo-tratada", label: "Landing Termotratada", comingSoon: false },
-  { href: "/mader-balear", label: "Madera Balear", comingSoon: false },
-  { href: "/blog", label: "Blog", comingSoon: false },
-  { href: "/contacto", label: "Contacto", comingSoon: false }
+  { href: "/mader-balear", label: "Madera Balear", comingSoon: true },
+  { href: "/blog", label: "Blog", comingSoon: true },
+  { href: "/contacto", label: "Contacto", comingSoon: true },
+  { href: "/contacto", label: "Admin", comingSoon: true }
 ];
 
 export function PublicHeader() {
@@ -124,7 +125,7 @@ export function PublicHeader() {
         <nav className="topnav" data-tour-id="header-nav-desktop">
           {NAV_LINKS.map((item) => (
             <Link
-              key={item.href}
+              key={`${item.href}-${item.label}`}
               href={item.href}
               className={isActive(item.href) ? "is-active" : ""}
               onClick={(event) => onMenuClick(event, item)}
@@ -157,7 +158,7 @@ export function PublicHeader() {
         <nav className="container mobile-menu-nav" aria-label="Navegacion movil">
           {NAV_LINKS.map((item) => (
             <Link
-              key={item.href}
+              key={`${item.href}-${item.label}`}
               href={item.href}
               className={isActive(item.href) ? "is-active" : ""}
               onClick={(event) => onMenuClick(event, item)}
@@ -178,7 +179,7 @@ export function PublicHeader() {
         aria-live="polite"
       >
         <span className="coming-soon-dot" />
-        <span>Proximamente</span>
+        <span>{"\u00a1Pr\u00f3ximamente!"}</span>
       </div>
     </header>
   );

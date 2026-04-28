@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 
@@ -17,9 +17,9 @@ const PRIMARY_ROUTES = [
   },
   {
     href: "/contacto",
-    buttonLabel: "Solicitar informacion",
+    buttonLabel: "Abrir panel admin",
     buttonClass: "btn-ghost",
-    tourId: "cta-contact"
+    tourId: "cta-admin"
   }
 ] as const;
 
@@ -29,7 +29,7 @@ export function HomePrimaryRoutes() {
       <div className="hero-actions home-primary-actions">
         {PRIMARY_ROUTES.map((route) => (
           <Link
-            key={route.href}
+            key={route.href + route.buttonLabel}
             href={route.href}
             className={`btn ${route.buttonClass} tour-target`}
             data-tour-id={route.tourId}
