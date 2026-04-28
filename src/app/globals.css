@@ -2737,6 +2737,16 @@ textarea.input-field {
   }
 }
 
+html[data-nuklo-embed="true"] .home-wrap,
+html[data-nuklo-embed="true"] .hero,
+html[data-nuklo-embed="true"] .hero-content {
+  min-height: auto !important;
+}
+
+html[data-nuklo-embed="true"] .mobile-menu-panel {
+  height: auto !important;
+}
+
 /* Refined production footer: mobile should feel editorial, not stacked cards. */
 @media (max-width: 520px) {
   .site-footer {
