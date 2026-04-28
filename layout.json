@@ -5,37 +5,143 @@
   "cssScope": "theme-gavejo",
   "blocks": [
     {
-      "id": "hero",
+      "id": "home-hero",
       "type": "hero",
-      "eyebrow": "Maderas Gavejo",
-      "title": "{{landing.heroTitle}}",
-      "description": "{{landing.shortDescription}}",
-      "ctaLabel": "{{landing.whatsappCtaLabel}}",
+      "eyebrow": "Maderas Gavejo - Soluciones tecnicas en madera",
+      "title": "Madera para fachadas, terrazas e interiores con criterio tecnico y presencia material",
+      "description": "Soluciones para arquitectura exterior e interior: fachadas ventiladas, decking, revestimientos, madera termo tratada, madera quemada y piezas recuperadas con identidad mediterranea.",
+      "ctaLabel": "Ver landing principal",
       "ctaHref": "#contacto",
       "media": {
         "source": "asset",
-        "src": "gavejo/landing/decking-hero.jpg",
-        "alt": "Proyecto de madera para exterior"
+        "src": "gavejo/landing/fachadas-hero.jpg",
+        "alt": "Fachada e interior en madera para Maderas Gavejo"
       }
     },
     {
-      "id": "beneficios",
+      "id": "mini-points",
       "type": "content",
-      "eyebrow": "Soluciones en madera",
-      "title": "Una landing enfocada en convertir consultas",
-      "description": "Esta plantilla usa la informacion del negocio y de la landing configurada en Nuklo.",
+      "eyebrow": "Como trabajamos",
+      "title": "Material, sistema e instalacion pensados como un conjunto",
+      "description": "La consulta se orienta por uso, exposicion, mantenimiento, lenguaje visual y sistema constructivo antes de avanzar.",
       "items": [
         {
-          "title": "Proyectos exteriores",
-          "description": "Decking, fachadas y revestimientos con una presentacion visual clara."
+          "title": "Arquitectura",
+          "description": "Materiales con lectura sobria para prescriptores, estudios, promotores y proyectos con identidad."
         },
         {
-          "title": "Captacion directa",
-          "description": "Formulario corto conectado a los leads del tenant."
+          "title": "Tecnica",
+          "description": "Sistemas de instalacion, fijacion oculta, estabilidad y criterio de mantenimiento."
         },
         {
-          "title": "Experiencia flexible",
-          "description": "El contenido se administra desde Nuklo sin redeploy del core."
+          "title": "Contacto",
+          "description": "Formulario y WhatsApp para valorar cada proyecto con criterio tecnico y siguiente paso claro."
+        }
+      ]
+    },
+    {
+      "id": "proof-band",
+      "type": "content",
+      "eyebrow": "Especialistas",
+      "title": "Base tecnica para exterior, interior y proyectos con identidad",
+      "description": "La plantilla no funciona como tienda. Funciona como experiencia de captacion y orientacion para proyectos en madera.",
+      "items": [
+        {
+          "title": "Madera tecnica",
+          "description": "Soluciones para exterior, interior, fachadas, tarimas y revestimientos."
+        },
+        {
+          "title": "Tantimber",
+          "description": "Madera termo tratada con estabilidad, durabilidad y comportamiento controlado."
+        },
+        {
+          "title": "Grad",
+          "description": "Fijacion oculta, alineacion precisa y acabados limpios cuando el proyecto lo requiere."
+        },
+        {
+          "title": "Consulta directa",
+          "description": "Formulario y WhatsApp para orientar material, sistema y siguiente paso."
+        }
+      ]
+    },
+    {
+      "id": "soluciones",
+      "type": "content",
+      "eyebrow": "Soluciones",
+      "title": "Landings principales para elegir la solucion adecuada",
+      "description": "Cada bloque explica una familia de uso concreta, con materiales, sistema, ventajas y llamada a contacto.",
+      "items": [
+        {
+          "title": "Fachadas y revestimientos exteriores",
+          "description": "Madera termo tratada, madera quemada, Mader Balear, WPC, subestructura y fijaciones tecnicas."
+        },
+        {
+          "title": "Decking exterior",
+          "description": "Tarimas para terrazas, piscinas y espacios exteriores de alto uso, con instalacion pensada como sistema."
+        },
+        {
+          "title": "Revestimientos interiores",
+          "description": "Madera natural, termo tratada, quemada y recuperada para espacios con textura, calidez y atmosfera."
+        },
+        {
+          "title": "Madera termo tratada",
+          "description": "Thermowood para fachadas, decking, interiores, celosias y lamas con estabilidad controlada."
+        }
+      ]
+    },
+    {
+      "id": "fachadas-visual",
+      "type": "hero",
+      "eyebrow": "Fachadas arquitectonicas",
+      "title": "Revestimientos que conectan material, entorno y caracter arquitectonico",
+      "description": "La fachada se trabaja como sistema: material, camara, subestructura, fijacion, ventilacion y acabado deben funcionar juntos.",
+      "ctaLabel": "Solicitar orientacion",
+      "ctaHref": "#contacto",
+      "media": {
+        "source": "asset",
+        "src": "gavejo/landing/fachadas-app-01.jpg",
+        "alt": "Aplicacion de madera en fachada"
+      }
+    },
+    {
+      "id": "materiales",
+      "type": "content",
+      "eyebrow": "Materiales",
+      "title": "Base material para exterior, interior y proyectos con presencia",
+      "description": "La seleccion del material define estabilidad, mantenimiento, textura y lectura visual del proyecto.",
+      "items": [
+        {
+          "title": "Madera quemada",
+          "description": "Acabado Shou Sugi Ban con textura profunda, alta presencia visual y superficie protegida."
+        },
+        {
+          "title": "Mader Balear y Fusta Antiga",
+          "description": "Madera recuperada con huellas, matices y relacion directa con arquitectura mediterranea."
+        },
+        {
+          "title": "Composite / WPC",
+          "description": "Material tecnico para exterior con resistencia a humedad, mantenimiento minimo y uso intensivo."
+        }
+      ]
+    },
+    {
+      "id": "ruta-consulta",
+      "type": "content",
+      "eyebrow": "Ruta de consulta",
+      "title": "De una idea de proyecto a una solucion material clara",
+      "description": "La web esta preparada para captar consultas y ayudar a definir material, aplicacion y sistema sin convertir la experiencia en tienda online.",
+      "items": [
+        {
+          "title": "1. Tipo de proyecto",
+          "description": "Fachada, terraza, interior, hotel, vivienda o espacio comercial."
+        },
+        {
+          "title": "2. Material y exposicion",
+          "description": "Se revisa uso, humedad, mantenimiento, acabado y sistema de fijacion."
+        },
+        {
+          "title": "3. Contacto directo",
+          "description": "Formulario o WhatsApp para recibir orientacion sobre la solucion adecuada."
         }
       ]
     },
@@ -44,15 +150,15 @@
       "type": "gallery",
       "eyebrow": "Inspiracion",
       "title": "Aplicaciones destacadas",
-      "description": "Muestra las imagenes cargadas en la landing del cliente.",
+      "description": "Imagenes configuradas desde Nuklo para mostrar la propuesta visual del cliente.",
       "limit": 6
     },
     {
       "id": "contacto",
       "type": "leadForm",
       "eyebrow": "Cotiza tu proyecto",
-      "title": "Cuentanos que necesitas",
-      "description": "Completa tus datos y el equipo se pondra en contacto contigo.",
+      "title": "Cuentanos que quieres construir",
+      "description": "Fachadas, decking, revestimientos interiores o materiales especiales: el primer paso es entender el proyecto.",
       "ctaLabel": "Enviar solicitud",
       "fields": ["fullName", "phone", "email", "questions", "message"]
     },
@@ -60,8 +166,8 @@
       "id": "cta-final",
       "type": "cta",
       "eyebrow": "Maderas Gavejo",
-      "title": "Transforma tu espacio con madera",
-      "description": "Agenda una conversacion y recibe orientacion para tu proyecto.",
+      "title": "Buscamos la solucion adecuada para tu proyecto",
+      "description": "Agenda una conversacion y recibe orientacion sobre material, sistema y siguiente paso.",
       "ctaLabel": "Solicitar informacion",
       "ctaHref": "#contacto"
     }

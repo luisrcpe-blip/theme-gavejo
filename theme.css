@@ -1,157 +1,401 @@
 .theme-gavejo {
-  --gavejo-ink: #19251f;
-  --gavejo-muted: #5d6a62;
-  --gavejo-paper: #f7f3eb;
+  --gavejo-ink: #17211d;
+  --gavejo-forest: #20362f;
+  --gavejo-forest-deep: #0e1916;
+  --gavejo-moss: #5f725f;
+  --gavejo-muted: #657169;
+  --gavejo-paper: #f6f1e8;
   --gavejo-panel: #fffaf1;
-  --gavejo-line: rgba(40, 54, 43, 0.16);
-  --gavejo-accent: #9f6b38;
-  --gavejo-accent-strong: #75491f;
+  --gavejo-panel-soft: #eee4d5;
+  --gavejo-line: rgba(33, 48, 41, 0.16);
+  --gavejo-accent: #a66d36;
+  --gavejo-accent-strong: #74481f;
+  --gavejo-sage: #dfe8d6;
   background: var(--gavejo-paper);
   color: var(--gavejo-ink);
+  display: block;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-.theme-gavejo .theme-pack-hero {
-  min-height: 86vh;
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: 0;
-  align-items: stretch;
-  background: #19251f;
-  color: #fffaf1;
-}
-
-.theme-gavejo .theme-pack-hero__media {
-  order: 2;
-  min-height: 520px;
   overflow: hidden;
 }
 
-.theme-gavejo .theme-pack-hero__media img,
-.theme-gavejo .theme-pack-hero__media video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.theme-gavejo .theme-pack-hero__content {
-  padding: clamp(48px, 8vw, 110px);
+.theme-gavejo::before {
+  align-items: center;
+  background: rgba(12, 21, 18, 0.94);
+  border-bottom: 1px solid rgba(255, 250, 241, 0.14);
+  color: #fffaf1;
+  content: "gavejo   |   Inicio   Fachadas   Decking   Interiores   Contacto";
   display: flex;
-  flex-direction: column;
+  font-size: 13px;
+  font-weight: 800;
+  height: 72px;
   justify-content: center;
-  gap: 24px;
+  letter-spacing: 0;
+  position: sticky;
+  text-transform: uppercase;
+  top: 0;
+  z-index: 5;
 }
 
-.theme-gavejo .theme-pack-kicker {
-  color: #c9914b;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
+.theme-gavejo *,
+.theme-gavejo *::before,
+.theme-gavejo *::after {
+  box-sizing: border-box;
 }
 
 .theme-gavejo h1,
 .theme-gavejo h2,
-.theme-gavejo h3 {
-  letter-spacing: 0;
+.theme-gavejo h3,
+.theme-gavejo p {
   margin: 0;
 }
 
-.theme-gavejo h1 {
-  max-width: 760px;
+.theme-gavejo h1,
+.theme-gavejo h2 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(42px, 7vw, 88px);
-  line-height: 0.96;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.theme-gavejo h1 {
+  color: #fffaf1;
+  font-size: clamp(42px, 7vw, 86px);
+  line-height: 0.98;
+  max-width: 880px;
 }
 
 .theme-gavejo h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(32px, 4vw, 56px);
-  line-height: 1.02;
+  color: var(--gavejo-ink);
+  font-size: clamp(31px, 4vw, 56px);
+  line-height: 1.03;
+  max-width: 860px;
+}
+
+.theme-gavejo h3 {
+  color: var(--gavejo-ink);
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.18;
 }
 
 .theme-gavejo p {
   color: inherit;
   line-height: 1.7;
-  margin: 0;
 }
 
-.theme-gavejo .theme-pack-hero__content p {
-  max-width: 620px;
-  color: rgba(255, 250, 241, 0.82);
-  font-size: 18px;
+.theme-gavejo .theme-pack-kicker {
+  color: var(--gavejo-accent);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .theme-gavejo .theme-pack-button {
   align-items: center;
   background: var(--gavejo-accent);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
   color: #fffaf1;
   display: inline-flex;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 900;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 22px;
+  min-height: 50px;
+  padding: 0 24px;
   text-decoration: none;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
   width: fit-content;
 }
 
 .theme-gavejo .theme-pack-button:hover {
   background: var(--gavejo-accent-strong);
+  transform: translateY(-1px);
+}
+
+.theme-gavejo .theme-pack-hero {
+  align-items: stretch;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(191, 140, 79, 0.26), transparent 36%),
+    linear-gradient(135deg, var(--gavejo-forest-deep), var(--gavejo-forest));
+  color: #fffaf1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  min-height: calc(100vh - 72px);
+}
+
+.theme-gavejo .theme-pack-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  padding: clamp(48px, 8vw, 116px);
+  position: relative;
+  z-index: 1;
+}
+
+.theme-gavejo .theme-pack-hero__content p {
+  color: rgba(255, 250, 241, 0.82);
+  font-size: clamp(17px, 2vw, 20px);
+  max-width: 720px;
+}
+
+.theme-gavejo .theme-pack-hero__media {
+  min-height: 520px;
+  overflow: hidden;
+  position: relative;
+}
+
+.theme-gavejo .theme-pack-hero__media::after {
+  background:
+    linear-gradient(90deg, rgba(14, 25, 22, 0.34), transparent 48%),
+    linear-gradient(180deg, transparent, rgba(14, 25, 22, 0.18));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.theme-gavejo .theme-pack-hero__media img,
+.theme-gavejo .theme-pack-hero__media video {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+  width: 100%;
+}
+
+.theme-gavejo [data-block-id="home-hero"] .theme-pack-hero__content::after {
+  background: rgba(255, 250, 241, 0.08);
+  border: 1px solid rgba(255, 250, 241, 0.13);
+  border-radius: 22px;
+  color: rgba(255, 250, 241, 0.86);
+  content: "Arquitectura / Tecnica / Contacto directo";
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 8px;
+  padding: 16px 18px;
+  width: fit-content;
 }
 
 .theme-gavejo .theme-pack-section {
-  padding: clamp(56px, 8vw, 108px) clamp(22px, 6vw, 88px);
+  padding: clamp(58px, 8vw, 112px) clamp(22px, 6vw, 92px);
 }
 
 .theme-gavejo .theme-pack-section__header {
-  max-width: 780px;
-  margin-bottom: 34px;
+  margin: 0 auto 34px;
+  max-width: 1080px;
+  width: 100%;
+}
+
+.theme-gavejo .theme-pack-section__header h2 {
+  margin-top: 10px;
 }
 
 .theme-gavejo .theme-pack-section__header p {
   color: var(--gavejo-muted);
-  margin-top: 12px;
+  font-size: 17px;
+  margin-top: 14px;
+  max-width: 760px;
 }
 
 .theme-gavejo .theme-pack-content__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: 1180px;
 }
 
 .theme-gavejo .theme-pack-card {
-  background: var(--gavejo-panel);
+  background: rgba(255, 250, 241, 0.88);
   border: 1px solid var(--gavejo-line);
-  border-radius: 6px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(24, 33, 29, 0.08);
+  min-height: 190px;
   padding: 24px;
 }
 
 .theme-gavejo .theme-pack-card h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .theme-gavejo .theme-pack-card p {
   color: var(--gavejo-muted);
+  font-size: 15px;
+}
+
+.theme-gavejo [data-block-id="mini-points"] {
+  background: var(--gavejo-forest-deep);
+  color: #fffaf1;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.theme-gavejo [data-block-id="mini-points"] h2,
+.theme-gavejo [data-block-id="mini-points"] h3 {
+  color: #fffaf1;
+}
+
+.theme-gavejo [data-block-id="mini-points"] .theme-pack-section__header p,
+.theme-gavejo [data-block-id="mini-points"] .theme-pack-card p {
+  color: rgba(255, 250, 241, 0.7);
+}
+
+.theme-gavejo [data-block-id="mini-points"] .theme-pack-content__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.theme-gavejo [data-block-id="mini-points"] .theme-pack-card {
+  background: rgba(255, 250, 241, 0.07);
+  border-color: rgba(255, 250, 241, 0.14);
+  box-shadow: none;
+}
+
+.theme-gavejo [data-block-id="proof-band"] {
+  background: var(--gavejo-panel-soft);
+}
+
+.theme-gavejo [data-block-id="proof-band"] .theme-pack-card {
+  min-height: 170px;
+}
+
+.theme-gavejo [data-block-id="soluciones"] {
+  background: var(--gavejo-paper);
+}
+
+.theme-gavejo [data-block-id="soluciones"] .theme-pack-card {
+  border-radius: 22px;
+  min-height: 240px;
+  padding-top: 96px;
+  position: relative;
+}
+
+.theme-gavejo [data-block-id="soluciones"] .theme-pack-card::before {
+  background:
+    linear-gradient(135deg, rgba(34, 54, 47, 0.5), rgba(166, 109, 54, 0.18)),
+    var(--solution-image, url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/landing/decking-hero.jpg"));
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px 18px 0 0;
+  content: "";
+  height: 78px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.theme-gavejo [data-block-id="soluciones"] .theme-pack-card:nth-child(1)::before {
+  background-image:
+    linear-gradient(135deg, rgba(34, 54, 47, 0.5), rgba(166, 109, 54, 0.18)),
+    url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/landing/fachadas-hero.jpg");
+}
+
+.theme-gavejo [data-block-id="soluciones"] .theme-pack-card:nth-child(2)::before {
+  background-image:
+    linear-gradient(135deg, rgba(34, 54, 47, 0.5), rgba(166, 109, 54, 0.18)),
+    url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/landing/decking-hero.jpg");
+}
+
+.theme-gavejo [data-block-id="soluciones"] .theme-pack-card:nth-child(3)::before {
+  background-image:
+    linear-gradient(135deg, rgba(34, 54, 47, 0.5), rgba(166, 109, 54, 0.18)),
+    url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/landing/interior-app-03.jpg");
+}
+
+.theme-gavejo [data-block-id="soluciones"] .theme-pack-card:nth-child(4)::before {
+  background-image:
+    linear-gradient(135deg, rgba(34, 54, 47, 0.5), rgba(166, 109, 54, 0.18)),
+    url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/landing/termo-hero.jpg");
+}
+
+.theme-gavejo [data-block-id="fachadas-visual"] {
+  background: #0f1c18;
+  grid-template-columns: minmax(360px, 0.95fr) minmax(0, 1.05fr);
+  min-height: auto;
+}
+
+.theme-gavejo [data-block-id="fachadas-visual"] .theme-pack-hero__media {
+  min-height: 620px;
+  order: 0;
+}
+
+.theme-gavejo [data-block-id="fachadas-visual"] .theme-pack-hero__content {
+  padding: clamp(48px, 7vw, 98px);
+}
+
+.theme-gavejo [data-block-id="fachadas-visual"] h1 {
+  font-size: clamp(34px, 4.8vw, 68px);
+}
+
+.theme-gavejo [data-block-id="materiales"] {
+  background:
+    linear-gradient(180deg, #fffaf1 0%, var(--gavejo-paper) 100%);
+}
+
+.theme-gavejo [data-block-id="materiales"] .theme-pack-content__grid,
+.theme-gavejo [data-block-id="ruta-consulta"] .theme-pack-content__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.theme-gavejo [data-block-id="materiales"] .theme-pack-card {
+  min-height: 250px;
+  padding-top: 112px;
+  position: relative;
+}
+
+.theme-gavejo [data-block-id="materiales"] .theme-pack-card::before {
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px 18px 0 0;
+  content: "";
+  height: 94px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.theme-gavejo [data-block-id="materiales"] .theme-pack-card:nth-child(1)::before {
+  background-image: url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/burned-wood-01.jpg");
+}
+
+.theme-gavejo [data-block-id="materiales"] .theme-pack-card:nth-child(2)::before {
+  background-image: url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/landing/texture-warm.jpg");
+}
+
+.theme-gavejo [data-block-id="materiales"] .theme-pack-card:nth-child(3)::before {
+  background-image: url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/landing/decking-app-02.jpg");
+}
+
+.theme-gavejo [data-block-id="ruta-consulta"] {
+  background: var(--gavejo-sage);
+}
+
+.theme-gavejo [data-block-id="ruta-consulta"] .theme-pack-card {
+  background: rgba(255, 250, 241, 0.72);
+  border-radius: 999px 24px 24px 999px;
+  min-height: 150px;
 }
 
 .theme-gavejo .theme-pack-gallery {
-  background: #efe6d7;
+  background: var(--gavejo-panel-soft);
 }
 
 .theme-gavejo .theme-pack-gallery__grid {
   display: grid;
+  gap: 18px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  margin: 0 auto;
+  max-width: 1180px;
 }
 
 .theme-gavejo .theme-pack-gallery__item {
   background: var(--gavejo-panel);
   border: 1px solid var(--gavejo-line);
-  border-radius: 6px;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(24, 33, 29, 0.08);
   margin: 0;
   overflow: hidden;
 }
@@ -166,24 +410,46 @@
 .theme-gavejo .theme-pack-gallery__item figcaption {
   display: grid;
   gap: 4px;
-  padding: 14px 16px;
+  padding: 16px 18px;
+}
+
+.theme-gavejo .theme-pack-gallery__item figcaption strong {
+  color: var(--gavejo-ink);
+}
+
+.theme-gavejo .theme-pack-gallery__item figcaption span {
+  color: var(--gavejo-muted);
+  line-height: 1.55;
 }
 
 .theme-gavejo .theme-pack-form-section {
-  background: #19251f;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(166, 109, 54, 0.26), transparent 38%),
+    var(--gavejo-forest-deep);
   color: #fffaf1;
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 0.65fr);
   gap: clamp(28px, 6vw, 72px);
+  grid-template-columns: minmax(0, 0.86fr) minmax(340px, 0.64fr);
+}
+
+.theme-gavejo .theme-pack-form-section h2 {
+  color: #fffaf1;
+}
+
+.theme-gavejo .theme-pack-form-section .theme-pack-section__header {
+  margin: 0;
+  max-width: 720px;
 }
 
 .theme-gavejo .theme-pack-form-section .theme-pack-section__header p {
-  color: rgba(255, 250, 241, 0.72);
+  color: rgba(255, 250, 241, 0.74);
 }
 
 .theme-gavejo .theme-pack-form {
   background: #fffaf1;
-  border-radius: 6px;
+  border: 1px solid rgba(255, 250, 241, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
   color: var(--gavejo-ink);
   display: grid;
   gap: 14px;
@@ -191,10 +457,11 @@
 }
 
 .theme-gavejo .theme-pack-form label {
+  color: var(--gavejo-ink);
   display: grid;
-  gap: 8px;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 900;
+  gap: 8px;
 }
 
 .theme-gavejo .theme-pack-form input,
@@ -202,11 +469,16 @@
 .theme-gavejo .theme-pack-form textarea {
   background: #fff;
   border: 1px solid var(--gavejo-line);
-  border-radius: 4px;
+  border-radius: 14px;
   color: var(--gavejo-ink);
   font: inherit;
-  min-height: 44px;
-  padding: 10px 12px;
+  min-height: 46px;
+  padding: 11px 13px;
+}
+
+.theme-gavejo .theme-pack-form textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .theme-gavejo .theme-pack-button--wide {
@@ -214,7 +486,7 @@
 }
 
 .theme-gavejo .theme-pack-feedback {
-  border-radius: 4px;
+  border-radius: 14px;
   font-size: 14px;
   padding: 12px;
 }
@@ -231,31 +503,109 @@
 
 .theme-gavejo .theme-pack-cta {
   align-items: center;
-  background: var(--gavejo-panel);
+  background:
+    linear-gradient(rgba(16, 28, 24, 0.78), rgba(16, 28, 24, 0.78)),
+    url("https://luisrcpe-blip.github.io/theme-gavejo/assets/gavejo/landing/decking-hero.jpg") center / cover;
+  color: #fffaf1;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
+  min-height: 430px;
   text-align: center;
 }
 
+.theme-gavejo .theme-pack-cta h2 {
+  color: #fffaf1;
+}
+
 .theme-gavejo .theme-pack-cta p {
-  max-width: 620px;
-  color: var(--gavejo-muted);
+  color: rgba(255, 250, 241, 0.78);
+  max-width: 680px;
+}
+
+.theme-gavejo::after {
+  align-items: center;
+  background: #25d366;
+  border-radius: 999px;
+  bottom: 20px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
+  color: #102019;
+  content: "WhatsApp";
+  display: flex;
+  font-size: 12px;
+  font-weight: 900;
+  height: 46px;
+  justify-content: center;
+  padding: 0 16px;
+  position: fixed;
+  right: 20px;
+  z-index: 6;
+}
+
+@media (max-width: 1080px) {
+  .theme-gavejo .theme-pack-content__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .theme-gavejo [data-block-id="materiales"] .theme-pack-content__grid,
+  .theme-gavejo [data-block-id="ruta-consulta"] .theme-pack-content__grid,
+  .theme-gavejo [data-block-id="mini-points"] .theme-pack-content__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 900px) {
+  .theme-gavejo::before {
+    content: "gavejo";
+    height: 62px;
+  }
+
   .theme-gavejo .theme-pack-hero,
+  .theme-gavejo [data-block-id="fachadas-visual"],
   .theme-gavejo .theme-pack-form-section {
     grid-template-columns: 1fr;
   }
 
-  .theme-gavejo .theme-pack-hero__media {
-    min-height: 320px;
+  .theme-gavejo .theme-pack-hero__media,
+  .theme-gavejo [data-block-id="fachadas-visual"] .theme-pack-hero__media {
+    min-height: 330px;
     order: 0;
+  }
+
+  .theme-gavejo .theme-pack-hero__content {
+    padding: clamp(34px, 9vw, 58px) 22px;
+  }
+
+  .theme-gavejo .theme-pack-section {
+    padding: 54px 20px;
   }
 
   .theme-gavejo .theme-pack-content__grid,
   .theme-gavejo .theme-pack-gallery__grid {
     grid-template-columns: 1fr;
+  }
+
+  .theme-gavejo [data-block-id="ruta-consulta"] .theme-pack-card {
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .theme-gavejo h1 {
+    font-size: 42px;
+  }
+
+  .theme-gavejo .theme-pack-hero__media {
+    min-height: 260px;
+  }
+
+  .theme-gavejo [data-block-id="home-hero"] .theme-pack-hero__content::after {
+    width: 100%;
+  }
+
+  .theme-gavejo::after {
+    bottom: 14px;
+    height: 42px;
+    right: 14px;
   }
 }
