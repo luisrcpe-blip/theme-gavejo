@@ -1,0 +1,20 @@
+{
+  "id": "theme-gavejo",
+  "name": "Theme Gavejo",
+  "mode": "capture",
+  "contractVersion": "capture@1.0.0",
+  "templateVersion": "0.1.0",
+  "description": "Plantilla CAPTURE premium para Maderas Gavejo enfocada en captacion de leads para proyectos en madera.",
+  "entry": "src/app/page.tsx",
+  "previewUrl": "https://gavejo.nuklo.cloud",
+  "surfaces": ["LEAD_LANDING", "CONTENT_PAGE"],
+  "capabilities": ["tenant", "branding", "media", "tracking", "leadLanding", "leadForm", "singleLanding"],
+  "forbidden": ["catalog", "product", "collection", "cart", "checkout", "orders", "coupons", "reviews", "commerceLanding"],
+  "requiredTenantSettings": ["domain", "mode=capture", "active=true", "landing.active=true"],
+  "requiredEnvironment": ["NUKLO_PLATFORM_HOST"],
+  "notes": [
+    "Plantilla CAPTURE: no implementar superficies SALES ni flujos comerciales.",
+    "Las acciones publicas de captacion deben enviarse exclusivamente a /api/leads.",
+    "El tenant, branding, media, landing activa y tracking son resueltos/configurados por Nuklo Core usando el Host header."
+  ]
+}
