@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { IndexHeroSlider, type IndexHeroSlide } from "@/components/ui/IndexHeroSlider";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 
@@ -66,6 +67,15 @@ const projects = [
   }
 ];
 
+const heroSlides: IndexHeroSlide[] = projects.slice(0, 5).map((project) => ({
+  title: project.title,
+  eyebrow: `${project.category} - ${project.location}`,
+  description: project.copy,
+  href: "/proyectos",
+  cta: "Ver galeria",
+  assetKey: project.assetKey
+}));
+
 export default function ProyectosPage() {
   const [activeFilter, setActiveFilter] = useState("Todos");
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
@@ -79,11 +89,22 @@ export default function ProyectosPage() {
     <>
       <PublicHeader />
       <main>
-        <section className="container section">
-          <span className="chip">Proyectos / Galeria</span>
-          <h1>Referencias visuales para orientar materiales y soluciones</h1>
+        <IndexHeroSlider
+          badge="Proyectos / Galeria"
+          title="Referencias visuales para orientar materiales y soluciones"
+          description="Galeria front-only para presentar tipos de proyecto, filtrar por familia y abrir referencias ampliadas sin depender de backend."
+          slides={heroSlides}
+          primaryCtaHref="/contacto"
+          primaryCtaLabel="Solicitar orientacion"
+          secondaryCtaHref="/soluciones"
+          secondaryCtaLabel="Ver soluciones"
+        />
+
+        <section className="container section index-list-section">
+          <span className="chip">Galeria</span>
+          <h2>Filtra referencias por familia de aplicacion</h2>
           <p className="lead-text home-lead">
-            Galeria front-only para presentar tipos de proyecto, filtrar por familia y abrir una vista ampliada sin depender de backend.
+            Una seleccion visual para identificar acabados, usos y atmosferas antes de consultar.
           </p>
 
           <div className="project-filters" aria-label="Filtros de proyectos">
@@ -112,7 +133,7 @@ export default function ProyectosPage() {
                   />
                 </button>
                 <div className="card-body">
-                  <p className="mini-kicker">{project.category} · {project.location}</p>
+                  <p className="mini-kicker">{project.category} - {project.location}</p>
                   <h3>{project.title}</h3>
                   <p>{project.copy}</p>
                 </div>
@@ -136,7 +157,7 @@ export default function ProyectosPage() {
                 aspectRatio="16 / 10"
               />
               <div>
-                <p className="mini-kicker">{selectedProject.category} · {selectedProject.location}</p>
+                <p className="mini-kicker">{selectedProject.category} - {selectedProject.location}</p>
                 <h2>{selectedProject.title}</h2>
                 <p className="lead-text">{selectedProject.copy}</p>
               </div>
