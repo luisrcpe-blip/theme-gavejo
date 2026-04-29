@@ -1176,6 +1176,30 @@ p {
   margin-top: 0;
 }
 
+.home-route-strip {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-route-strip .container {
+  position: relative;
+}
+
+.home-route-strip .reveal {
+  padding: clamp(1.15rem, 3vw, 1.8rem);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(210, 156, 90, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.82));
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+}
+
+.home-route-strip h2 {
+  max-width: 760px;
+  margin-bottom: 1rem;
+}
+
 .home-hero-shell {
   position: relative;
   overflow: hidden;

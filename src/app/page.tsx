@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { IndexHeroSlider, type IndexHeroSlide } from "@/components/ui/IndexHeroSlider";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 import { SiteFooter } from "@/components/ui/SiteFooter";
@@ -113,20 +114,36 @@ const materialCards = [
   }
 ];
 
+const homeHeroSlides: IndexHeroSlide[] = solutionCards.slice(0, 5).map((solution) => ({
+  title: solution.title,
+  eyebrow: solution.placeholderCaption,
+  description: solution.caption,
+  href: solution.href,
+  cta: `Ver ${solution.title}`,
+  assetKey: solution.assetKey
+}));
+
 export default function HomePage() {
   return (
     <>
       <PublicHeader />
       <main className="home-wrap">
-        <section className="section home-hero-shell" id="inicio">
-          <div className="container home-hero-grid">
+        <IndexHeroSlider
+          badge="Maderas Gavejo"
+          title="Madera para fachadas, terrazas e interiores con criterio tecnico"
+          description="Soluciones para arquitectura exterior e interior: fachadas ventiladas, decking, revestimientos, madera termo tratada, madera quemada y piezas recuperadas con identidad mediterranea."
+          slides={homeHeroSlides}
+          primaryCtaHref="/contacto"
+          primaryCtaLabel="Solicitar informacion"
+          secondaryCtaHref="/soluciones"
+          secondaryCtaLabel="Ver soluciones"
+        />
+
+        <section className="section section-soft home-route-strip" id="inicio">
+          <div className="container">
             <Reveal>
-              <span className="chip home-hero-chip">Maderas Gavejo - Soluciones tecnicas en madera</span>
-              <h1>Madera para fachadas, terrazas e interiores con criterio tecnico y presencia material</h1>
-              <p className="lead-text home-lead">
-                Soluciones para arquitectura exterior e interior: fachadas ventiladas, decking, revestimientos,
-                madera termo tratada, madera quemada y piezas recuperadas con identidad mediterranea.
-              </p>
+              <p className="section-kicker">Rutas principales</p>
+              <h2>Elige por aplicacion o dejanos orientar el proyecto</h2>
               <HomePrimaryRoutes />
               <div className="home-mini-points">
                 <div className="home-mini-point">
@@ -143,32 +160,6 @@ export default function HomePage() {
                 </div>
               </div>
             </Reveal>
-
-            <div className="home-visual-stack">
-              <Reveal delay={120}>
-                <NeonPlaceholder
-                  label="Portada Maderas Gavejo"
-                  caption="Fachada, terraza e interior en madera"
-                  assetKey="home-hero"
-                  minHeight={360}
-                  aspectRatio="16 / 10"
-                />
-              </Reveal>
-              <Reveal delay={200}>
-                <article className="home-highlight-card">
-                  <p className="section-kicker">Como trabajamos</p>
-                  <h3>Material, sistema e instalacion pensados como un conjunto</h3>
-                  <ul className="home-highlight-list">
-                    <li>Analizamos uso, exposicion, mantenimiento y lenguaje visual del proyecto.</li>
-                    <li>Seleccionamos material y sistema constructivo segun necesidad real.</li>
-                    <li>Orientamos la consulta hacia una solucion clara antes de avanzar.</li>
-                  </ul>
-                  <Link href="/contacto" className="btn btn-secondary">
-                    Consultar proyecto
-                  </Link>
-                </article>
-              </Reveal>
-            </div>
           </div>
         </section>
 
