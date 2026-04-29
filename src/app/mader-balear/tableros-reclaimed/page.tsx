@@ -1,4 +1,4 @@
-﻿import { LandingPage } from "@/components/landing/LandingPage";
+import { LandingPage } from "@/components/landing/LandingPage";
 import { balearTablerosLanding } from "@/lib/landing-data";
 
 export default function Page() {

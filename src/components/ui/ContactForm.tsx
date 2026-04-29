@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { FormEvent, useState } from "react";
 import { PRIVACY_URL, buildWhatsappHref, readLeadAttribution, trackTemplateEvent } from "@/lib/runtime";

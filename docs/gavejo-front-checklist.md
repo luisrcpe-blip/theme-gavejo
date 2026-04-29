@@ -1,4 +1,4 @@
-﻿# Checklist de cierre - Theme Gavejo CAPTURE
+# Checklist de cierre - Theme Gavejo CAPTURE
 
 Documento generado a partir de `Cronograma_Gavejo_Web.pdf` y adaptado al contrato Nuklo Template Kit CAPTURE.
 

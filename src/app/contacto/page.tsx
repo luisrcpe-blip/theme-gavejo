@@ -8,7 +8,7 @@ const heroSlides: IndexHeroSlide[] = [
     title: "Orientacion para fachadas, decking e interiores",
     eyebrow: "Consulta tecnica",
     description: "Cuentanos el uso, exposicion y acabado buscado para orientar material y sistema.",
-    href: "#formulario",
+    href: "/contacto#formulario",
     cta: "Completar formulario",
     assetKey: "contact-visual"
   },
@@ -40,7 +40,7 @@ export default function ContactoPage() {
           title="Solicite informacion para su proyecto"
           description="Formulario central de captacion para clientes, arquitectos y prescriptores que necesitan orientar una solucion en madera."
           slides={heroSlides}
-          primaryCtaHref="#formulario"
+          primaryCtaHref="/contacto#formulario"
           primaryCtaLabel="Completar formulario"
           secondaryCtaHref="/soluciones"
           secondaryCtaLabel="Ver soluciones"

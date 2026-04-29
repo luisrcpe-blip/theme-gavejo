@@ -1,4 +1,4 @@
-﻿export const DEFAULT_WHATSAPP_NUMBER = "+34963520806";
+export const DEFAULT_WHATSAPP_NUMBER = "+34963520806";
 const THEME_BASE_PATH = process.env.NEXT_PUBLIC_THEME_BASE_PATH ?? "";
 
 export function withThemeBasePath(path: string) {

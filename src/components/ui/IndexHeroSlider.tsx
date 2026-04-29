@@ -77,12 +77,13 @@ export function IndexHeroSlider({
               <p>{current.eyebrow}</p>
               <h2>{current.title}</h2>
               <span>{current.description}</span>
+              <strong className="index-hero-feature-cta">{current.cta}</strong>
             </div>
           </Link>
           <div className="index-hero-tabs" aria-label="Seleccion de portada">
             {slides.map((slide, index) => (
               <button
-                key={slide.href}
+                key={`${slide.href}-${slide.title}-${index}`}
                 type="button"
                 className={index === active ? "is-active" : ""}
                 onClick={() => setActive(index)}
