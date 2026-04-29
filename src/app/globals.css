@@ -287,29 +287,28 @@ p {
 }
 
 .topnav a,
-.topnav summary {
+.topnav-trigger {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
   color: var(--topbar-nav);
   cursor: pointer;
-  list-style: none;
   transition:
     color var(--transition-fast) var(--ease-main),
     opacity var(--transition-fast) var(--ease-main);
   opacity: var(--topbar-nav-opacity);
 }
 
-.topnav summary::-webkit-details-marker {
-  display: none;
-}
-
 .topnav a.is-active,
-.topnav-group.is-active > summary {
+.topnav-group.is-active > .topnav-trigger {
   color: var(--topbar-nav-active);
   font-weight: 700;
   opacity: 1;
 }
 
 .topnav a:hover,
-.topnav summary:hover {
+.topnav-trigger:hover {
   color: var(--topbar-nav-active);
   opacity: 1;
 }
@@ -318,13 +317,13 @@ p {
   position: relative;
 }
 
-.topnav-group > summary {
+.topnav-trigger {
   display: inline-flex;
   align-items: center;
   gap: 0.34rem;
 }
 
-.topnav-group > summary::after {
+.topnav-trigger::after {
   content: "";
   width: 0.38rem;
   height: 0.38rem;
@@ -359,7 +358,7 @@ p {
     transform var(--transition-fast) var(--ease-main);
 }
 
-.topnav-group[open] .topnav-menu,
+.topnav-group.is-open .topnav-menu,
 .topnav-group:hover .topnav-menu,
 .topnav-group:focus-within .topnav-menu {
   opacity: 1;
@@ -2950,6 +2949,11 @@ html[data-nuklo-embed="true"] .hero-content {
 
 html[data-nuklo-embed="true"] .site-footer {
   margin-bottom: 0 !important;
+}
+
+html[data-nuklo-embed="true"] .topbar {
+  position: sticky !important;
+  top: 0 !important;
 }
 
 html[data-nuklo-embed="true"]:has(.site-footer),

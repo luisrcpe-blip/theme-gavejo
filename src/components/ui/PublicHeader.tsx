@@ -65,6 +65,7 @@ export function PublicHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -80,6 +81,7 @@ export function PublicHeader() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setOpenGroup(null);
   }, [pathname]);
 
   useEffect(() => {
@@ -89,6 +91,28 @@ export function PublicHeader() {
 
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      if (!(event.target instanceof Element)) return;
+      if (!event.target.closest(".topnav-group")) {
+        setOpenGroup(null);
+      }
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenGroup(null);
+      }
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
 
   return (
@@ -118,16 +142,33 @@ export function PublicHeader() {
             </Link>
 
             {NAV_GROUPS.map((group) => (
-              <details key={group.href} className={`topnav-group ${isActive(group.href) ? "is-active" : ""}`}>
-                <summary>{group.label}</summary>
+              <div
+                key={group.href}
+                className={`topnav-group ${isActive(group.href) ? "is-active" : ""} ${
+                  openGroup === group.href ? "is-open" : ""
+                }`}
+              >
+                <button
+                  type="button"
+                  className="topnav-trigger"
+                  aria-expanded={openGroup === group.href}
+                  onClick={() => setOpenGroup((current) => (current === group.href ? null : group.href))}
+                >
+                  {group.label}
+                </button>
                 <div className="topnav-menu">
                   {group.links.map((item) => (
-                    <Link key={item.href} href={item.href} className={isActive(item.href) ? "is-active" : ""}>
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={isActive(item.href) ? "is-active" : ""}
+                      onClick={() => setOpenGroup(null)}
+                    >
                       {item.label}
                     </Link>
                   ))}
                 </div>
-              </details>
+              </div>
             ))}
 
             {PRIMARY_LINKS.slice(1).map((item) => (
@@ -135,6 +176,7 @@ export function PublicHeader() {
                 key={item.href}
                 href={item.href}
                 className={isActive(item.href) ? "is-active" : ""}
+                onClick={() => setOpenGroup(null)}
               >
                 {item.label}
               </Link>
