@@ -834,8 +834,8 @@ p {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
+  opacity: 1;
+  transform: none;
   will-change: opacity, transform;
 }
 
@@ -845,8 +845,8 @@ p {
 
 @keyframes reveal-in {
   from {
-    opacity: 0;
-    transform: translateY(14px);
+    opacity: 0.92;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
