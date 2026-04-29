@@ -3,46 +3,68 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MouseEvent, useEffect, useState } from "react";
-
-type HeaderVariant = "solid" | "overlay" | "clean";
+import { useEffect, useState } from "react";
 
 type NavLink = {
   href: string;
   label: string;
-  comingSoon: boolean;
 };
 
-const NAV_LINKS: NavLink[] = [
-  { href: "/", label: "Inicio", comingSoon: false },
-  { href: "/soluciones", label: "Soluciones", comingSoon: false },
-  { href: "/materiales", label: "Materiales", comingSoon: false },
-  { href: "/mader-balear", label: "Madera Balear", comingSoon: false },
-  { href: "/proyectos", label: "Proyectos", comingSoon: false },
-  { href: "/blog", label: "Blog", comingSoon: false },
-  { href: "/contacto", label: "Contacto", comingSoon: false }
+type NavGroup = {
+  label: string;
+  href: string;
+  links: NavLink[];
+};
+
+const PRIMARY_LINKS: NavLink[] = [
+  { href: "/", label: "Inicio" },
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contacto", label: "Contacto" }
+];
+
+const NAV_GROUPS: NavGroup[] = [
+  {
+    label: "Soluciones",
+    href: "/soluciones",
+    links: [
+      { href: "/soluciones", label: "Todas las soluciones" },
+      { href: "/soluciones/fachadas", label: "Fachadas" },
+      { href: "/soluciones/decking-exterior", label: "Decking exterior" },
+      { href: "/soluciones/revestimientos-interiores", label: "Interiores" },
+      { href: "/soluciones/pergolas-cerramientos", label: "Pergolas" },
+      { href: "/soluciones/suelos-interior", label: "Suelos interior" }
+    ]
+  },
+  {
+    label: "Materiales",
+    href: "/materiales",
+    links: [
+      { href: "/materiales", label: "Todos los materiales" },
+      { href: "/materiales/termo-tratada", label: "Madera termotratada" },
+      { href: "/materiales/madera-quemada", label: "Madera quemada" },
+      { href: "/materiales/vigueria", label: "Vigueria" }
+    ]
+  },
+  {
+    label: "Mader Balear",
+    href: "/mader-balear",
+    links: [
+      { href: "/mader-balear", label: "Linea Mader Balear" },
+      { href: "/mader-balear/madera-vieja", label: "Madera vieja" },
+      { href: "/mader-balear/puertas", label: "Puertas" },
+      { href: "/mader-balear/tableros-reclaimed", label: "Tableros reclaimed" },
+      { href: "/mader-balear/revestimientos", label: "Revestimientos" },
+      { href: "/mader-balear/frentes-cocina", label: "Frentes cocina" },
+      { href: "/mader-balear/decoracion", label: "Decoracion" }
+    ]
+  }
 ];
 
 export function PublicHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [comingSoonToast, setComingSoonToast] = useState<{
-    visible: boolean;
-    top: number;
-    left: number;
-    above: boolean;
-  }>({
-    visible: false,
-    top: 0,
-    left: 0,
-    above: false
-  });
-
-  const landingRoutes = ["/soluciones", "/materiales", "/mader-balear", "/proyectos"];
-
-  const variant: HeaderVariant =
-    pathname === "/" ? "solid" : landingRoutes.some((route) => pathname.startsWith(route)) ? "overlay" : "clean";
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -50,25 +72,11 @@ export function PublicHeader() {
   };
 
   useEffect(() => {
-    if (variant !== "overlay") {
-      setScrolled(false);
-      return;
-    }
-
     const onScroll = () => setScrolled(window.scrollY > 18);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [variant]);
-
-  useEffect(() => {
-    if (!comingSoonToast.visible) return;
-    const timeout = window.setTimeout(
-      () => setComingSoonToast((prev) => ({ ...prev, visible: false })),
-      2200
-    );
-    return () => window.clearTimeout(timeout);
-  }, [comingSoonToast.visible]);
+  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -83,29 +91,10 @@ export function PublicHeader() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const onMenuClick = (event: MouseEvent<HTMLAnchorElement>, item: NavLink) => {
-    if (!item.comingSoon) {
-      setMobileOpen(false);
-      return;
-    }
-
-    event.preventDefault();
-    const rect = event.currentTarget.getBoundingClientRect();
-    const verticalGap = 10;
-    const preferAbove = rect.top > window.innerHeight * 0.68;
-
-    setComingSoonToast({
-      visible: true,
-      left: rect.left + rect.width / 2,
-      top: preferAbove ? rect.top - verticalGap : rect.bottom + verticalGap,
-      above: preferAbove
-    });
-  };
-
   return (
     <>
       <header
-        className={`topbar topbar-${variant} ${scrolled ? "is-scrolled" : ""} ${
+        className={`topbar topbar-solid ${scrolled ? "is-scrolled" : ""} ${
           mobileOpen ? "is-mobile-open" : ""
         }`}
       >
@@ -124,13 +113,28 @@ export function PublicHeader() {
           </Link>
 
           <nav className="topnav">
-            {NAV_LINKS.map((item) => (
+            <Link href="/" className={isActive("/") ? "is-active" : ""}>
+              Inicio
+            </Link>
+
+            {NAV_GROUPS.map((group) => (
+              <details key={group.href} className={`topnav-group ${isActive(group.href) ? "is-active" : ""}`}>
+                <summary>{group.label}</summary>
+                <div className="topnav-menu">
+                  {group.links.map((item) => (
+                    <Link key={item.href} href={item.href} className={isActive(item.href) ? "is-active" : ""}>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </details>
+            ))}
+
+            {PRIMARY_LINKS.slice(1).map((item) => (
               <Link
-                key={`${item.href}-${item.label}`}
+                key={item.href}
                 href={item.href}
                 className={isActive(item.href) ? "is-active" : ""}
-                onClick={(event) => onMenuClick(event, item)}
-                aria-disabled={item.comingSoon ? "true" : undefined}
               >
                 {item.label}
               </Link>
@@ -157,30 +161,32 @@ export function PublicHeader() {
 
       <div id="mobile-menu-panel" className={`mobile-menu-panel ${mobileOpen ? "is-open" : ""}`}>
         <nav className="container mobile-menu-nav" aria-label="Navegacion movil">
-          {NAV_LINKS.map((item) => (
+          {PRIMARY_LINKS.map((item) => (
             <Link
-              key={`${item.href}-${item.label}`}
+              key={item.href}
               href={item.href}
               className={isActive(item.href) ? "is-active" : ""}
-              onClick={(event) => onMenuClick(event, item)}
-              aria-disabled={item.comingSoon ? "true" : undefined}
+              onClick={() => setMobileOpen(false)}
             >
               {item.label}
             </Link>
           ))}
+          {NAV_GROUPS.map((group) => (
+            <div key={group.href} className="mobile-menu-group">
+              <p>{group.label}</p>
+              {group.links.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={isActive(item.href) ? "is-active" : ""}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          ))}
         </nav>
-      </div>
-
-      <div
-        className={`coming-soon-toast ${comingSoonToast.visible ? "is-visible" : ""} ${
-          comingSoonToast.above ? "is-above" : ""
-        }`}
-        style={{ left: `${comingSoonToast.left}px`, top: `${comingSoonToast.top}px` }}
-        role="status"
-        aria-live="polite"
-      >
-        <span className="coming-soon-dot" />
-        <span>{"\u00a1Pr\u00f3ximamente!"}</span>
       </div>
     </>
   );

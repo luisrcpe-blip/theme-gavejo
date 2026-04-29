@@ -10,11 +10,20 @@ const solutionLinks = [
 ];
 
 const materialLinks = [
+  { href: "/materiales", label: "Materiales" },
   { href: "/materiales/termo-tratada", label: "Termotratada" },
   { href: "/materiales/madera-quemada", label: "Madera quemada" },
-  { href: "/materiales/vigueria", label: "Vigueria" },
+  { href: "/materiales/vigueria", label: "Vigueria" }
+];
+
+const balearLinks = [
   { href: "/mader-balear", label: "Mader Balear" },
-  { href: "/proyectos", label: "Proyectos" }
+  { href: "/mader-balear/madera-vieja", label: "Madera vieja" },
+  { href: "/mader-balear/puertas", label: "Puertas" },
+  { href: "/mader-balear/tableros-reclaimed", label: "Tableros reclaimed" },
+  { href: "/mader-balear/revestimientos", label: "Revestimientos" },
+  { href: "/mader-balear/frentes-cocina", label: "Frentes cocina" },
+  { href: "/mader-balear/decoracion", label: "Decoracion" }
 ];
 
 export function SiteFooter() {
@@ -47,10 +56,18 @@ export function SiteFooter() {
           {materialLinks.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
         </nav>
 
+        <nav className="footer-nav" aria-label="Mader Balear">
+          <p>Mader Balear</p>
+          {balearLinks.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+        </nav>
+
         <div className="footer-contact">
           <p>Contacto</p>
           <Link href="/contacto">Formulario de proyecto</Link>
           <a href={whatsappHref} target="_blank" rel="noreferrer">Abrir WhatsApp</a>
+          <Link href="/proyectos">Proyectos</Link>
+          <Link href="/blog">Blog tecnico</Link>
+          <Link href="/privacidad">Privacidad</Link>
           <span>Respuesta orientada a proyecto, material y sistema.</span>
           <Link className="footer-contact-cta" href="/contacto">Solicitar informacion</Link>
         </div>
