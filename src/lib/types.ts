@@ -18,7 +18,7 @@ export type TemplateSettings = {
   whatsappNumber: string;
   notifyEmail: string;
   emailJsEnabled: boolean;
-  mailchimpEnabled: boolean;
+  mailrelayEnabled: boolean;
   privacyUrl: string;
   brandMode: "default" | "clean" | "editorial";
 };

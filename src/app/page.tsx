@@ -65,6 +65,24 @@ const solutionCards = [
     placeholderCaption: "Material estable y duradero",
     assetKey: "home-termo",
     points: ["Proceso 180 C - 212 C", "Humedad final 4-7%", "Sistema completo"]
+  },
+  {
+    title: "Pergolas y cerramientos",
+    href: "/soluciones/pergolas-cerramientos",
+    caption: "Estructuras, lamas y control solar para exterior mediterraneo.",
+    placeholderLabel: "Pergolas y cerramientos",
+    placeholderCaption: "Sombra, estructura y privacidad",
+    assetKey: "home-balear",
+    points: ["Vigueria", "Control solar", "Cerramientos ligeros"]
+  },
+  {
+    title: "Suelos interiores",
+    href: "/soluciones/suelos-interior",
+    caption: "Madera recuperada, multicapa y superficies tecnicas para interiores.",
+    placeholderLabel: "Suelos interiores",
+    placeholderCaption: "Flooring y textura interior",
+    assetKey: "home-termo",
+    points: ["Madera recuperada", "Multicapa", "SPC / Vinilo tecnico"]
   }
 ];
 
@@ -86,6 +104,12 @@ const materialCards = [
     copy: "Material tecnico para exterior con resistencia a humedad, mantenimiento minimo y uso intensivo.",
     placeholder: "Exterior tecnico",
     assetKey: "home-wpc"
+  },
+  {
+    title: "Vigueria",
+    copy: "Madera maciza, laminada o recuperada para pergolas, estructuras vistas y rehabilitacion.",
+    placeholder: "Estructuras de madera",
+    assetKey: "home-balear"
   }
 ];
 

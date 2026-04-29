@@ -4,11 +4,11 @@ import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 
 const solutions = [
-  { href: "/soluciones/fachadas", title: "Revestimiento de fachadas", copy: "Cladding exterior con madera termo tratada, quemada, Mader Balear, WPC y fijaciones tecnicas.", visual: "Fachadas" },
-  { href: "/soluciones/revestimientos-interiores", title: "Revestimientos interiores", copy: "Madera natural, termo tratada, quemada y recuperada para interiores con calidez y presencia.", visual: "Interiores" },
-  { href: "/soluciones/decking-exterior", title: "Suelos exterior / Decking", copy: "Tarimas para terrazas, piscinas, hoteles y espacios exteriores de uso intensivo.", visual: "Decking" },
-  { href: "/contacto", title: "Pergolas y estructuras", copy: "Vigueria maciza y laminada para proyectos exteriores que requieren estudio tecnico previo.", visual: "Estructuras" },
-  { href: "/contacto", title: "Suelos interior / Flooring", copy: "Multicapa, vinilo SPC y madera recuperada para interiores residenciales y comerciales.", visual: "Flooring" }
+  { href: "/soluciones/fachadas", title: "Revestimiento de fachadas", copy: "Cladding exterior con madera termo tratada, quemada, Mader Balear, WPC y fijaciones tecnicas.", visual: "Fachadas", assetKey: "home-fachadas" },
+  { href: "/soluciones/decking-exterior", title: "Decking exterior", copy: "Tarimas para terrazas, piscinas, hoteles y espacios exteriores de uso intensivo.", visual: "Decking", assetKey: "home-decking" },
+  { href: "/soluciones/revestimientos-interiores", title: "Revestimientos interiores", copy: "Madera natural, termo tratada, quemada y recuperada para interiores con calidez y presencia.", visual: "Interiores", assetKey: "home-interiores" },
+  { href: "/soluciones/pergolas-cerramientos", title: "Pergolas y cerramientos", copy: "Vigueria, lamas y estructuras exteriores para sombra, privacidad y transicion mediterranea.", visual: "Pergolas", assetKey: "home-balear" },
+  { href: "/soluciones/suelos-interior", title: "Suelos interior / Flooring", copy: "Madera recuperada, multicapa y soluciones tecnicas para interiores residenciales y comerciales.", visual: "Flooring", assetKey: "home-termo" }
 ];
 
 export default function SolucionesPage() {
@@ -22,7 +22,7 @@ export default function SolucionesPage() {
         <div className="grid grid-3">
           {solutions.map((item) => (
             <article key={item.title} className="card card-pad">
-              <NeonPlaceholder label={item.title} caption={item.visual} minHeight={210} aspectRatio="4 / 3" />
+              <NeonPlaceholder label={item.title} caption={item.visual} assetKey={item.assetKey} minHeight={210} aspectRatio="4 / 3" />
               <h3 style={{ marginTop: "1rem" }}>{item.title}</h3>
               <p>{item.copy}</p>
               <Link href={item.href} className="btn btn-ghost" style={{ marginTop: "0.8rem" }}>Ver solucion</Link>

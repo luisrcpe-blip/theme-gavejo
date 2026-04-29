@@ -15,11 +15,10 @@ type NavLink = {
 
 const NAV_LINKS: NavLink[] = [
   { href: "/", label: "Inicio", comingSoon: false },
-  { href: "/soluciones/fachadas", label: "Fachadas", comingSoon: false },
-  { href: "/soluciones/decking-exterior", label: "Decking", comingSoon: false },
-  { href: "/soluciones/revestimientos-interiores", label: "Interiores", comingSoon: false },
-  { href: "/materiales/termo-tratada", label: "Termotratada", comingSoon: false },
+  { href: "/soluciones", label: "Soluciones", comingSoon: false },
+  { href: "/materiales", label: "Materiales", comingSoon: false },
   { href: "/mader-balear", label: "Madera Balear", comingSoon: false },
+  { href: "/proyectos", label: "Proyectos", comingSoon: false },
   { href: "/blog", label: "Blog", comingSoon: false },
   { href: "/contacto", label: "Contacto", comingSoon: false }
 ];
@@ -40,7 +39,7 @@ export function PublicHeader() {
     above: false
   });
 
-  const landingRoutes = ["/soluciones/fachadas", "/soluciones/decking-exterior", "/soluciones/revestimientos-interiores", "/materiales/termo-tratada", "/mader-balear"];
+  const landingRoutes = ["/soluciones", "/materiales", "/mader-balear", "/proyectos"];
 
   const variant: HeaderVariant =
     pathname === "/" ? "solid" : landingRoutes.some((route) => pathname.startsWith(route)) ? "overlay" : "clean";

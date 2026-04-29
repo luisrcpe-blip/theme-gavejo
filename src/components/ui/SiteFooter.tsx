@@ -5,14 +5,16 @@ const solutionLinks = [
   { href: "/soluciones/fachadas", label: "Fachadas" },
   { href: "/soluciones/decking-exterior", label: "Decking exterior" },
   { href: "/soluciones/revestimientos-interiores", label: "Interiores" },
-  { href: "/materiales/termo-tratada", label: "Madera termotratada" }
+  { href: "/soluciones/pergolas-cerramientos", label: "Pergolas" },
+  { href: "/soluciones/suelos-interior", label: "Suelos interior" }
 ];
 
 const materialLinks = [
-  { href: "/materiales", label: "Materiales" },
+  { href: "/materiales/termo-tratada", label: "Termotratada" },
+  { href: "/materiales/madera-quemada", label: "Madera quemada" },
+  { href: "/materiales/vigueria", label: "Vigueria" },
   { href: "/mader-balear", label: "Mader Balear" },
-  { href: "/blog", label: "Blog tecnico" },
-  { href: "/privacidad", label: "Privacidad" }
+  { href: "/proyectos", label: "Proyectos" }
 ];
 
 export function SiteFooter() {

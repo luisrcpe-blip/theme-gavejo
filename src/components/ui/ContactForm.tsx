@@ -17,13 +17,15 @@ type LeadResponse = {
 };
 
 type LeadPayload = {
-  landingId: string;
   fullName: string;
   email?: string;
   phone?: string;
   phoneCountryCode?: string;
-  saveMode: "final";
-  attribution?: ReturnType<typeof readLeadAttribution>;
+  attribution?: Partial<ReturnType<typeof readLeadAttribution>> & {
+    sourcePage?: string;
+    sourceType?: string;
+  };
+  geo?: Record<string, string>;
   answers: Array<{
     questionKey: string;
     questionLabel: string;
@@ -89,22 +91,11 @@ function submitLeadThroughParent(payload: LeadPayload) {
 }
 
 async function submitLead(payload: LeadPayload) {
-  if (isEmbeddedInNuklo()) {
-    return submitLeadThroughParent(payload);
+  if (!isEmbeddedInNuklo()) {
+    throw new Error("Este formulario se envia cuando el theme esta embebido por Nuklo.");
   }
 
-  const response = await fetch("/api/leads", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(payload)
-  });
-  const result = (await response.json()) as LeadResponse;
-
-  if (!response.ok || !result.success) {
-    throw new Error(result.error ?? "No se pudo registrar la consulta.");
-  }
-
-  return result;
+  return submitLeadThroughParent(payload);
 }
 
 export function ContactForm({ originLanding }: ContactFormProps) {
@@ -131,24 +122,27 @@ export function ContactForm({ originLanding }: ContactFormProps) {
     setFeedback("Enviando consulta a Nuklo Core...");
 
     try {
+      const attribution = readLeadAttribution();
       const result = await submitLead({
-        landingId: originLanding,
         fullName: name.trim(),
         email: contactData.email,
         phone: contactData.phone,
         phoneCountryCode: "+34",
-        saveMode: "final",
-        attribution: readLeadAttribution(),
+        attribution: {
+          ...attribution,
+          sourcePage: originLanding,
+          sourceType: "lead_form"
+        },
         answers: [
-          {
-            questionKey: "project_message",
-            questionLabel: "Proyecto",
-            value: message.trim()
-          },
           {
             questionKey: "origin_landing",
             questionLabel: "Landing de origen",
             value: originLanding
+          },
+          {
+            questionKey: "project_message",
+            questionLabel: "Proyecto",
+            value: message.trim()
           },
           {
             questionKey: "privacy_consent",

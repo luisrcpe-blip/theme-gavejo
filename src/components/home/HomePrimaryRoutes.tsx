@@ -9,8 +9,8 @@ const PRIMARY_ROUTES = [
     buttonClass: "btn-primary",
   },
   {
-    href: "/materiales/termo-tratada",
-    buttonLabel: "Ver landing de madera termotratada",
+    href: "/soluciones",
+    buttonLabel: "Ver todas las soluciones",
     buttonClass: "btn-secondary",
   },
   {

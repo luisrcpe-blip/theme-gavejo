@@ -3,24 +3,851 @@
   "name": "Theme Gavejo",
   "mode": "capture",
   "contractVersion": "capture@1.0.0",
-  "templateVersion": "2.0.1",
-  "description": "Theme CAPTURE completo para Maderas Gavejo con home, contacto, blog, paginas internas, captacion de leads y narrativa tecnica para proyectos en madera.",
+  "templateVersion": "2.1.0",
+  "description": "Theme CAPTURE completo para Maderas Gavejo con home, contacto, blog, paginas internas, captacion de leads por postMessage y narrativa tecnica para proyectos en madera.",
   "repository": "https://github.com/luisrcpe-blip/theme-gavejo",
   "sourceBranch": "main",
   "entry": "/",
   "renderer": "remote-static-app",
   "appUrl": "https://luisrcpe-blip.github.io/theme-gavejo/",
-  "assetsBase": "/theme-gavejo/media/gavejo/",
   "previewUrl": "https://gavejo.nuklo.cloud",
-  "surfaces": ["LEAD_LANDING"],
-  "capabilities": ["tenant", "branding", "media", "tracking", "leadLanding", "leadForm", "multiPageTheme", "contentPage"],
-  "forbidden": ["catalog", "product", "collection", "cart", "checkout", "orders", "coupons", "reviews", "commerceLanding"],
-  "requiredTenantSettings": ["domain", "mode=capture", "active=true", "landing.active=true"],
-  "requiredEnvironment": ["NUKLO_PLATFORM_HOST"],
+  "surfaces": [
+    "LEAD_LANDING",
+    "CONTENT_PAGE"
+  ],
+  "capabilities": [
+    "tenant",
+    "branding",
+    "media",
+    "tracking",
+    "leadLanding",
+    "leadForm",
+    "multiPageTheme",
+    "contentPage"
+  ],
+  "forbidden": [
+    "catalog",
+    "product",
+    "collection",
+    "cart",
+    "checkout",
+    "orders",
+    "coupons",
+    "reviews",
+    "commerceLanding"
+  ],
+  "requiredTenantSettings": [
+    "domain",
+    "mode=capture",
+    "active=true",
+    "landing.active=true"
+  ],
+  "requiredEnvironment": [],
+  "leadTransport": "postMessage",
+  "leadSubmitMessage": "nuklo-template:submit-lead",
+  "leadResultMessage": "nuklo-template:lead-result",
+  "mediaAssets": [
+    {
+      "key": "media-gavejo-burned-wood-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/burned-wood-01.jpg",
+      "kind": "LANDING",
+      "title": "Burned Wood 01",
+      "alt": "burned wood 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-burned-wood-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/burned-wood-02.jpg",
+      "kind": "LANDING",
+      "title": "Burned Wood 02",
+      "alt": "burned wood 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-burned-wood-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/burned-wood-03.jpg",
+      "kind": "LANDING",
+      "title": "Burned Wood 03",
+      "alt": "burned wood 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-burned-wood-04",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/burned-wood-04.webp",
+      "kind": "LANDING",
+      "title": "Burned Wood 04",
+      "alt": "burned wood 04",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-burned-wood-05",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/burned-wood-05.webp",
+      "kind": "LANDING",
+      "title": "Burned Wood 05",
+      "alt": "burned wood 05",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-decking-app-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/decking-app-01.jpg",
+      "kind": "LANDING",
+      "title": "Decking App 01",
+      "alt": "decking app 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-decking-app-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/decking-app-02.jpg",
+      "kind": "LANDING",
+      "title": "Decking App 02",
+      "alt": "decking app 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-decking-app-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/decking-app-03.jpg",
+      "kind": "LANDING",
+      "title": "Decking App 03",
+      "alt": "decking app 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-decking-app-04",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/decking-app-04.jpg",
+      "kind": "LANDING",
+      "title": "Decking App 04",
+      "alt": "decking app 04",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-decking-hero",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/decking-hero.jpg",
+      "kind": "LANDING",
+      "title": "Decking Hero",
+      "alt": "decking hero",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-decking-sys-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/decking-sys-01.jpg",
+      "kind": "LANDING",
+      "title": "Decking Sys 01",
+      "alt": "decking sys 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-decking-sys-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/decking-sys-02.jpg",
+      "kind": "LANDING",
+      "title": "Decking Sys 02",
+      "alt": "decking sys 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-decking-sys-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/decking-sys-03.jpg",
+      "kind": "LANDING",
+      "title": "Decking Sys 03",
+      "alt": "decking sys 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-fachadas-app-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-app-01.jpg",
+      "kind": "LANDING",
+      "title": "Fachadas App 01",
+      "alt": "fachadas app 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-fachadas-app-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-app-03.jpg",
+      "kind": "LANDING",
+      "title": "Fachadas App 03",
+      "alt": "fachadas app 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-fachadas-app-04",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-app-04.jpg",
+      "kind": "LANDING",
+      "title": "Fachadas App 04",
+      "alt": "fachadas app 04",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-fachadas-hero",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-hero.jpg",
+      "kind": "LANDING",
+      "title": "Fachadas Hero",
+      "alt": "fachadas hero",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-fachadas-sys-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-sys-01.jpg",
+      "kind": "LANDING",
+      "title": "Fachadas Sys 01",
+      "alt": "fachadas sys 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-fachadas-sys-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-sys-02.jpg",
+      "kind": "LANDING",
+      "title": "Fachadas Sys 02",
+      "alt": "fachadas sys 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-fachadas-sys-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-sys-03.jpg",
+      "kind": "LANDING",
+      "title": "Fachadas Sys 03",
+      "alt": "fachadas sys 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-interior-app-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/interior-app-03.jpg",
+      "kind": "LANDING",
+      "title": "Interior App 03",
+      "alt": "interior app 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-interior-app-04",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/interior-app-04.jpg",
+      "kind": "LANDING",
+      "title": "Interior App 04",
+      "alt": "interior app 04",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-interior-sys-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/interior-sys-02.jpg",
+      "kind": "LANDING",
+      "title": "Interior Sys 02",
+      "alt": "interior sys 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-interior-sys-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/interior-sys-03.jpg",
+      "kind": "LANDING",
+      "title": "Interior Sys 03",
+      "alt": "interior sys 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-termo-app-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/termo-app-01.jpg",
+      "kind": "LANDING",
+      "title": "Termo App 01",
+      "alt": "termo app 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-termo-app-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/termo-app-02.jpg",
+      "kind": "LANDING",
+      "title": "Termo App 02",
+      "alt": "termo app 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-termo-app-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/termo-app-03.jpg",
+      "kind": "LANDING",
+      "title": "Termo App 03",
+      "alt": "termo app 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-termo-app-04",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/termo-app-04.jpg",
+      "kind": "LANDING",
+      "title": "Termo App 04",
+      "alt": "termo app 04",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-termo-hero",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/termo-hero.jpg",
+      "kind": "LANDING",
+      "title": "Termo Hero",
+      "alt": "termo hero",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-termo-sys-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/termo-sys-01.jpg",
+      "kind": "LANDING",
+      "title": "Termo Sys 01",
+      "alt": "termo sys 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-termo-sys-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/termo-sys-02.jpg",
+      "kind": "LANDING",
+      "title": "Termo Sys 02",
+      "alt": "termo sys 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-termo-sys-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/termo-sys-03.jpg",
+      "kind": "LANDING",
+      "title": "Termo Sys 03",
+      "alt": "termo sys 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-texture-charred",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/texture-charred.jpg",
+      "kind": "LANDING",
+      "title": "Texture Charred",
+      "alt": "texture charred",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-landing-texture-warm",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/texture-warm.jpg",
+      "kind": "LANDING",
+      "title": "Texture Warm",
+      "alt": "texture warm",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-ldc-wood-01-clean",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/ldc-wood-01-clean.jpg",
+      "kind": "LANDING",
+      "title": "Ldc Wood 01 Clean",
+      "alt": "ldc wood 01 clean",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-ldc-wood-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/ldc-wood-01.jpg",
+      "kind": "LANDING",
+      "title": "Ldc Wood 01",
+      "alt": "ldc wood 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-ldc-wood-02-clean",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/ldc-wood-02-clean.jpg",
+      "kind": "LANDING",
+      "title": "Ldc Wood 02 Clean",
+      "alt": "ldc wood 02 clean",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-ldc-wood-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/ldc-wood-02.jpg",
+      "kind": "LANDING",
+      "title": "Ldc Wood 02",
+      "alt": "ldc wood 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-ldc-wood-03-clean",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/ldc-wood-03-clean.jpg",
+      "kind": "LANDING",
+      "title": "Ldc Wood 03 Clean",
+      "alt": "ldc wood 03 clean",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-ldc-wood-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/ldc-wood-03.jpg",
+      "kind": "LANDING",
+      "title": "Ldc Wood 03",
+      "alt": "ldc wood 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-thermo-nature-01-clean",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/thermo-nature-01-clean.jpg",
+      "kind": "LANDING",
+      "title": "Thermo Nature 01 Clean",
+      "alt": "thermo nature 01 clean",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-thermo-nature-01",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/thermo-nature-01.jpg",
+      "kind": "LANDING",
+      "title": "Thermo Nature 01",
+      "alt": "thermo nature 01",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-thermo-nature-02-clean",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/thermo-nature-02-clean.jpg",
+      "kind": "LANDING",
+      "title": "Thermo Nature 02 Clean",
+      "alt": "thermo nature 02 clean",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-thermo-nature-02",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/thermo-nature-02.jpg",
+      "kind": "LANDING",
+      "title": "Thermo Nature 02",
+      "alt": "thermo nature 02",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-thermo-nature-03-clean",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/thermo-nature-03-clean.jpg",
+      "kind": "LANDING",
+      "title": "Thermo Nature 03 Clean",
+      "alt": "thermo nature 03 clean",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-thermo-nature-03",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/thermo-nature-03.jpg",
+      "kind": "LANDING",
+      "title": "Thermo Nature 03",
+      "alt": "thermo nature 03",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-thermo-nature-04-clean",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/thermo-nature-04-clean.jpg",
+      "kind": "LANDING",
+      "title": "Thermo Nature 04 Clean",
+      "alt": "thermo nature 04 clean",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "media-gavejo-thermo-nature-04",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/thermo-nature-04.jpg",
+      "kind": "LANDING",
+      "title": "Thermo Nature 04",
+      "alt": "thermo nature 04",
+      "tags": [
+        "gavejo",
+        "imagen",
+        "madera"
+      ]
+    },
+    {
+      "key": "documentos-burned-wood",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/documentos/burned-wood.pdf",
+      "kind": "LANDING",
+      "title": "Burned Wood",
+      "alt": "Documento burned wood",
+      "tags": [
+        "gavejo",
+        "pdf",
+        "catalogo"
+      ]
+    },
+    {
+      "key": "documentos-mader-balear",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/documentos/mader-balear.pdf",
+      "kind": "LANDING",
+      "title": "Mader Balear",
+      "alt": "Documento mader balear",
+      "tags": [
+        "gavejo",
+        "pdf",
+        "catalogo"
+      ]
+    },
+    {
+      "key": "documentos-madera-quemada",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/documentos/madera-quemada.pdf",
+      "kind": "LANDING",
+      "title": "Madera Quemada",
+      "alt": "Documento madera quemada",
+      "tags": [
+        "gavejo",
+        "pdf",
+        "catalogo"
+      ]
+    },
+    {
+      "key": "documentos-tantimber-ficha",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/documentos/tantimber-ficha.pdf",
+      "kind": "LANDING",
+      "title": "Tantimber Ficha",
+      "alt": "Documento tantimber ficha",
+      "tags": [
+        "gavejo",
+        "pdf",
+        "catalogo"
+      ]
+    },
+    {
+      "key": "documentos-tantimber-specs",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/documentos/tantimber-specs.pdf",
+      "kind": "LANDING",
+      "title": "Tantimber Specs",
+      "alt": "Documento tantimber specs",
+      "tags": [
+        "gavejo",
+        "pdf",
+        "catalogo"
+      ]
+    },
+    {
+      "key": "documentos-tantimber",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/documentos/tantimber.pdf",
+      "kind": "LANDING",
+      "title": "Tantimber",
+      "alt": "Documento tantimber",
+      "tags": [
+        "gavejo",
+        "pdf",
+        "catalogo"
+      ]
+    },
+    {
+      "key": "documentos-vigueria",
+      "url": "https://luisrcpe-blip.github.io/theme-gavejo/documentos/vigueria.pdf",
+      "kind": "LANDING",
+      "title": "Vigueria",
+      "alt": "Documento vigueria",
+      "tags": [
+        "gavejo",
+        "pdf",
+        "catalogo"
+      ]
+    }
+  ],
+  "routeSeo": [
+    {
+      "path": "/",
+      "title": "Maderas Gavejo | Soluciones tecnicas en madera",
+      "description": "Fachadas, decking, interiores, materiales tecnicos y madera recuperada para proyectos de arquitectura.",
+      "canonical": "https://gavejo.nuklo.cloud",
+      "ogImage": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-hero.jpg"
+    },
+    {
+      "path": "/soluciones",
+      "title": "Soluciones en madera | Gavejo",
+      "description": "Soluciones Gavejo para fachadas, decking, interiores, pergolas y suelos interiores.",
+      "canonical": "https://gavejo.nuklo.cloud/soluciones"
+    },
+    {
+      "path": "/soluciones/fachadas",
+      "title": "Fachadas de madera | Gavejo",
+      "description": "Fachadas ventiladas y revestimientos exteriores con madera tecnica, Mader Balear y sistemas de fijacion.",
+      "canonical": "https://gavejo.nuklo.cloud/soluciones/fachadas"
+    },
+    {
+      "path": "/soluciones/decking-exterior",
+      "title": "Decking exterior | Gavejo",
+      "description": "Tarimas exteriores para terrazas, piscinas, hoteles y espacios de alto uso.",
+      "canonical": "https://gavejo.nuklo.cloud/soluciones/decking-exterior"
+    },
+    {
+      "path": "/soluciones/revestimientos-interiores",
+      "title": "Revestimientos interiores | Gavejo",
+      "description": "Revestimientos interiores de madera natural, termotratada, quemada y recuperada.",
+      "canonical": "https://gavejo.nuklo.cloud/soluciones/revestimientos-interiores"
+    },
+    {
+      "path": "/soluciones/pergolas-cerramientos",
+      "title": "Pergolas y cerramientos | Gavejo",
+      "description": "Pergolas, cerramientos, lamas y estructuras de madera para exterior.",
+      "canonical": "https://gavejo.nuklo.cloud/soluciones/pergolas-cerramientos"
+    },
+    {
+      "path": "/soluciones/suelos-interior",
+      "title": "Suelos interiores | Gavejo",
+      "description": "Suelos interiores de madera recuperada, multicapa y soluciones tecnicas.",
+      "canonical": "https://gavejo.nuklo.cloud/soluciones/suelos-interior"
+    },
+    {
+      "path": "/materiales",
+      "title": "Materiales de madera | Gavejo",
+      "description": "Materiales tecnicos para exterior, interior, fachadas, decking y proyectos especiales.",
+      "canonical": "https://gavejo.nuklo.cloud/materiales"
+    },
+    {
+      "path": "/materiales/termo-tratada",
+      "title": "Madera termotratada Tantimber | Gavejo",
+      "description": "Madera termotratada Thermowood para fachadas, decking, interiores, celosias y lamas.",
+      "canonical": "https://gavejo.nuklo.cloud/materiales/termo-tratada"
+    },
+    {
+      "path": "/materiales/madera-quemada",
+      "title": "Madera quemada Shou Sugi Ban | Gavejo",
+      "description": "Burned Wood y madera quemada para fachadas, interiores y piezas especiales.",
+      "canonical": "https://gavejo.nuklo.cloud/materiales/madera-quemada"
+    },
+    {
+      "path": "/materiales/vigueria",
+      "title": "Vigueria de madera | Gavejo",
+      "description": "Vigueria maciza, laminada y recuperada para pergolas, porches y rehabilitacion.",
+      "canonical": "https://gavejo.nuklo.cloud/materiales/vigueria"
+    },
+    {
+      "path": "/mader-balear",
+      "title": "Mader Balear & Fusta Antiga | Gavejo",
+      "description": "Madera recuperada con memoria, textura y caracter mediterraneo.",
+      "canonical": "https://gavejo.nuklo.cloud/mader-balear"
+    },
+    {
+      "path": "/mader-balear/madera-vieja",
+      "title": "Madera vieja recuperada | Gavejo",
+      "description": "Madera vieja recuperada para suelos, revestimientos, mobiliario y piezas especiales.",
+      "canonical": "https://gavejo.nuklo.cloud/mader-balear/madera-vieja"
+    },
+    {
+      "path": "/mader-balear/puertas",
+      "title": "Puertas de madera recuperada | Gavejo",
+      "description": "Puertas interiores y exteriores con madera recuperada y caracter artesanal.",
+      "canonical": "https://gavejo.nuklo.cloud/mader-balear/puertas"
+    },
+    {
+      "path": "/mader-balear/tableros-reclaimed",
+      "title": "Tableros reclaimed | Gavejo",
+      "description": "Tableros de madera recuperada para mobiliario, paneles, mesas y frentes.",
+      "canonical": "https://gavejo.nuklo.cloud/mader-balear/tableros-reclaimed"
+    },
+    {
+      "path": "/mader-balear/revestimientos",
+      "title": "Revestimientos Mader Balear | Gavejo",
+      "description": "Revestimientos con madera recuperada para hoteles, restauracion, retail e interiores.",
+      "canonical": "https://gavejo.nuklo.cloud/mader-balear/revestimientos"
+    },
+    {
+      "path": "/mader-balear/frentes-cocina",
+      "title": "Frentes de cocina recuperados | Gavejo",
+      "description": "Frentes de cocina, islas y mobiliario con madera recuperada.",
+      "canonical": "https://gavejo.nuklo.cloud/mader-balear/frentes-cocina"
+    },
+    {
+      "path": "/mader-balear/decoracion",
+      "title": "Decoracion en madera recuperada | Gavejo",
+      "description": "Paneles decorativos, cabeceros y piezas singulares con madera recuperada.",
+      "canonical": "https://gavejo.nuklo.cloud/mader-balear/decoracion"
+    },
+    {
+      "path": "/proyectos",
+      "title": "Proyectos y galeria | Gavejo",
+      "description": "Galeria de referencias para fachadas, decking, interiores y Mader Balear.",
+      "canonical": "https://gavejo.nuklo.cloud/proyectos"
+    },
+    {
+      "path": "/blog",
+      "title": "Blog tecnico | Gavejo",
+      "description": "Contenido tecnico sobre madera, fachadas, decking, interiores y materiales.",
+      "canonical": "https://gavejo.nuklo.cloud/blog"
+    },
+    {
+      "path": "/contacto",
+      "title": "Contacto | Gavejo",
+      "description": "Contacta con Gavejo para orientar tu proyecto de madera tecnica.",
+      "canonical": "https://gavejo.nuklo.cloud/contacto"
+    },
+    {
+      "path": "/privacidad",
+      "title": "Privacidad | Gavejo",
+      "description": "Politica de privacidad para formularios y captacion de consultas de Gavejo.",
+      "canonical": "https://gavejo.nuklo.cloud/privacidad"
+    }
+  ],
   "notes": [
     "Theme CAPTURE completo: no implementar superficies SALES ni flujos comerciales.",
-    "Las acciones publicas de captacion deben enviarse exclusivamente a /api/leads.",
-    "El tenant, branding, media, landing activa y tracking son resueltos/configurados por Nuklo Core usando el Host header.",
-    "Esta plantilla se publica como app estatica en GitHub Pages y Nuklo la monta como remote-static-app."
+    "El theme no hace fetch directo a /api/leads; envia leads al parent Nuklo por postMessage.",
+    "Nuklo Core agrega tenantId, landingId y saveMode y guarda el lead en Nuklo CRM.",
+    "Mailrelay, tracking, dominio, SSL, CRM y media final viven en Nuklo por tenant.",
+    "Esta plantilla se publica como app estatica en GitHub Pages y Nuklo la monta dentro de un iframe seguro como remote-static-app."
   ]
 }

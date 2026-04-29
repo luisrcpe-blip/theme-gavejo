@@ -5,12 +5,12 @@ import { PublicHeader } from "@/components/ui/PublicHeader";
 import { Reveal } from "@/components/ui/Reveal";
 
 const lines = [
-  "Paneles de tres capas",
-  "Paneles de cinco capas",
-  "Puertas interiores y exteriores",
-  "Suelos de madera reciclada",
-  "Frentes y puertas de cocina",
-  "Revestimientos interiores y exteriores"
+  { href: "/mader-balear/madera-vieja", title: "Madera vieja", text: "Tablas y piezas antiguas preparadas para revestimientos, suelos y proyectos con memoria." },
+  { href: "/mader-balear/puertas", title: "Puertas", text: "Puertas interiores, exteriores y paneles correderos con textura recuperada." },
+  { href: "/mader-balear/tableros-reclaimed", title: "Tableros reclaimed", text: "Superficies recuperadas para mesas, paneles, frentes y mobiliario a medida." },
+  { href: "/mader-balear/revestimientos", title: "Revestimientos", text: "Paredes, hoteles, retail y restauracion con madera recuperada de lectura calida." },
+  { href: "/mader-balear/frentes-cocina", title: "Frentes de cocina", text: "Frentes, islas y puertas de armario con caracter mediterraneo." },
+  { href: "/mader-balear/decoracion", title: "Decoracion", text: "Cabeceros, paneles decorativos y piezas singulares con textura real." }
 ];
 
 const values = [
@@ -65,11 +65,12 @@ export default function MaderBalearPage() {
             </Reveal>
             <div className="grid grid-3">
               {lines.map((line, index) => (
-                <Reveal key={line} delay={index * 70}>
+                <Reveal key={line.title} delay={index * 70}>
                   <article className="card card-pad">
-                    <NeonPlaceholder label={line} caption="Madera recuperada" assetKey="balear-detail" minHeight={200} aspectRatio="4 / 3" />
-                    <h3 style={{ marginTop: "1rem" }}>{line}</h3>
-                    <p>Solucion orientada a proyectos con textura real, calidez y lectura artesanal.</p>
+                    <NeonPlaceholder label={line.title} caption="Madera recuperada" assetKey="balear-detail" minHeight={200} aspectRatio="4 / 3" />
+                    <h3 style={{ marginTop: "1rem" }}>{line.title}</h3>
+                    <p>{line.text}</p>
+                    <Link href={line.href} className="btn btn-ghost" style={{ marginTop: "0.8rem" }}>Ver linea</Link>
                   </article>
                 </Reveal>
               ))}
