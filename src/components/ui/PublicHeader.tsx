@@ -50,11 +50,6 @@ export function PublicHeader() {
   };
 
   useEffect(() => {
-    if (variant !== "overlay") {
-      setScrolled(false);
-      return;
-    }
-
     const onScroll = () => setScrolled(window.scrollY > 18);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

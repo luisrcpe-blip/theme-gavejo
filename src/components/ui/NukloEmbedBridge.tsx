@@ -47,19 +47,19 @@ function getElementBottom(element: Element) {
 
 function getContentHeight() {
   const contentNodes = Array.from(
-    document.body.querySelectorAll("main > section, main > footer, body > footer")
+    document.body.querySelectorAll("main, main > section, main > footer, body > footer")
   );
   const measuredBottom = Math.max(0, ...contentNodes.map(getElementBottom));
 
   if (measuredBottom > 0) {
-    return Math.ceil(measuredBottom + 24);
+    return Math.ceil(measuredBottom);
   }
 
   const main = document.body.querySelector("main");
   const mainBottom = main ? getElementBottom(main) : 0;
 
   if (mainBottom > 0) {
-    return Math.ceil(mainBottom + 24);
+    return Math.ceil(mainBottom);
   }
 
   return Math.ceil(window.innerHeight);
@@ -74,11 +74,15 @@ export function NukloEmbedBridge() {
     let frame = 0;
     const originalHtmlOverflowY = document.documentElement.style.overflowY;
     const originalBodyOverflowY = document.body.style.overflowY;
+    const originalHtmlBackground = document.documentElement.style.background;
+    const originalBodyBackground = document.body.style.background;
     const originalEmbedFlag = document.documentElement.dataset.nukloEmbed;
 
     document.documentElement.dataset.nukloEmbed = "true";
     document.documentElement.style.overflowY = "hidden";
     document.body.style.overflowY = "hidden";
+    document.documentElement.style.background = "#111827";
+    document.body.style.background = "#111827";
 
     function postHeight() {
       window.cancelAnimationFrame(frame);
@@ -127,7 +131,7 @@ export function NukloEmbedBridge() {
     }
 
     const observer = new ResizeObserver(postHeight);
-    Array.from(document.body.querySelectorAll("main > section, main > footer, body > footer")).forEach((child) =>
+    Array.from(document.body.querySelectorAll("main, main > section, main > footer, body > footer")).forEach((child) =>
       observer.observe(child)
     );
     document.addEventListener("click", handleDocumentClick, true);
@@ -144,6 +148,8 @@ export function NukloEmbedBridge() {
       }
       document.documentElement.style.overflowY = originalHtmlOverflowY;
       document.body.style.overflowY = originalBodyOverflowY;
+      document.documentElement.style.background = originalHtmlBackground;
+      document.body.style.background = originalBodyBackground;
       document.removeEventListener("click", handleDocumentClick, true);
       window.removeEventListener("load", postHeight);
       window.removeEventListener("resize", postHeight);
