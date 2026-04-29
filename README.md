@@ -17,6 +17,10 @@ Esta plantilla se publica como `renderer=remote-static-app`: GitHub Pages sirve 
 
 El formulario no debe hablar con la base de datos ni conocer secretos. Cuando la app esta embebida por Nuklo, `ContactForm` envia el lead al parent por `postMessage` y Nuklo Core lo registra en `/api/leads`.
 
+Cuando esta embebida, la navegacion interna tambien pasa por `postMessage`: `NukloEmbedBridge` intercepta links locales
+como `/blog` o `/contacto`, envia `nuklo-template:navigate` al parent y Nuklo Core cambia la URL publica del cliente.
+Esto evita que el navegador se quede pegado a `/landing-principal` mientras el iframe navega por dentro.
+
 ## Scripts
 
 ```bash
