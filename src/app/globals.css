@@ -153,23 +153,11 @@ p {
   position: sticky;
   top: 0;
   z-index: 30;
-  transition:
-    background-color var(--transition-base) var(--ease-main),
-    border-color var(--transition-base) var(--ease-main),
-    box-shadow var(--transition-base) var(--ease-main),
-    backdrop-filter var(--transition-base) var(--ease-main);
 }
 
 .topbar-solid {
   background: #44464b;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.topbar-solid.is-scrolled,
-.topbar-clean.is-scrolled {
-  background: rgba(68, 70, 75, 0.96);
-  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.18);
-  backdrop-filter: blur(12px);
 }
 
 .topbar-overlay {
@@ -2862,15 +2850,6 @@ html[data-nuklo-embed="true"] .home-wrap,
 html[data-nuklo-embed="true"] .hero,
 html[data-nuklo-embed="true"] .hero-content {
   min-height: auto !important;
-}
-
-html[data-nuklo-embed="true"],
-html[data-nuklo-embed="true"] body {
-  background: #111827 !important;
-}
-
-html[data-nuklo-embed="true"] main {
-  background: var(--color-bg);
 }
 
 html[data-nuklo-embed="true"] .site-footer {

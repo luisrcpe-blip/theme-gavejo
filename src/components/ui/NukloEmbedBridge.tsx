@@ -74,15 +74,11 @@ export function NukloEmbedBridge() {
     let frame = 0;
     const originalHtmlOverflowY = document.documentElement.style.overflowY;
     const originalBodyOverflowY = document.body.style.overflowY;
-    const originalHtmlBackground = document.documentElement.style.background;
-    const originalBodyBackground = document.body.style.background;
     const originalEmbedFlag = document.documentElement.dataset.nukloEmbed;
 
     document.documentElement.dataset.nukloEmbed = "true";
     document.documentElement.style.overflowY = "hidden";
     document.body.style.overflowY = "hidden";
-    document.documentElement.style.background = "#111827";
-    document.body.style.background = "#111827";
 
     function postHeight() {
       window.cancelAnimationFrame(frame);
@@ -148,8 +144,6 @@ export function NukloEmbedBridge() {
       }
       document.documentElement.style.overflowY = originalHtmlOverflowY;
       document.body.style.overflowY = originalBodyOverflowY;
-      document.documentElement.style.background = originalHtmlBackground;
-      document.body.style.background = originalBodyBackground;
       document.removeEventListener("click", handleDocumentClick, true);
       window.removeEventListener("load", postHeight);
       window.removeEventListener("resize", postHeight);
