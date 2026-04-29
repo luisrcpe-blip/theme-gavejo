@@ -27,42 +27,9 @@ function getPublicPathFromThemeUrl(url: URL) {
   return `${pathname}${url.search}${url.hash}`;
 }
 
-function getElementBottom(element: Element) {
-  if (!(element instanceof HTMLElement)) {
-    return 0;
-  }
-
-  const style = window.getComputedStyle(element);
-  if (style.display === "none" || style.position === "fixed") {
-    return 0;
-  }
-
-  const rect = element.getBoundingClientRect();
-  if (rect.height <= 0) {
-    return 0;
-  }
-
-  return rect.bottom + window.scrollY;
-}
-
-function getContentHeight() {
-  const contentNodes = Array.from(
-    document.body.querySelectorAll("main, main > section, main > footer, body > footer")
-  );
-  const measuredBottom = Math.max(0, ...contentNodes.map(getElementBottom));
-
-  if (measuredBottom > 0) {
-    return Math.ceil(measuredBottom);
-  }
-
-  const main = document.body.querySelector("main");
-  const mainBottom = main ? getElementBottom(main) : 0;
-
-  if (mainBottom > 0) {
-    return Math.ceil(mainBottom);
-  }
-
-  return Math.ceil(window.innerHeight);
+function getEmbedViewportHeight() {
+  const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+  return Math.max(560, Math.ceil(viewportHeight));
 }
 
 export function NukloEmbedBridge() {
@@ -74,11 +41,17 @@ export function NukloEmbedBridge() {
     let frame = 0;
     const originalHtmlOverflowY = document.documentElement.style.overflowY;
     const originalBodyOverflowY = document.body.style.overflowY;
+    const originalHtmlHeight = document.documentElement.style.height;
+    const originalBodyHeight = document.body.style.height;
     const originalEmbedFlag = document.documentElement.dataset.nukloEmbed;
+    const originalScrollMode = document.documentElement.dataset.nukloScrollMode;
 
     document.documentElement.dataset.nukloEmbed = "true";
-    document.documentElement.style.overflowY = "hidden";
-    document.body.style.overflowY = "hidden";
+    document.documentElement.dataset.nukloScrollMode = "internal";
+    document.documentElement.style.height = "100%";
+    document.body.style.height = "100%";
+    document.documentElement.style.overflowY = "auto";
+    document.body.style.overflowY = "auto";
 
     function postHeight() {
       window.cancelAnimationFrame(frame);
@@ -86,7 +59,8 @@ export function NukloEmbedBridge() {
         window.parent.postMessage(
           {
             type: "nuklo-template:height",
-            height: getContentHeight()
+            height: getEmbedViewportHeight(),
+            scrollMode: "internal"
           },
           "*"
         );
@@ -94,6 +68,7 @@ export function NukloEmbedBridge() {
     }
 
     window.parent.postMessage({ type: "nuklo-template:ready" }, "*");
+    window.parent.postMessage({ type: "nuklo-template:scroll-mode", mode: "internal" }, "*");
     postHeight();
 
     function handleDocumentClick(event: MouseEvent) {
@@ -142,8 +117,15 @@ export function NukloEmbedBridge() {
       } else {
         document.documentElement.dataset.nukloEmbed = originalEmbedFlag;
       }
+      if (originalScrollMode === undefined) {
+        delete document.documentElement.dataset.nukloScrollMode;
+      } else {
+        document.documentElement.dataset.nukloScrollMode = originalScrollMode;
+      }
       document.documentElement.style.overflowY = originalHtmlOverflowY;
       document.body.style.overflowY = originalBodyOverflowY;
+      document.documentElement.style.height = originalHtmlHeight;
+      document.body.style.height = originalBodyHeight;
       document.removeEventListener("click", handleDocumentClick, true);
       window.removeEventListener("load", postHeight);
       window.removeEventListener("resize", postHeight);
