@@ -171,17 +171,18 @@ p {
 .topbar-overlay {
   position: fixed;
   inset: 0 0 auto 0;
-  z-index: 35;
+  z-index: 130;
   background: linear-gradient(
     180deg,
-    rgba(17, 24, 39, 0.78) 0%,
+    rgba(8, 12, 20, 0.82) 0%,
     rgba(17, 24, 39, 0.48) 52%,
-    rgba(17, 24, 39, 0.18) 78%,
+    rgba(17, 24, 39, 0.14) 78%,
     rgba(17, 24, 39, 0) 100%
   );
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
   transition:
-    background-color var(--transition-base) var(--ease-main),
+    background var(--transition-base) var(--ease-main),
     border-color var(--transition-base) var(--ease-main),
     backdrop-filter var(--transition-base) var(--ease-main);
 }
@@ -197,21 +198,27 @@ p {
 }
 
 .topbar-overlay.is-scrolled {
-  background: #44464b;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(8px);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 12, 20, 0.9) 0%,
+    rgba(17, 24, 39, 0.62) 58%,
+    rgba(17, 24, 39, 0.2) 84%,
+    rgba(17, 24, 39, 0) 100%
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
 }
 
 .topbar-overlay.is-scrolled::after {
-  opacity: 0;
+  opacity: 1;
 }
 
 .topbar.is-mobile-open.topbar-overlay,
 .topbar.is-mobile-open.topbar-clean,
 .topbar.is-mobile-open.topbar-solid {
-  background: #44464b;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(8, 12, 20, 0.94), rgba(17, 24, 39, 0.76));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
 }
 
 .topbar.is-mobile-open.topbar-overlay::after {

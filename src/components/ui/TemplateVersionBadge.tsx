@@ -1,4 +1,4 @@
-﻿const templateVersion = "v2.1.1";
+const templateVersion = "v2.1.2";
 
 export function TemplateVersionBadge() {
   return (
@@ -7,3 +7,4 @@ export function TemplateVersionBadge() {
     </div>
   );
 }
+

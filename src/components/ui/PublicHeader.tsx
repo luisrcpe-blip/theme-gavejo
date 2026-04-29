@@ -118,7 +118,7 @@ export function PublicHeader() {
   return (
     <>
       <header
-        className={`topbar topbar-solid ${scrolled ? "is-scrolled" : ""} ${
+        className={`topbar topbar-overlay ${scrolled ? "is-scrolled" : ""} ${
           mobileOpen ? "is-mobile-open" : ""
         }`}
       >
