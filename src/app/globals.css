@@ -3050,18 +3050,6 @@ html[data-nuklo-embed="true"] .topbar {
   top: 0 !important;
 }
 
-html[data-nuklo-embed="true"][data-nuklo-scroll-mode="internal"],
-html[data-nuklo-embed="true"][data-nuklo-scroll-mode="internal"] body {
-  height: 100%;
-  overflow-y: auto !important;
-  overscroll-behavior: contain;
-  scrollbar-gutter: stable;
-}
-
-html[data-nuklo-embed="true"][data-nuklo-scroll-mode="internal"] body {
-  min-height: 100%;
-}
-
 html[data-nuklo-embed="true"]:has(.site-footer),
 html[data-nuklo-embed="true"]:has(.site-footer) body {
   background: #111827 !important;
