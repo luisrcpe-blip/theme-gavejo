@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { NukloEmbedBridge } from "@/components/ui/NukloEmbedBridge";
+import { TemplateVersionBadge } from "@/components/ui/TemplateVersionBadge";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" suppressHydrationWarning>
       <body className={poppins.variable}>
         <NukloEmbedBridge />
+        <TemplateVersionBadge />
         {children}
       </body>
     </html>
