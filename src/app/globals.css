@@ -836,7 +836,6 @@ p {
 .reveal {
   opacity: 1;
   transform: none;
-  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
@@ -1007,7 +1006,7 @@ p {
 }
 
 .home-visual-stack .neon-placeholder {
-  animation: subtle-float 8s ease-in-out infinite;
+  animation: none;
 }
 
 .home-mini-points {
@@ -2235,7 +2234,6 @@ textarea.input-field {
   object-position: center;
   z-index: 0;
   transform: scale(1.02);
-  animation: image-breathe 14s ease-in-out infinite;
   transition: transform 900ms var(--ease-main), filter 900ms var(--ease-main);
 }
 
@@ -2250,7 +2248,7 @@ textarea.input-field {
     linear-gradient(180deg, rgba(5, 8, 15, 0.05), rgba(5, 8, 15, 0.28) 50%, rgba(5, 8, 15, 0.72)),
     radial-gradient(circle at 20% 12%, rgba(255, 255, 255, 0.2), transparent 28%);
   mix-blend-mode: normal;
-  animation: shine-pass 9s ease-in-out infinite;
+  animation: none;
 }
 
 .neon-placeholder.has-photo .wood-visual {

@@ -179,7 +179,7 @@ export function NeonPlaceholder({
 
   return (
     <figure className={`neon-placeholder has-photo visual-${tone} ${className ?? ""}`} style={style} aria-label={label}>
-      <img className="visual-photo" src={photo} alt="" aria-hidden="true" loading="lazy" />
+      <img className="visual-photo" src={photo} alt="" aria-hidden="true" loading="eager" decoding="async" />
       <div className="wood-visual" aria-hidden="true">
         <span className="wood-sun" />
         <span className="wood-plane wood-plane-a" />
