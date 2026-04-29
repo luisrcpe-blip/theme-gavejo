@@ -350,6 +350,16 @@ p {
   position: relative;
 }
 
+.topnav-group::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -0.9rem;
+  right: -0.9rem;
+  height: 1.25rem;
+  pointer-events: auto;
+}
+
 .topnav-trigger {
   display: inline-flex;
   align-items: center;
@@ -368,7 +378,7 @@ p {
 
 .topnav-menu {
   position: absolute;
-  top: calc(100% + 1rem);
+  top: calc(100% + 0.72rem);
   left: 50%;
   min-width: 230px;
   padding: 0.55rem;
