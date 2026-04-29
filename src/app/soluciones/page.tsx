@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { IndexHeroSlider, type IndexHeroSlide } from "@/components/ui/IndexHeroSlider";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 
@@ -11,24 +12,45 @@ const solutions = [
   { href: "/soluciones/suelos-interior", title: "Suelos interior / Flooring", copy: "Madera recuperada, multicapa y soluciones tecnicas para interiores residenciales y comerciales.", visual: "Flooring", assetKey: "home-termo" }
 ];
 
+const heroSlides: IndexHeroSlide[] = solutions.map((item) => ({
+  title: item.title,
+  eyebrow: item.visual,
+  description: item.copy,
+  href: item.href,
+  cta: "Ver solucion",
+  assetKey: item.assetKey
+}));
+
 export default function SolucionesPage() {
   return (
     <>
       <PublicHeader />
-      <main className="container section">
-        <span className="chip">Soluciones</span>
-        <h1>Soluciones Gavejo para exterior, interior y sistemas en madera</h1>
-        <p className="lead-text home-lead">Selecciona la familia de uso y solicita orientacion tecnica si el proyecto necesita una combinacion de materiales.</p>
-        <div className="grid grid-3">
-          {solutions.map((item) => (
-            <article key={item.title} className="card card-pad">
-              <NeonPlaceholder label={item.title} caption={item.visual} assetKey={item.assetKey} minHeight={210} aspectRatio="4 / 3" />
-              <h3 style={{ marginTop: "1rem" }}>{item.title}</h3>
-              <p>{item.copy}</p>
-              <Link href={item.href} className="btn btn-ghost" style={{ marginTop: "0.8rem" }}>Ver solucion</Link>
-            </article>
-          ))}
-        </div>
+      <main>
+        <IndexHeroSlider
+          badge="Soluciones Gavejo"
+          title="Soluciones en madera para exterior, interior y sistemas tecnicos"
+          description="Fachadas, decking, revestimientos, pergolas y suelos interiores con una seleccion pensada para arquitectura, durabilidad y montaje real."
+          slides={heroSlides}
+          primaryCtaHref="/contacto"
+          primaryCtaLabel="Orientar mi proyecto"
+          secondaryCtaHref="/materiales"
+          secondaryCtaLabel="Ver materiales"
+        />
+        <section className="container section index-list-section">
+          <span className="chip">Explorar familias</span>
+          <h2>Selecciona la solucion que mejor encaja con el proyecto</h2>
+          <p className="lead-text home-lead">Si el proyecto combina usos o materiales, Gavejo puede ayudarte a definir una propuesta tecnica coherente.</p>
+          <div className="grid grid-3">
+            {solutions.map((item) => (
+              <article key={item.title} className="card card-pad">
+                <NeonPlaceholder label={item.title} caption={item.visual} assetKey={item.assetKey} minHeight={210} aspectRatio="4 / 3" />
+                <h3 style={{ marginTop: "1rem" }}>{item.title}</h3>
+                <p>{item.copy}</p>
+                <Link href={item.href} className="btn btn-ghost" style={{ marginTop: "0.8rem" }}>Ver solucion</Link>
+              </article>
+            ))}
+          </div>
+        </section>
         <FloatingWhatsApp sourcePage="soluciones" />
       </main>
     </>
