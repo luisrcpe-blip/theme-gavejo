@@ -72,11 +72,15 @@ export function NukloEmbedBridge() {
     }
 
     let frame = 0;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalBodyOverflow = document.body.style.overflow;
     const originalHtmlOverflowY = document.documentElement.style.overflowY;
     const originalBodyOverflowY = document.body.style.overflowY;
     const originalEmbedFlag = document.documentElement.dataset.nukloEmbed;
 
     document.documentElement.dataset.nukloEmbed = "true";
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
     document.documentElement.style.overflowY = "hidden";
     document.body.style.overflowY = "hidden";
 
@@ -142,6 +146,8 @@ export function NukloEmbedBridge() {
       } else {
         document.documentElement.dataset.nukloEmbed = originalEmbedFlag;
       }
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.overflow = originalBodyOverflow;
       document.documentElement.style.overflowY = originalHtmlOverflowY;
       document.body.style.overflowY = originalBodyOverflowY;
       document.removeEventListener("click", handleDocumentClick, true);
