@@ -684,7 +684,8 @@ p {
 .card {
   transition:
     transform var(--transition-base) var(--ease-main),
-    box-shadow var(--transition-base) var(--ease-main);
+    box-shadow var(--transition-base) var(--ease-main),
+    border-color var(--transition-base) var(--ease-main);
 }
 
 .card-pad {
@@ -833,8 +834,9 @@ p {
 }
 
 .reveal {
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
@@ -849,6 +851,52 @@ p {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes ambient-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-18px, 14px, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes subtle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes image-breathe {
+  0%,
+  100% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1.055);
+  }
+}
+
+@keyframes shine-pass {
+  0% {
+    opacity: 0.42;
+    transform: translateX(-18%);
+  }
+  50% {
+    opacity: 0.78;
+  }
+  100% {
+    opacity: 0.42;
+    transform: translateX(18%);
   }
 }
 
@@ -867,6 +915,18 @@ p {
   font-weight: 700;
   box-shadow: 0 12px 35px rgba(22, 163, 74, 0.35);
   z-index: 40;
+  animation: subtle-float 4.8s ease-in-out infinite;
+  transition:
+    opacity var(--transition-fast) var(--ease-main),
+    transform var(--transition-fast) var(--ease-main),
+    box-shadow var(--transition-fast) var(--ease-main);
+}
+
+.wa-float:hover,
+.wa-float:focus-visible {
+  animation-play-state: paused;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 16px 42px rgba(22, 163, 74, 0.42);
 }
 
 .wa-float.is-hidden {
@@ -931,6 +991,7 @@ p {
   background: radial-gradient(circle at 40% 40%, rgba(79, 70, 229, 0.24), rgba(79, 70, 229, 0));
   pointer-events: none;
   filter: blur(3px);
+  animation: ambient-drift 12s ease-in-out infinite;
 }
 
 .home-hero-grid {
@@ -943,6 +1004,10 @@ p {
 .home-visual-stack {
   display: grid;
   gap: 1rem;
+}
+
+.home-visual-stack .neon-placeholder {
+  animation: subtle-float 8s ease-in-out infinite;
 }
 
 .home-mini-points {
@@ -959,6 +1024,16 @@ p {
   padding: 0.72rem 0.75rem;
   display: grid;
   gap: 0.24rem;
+  transition:
+    transform var(--transition-base) var(--ease-main),
+    border-color var(--transition-base) var(--ease-main),
+    box-shadow var(--transition-base) var(--ease-main);
+}
+
+.home-mini-point:hover {
+  transform: translateY(-2px);
+  border-color: rgba(79, 70, 229, 0.28);
+  box-shadow: 0 14px 28px rgba(30, 41, 59, 0.08);
 }
 
 .home-mini-point strong {
@@ -983,6 +1058,14 @@ p {
   box-shadow: 0 16px 40px rgba(49, 46, 129, 0.12);
   display: grid;
   gap: 0.72rem;
+  transition:
+    transform var(--transition-base) var(--ease-main),
+    box-shadow var(--transition-base) var(--ease-main);
+}
+
+.home-highlight-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 52px rgba(49, 46, 129, 0.16);
 }
 
 .home-highlight-card h3 {
@@ -1632,11 +1715,20 @@ p {
   .card,
   .gallery-card img,
   .btn,
+  .visual-photo,
+  .neon-placeholder.has-photo::before,
+  .home-hero-shell::after,
+  .home-visual-stack .neon-placeholder,
+  .wa-float,
   .mobile-menu-bars span,
   .coming-soon-toast {
     transition: none !important;
     animation: none !important;
     transform: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
   }
 }
 
@@ -2143,6 +2235,7 @@ textarea.input-field {
   object-position: center;
   z-index: 0;
   transform: scale(1.02);
+  animation: image-breathe 14s ease-in-out infinite;
   transition: transform 900ms var(--ease-main), filter 900ms var(--ease-main);
 }
 
@@ -2157,6 +2250,7 @@ textarea.input-field {
     linear-gradient(180deg, rgba(5, 8, 15, 0.05), rgba(5, 8, 15, 0.28) 50%, rgba(5, 8, 15, 0.72)),
     radial-gradient(circle at 20% 12%, rgba(255, 255, 255, 0.2), transparent 28%);
   mix-blend-mode: normal;
+  animation: shine-pass 9s ease-in-out infinite;
 }
 
 .neon-placeholder.has-photo .wood-visual {
@@ -2167,6 +2261,7 @@ textarea.input-field {
 .solution-card:hover .visual-photo,
 .system-card:hover .visual-photo,
 .neon-placeholder:hover .visual-photo {
+  animation: none;
   transform: scale(1.07);
   filter: saturate(1.06) contrast(1.03);
 }
@@ -2600,6 +2695,7 @@ textarea.input-field {
   }
 
   .home-wrap .visual-photo {
+    animation: none;
     transform: none;
     object-position: center;
   }
