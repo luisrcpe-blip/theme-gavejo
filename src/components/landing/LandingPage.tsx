@@ -60,12 +60,12 @@ export function LandingPage({ config }: LandingPageProps) {
             <div className="termo-video-hero-overlay" aria-hidden="true" />
             <div className="container termo-video-hero-content">
               <Reveal>
-                <span className="chip chip-light">Fabrica de madera termotratada</span>
-                <h1>Madera termotratada con estabilidad, caracter y respuesta para obra real</h1>
+                <span className="chip chip-light">Especialistas en madera termotratada</span>
+                <h1>Madera preparada para durar, vestir y responder en obra</h1>
                 <p>
-                  Seleccionamos, tratamos y orientamos madera tecnica para fachadas, decking, lamas e interiores donde la durabilidad, el montaje y la presencia material importan desde el primer dia.
+                  Una solucion natural y tecnica para fachadas, decking, lamas e interiores que necesitan belleza, estabilidad y confianza desde el primer dia.
                 </p>
-                <div className="termo-value-row" aria-label="Valor diferencial Gavejo">
+                <div className="termo-value-row" aria-label="Fortalezas de Gavejo">
                   <span>Estabilidad dimensional</span>
                   <span>Bajo mantenimiento</span>
                   <span>Asesoria tecnica</span>
