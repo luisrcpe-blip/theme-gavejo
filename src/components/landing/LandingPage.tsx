@@ -49,7 +49,7 @@ export function LandingPage({ config }: LandingPageProps) {
           <section className="hero termo-video-hero">
             <video
               className="termo-video-hero-media"
-              src="https://videocdn.cdnpk.net/videos/9f2e2748-9571-4379-a48f-d859fa0ac32e/horizontal/previews/magnific_watermarked/large.mp4"
+              src={withThemeBasePath("/media/gavejo/landing/termo-rain-drops.mp4")}
               autoPlay
               muted
               loop
