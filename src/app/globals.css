@@ -2069,13 +2069,13 @@ textarea.input-field {
   }
 
   .topbar {
-    position: sticky;
+    position: fixed;
     top: 0;
   }
 
   .topbar-overlay {
-    position: sticky;
-    inset: auto;
+    position: fixed;
+    inset: 0 0 auto 0;
   }
 
   .topbar-inner {
