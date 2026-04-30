@@ -10,6 +10,12 @@
     radial-gradient(circle at 12% 0%, rgba(210, 156, 90, 0.26), transparent 32%),
     radial-gradient(circle at 90% 18%, rgba(15, 118, 110, 0.24), transparent 34%),
     linear-gradient(135deg, #111827 0%, #1f2933 54%, #2f2118 100%);
+  box-shadow: 0 42vh 0 42vh #241b16;
+}
+
+html:has(.site-footer),
+body:has(.site-footer) {
+  background: #241b16;
 }
 
 .site-footer::before {
@@ -354,11 +360,12 @@
 
 @media (max-width: 520px) {
   .site-footer {
-    padding: 2.2rem 0 calc(5.2rem + env(safe-area-inset-bottom)) !important;
+    padding: 2.2rem 0 calc(3.9rem + env(safe-area-inset-bottom)) !important;
     background:
       radial-gradient(circle at 18% 0%, rgba(210, 156, 90, 0.24), transparent 34%),
       radial-gradient(circle at 95% 12%, rgba(255, 255, 255, 0.1), transparent 28%),
       linear-gradient(180deg, #121821 0%, #1b242d 48%, #2b1d15 100%) !important;
+    box-shadow: 0 42vh 0 42vh #2b1d15;
   }
 }
 
