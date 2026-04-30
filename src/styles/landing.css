@@ -1,0 +1,100 @@
+/* Landing-specific enhancements. */
+
+.termo-video-hero {
+  min-height: min(860px, 96vh);
+  display: grid;
+  align-items: end;
+  color: #fff;
+  background: #060b12;
+}
+
+.termo-video-hero-media,
+.termo-video-hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.termo-video-hero-media {
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.08);
+}
+
+.termo-video-hero-overlay {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(224, 194, 141, 0.2), transparent 34%),
+    linear-gradient(90deg, rgba(3, 7, 18, 0.88) 0%, rgba(3, 7, 18, 0.58) 48%, rgba(3, 7, 18, 0.34) 100%),
+    linear-gradient(180deg, rgba(3, 7, 18, 0.58) 0%, rgba(3, 7, 18, 0.12) 45%, rgba(3, 7, 18, 0.86) 100%);
+}
+
+.termo-video-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(8rem, 15vw, 12rem) 0 clamp(3.4rem, 8vw, 6rem);
+}
+
+.termo-video-hero-content .reveal {
+  max-width: 860px;
+}
+
+.termo-video-hero h1 {
+  max-width: 920px;
+  margin-top: 1rem;
+  font-size: clamp(2.55rem, 6vw, 5.7rem);
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+
+.termo-video-hero p {
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(1rem, 1.65vw, 1.22rem);
+}
+
+.termo-value-row {
+  margin-top: 1.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.58rem;
+}
+
+.termo-value-row span {
+  padding: 0.5rem 0.72rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 640px) {
+  .termo-video-hero {
+    min-height: 88vh;
+  }
+
+  .termo-video-hero-content {
+    padding: 7.2rem 0 3rem;
+  }
+
+  .termo-video-hero h1 {
+    font-size: clamp(2.08rem, 11vw, 3.45rem);
+  }
+
+  .termo-video-hero p {
+    font-size: 0.96rem;
+  }
+
+  .termo-value-row {
+    gap: 0.42rem;
+  }
+
+  .termo-value-row span {
+    padding: 0.42rem 0.56rem;
+    font-size: 0.66rem;
+  }
+}

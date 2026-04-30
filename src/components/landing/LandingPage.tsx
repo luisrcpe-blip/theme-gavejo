@@ -38,51 +38,102 @@ function toSpanishVisibleText(value: string) {
 export function LandingPage({ config }: LandingPageProps) {
   const heroCta = "Solicitar informacion";
   const heroWhatsappHref = buildWhatsappHref(config.slug);
+  const isThermoLanding = config.slug === "termo-tratada";
 
   return (
     <div className="landing-page">
       <PublicHeader />
 
       <main>
-        <section className="hero hero-architectural">
-          <div className="container hero-content hero-content-grid">
-            <Reveal>
-              <span className="chip chip-light">{config.heroBadge}</span>
-              <h1>{toSpanishVisibleText(config.heroTitle)}</h1>
-              <p>{toSpanishVisibleText(config.heroDescription)}</p>
-              <div className="hero-actions">
-                <a
-                  className="btn btn-light"
-                  href="#contact"
-                  onClick={() =>
-                    trackTemplateEvent("cta_click", config.slug, { section: "hero", ctaLabel: heroCta })
-                  }
-                >
-                  {heroCta}
-                </a>
-                <a
-                  className="btn btn-outline-light"
-                  href={heroWhatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "hero" })}
-                >
-                  WhatsApp
-                </a>
-              </div>
-            </Reveal>
+        {isThermoLanding ? (
+          <section className="hero termo-video-hero">
+            <video
+              className="termo-video-hero-media"
+              src="https://videocdn.cdnpk.net/videos/9f2e2748-9571-4379-a48f-d859fa0ac32e/horizontal/previews/magnific_watermarked/large.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+            />
+            <div className="termo-video-hero-overlay" aria-hidden="true" />
+            <div className="container termo-video-hero-content">
+              <Reveal>
+                <span className="chip chip-light">Fabrica de madera termotratada</span>
+                <h1>Madera termotratada con estabilidad, caracter y respuesta para obra real</h1>
+                <p>
+                  Seleccionamos, tratamos y orientamos madera tecnica para fachadas, decking, lamas e interiores donde la durabilidad, el montaje y la presencia material importan desde el primer dia.
+                </p>
+                <div className="termo-value-row" aria-label="Valor diferencial Gavejo">
+                  <span>Estabilidad dimensional</span>
+                  <span>Bajo mantenimiento</span>
+                  <span>Asesoria tecnica</span>
+                </div>
+                <div className="hero-actions">
+                  <a
+                    className="btn btn-light"
+                    href="#contact"
+                    onClick={() =>
+                      trackTemplateEvent("cta_click", config.slug, { section: "video_hero", ctaLabel: "Cotizar" })
+                    }
+                  >
+                    Cotizar
+                  </a>
+                  <a
+                    className="btn btn-outline-light"
+                    href={heroWhatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "video_hero" })}
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        ) : (
+          <section className="hero hero-architectural">
+            <div className="container hero-content hero-content-grid">
+              <Reveal>
+                <span className="chip chip-light">{config.heroBadge}</span>
+                <h1>{toSpanishVisibleText(config.heroTitle)}</h1>
+                <p>{toSpanishVisibleText(config.heroDescription)}</p>
+                <div className="hero-actions">
+                  <a
+                    className="btn btn-light"
+                    href="#contact"
+                    onClick={() =>
+                      trackTemplateEvent("cta_click", config.slug, { section: "hero", ctaLabel: heroCta })
+                    }
+                  >
+                    {heroCta}
+                  </a>
+                  <a
+                    className="btn btn-outline-light"
+                    href={heroWhatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "hero" })}
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+              </Reveal>
 
-            <Reveal delay={120}>
-              <NeonPlaceholder
-                label="Imagen principal"
-                caption="Visual de proyecto"
-                assetKey={config.heroImage}
-                minHeight={340}
-                aspectRatio="16 / 10"
-              />
-            </Reveal>
-          </div>
-        </section>
+              <Reveal delay={120}>
+                <NeonPlaceholder
+                  label="Imagen principal"
+                  caption="Visual de proyecto"
+                  assetKey={config.heroImage}
+                  minHeight={340}
+                  aspectRatio="16 / 10"
+                />
+              </Reveal>
+            </div>
+          </section>
+        )}
 
         <section id="intro" className="section container">
           <div className="two-col">
