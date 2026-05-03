@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { IndexHeroSlider, type IndexHeroSlide } from "@/components/ui/IndexHeroSlider";
 import { PublicHeader } from "@/components/ui/PublicHeader";
+import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 
 const posts = [
   {
@@ -84,9 +84,9 @@ export default function BlogPage() {
                 <h3>{post.title}</h3>
                 <p className="blog-excerpt">{post.excerpt}</p>
                 <p className="lead-text blog-post-content">{post.content}</p>
-                <Link href="/contacto" className="btn btn-ghost" style={{ marginTop: "0.7rem" }}>
+                <QuoteModalButton className="btn btn-ghost" style={{ marginTop: "0.7rem" }} originLanding="Blog" intent={`Solicitar informacion - ${post.title}`}>
                   Solicitar informacion
-                </Link>
+                </QuoteModalButton>
               </article>
             ))}
           </div>

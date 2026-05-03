@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { IndexHeroSlider, type IndexHeroSlide } from "@/components/ui/IndexHeroSlider";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
+import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { Reveal } from "@/components/ui/Reveal";
 
 const heroSlides: IndexHeroSlide[] = [
@@ -61,7 +61,9 @@ export default function PrivacidadPage() {
                 </p>
               </div>
               <div className="hero-actions" style={{ marginTop: "1rem" }}>
-                <Link href="/contacto" className="btn btn-primary">Ir a contacto</Link>
+                <QuoteModalButton className="btn btn-primary" originLanding="Privacidad" intent="Ir a contacto">
+                  Ir a contacto
+                </QuoteModalButton>
               </div>
             </Reveal>
             <Reveal delay={90}>

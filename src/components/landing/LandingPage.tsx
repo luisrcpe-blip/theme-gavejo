@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
+import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { buildWhatsappHref, trackTemplateEvent, withThemeBasePath } from "@/lib/runtime";
 import { LandingConfig } from "@/lib/types";
@@ -71,15 +71,14 @@ export function LandingPage({ config }: LandingPageProps) {
                   <span>Asesoria tecnica</span>
                 </div>
                 <div className="hero-actions">
-                  <a
+                  <QuoteModalButton
                     className="btn btn-light"
-                    href="#contact"
-                    onClick={() =>
-                      trackTemplateEvent("cta_click", config.slug, { section: "video_hero", ctaLabel: "Cotizar" })
-                    }
+                    originLanding={config.navName}
+                    intent="Cotizar"
+                    title="Cotiza tu proyecto con madera termotratada"
                   >
                     Cotizar
-                  </a>
+                  </QuoteModalButton>
                   <a
                     className="btn btn-outline-light"
                     href={heroWhatsappHref}
@@ -101,15 +100,13 @@ export function LandingPage({ config }: LandingPageProps) {
                 <h1>{toSpanishVisibleText(config.heroTitle)}</h1>
                 <p>{toSpanishVisibleText(config.heroDescription)}</p>
                 <div className="hero-actions">
-                  <a
+                  <QuoteModalButton
                     className="btn btn-light"
-                    href="#contact"
-                    onClick={() =>
-                      trackTemplateEvent("cta_click", config.slug, { section: "hero", ctaLabel: heroCta })
-                    }
+                    originLanding={config.navName}
+                    intent={heroCta}
                   >
                     {heroCta}
-                  </a>
+                  </QuoteModalButton>
                   <a
                     className="btn btn-outline-light"
                     href={heroWhatsappHref}
@@ -223,20 +220,30 @@ export function LandingPage({ config }: LandingPageProps) {
                       <p className="mini-kicker">{toSpanishVisibleText(item.subtitle)}</p>
                       <h3>{toSpanishVisibleText(item.title)}</h3>
                       <p>{toSpanishVisibleText(item.text)}</p>
-                      <a
-                        className="btn btn-ghost"
-                        href={withThemeBasePath(item.ctaHref)}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={() =>
-                          trackTemplateEvent("cta_click", config.slug, {
-                            section: "materials",
-                            ctaLabel: item.cta
-                          })
-                        }
-                      >
-                        {item.cta}
-                      </a>
+                      {item.ctaHref.startsWith("#") ? (
+                        <QuoteModalButton
+                          className="btn btn-ghost"
+                          originLanding={config.navName}
+                          intent={item.cta}
+                        >
+                          {item.cta}
+                        </QuoteModalButton>
+                      ) : (
+                        <a
+                          className="btn btn-ghost"
+                          href={withThemeBasePath(item.ctaHref)}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={() =>
+                            trackTemplateEvent("cta_click", config.slug, {
+                              section: "materials",
+                              ctaLabel: item.cta
+                            })
+                          }
+                        >
+                          {item.cta}
+                        </a>
+                      )}
                     </div>
                   </article>
                 </Reveal>
@@ -337,9 +344,13 @@ export function LandingPage({ config }: LandingPageProps) {
                 <p className="lead-text" style={{ marginBottom: "1rem" }}>
                   {toSpanishVisibleText(config.maderBalear.text)}
                 </p>
-                <a className="btn btn-primary" href="#contact">
+                <QuoteModalButton
+                  className="btn btn-primary"
+                  originLanding={config.navName}
+                  intent={config.maderBalear.ctaLabel}
+                >
                   {config.maderBalear.ctaLabel}
-                </a>
+                </QuoteModalButton>
               </div>
             </Reveal>
           </div>
@@ -354,9 +365,9 @@ export function LandingPage({ config }: LandingPageProps) {
                 Cuentanos que tipo de proyecto estas preparando y el equipo podra orientarte sobre material, sistema y siguiente paso.
               </p>
               <div className="hero-actions" style={{ marginTop: "1rem" }}>
-                <Link className="btn btn-light" href="/contacto">
+                <QuoteModalButton className="btn btn-light" originLanding={config.navName} intent="Hablar con asesor tecnico">
                   Hablar con asesor tecnico
-                </Link>
+                </QuoteModalButton>
               </div>
             </Reveal>
             <Reveal delay={100}>

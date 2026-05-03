@@ -361,7 +361,9 @@ body:has(.site-footer) {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: #fff !important;
+  font: inherit;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .footer-contact-cta:hover {

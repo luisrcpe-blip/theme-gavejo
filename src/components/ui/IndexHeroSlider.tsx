@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
+import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 
 export type IndexHeroSlide = {
   title: string;
@@ -36,6 +37,7 @@ export function IndexHeroSlider({
 }: IndexHeroSliderProps) {
   const [active, setActive] = useState(0);
   const current = slides[active] ?? slides[0];
+  const primaryIsLead = primaryCtaHref === "/contacto";
 
   useEffect(() => {
     if (slides.length < 2) return;
@@ -53,9 +55,15 @@ export function IndexHeroSlider({
           <h1>{title}</h1>
           <p>{description}</p>
           <div className="hero-actions">
-            <Link href={primaryCtaHref} className="btn btn-light">
-              {primaryCtaLabel}
-            </Link>
+            {primaryIsLead ? (
+              <QuoteModalButton className="btn btn-light" originLanding={badge} intent={primaryCtaLabel}>
+                {primaryCtaLabel}
+              </QuoteModalButton>
+            ) : (
+              <Link href={primaryCtaHref} className="btn btn-light">
+                {primaryCtaLabel}
+              </Link>
+            )}
             {secondaryCtaHref && secondaryCtaLabel ? (
               <Link href={secondaryCtaHref} className="btn btn-outline-light">
                 {secondaryCtaLabel}

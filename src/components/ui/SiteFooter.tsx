@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { buildWhatsappHref } from "@/lib/runtime";
+import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 
 const solutionLinks = [
   { href: "/soluciones/fachadas", label: "Fachadas" },
@@ -69,7 +70,9 @@ export function SiteFooter() {
           <Link href="/blog">Blog tecnico</Link>
           <Link href="/privacidad">Privacidad</Link>
           <span>Respuesta orientada a proyecto, material y sistema.</span>
-          <Link className="footer-contact-cta" href="/contacto">Solicitar informacion</Link>
+          <QuoteModalButton className="footer-contact-cta" originLanding="Footer" intent="Solicitar informacion">
+            Solicitar informacion
+          </QuoteModalButton>
         </div>
       </div>
 

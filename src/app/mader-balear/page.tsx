@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
+import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { Reveal } from "@/components/ui/Reveal";
 
 const lines = [
@@ -33,7 +34,7 @@ export default function MaderBalearPage() {
                 Linea material para proyectos que buscan piezas con huellas reales, valor emocional y una lectura directa con la arquitectura local.
               </p>
               <div className="hero-actions">
-                <Link href="/contacto" className="btn btn-light">Consultar proyecto</Link>
+                <QuoteModalButton className="btn btn-light" originLanding="Mader Balear" intent="Consultar proyecto">Consultar proyecto</QuoteModalButton>
                 <Link href="/soluciones/revestimientos-interiores" className="btn btn-outline-light">Ver interiores</Link>
               </div>
             </Reveal>
@@ -90,7 +91,9 @@ export default function MaderBalearPage() {
                 <ul className="dot-list">
                   {values.map((value) => <li key={value}>{value}</li>)}
                 </ul>
-                <Link href="/contacto" className="btn btn-primary" style={{ marginTop: "1rem" }}>Solicitar informacion</Link>
+                <QuoteModalButton className="btn btn-primary" style={{ marginTop: "1rem" }} originLanding="Mader Balear" intent="Solicitar informacion">
+                  Solicitar informacion
+                </QuoteModalButton>
               </div>
             </Reveal>
           </div>

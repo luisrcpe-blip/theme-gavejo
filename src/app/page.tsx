@@ -3,6 +3,7 @@ import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { IndexHeroSlider, type IndexHeroSlide } from "@/components/ui/IndexHeroSlider";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
+import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { SiteFooter } from "@/components/ui/SiteFooter";
 import { Reveal } from "@/components/ui/Reveal";
 import { HomePrimaryRoutes } from "@/components/home/HomePrimaryRoutes";
@@ -275,9 +276,9 @@ export default function HomePage() {
                 </ol>
               </div>
               <div className="hero-actions">
-                <Link href="/contacto" className="btn btn-primary">
+                <QuoteModalButton className="btn btn-primary" originLanding="Home" intent="Ir a Contacto">
                   Ir a Contacto
-                </Link>
+                </QuoteModalButton>
                 <Link href="/blog" className="btn btn-secondary">
                   Ver blog tecnico
                 </Link>
@@ -305,9 +306,9 @@ export default function HomePage() {
                   Fachadas, decking, revestimientos interiores o materiales especiales: el primer paso es entender el proyecto.
                 </p>
                 <div className="hero-actions">
-                  <Link href="/contacto" className="btn btn-light">
+                  <QuoteModalButton className="btn btn-light" originLanding="Home" intent="Solicitar informacion">
                     Solicitar informacion
-                  </Link>
+                  </QuoteModalButton>
                   <Link href="/soluciones/fachadas" className="btn btn-outline-light">
                     Ver soluciones
                   </Link>

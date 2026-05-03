@@ -5,6 +5,7 @@ import { PRIVACY_URL, buildWhatsappHref, readLeadAttribution, trackTemplateEvent
 
 type ContactFormProps = {
   originLanding: string;
+  leadIntent?: string;
 };
 
 type SubmitStatus = "idle" | "submitting" | "ok" | "error";
@@ -98,7 +99,7 @@ async function submitLead(payload: LeadPayload) {
   return submitLeadThroughParent(payload);
 }
 
-export function ContactForm({ originLanding }: ContactFormProps) {
+export function ContactForm({ originLanding, leadIntent }: ContactFormProps) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [message, setMessage] = useState("");
@@ -131,7 +132,7 @@ export function ContactForm({ originLanding }: ContactFormProps) {
         attribution: {
           ...attribution,
           sourcePage: originLanding,
-          sourceType: "lead_form"
+          sourceType: leadIntent ? "modal_form" : "lead_form"
         },
         answers: [
           {
@@ -139,6 +140,15 @@ export function ContactForm({ originLanding }: ContactFormProps) {
             questionLabel: "Landing de origen",
             value: originLanding
           },
+          ...(leadIntent
+            ? [
+                {
+                  questionKey: "lead_intent",
+                  questionLabel: "Intencion del CTA",
+                  value: leadIntent
+                }
+              ]
+            : []),
           {
             questionKey: "project_message",
             questionLabel: "Proyecto",
