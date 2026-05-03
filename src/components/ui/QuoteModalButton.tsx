@@ -25,8 +25,13 @@ export function QuoteModalButton({
   style
 }: QuoteModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isEmbedded, setIsEmbedded] = useState(false);
   const titleId = useId();
   const descriptionId = useId();
+
+  useEffect(() => {
+    setIsEmbedded(window.parent !== window);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {
@@ -34,7 +39,9 @@ export function QuoteModalButton({
     }
 
     const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    if (!isEmbedded) {
+      document.body.style.overflow = "hidden";
+    }
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -48,7 +55,7 @@ export function QuoteModalButton({
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isEmbedded, isOpen]);
 
   const modalTitle = title ?? (intent.toLowerCase().includes("cotizar") ? "Cotiza tu proyecto" : "Cuentanos sobre tu proyecto");
   const modalDescription =
@@ -56,7 +63,7 @@ export function QuoteModalButton({
     "Dejanos tus datos y una idea breve del proyecto. El equipo de Gavejo podra orientarte sobre material, sistema y siguiente paso.";
 
   const modal = isOpen ? (
-    <div className="quote-modal-shell" role="presentation">
+    <div className={`quote-modal-shell ${isEmbedded ? "is-embedded" : ""}`} role="presentation">
       <button
         type="button"
         className="quote-modal-backdrop"
@@ -97,7 +104,7 @@ export function QuoteModalButton({
         {children}
       </button>
 
-      {modal ? createPortal(modal, document.body) : null}
+      {modal ? (isEmbedded ? modal : createPortal(modal, document.body)) : null}
     </>
   );
 }

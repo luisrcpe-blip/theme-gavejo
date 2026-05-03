@@ -747,6 +747,27 @@ p {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.quote-modal-shell.is-embedded {
+  position: relative;
+  inset: auto;
+  z-index: 5;
+  display: block;
+  width: min(680px, 100%);
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.quote-modal-shell.is-embedded .quote-modal-backdrop {
+  display: none;
+}
+
+.quote-modal-shell.is-embedded .quote-modal {
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+  border-radius: 24px;
+}
+
 @media (max-width: 640px) {
   .quote-modal-shell {
     align-items: end;
