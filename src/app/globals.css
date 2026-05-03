@@ -672,6 +672,15 @@ p {
   color: #fca5a5;
 }
 
+.quote-modal-anchor {
+  position: relative;
+  flex: 1 0 100%;
+  width: 100%;
+  height: 0;
+  min-height: 0;
+  z-index: 90;
+}
+
 .quote-modal-shell {
   position: fixed;
   inset: 0;
@@ -748,15 +757,16 @@ p {
 }
 
 .quote-modal-shell.is-embedded {
-  position: relative;
-  inset: auto;
-  z-index: 5;
-  display: block;
-  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 0.72rem;
+  z-index: 95;
+  display: grid;
+  width: min(660px, 100%);
+  transform: translateX(-50%);
   padding: 0;
   margin-top: 1rem;
-  flex: 1 0 100%;
-  order: 20;
+  pointer-events: none;
 }
 
 .quote-modal-shell.is-embedded .quote-modal-backdrop {
@@ -765,9 +775,11 @@ p {
 
 .quote-modal-shell.is-embedded .quote-modal {
   width: 100%;
-  max-height: none;
-  overflow: visible;
+  max-height: min(72vh, 720px);
+  overflow: auto;
   border-radius: 24px;
+  pointer-events: auto;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
 }
 
 .quote-modal-shell.is-embedded .quote-modal-copy h2 {

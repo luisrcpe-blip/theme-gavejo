@@ -116,7 +116,7 @@ export function QuoteModalButton({
         {children}
       </button>
 
-      {modal ? (isInline ? modal : createPortal(modal, document.body)) : null}
+      {modal ? (isInline ? <span className="quote-modal-anchor">{modal}</span> : createPortal(modal, document.body)) : null}
     </>
   );
 }
