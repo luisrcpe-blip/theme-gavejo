@@ -15,6 +15,14 @@ type QuoteModalButtonProps = {
   style?: CSSProperties;
 };
 
+function isNukloEmbedded() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return window.parent !== window || document.documentElement.dataset.nukloEmbed === "true";
+}
+
 export function QuoteModalButton({
   children,
   className = "btn btn-primary",
@@ -25,12 +33,12 @@ export function QuoteModalButton({
   style
 }: QuoteModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isEmbedded, setIsEmbedded] = useState(false);
+  const [renderMode, setRenderMode] = useState<"floating" | "inline">("floating");
   const titleId = useId();
   const descriptionId = useId();
 
   useEffect(() => {
-    setIsEmbedded(window.parent !== window);
+    setRenderMode(isNukloEmbedded() ? "inline" : "floating");
   }, []);
 
   useEffect(() => {
@@ -39,7 +47,7 @@ export function QuoteModalButton({
     }
 
     const originalOverflow = document.body.style.overflow;
-    if (!isEmbedded) {
+    if (renderMode === "floating") {
       document.body.style.overflow = "hidden";
     }
 
@@ -55,21 +63,24 @@ export function QuoteModalButton({
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isEmbedded, isOpen]);
+  }, [isOpen, renderMode]);
 
   const modalTitle = title ?? (intent.toLowerCase().includes("cotizar") ? "Cotiza tu proyecto" : "Cuentanos sobre tu proyecto");
   const modalDescription =
     description ??
     "Dejanos tus datos y una idea breve del proyecto. El equipo de Gavejo podra orientarte sobre material, sistema y siguiente paso.";
+  const isInline = renderMode === "inline";
 
   const modal = isOpen ? (
-    <div className={`quote-modal-shell ${isEmbedded ? "is-embedded" : ""}`} role="presentation">
-      <button
-        type="button"
-        className="quote-modal-backdrop"
-        aria-label="Cerrar formulario"
-        onClick={() => setIsOpen(false)}
-      />
+    <div className={`quote-modal-shell ${isInline ? "is-embedded" : ""}`} role="presentation">
+      {isInline ? null : (
+        <button
+          type="button"
+          className="quote-modal-backdrop"
+          aria-label="Cerrar formulario"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
       <section
         className="quote-modal"
         role="dialog"
@@ -97,6 +108,7 @@ export function QuoteModalButton({
         className={className}
         style={style}
         onClick={() => {
+          setRenderMode(isNukloEmbedded() ? "inline" : "floating");
           trackTemplateEvent("cta_click", originLanding, { intent, interaction: "open_quote_modal" });
           setIsOpen(true);
         }}
@@ -104,7 +116,7 @@ export function QuoteModalButton({
         {children}
       </button>
 
-      {modal ? (isEmbedded ? modal : createPortal(modal, document.body)) : null}
+      {modal ? (isInline ? modal : createPortal(modal, document.body)) : null}
     </>
   );
 }
