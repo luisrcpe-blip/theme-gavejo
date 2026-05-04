@@ -11,6 +11,10 @@
   background: #120b07;
 }
 
+html[data-nuklo-embed="true"] section.hero.termo-video-hero {
+  height: clamp(680px, 56vw, 820px) !important;
+}
+
 .termo-hero-media,
 .termo-hero-overlay {
   position: absolute;
@@ -227,6 +231,10 @@
 @media (max-width: 640px) {
   .termo-video-hero {
     height: clamp(700px, 100dvh, 820px);
+  }
+
+  html[data-nuklo-embed="true"] section.hero.termo-video-hero {
+    height: clamp(700px, 178vw, 820px) !important;
   }
 
   .termo-hero-frame {
