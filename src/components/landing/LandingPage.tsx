@@ -47,28 +47,37 @@ export function LandingPage({ config }: LandingPageProps) {
       <main>
         {isThermoLanding ? (
           <section className="hero termo-video-hero">
-            <video
+            <img
               className="termo-video-hero-media"
-              src={withThemeBasePath("/media/gavejo/landing/termo-rain-drops.mp4")}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-hidden="true"
+              src={withThemeBasePath("/media/gavejo/landing/termo-cover-premium.jpg")}
+              alt=""
+              loading="eager"
+              decoding="async"
             />
             <div className="termo-video-hero-overlay" aria-hidden="true" />
             <div className="container termo-video-hero-content">
               <Reveal>
-                <span className="chip chip-light">Especialistas en madera termotratada</span>
-                <h1>Madera preparada para durar, vestir y responder en obra</h1>
+                <span className="chip chip-light">Madera termo tratada</span>
+                <h1>Diseno natural que trasciende</h1>
                 <p>
-                  Una solucion natural y tecnica para fachadas, decking, lamas e interiores que necesitan belleza, estabilidad y confianza desde el primer dia.
+                  La madera termo tratada aporta estabilidad, durabilidad y una estetica atemporal. Soluciones arquitectonicas para espacios que perduran.
                 </p>
-                <div className="termo-value-row" aria-label="Fortalezas de Gavejo">
-                  <span>Estabilidad dimensional</span>
-                  <span>Bajo mantenimiento</span>
-                  <span>Asesoria tecnica</span>
+                <div className="termo-value-grid" aria-label="Fortalezas de la madera termotratada">
+                  <article>
+                    <span className="termo-value-icon termo-value-leaf" aria-hidden="true" />
+                    <strong>Estabilidad</strong>
+                    <p>Mayor resistencia al movimiento.</p>
+                  </article>
+                  <article>
+                    <span className="termo-value-icon termo-value-shield" aria-hidden="true" />
+                    <strong>Durabilidad</strong>
+                    <p>Resistente a humedad y agentes externos.</p>
+                  </article>
+                  <article>
+                    <span className="termo-value-icon termo-value-thermo" aria-hidden="true" />
+                    <strong>Sostenible</strong>
+                    <p>Proceso natural sin quimicos anadidos.</p>
+                  </article>
                 </div>
                 <div className="hero-actions">
                   <QuoteModalButton
@@ -128,6 +137,42 @@ export function LandingPage({ config }: LandingPageProps) {
                   aspectRatio="16 / 10"
                 />
               </Reveal>
+            </div>
+          </section>
+        )}
+
+        {isThermoLanding && (
+          <section className="termo-performance-strip" aria-label="Resumen de beneficios de madera termotratada">
+            <div className="container termo-performance-grid">
+              <div className="termo-performance-copy">
+                <p className="section-kicker">Madera termo tratada</p>
+                <h2>Belleza natural. Desempeno superior.</h2>
+                <p>
+                  Tratamiento termico que realza la veta y el color de la madera, mejorando su comportamiento frente al paso del tiempo.
+                </p>
+              </div>
+              <div className="termo-performance-points">
+                <article>
+                  <span className="termo-strip-icon termo-strip-sun" aria-hidden="true" />
+                  <h3>Estetica</h3>
+                  <p>Color calido y uniforme que realza cualquier espacio.</p>
+                </article>
+                <article>
+                  <span className="termo-strip-icon termo-strip-shield" aria-hidden="true" />
+                  <h3>Proteccion natural</h3>
+                  <p>Mayor resistencia a hongos, insectos y cambios de temperatura.</p>
+                </article>
+                <article>
+                  <span className="termo-strip-icon termo-strip-stack" aria-hidden="true" />
+                  <h3>Estabilidad</h3>
+                  <p>Menor dilatacion y contraccion, maxima estabilidad dimensional.</p>
+                </article>
+                <article>
+                  <span className="termo-strip-icon termo-strip-leaf" aria-hidden="true" />
+                  <h3>Compromiso</h3>
+                  <p>Madera sostenible, duradera y respetuosa con el entorno.</p>
+                </article>
+              </div>
             </div>
           </section>
         )}
