@@ -9,7 +9,7 @@ Documento generado a partir de `Cronograma_Gavejo_Web.pdf` y adaptado al contrat
 - [x] No acceder directo a base de datos desde el front.
 - [x] No usar Prisma ni `DATABASE_URL`.
 - [x] No crear workers, PM2, cluster, nodemon ni procesos propios.
-- [x] Formularios publicos solo por contrato Nuklo: `/api/leads` o puente embed hacia Nuklo Core.
+- [x] Formularios publicos solo por contrato Nuklo: postMessage hacia Nuklo Core, sin fetch directo a `/api/leads`.
 - [x] Tenant, branding, media, landing activa y tracking son responsabilidad de Nuklo Core por Host header.
 
 ## Front actual ya implementado
@@ -22,7 +22,7 @@ Documento generado a partir de `Cronograma_Gavejo_Web.pdf` y adaptado al contrat
 - [x] Footer movil refinado para produccion.
 - [x] WhatsApp flotante.
 - [x] Formulario de contacto CAPTURE compatible con Nuklo.
-- [x] Puente embed `NukloEmbedBridge` para navegacion/altura dentro de Nuklo.
+- [x] Integracion nativa Nuklo: HTML real servido por Nuklo, sin iframe ni puente de altura.
 - [x] Landing Fachadas.
 - [x] Landing Decking exterior.
 - [x] Landing Revestimientos interiores.
@@ -112,7 +112,7 @@ Documento generado a partir de `Cronograma_Gavejo_Web.pdf` y adaptado al contrat
 - [x] Pagina contacto.
 - [x] Formulario completo CAPTURE.
 - [x] WhatsApp.
-- [ ] Mapa visual/iframe si el cliente quiere mostrar ubicacion.
+- [ ] Mapa visual si el cliente quiere mostrar ubicacion.
 - [ ] Confirmar direccion publica exacta.
 - [ ] Confirmar telefono/email definitivos.
 
@@ -148,7 +148,7 @@ Esto NO debe implementarse dentro de esta plantilla front CAPTURE.
 - [ ] Revision de performance: pesos de imagenes, lazy loading, LCP.
 - [ ] Revision SEO: title, description, canonical, OG image.
 - [ ] Revision de formulario con Nuklo Core real.
-- [ ] Revision de embed remoto en `gavejo.nuklo.cloud`.
+- [ ] Revision del HTML servido en `gavejo.nuklo.cloud`.
 
 ### Backend/Nuklo Core
 
@@ -185,7 +185,7 @@ Esto NO debe implementarse dentro de esta plantilla front CAPTURE.
 - [x] Integrar PDFs provisionales como assets publicos; faltan PDFs oficiales finales.
 - [ ] Ajustar metadata SEO por ruta.
 - [ ] Verificar formulario en entorno Nuklo real.
-- [ ] Verificar navegacion embebida en Nuklo.
+- [ ] Verificar navegacion nativa en Nuklo.
 - [ ] Revisar responsive completo en movil/tablet/desktop.
 - [ ] Optimizar imagenes finales.
 - [ ] Ejecutar `npm run check:contract`.
@@ -204,4 +204,4 @@ La plantilla ya puede servir como base CAPTURE para negocio/landing principal, p
 - [x] Se agrego `/proyectos` con filtros y lightbox front-only.
 - [x] Se agregaron PDFs provisionales en `public/documentos`.
 - [ ] Sustituir PDFs provisionales por documentos oficiales de cliente/Nuklo Media.
-- [ ] Validar en entorno Nuklo real la captura de leads y la navegacion embebida.
+- [ ] Validar en entorno Nuklo real la captura de leads y la navegacion nativa.

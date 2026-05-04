@@ -8,14 +8,14 @@ Este front esta preparado como plantilla CAPTURE. Para anexarlo correctamente co
 - [ ] Confirmar que Nuklo montara la plantilla como `remote-static-app`.
 - [ ] Confirmar `appUrl` final servido desde GitHub Pages u hosting estatico equivalente.
 - [ ] Confirmar `mediaAssets` final para imagenes y PDFs oficiales.
-- [ ] Confirmar si Nuklo hace proxy del path completo o usa iframe/embed.
-- [ ] Confirmar si las rutas internas (`/soluciones`, `/materiales`, `/proyectos`, etc.) deben resolver por History API o por mensaje `nuklo-template:navigate`.
+- [x] Confirmado: Nuklo descarga el HTML publicado y lo sirve como HTML real del dominio del cliente, sin iframe.
+- [x] Las rutas internas (`/soluciones`, `/materiales`, `/proyectos`, etc.) deben resolver como rutas normales del sitio.
 
 ## Leads
 
 - [ ] Confirmar endpoint real de captura: `POST /api/leads`.
 - [ ] Confirmar payload esperado por Nuklo Core: nombre, email, telefono, mensaje, originLanding, consentimiento, UTM.
-- [ ] Confirmar si el lead se envia por iframe `postMessage` o por fetch directo relativo al host Nuklo.
+- [x] Confirmado: el lead se envia por `window.postMessage` en la misma ventana; el theme no hace fetch directo.
 - [ ] Confirmar estados de lead: nuevo, en gestion, cerrado.
 - [ ] Confirmar si Nuklo guardara notas internas.
 - [ ] Confirmar exportacion CSV o integracion CRM.
@@ -62,10 +62,10 @@ Este front esta preparado como plantilla CAPTURE. Para anexarlo correctamente co
 
 ## QA antes de anexar
 
-- [ ] Probar home y todas las rutas publicas embebidas en Nuklo.
+- [ ] Probar home y todas las rutas publicas servidas como HTML real en Nuklo.
 - [ ] Probar formulario desde cada landing.
 - [ ] Probar UTMs y sourcePage/originLanding.
-- [ ] Probar navegacion movil dentro del embed.
+- [ ] Probar navegacion movil en dominio Nuklo.
 - [ ] Probar descarga de PDFs.
 - [ ] Probar responsive 390, 430, 768 y desktop.
 - [ ] Verificar que no exista flujo SALES: catalogo, carrito, checkout, pedidos.

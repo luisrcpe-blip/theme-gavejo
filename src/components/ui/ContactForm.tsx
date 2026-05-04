@@ -44,13 +44,17 @@ function splitContact(contact: string) {
   };
 }
 
-function isEmbeddedInNuklo() {
-  return typeof window !== "undefined" && window.parent && window.parent !== window;
+function createRequestId() {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+
+  return `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
-function submitLeadThroughParent(payload: LeadPayload) {
+function submitLeadThroughNuklo(payload: LeadPayload) {
   return new Promise<LeadResponse>((resolve, reject) => {
-    const requestId = `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const requestId = createRequestId();
     const timeout = window.setTimeout(() => {
       window.removeEventListener("message", handleMessage);
       reject(new Error("Nuklo no respondio a tiempo. Intenta nuevamente."));
@@ -64,6 +68,10 @@ function submitLeadThroughParent(payload: LeadPayload) {
         payload?: LeadResponse;
       };
 
+      if (event.source !== window) {
+        return;
+      }
+
       if (message?.type !== "nuklo-template:lead-result" || message.requestId !== requestId) {
         return;
       }
@@ -71,32 +79,35 @@ function submitLeadThroughParent(payload: LeadPayload) {
       window.clearTimeout(timeout);
       window.removeEventListener("message", handleMessage);
 
-      if (!message.ok || !message.payload?.success) {
+      if (!message.ok || message.payload?.success === false) {
         reject(new Error(message.payload?.error ?? "No se pudo registrar la consulta."));
         return;
       }
 
-      resolve(message.payload);
+      resolve({
+        success: true,
+        ...message.payload
+      });
     }
 
     window.addEventListener("message", handleMessage);
-    window.parent.postMessage(
+    window.postMessage(
       {
         type: "nuklo-template:submit-lead",
         requestId,
         payload
       },
-      "*"
+      window.location.origin
     );
   });
 }
 
 async function submitLead(payload: LeadPayload) {
-  if (!isEmbeddedInNuklo()) {
-    throw new Error("Este formulario se envia cuando el theme esta embebido por Nuklo.");
+  if (typeof window === "undefined") {
+    throw new Error("Este formulario necesita ejecutarse en el navegador.");
   }
 
-  return submitLeadThroughParent(payload);
+  return submitLeadThroughNuklo(payload);
 }
 
 export function ContactForm({ originLanding, leadIntent }: ContactFormProps) {

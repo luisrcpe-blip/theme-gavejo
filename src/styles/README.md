@@ -5,7 +5,6 @@ break unrelated pages.
 
 - `header.css`: only the public header, desktop dropdowns and mobile menu.
 - `footer.css`: only footer layout, footer CTA and mobile footer behavior.
-- `embed.css`: only Nuklo iframe/embed behavior.
 - `landing.css`: shared landing primitives. Keep this light.
 - `thermo-landing.css`: only `/materiales/termo-tratada` hero and performance strip.
 

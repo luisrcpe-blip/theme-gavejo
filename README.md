@@ -13,13 +13,13 @@ Esta plantilla no implementa inventario comercial, fichas de producto, carrito, 
 
 ## Runtime en Nuklo
 
-Esta plantilla se publica como `renderer=remote-static-app`: GitHub Pages sirve la app estatica completa y Nuklo Core la monta para el cliente asignado. No convertir este front a `layout.json/theme.css`, porque eso cambia el diseno real.
+Esta plantilla se publica como `renderer=remote-static-app`: GitHub Pages sirve la app estatica completa y Nuklo Core descarga el HTML publicado para servirlo como HTML real dentro del dominio del cliente. No convertir este front a `layout.json/theme.css`, porque eso cambia el diseno real.
 
-El formulario no debe hablar con la base de datos ni conocer secretos. Cuando la app esta embebida por Nuklo, `ContactForm` envia el lead al parent por `postMessage` y Nuklo Core lo registra en `/api/leads`.
+El theme debe comportarse como web nativa, no como iframe: `100dvh`, `position: fixed`, `sticky`, modales y scroll se disenan contra el viewport normal del navegador.
 
-La navegacion interna embebida tambien pasa por `postMessage`: `NukloEmbedBridge` intercepta links locales
-como `/blog` o `/contacto`, envia `nuklo-template:navigate` al parent y Nuklo Core cambia la URL publica del cliente.
-Esto evita que el navegador se quede pegado a `/landing-principal` mientras el iframe navega por dentro.
+El formulario no debe hablar con la base de datos ni conocer secretos. `ContactForm` envia el lead por `window.postMessage` en la misma ventana y Nuklo Core lo registra en `/api/leads`.
+
+La navegacion interna usa rutas normales del sitio, por ejemplo `/blog`, `/contacto` o `/soluciones`.
 
 ## Scripts
 
@@ -35,7 +35,6 @@ npm run check:contract
 - `nuklo.template.json`: manifest de compatibilidad Nuklo Template Kit.
 - `src/app`: rutas publicas del front Gavejo adaptadas a CAPTURE.
 - `src/components/ui/ContactForm.tsx`: formulario CAPTURE que envia leads a Nuklo Core.
-- `src/components/ui/NukloEmbedBridge.tsx`: puente de altura/estado para cuando Nuklo monta la app.
 - `src/components/landing`: landing reutilizable para fachadas y madera termotratada.
 - `src/lib/landing-data.ts`: contenido estatico del front publico.
 - `scripts/check-contract.mjs`: validacion local minima del manifest CAPTURE.
