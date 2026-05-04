@@ -6,8 +6,11 @@
   overflow: hidden;
 }
 
+section#seccion-principal {
+  height: 100dvh !important;
+}
+
 .seccion-principal-termo {
-  height: clamp(680px, 100dvh, 860px);
   min-height: 0;
   display: grid;
   align-items: end;
@@ -229,10 +232,6 @@
 }
 
 @media (max-width: 640px) {
-  .seccion-principal-termo {
-    height: clamp(700px, 100dvh, 820px);
-  }
-
   .termo-hero-frame {
     padding: 7.2rem 0 2.4rem;
   }

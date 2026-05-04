@@ -100,11 +100,11 @@ function stabilizeLegacyViewportLinkedHeroes() {
       return;
     }
 
-    element.style.minHeight = `${heroTargetHeight}px`;
+    element.style.setProperty("min-height", `${heroTargetHeight}px`, "important");
 
     if (element.classList.contains("seccion-principal-termo")) {
-      element.style.height = `${heroTargetHeight}px`;
-      element.style.maxHeight = `${heroTargetHeight}px`;
+      element.style.setProperty("height", `${heroTargetHeight}px`, "important");
+      element.style.setProperty("max-height", `${heroTargetHeight}px`, "important");
     }
   });
 }
