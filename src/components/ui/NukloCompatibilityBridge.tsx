@@ -86,6 +86,29 @@ function getLegacyViewportFeedbackCorrection() {
   }, 0);
 }
 
+function stabilizeLegacyViewportLinkedHeroes() {
+  const heroTargetHeight = getLegacyHeroTargetHeight();
+  const viewportLinkedHeroes = Array.from(document.body.querySelectorAll("section.hero"));
+
+  viewportLinkedHeroes.forEach((element) => {
+    if (!(element instanceof HTMLElement)) {
+      return;
+    }
+
+    const rect = element.getBoundingClientRect();
+    if (rect.height <= heroTargetHeight * 1.25) {
+      return;
+    }
+
+    element.style.minHeight = `${heroTargetHeight}px`;
+
+    if (element.classList.contains("termo-video-hero")) {
+      element.style.height = `${heroTargetHeight}px`;
+      element.style.maxHeight = `${heroTargetHeight}px`;
+    }
+  });
+}
+
 function getContentHeight() {
   const measuredNodes = Array.from(
     document.body.querySelectorAll(".landing-page, main, main > section, .site-footer, main > footer, body > footer")
@@ -110,6 +133,7 @@ export function NukloCompatibilityBridge() {
     let frame = 0;
 
     function postHeight() {
+      stabilizeLegacyViewportLinkedHeroes();
       window.cancelAnimationFrame(frame);
       frame = window.requestAnimationFrame(() => {
         window.parent.postMessage(

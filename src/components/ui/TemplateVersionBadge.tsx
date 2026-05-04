@@ -1,4 +1,4 @@
-const templateVersion = "v2.3.2";
+const templateVersion = "v2.3.3";
 
 export function TemplateVersionBadge() {
   return (
