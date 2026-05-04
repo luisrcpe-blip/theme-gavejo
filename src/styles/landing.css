@@ -19,8 +19,8 @@
 }
 
 .termo-video-hero-media {
-  object-fit: cover;
-  object-position: 58% center;
+  object-fit: contain;
+  object-position: center center;
   filter: saturate(0.98) contrast(1.08) brightness(0.9);
 }
 
@@ -297,7 +297,7 @@
   }
 
   .termo-video-hero-media {
-    object-position: 64% center;
+    object-position: center center;
   }
 
   .termo-performance-grid,
@@ -327,7 +327,7 @@
 
 @media (max-width: 520px) {
   .termo-video-hero-media {
-    object-position: 68% center;
+    object-position: center center;
   }
 
   .termo-video-hero-overlay {
