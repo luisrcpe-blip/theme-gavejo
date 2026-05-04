@@ -1,8 +1,7 @@
 /* Landing-specific enhancements. */
 
 .termo-video-hero {
-  min-height: 100dvh;
-  height: 100dvh;
+  min-height: min(920px, 98vh);
   display: grid;
   align-items: end;
   color: #fff;
@@ -218,7 +217,7 @@
 
 @media (max-width: 640px) {
   .termo-video-hero {
-    min-height: 100dvh;
+    min-height: 92vh;
   }
 
   .termo-video-hero-content {
