@@ -52,9 +52,30 @@ function createRequestId() {
   return `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
+function isFramedByNuklo() {
+  if (typeof window === "undefined" || !window.parent || window.parent === window) {
+    return false;
+  }
+
+  try {
+    return Boolean(document.referrer && new URL(document.referrer).hostname.endsWith("nuklo.cloud"));
+  } catch {
+    return false;
+  }
+}
+
+function getNukloParentOrigin() {
+  try {
+    return document.referrer ? new URL(document.referrer).origin : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function submitLeadThroughNuklo(payload: LeadPayload) {
   return new Promise<LeadResponse>((resolve, reject) => {
     const requestId = createRequestId();
+    const parentOrigin = getNukloParentOrigin();
     const timeout = window.setTimeout(() => {
       window.removeEventListener("message", handleMessage);
       reject(new Error("Nuklo no respondio a tiempo. Intenta nuevamente."));
@@ -68,7 +89,11 @@ function submitLeadThroughNuklo(payload: LeadPayload) {
         payload?: LeadResponse;
       };
 
-      if (event.source !== window) {
+      const isNativeResponse = event.source === window;
+      const isLegacyParentResponse =
+        isFramedByNuklo() && event.source === window.parent && (!parentOrigin || event.origin === parentOrigin);
+
+      if (!isNativeResponse && !isLegacyParentResponse) {
         return;
       }
 
@@ -91,14 +116,18 @@ function submitLeadThroughNuklo(payload: LeadPayload) {
     }
 
     window.addEventListener("message", handleMessage);
-    window.postMessage(
-      {
-        type: "nuklo-template:submit-lead",
-        requestId,
-        payload
-      },
-      window.location.origin
-    );
+
+    const message = {
+      type: "nuklo-template:submit-lead",
+      requestId,
+      payload
+    };
+
+    window.postMessage(message, window.location.origin);
+
+    if (isFramedByNuklo() && parentOrigin) {
+      window.parent.postMessage(message, parentOrigin);
+    }
   });
 }
 
