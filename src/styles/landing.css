@@ -27,7 +27,7 @@
 
 .termo-video-hero-media {
   object-fit: cover;
-  object-position: center center;
+  object-position: 68% center;
   filter: saturate(0.98) contrast(1.08) brightness(0.9);
 }
 
