@@ -31,6 +31,13 @@
   filter: saturate(0.98) contrast(1.08) brightness(0.9);
 }
 
+@media (min-width: 996px) {
+  .termo-video-hero-media {
+    object-fit: contain;
+    object-position: center center;
+  }
+}
+
 .termo-video-hero-overlay {
   background:
     radial-gradient(circle at 62% 30%, rgba(191, 121, 57, 0.08), transparent 36%),
