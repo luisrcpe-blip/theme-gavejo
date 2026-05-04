@@ -12,17 +12,12 @@
     linear-gradient(135deg, #070403 0%, #120b07 48%, #26150b 100%);
 }
 
-.termo-video-hero picture,
 .termo-video-hero-media,
 .termo-video-hero-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.termo-video-hero picture {
-  display: block;
 }
 
 .termo-video-hero-media {
@@ -34,7 +29,7 @@
 @media (min-width: 996px) {
   .termo-video-hero-media {
     object-fit: contain;
-    object-position: center center;
+    object-position: right center;
   }
 }
 

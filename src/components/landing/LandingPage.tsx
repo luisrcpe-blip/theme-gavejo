@@ -47,19 +47,13 @@ export function LandingPage({ config }: LandingPageProps) {
       <main>
         {isThermoLanding ? (
           <section className="hero termo-video-hero">
-            <picture>
-              <source
-                media="(min-width: 996px)"
-                srcSet={withThemeBasePath("/media/gavejo/landing/termo-cover-wide.jpg")}
-              />
-              <img
-                className="termo-video-hero-media"
-                src={withThemeBasePath("/media/gavejo/landing/termo-cover-premium.jpg")}
-                alt=""
-                loading="eager"
-                decoding="async"
-              />
-            </picture>
+            <img
+              className="termo-video-hero-media"
+              src={withThemeBasePath("/media/gavejo/landing/termo-cover-premium.jpg")}
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
             <div className="termo-video-hero-overlay" aria-hidden="true" />
             <div className="container termo-video-hero-content">
               <Reveal>
