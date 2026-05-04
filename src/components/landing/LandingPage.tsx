@@ -47,22 +47,26 @@ export function LandingPage({ config }: LandingPageProps) {
       <main>
         {isThermoLanding ? (
           <section className="hero termo-video-hero">
-            <img
-              className="termo-video-hero-media"
-              src={withThemeBasePath("/media/gavejo/landing/termo-cover-premium.jpg")}
-              alt=""
-              loading="eager"
-              decoding="async"
-            />
-            <div className="termo-video-hero-overlay" aria-hidden="true" />
-            <div className="container termo-video-hero-content">
+            <div className="termo-hero-media" aria-hidden="true">
+              <img
+                className="termo-hero-image"
+                src={withThemeBasePath("/media/gavejo/landing/termo-cover-premium.jpg")}
+                alt=""
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <div className="termo-hero-overlay" aria-hidden="true" />
+            <div className="container termo-hero-frame">
               <Reveal>
-                <span className="chip chip-light">Madera termo tratada</span>
-                <h1>Diseno natural que trasciende</h1>
-                <p>
-                  La madera termo tratada aporta estabilidad, durabilidad y una estetica atemporal. Soluciones arquitectonicas para espacios que perduran.
-                </p>
-                <div className="termo-value-grid" aria-label="Fortalezas de la madera termotratada">
+                <div className="termo-hero-copy">
+                  <span className="chip chip-light">Madera termo tratada</span>
+                  <h1>Diseno natural que trasciende</h1>
+                  <p>
+                    La madera termo tratada aporta estabilidad, durabilidad y una estetica atemporal. Soluciones arquitectonicas para espacios que perduran.
+                  </p>
+                </div>
+                <div className="termo-hero-values" aria-label="Fortalezas de la madera termotratada">
                   <article>
                     <span className="termo-value-icon termo-value-leaf" aria-hidden="true" />
                     <strong>Estabilidad</strong>
@@ -79,7 +83,7 @@ export function LandingPage({ config }: LandingPageProps) {
                     <p>Proceso natural sin quimicos anadidos.</p>
                   </article>
                 </div>
-                <div className="hero-actions">
+                <div className="hero-actions termo-hero-actions">
                   <QuoteModalButton
                     className="btn btn-light"
                     originLanding={config.navName}

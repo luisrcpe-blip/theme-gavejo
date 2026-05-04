@@ -2,6 +2,7 @@
 @import "../styles/footer.css";
 @import "../styles/embed.css";
 @import "../styles/landing.css";
+@import "../styles/thermo-landing.css";
 
 :root {
   --font-primary: "Poppins", sans-serif;

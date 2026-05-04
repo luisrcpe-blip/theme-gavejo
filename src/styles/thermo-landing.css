@@ -1,0 +1,299 @@
+/* Madera termo tratada landing.
+   Scope every rule to this landing so hero edits do not affect the rest of the theme. */
+
+.termo-video-hero {
+  min-height: 100dvh;
+  display: grid;
+  align-items: end;
+  color: #fff;
+  background: #120b07;
+}
+
+.termo-hero-media,
+.termo-hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.termo-hero-media {
+  overflow: hidden;
+}
+
+.termo-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% center;
+  filter: saturate(0.98) contrast(1.08) brightness(0.9);
+}
+
+.termo-hero-overlay {
+  background:
+    radial-gradient(circle at 62% 30%, rgba(191, 121, 57, 0.08), transparent 36%),
+    linear-gradient(90deg, rgba(6, 4, 3, 0.9) 0%, rgba(12, 7, 4, 0.74) 26%, rgba(24, 13, 6, 0.34) 58%, rgba(7, 4, 2, 0.28) 100%),
+    linear-gradient(180deg, rgba(6, 4, 3, 0.6) 0%, rgba(6, 4, 3, 0.12) 48%, rgba(6, 4, 3, 0.72) 100%);
+}
+
+.termo-hero-frame {
+  position: relative;
+  z-index: 1;
+  padding: clamp(6.8rem, 13dvh, 8.5rem) 0 clamp(1.8rem, 5dvh, 3rem);
+}
+
+.termo-hero-frame .reveal {
+  max-width: 680px;
+}
+
+.termo-hero-copy h1 {
+  max-width: 680px;
+  margin-top: 0.82rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.25rem, 6.1vw, 6.2rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.termo-hero-copy p {
+  max-width: 480px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  line-height: 1.64;
+}
+
+.termo-hero-values {
+  margin-top: clamp(1.15rem, 3dvh, 2rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 132px));
+  gap: clamp(0.9rem, 2vw, 1.35rem);
+}
+
+.termo-hero-values article {
+  display: grid;
+  gap: 0.38rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.termo-hero-values strong {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.termo-hero-values p {
+  max-width: 130px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.74rem;
+  line-height: 1.35;
+}
+
+.termo-value-icon,
+.termo-strip-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: block;
+  color: #c99b62;
+  border: 1.5px solid currentColor;
+}
+
+.termo-value-leaf,
+.termo-strip-leaf {
+  border-radius: 70% 10% 70% 10%;
+  transform: rotate(-20deg);
+}
+
+.termo-value-shield,
+.termo-strip-shield {
+  border-radius: 1rem 1rem 1.35rem 1.35rem;
+  clip-path: polygon(50% 0, 88% 16%, 78% 78%, 50% 100%, 22% 78%, 12% 16%);
+}
+
+.termo-value-thermo {
+  width: 1.15rem;
+  border-radius: 999px;
+  border-width: 2px;
+  margin-left: 0.55rem;
+  position: relative;
+}
+
+.termo-value-thermo::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.58rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: rgba(201, 155, 98, 0.08);
+}
+
+.termo-performance-strip {
+  padding: clamp(1.8rem, 4vw, 3.2rem) 0;
+  background: #d9cec1;
+  color: #2a211a;
+}
+
+.termo-performance-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.75fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: stretch;
+}
+
+.termo-performance-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+.termo-performance-copy h2 {
+  max-width: 340px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: #211712;
+}
+
+.termo-performance-copy p:not(.section-kicker) {
+  max-width: 390px;
+  color: rgba(42, 33, 26, 0.76);
+}
+
+.termo-performance-points {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-left: 1px solid rgba(80, 63, 48, 0.16);
+}
+
+.termo-performance-points article {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.75rem;
+  min-height: 210px;
+  padding: clamp(1rem, 2vw, 1.45rem);
+  text-align: center;
+  border-right: 1px solid rgba(80, 63, 48, 0.16);
+}
+
+.termo-performance-points h3 {
+  color: #34251c;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.termo-performance-points p {
+  color: rgba(42, 33, 26, 0.68);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.termo-strip-icon {
+  width: 3.1rem;
+  height: 3.1rem;
+  color: #7b5438;
+}
+
+.termo-strip-sun {
+  border: 0;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 2px currentColor,
+    0 -1.1rem 0 -0.95rem currentColor,
+    0 1.1rem 0 -0.95rem currentColor,
+    1.1rem 0 0 -0.95rem currentColor,
+    -1.1rem 0 0 -0.95rem currentColor;
+}
+
+.termo-strip-stack {
+  border-radius: 0.08rem;
+  transform: skewY(-14deg);
+  box-shadow: 0.38rem 0.38rem 0 -0.08rem #d9cec1, 0.38rem 0.38rem 0 0 currentColor;
+}
+
+@media (max-width: 640px) {
+  .termo-video-hero {
+    min-height: 100dvh;
+  }
+
+  .termo-hero-frame {
+    padding: 7.2rem 0 2.4rem;
+  }
+
+  .termo-hero-copy h1 {
+    font-size: clamp(3.05rem, 15vw, 4.8rem);
+  }
+
+  .termo-hero-copy p {
+    font-size: 0.96rem;
+  }
+
+  .termo-hero-values {
+    grid-template-columns: 1fr;
+    gap: 0.72rem;
+    max-width: 310px;
+  }
+
+  .termo-hero-values article {
+    grid-template-columns: 2.35rem 1fr;
+    align-items: center;
+    column-gap: 0.78rem;
+  }
+
+  .termo-hero-values p,
+  .termo-hero-values strong {
+    max-width: none;
+    text-align: left;
+  }
+}
+
+@media (max-width: 980px) {
+  .termo-hero-image {
+    object-position: 64% center;
+  }
+
+  .termo-performance-grid,
+  .termo-performance-points {
+    grid-template-columns: 1fr;
+  }
+
+  .termo-performance-points {
+    border-left: 0;
+  }
+
+  .termo-performance-points article {
+    min-height: auto;
+    grid-template-columns: 3rem 1fr;
+    justify-items: start;
+    text-align: left;
+    border-right: 0;
+    border-top: 1px solid rgba(80, 63, 48, 0.16);
+  }
+}
+
+@media (max-width: 520px) {
+  .termo-hero-image {
+    object-position: 68% center;
+  }
+
+  .termo-hero-overlay {
+    background:
+      linear-gradient(90deg, rgba(6, 4, 3, 0.9) 0%, rgba(10, 6, 4, 0.7) 54%, rgba(10, 6, 4, 0.34) 100%),
+      linear-gradient(180deg, rgba(6, 4, 3, 0.74) 0%, rgba(6, 4, 3, 0.18) 44%, rgba(6, 4, 3, 0.82) 100%);
+  }
+
+  .termo-performance-strip {
+    padding: 1.45rem 0 1.8rem;
+  }
+}
