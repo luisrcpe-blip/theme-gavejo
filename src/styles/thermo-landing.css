@@ -2,9 +2,11 @@
    Scope every rule to this landing so hero edits do not affect the rest of the theme. */
 
 .termo-video-hero {
-  min-height: 100dvh;
+  height: clamp(680px, 100dvh, 860px);
+  min-height: 0;
   display: grid;
   align-items: end;
+  overflow: hidden;
   color: #fff;
   background: #120b07;
 }
@@ -39,7 +41,7 @@
 .termo-hero-frame {
   position: relative;
   z-index: 1;
-  padding: clamp(6.8rem, 13dvh, 8.5rem) 0 clamp(1.8rem, 5dvh, 3rem);
+  padding: 112px 0 42px;
 }
 
 .termo-hero-frame .reveal {
@@ -66,7 +68,7 @@
 }
 
 .termo-hero-values {
-  margin-top: clamp(1.15rem, 3dvh, 2rem);
+  margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 132px));
   gap: clamp(0.9rem, 2vw, 1.35rem);
@@ -224,7 +226,7 @@
 
 @media (max-width: 640px) {
   .termo-video-hero {
-    min-height: 100dvh;
+    height: clamp(700px, 100dvh, 820px);
   }
 
   .termo-hero-frame {
