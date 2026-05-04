@@ -147,6 +147,31 @@
   }
 }
 
+@media (min-width: 996px) and (max-width: 1199px) {
+  .termo-video-hero-content {
+    padding-top: 112px;
+    padding-bottom: 24px;
+  }
+
+  .termo-video-hero-content .reveal,
+  .termo-video-hero h1 {
+    max-width: 610px;
+  }
+
+  .termo-video-hero h1 {
+    font-size: 74px;
+  }
+
+  .termo-video-hero p {
+    max-width: 440px;
+    font-size: 16px;
+  }
+
+  .termo-value-grid {
+    margin-top: 18px;
+  }
+}
+
 @media (min-width: 1700px) {
   .termo-video-hero-content.container {
     width: min(1760px, calc(100vw - 160px));

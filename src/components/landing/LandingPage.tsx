@@ -49,7 +49,7 @@ export function LandingPage({ config }: LandingPageProps) {
           <section className="hero termo-video-hero">
             <picture>
               <source
-                media="(min-width: 1200px)"
+                media="(min-width: 996px)"
                 srcSet={withThemeBasePath("/media/gavejo/landing/termo-cover-wide.jpg")}
               />
               <img
