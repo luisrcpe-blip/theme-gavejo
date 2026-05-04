@@ -672,22 +672,14 @@ p {
   color: #fca5a5;
 }
 
-.quote-modal-anchor {
-  position: relative;
-  flex: 1 0 100%;
-  width: 100%;
-  height: 0;
-  min-height: 0;
-  z-index: 90;
-}
-
 .quote-modal-shell {
   position: fixed;
   inset: 0;
-  z-index: 700;
+  z-index: 1000;
   display: grid;
   place-items: center;
   padding: clamp(1rem, 3vw, 2rem);
+  isolation: isolate;
 }
 
 .quote-modal-backdrop {
@@ -696,105 +688,194 @@ p {
   border: 0;
   background:
     radial-gradient(circle at 18% 8%, rgba(224, 194, 141, 0.18), transparent 32%),
+    radial-gradient(circle at 88% 82%, rgba(15, 118, 110, 0.16), transparent 34%),
     rgba(3, 7, 18, 0.78);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
   cursor: pointer;
 }
 
 .quote-modal {
   position: relative;
-  width: min(680px, 100%);
-  max-height: min(86vh, 820px);
-  overflow: auto;
-  padding: clamp(1.15rem, 3vw, 1.7rem);
+  width: min(980px, calc(100vw - 2rem));
+  max-height: min(88vh, 820px);
+  overflow: hidden;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 28px;
+  border-radius: 30px;
   background:
-    radial-gradient(circle at 90% 0%, rgba(210, 156, 90, 0.18), transparent 34%),
-    linear-gradient(145deg, #111827 0%, #1b242d 54%, #2b1d15 100%);
+    radial-gradient(circle at 92% 0%, rgba(210, 156, 90, 0.16), transparent 34%),
+    linear-gradient(145deg, #0d141d 0%, #17202a 48%, #2a1b13 100%);
   color: #fff;
-  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.44);
+  box-shadow: 0 34px 100px rgba(0, 0, 0, 0.52);
+  animation: quote-modal-in 260ms var(--ease-main) both;
+}
+
+.quote-modal-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(360px, 1.12fr);
+  max-height: inherit;
+  overflow: auto;
+  scrollbar-width: thin;
 }
 
 .quote-modal-copy {
   display: grid;
-  gap: 0.65rem;
-  margin-bottom: 1rem;
+  align-content: end;
+  gap: 0.82rem;
+  min-height: 100%;
+  padding: clamp(1.35rem, 4vw, 2.3rem);
+  background:
+    linear-gradient(180deg, rgba(6, 9, 14, 0.18), rgba(6, 9, 14, 0.72)),
+    radial-gradient(circle at 20% 4%, rgba(214, 161, 94, 0.2), transparent 32%);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .quote-modal-copy h2 {
-  max-width: 560px;
+  max-width: 420px;
   color: #fff;
+  font-size: clamp(1.85rem, 4vw, 3rem);
+  letter-spacing: -0.045em;
 }
 
 .quote-modal-copy p:not(.section-kicker) {
-  max-width: 560px;
+  max-width: 440px;
   color: rgba(255, 255, 255, 0.72);
 }
 
+.quote-modal-points {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0.45rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-modal-points li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.quote-modal-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.44rem;
+  height: 0.44rem;
+  border-radius: 999px;
+  background: #d5a15e;
+  box-shadow: 0 0 0 0.28rem rgba(213, 161, 94, 0.14);
+}
+
+.quote-modal-form {
+  padding: clamp(1rem, 3vw, 1.45rem);
+}
+
 .quote-modal-close {
-  position: sticky;
-  top: 0;
-  margin-left: auto;
-  display: flex;
-  min-height: 38px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
   align-items: center;
   justify-content: center;
-  padding: 0.42rem 0.72rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   font: inherit;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
-  z-index: 2;
+  backdrop-filter: blur(12px);
+  transition:
+    transform var(--transition-fast) var(--ease-main),
+    background var(--transition-fast) var(--ease-main);
+}
+
+.quote-modal-close:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .quote-modal .contact-form {
-  background: rgba(255, 255, 255, 0.08);
+  height: 100%;
+  border-color: rgba(255, 255, 255, 0.11);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.05);
 }
 
-.quote-modal-shell.is-embedded {
-  position: absolute;
-  left: 50%;
-  top: 0.72rem;
-  z-index: 95;
-  display: grid;
-  width: min(660px, 100%);
-  transform: translateX(-50%);
-  padding: 0;
-  margin-top: 1rem;
-  pointer-events: none;
+.quote-modal .btn {
+  min-height: 46px;
 }
 
-.quote-modal-shell.is-embedded .quote-modal-backdrop {
-  display: none;
+@keyframes quote-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-.quote-modal-shell.is-embedded .quote-modal {
-  width: 100%;
-  max-height: min(72vh, 720px);
-  overflow: auto;
-  border-radius: 24px;
-  pointer-events: auto;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
-}
-
-.quote-modal-shell.is-embedded .quote-modal-copy h2 {
-  font-size: clamp(1.45rem, 4vw, 2.2rem);
-}
-
-@media (max-width: 640px) {
+@media (max-width: 820px) {
   .quote-modal-shell {
     align-items: end;
-    padding: 0.72rem;
+    padding: 0.5rem;
   }
 
   .quote-modal {
-    max-height: 88vh;
-    border-radius: 24px;
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 26px 26px 18px 18px;
+  }
+
+  .quote-modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-modal-copy {
+    min-height: auto;
+    padding: 1.25rem 1.1rem 0.85rem;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .quote-modal-points {
+    display: none;
+  }
+
+  .quote-modal-form {
+    padding: 0.9rem;
+  }
+
+  .quote-modal-close {
+    top: 0.72rem;
+    right: 0.72rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .quote-modal-copy h2 {
+    max-width: calc(100% - 3rem);
+    font-size: 1.55rem;
+  }
+
+  .quote-modal-copy p:not(.section-kicker) {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .quote-modal .form-actions {
+    display: grid;
   }
 }
 
