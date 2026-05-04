@@ -58,14 +58,43 @@ function getElementBottom(element: Element) {
   return rect.bottom + window.scrollY;
 }
 
+function getLegacyHeroTargetHeight() {
+  const isCompact = window.matchMedia("(max-width: 700px)").matches;
+  const screenHeight = typeof window.screen?.height === "number" ? window.screen.height : 900;
+  const safeScreenHeight = screenHeight > 0 && screenHeight < 1600 ? screenHeight : 900;
+  const minHeight = isCompact ? 620 : 680;
+  const maxHeight = isCompact ? 820 : 920;
+
+  return Math.round(Math.min(Math.max(safeScreenHeight * 0.9, minHeight), maxHeight));
+}
+
+function getLegacyViewportFeedbackCorrection() {
+  const heroTargetHeight = getLegacyHeroTargetHeight();
+  const viewportLinkedHeroes = Array.from(document.body.querySelectorAll("section.hero"));
+
+  return viewportLinkedHeroes.reduce((correction, element) => {
+    if (!(element instanceof HTMLElement)) {
+      return correction;
+    }
+
+    const rect = element.getBoundingClientRect();
+    if (rect.height <= heroTargetHeight * 1.25) {
+      return correction;
+    }
+
+    return correction + rect.height - heroTargetHeight;
+  }, 0);
+}
+
 function getContentHeight() {
   const measuredNodes = Array.from(
-    document.body.querySelectorAll("main, main > section, main > footer, body > footer")
+    document.body.querySelectorAll(".landing-page, main, main > section, .site-footer, main > footer, body > footer")
   );
   const measuredBottom = Math.max(0, ...measuredNodes.map(getElementBottom));
+  const correctedBottom = measuredBottom - getLegacyViewportFeedbackCorrection();
 
-  if (measuredBottom > 0) {
-    return Math.ceil(measuredBottom);
+  if (correctedBottom > 0) {
+    return Math.ceil(correctedBottom);
   }
 
   return Math.ceil(Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, window.innerHeight));
