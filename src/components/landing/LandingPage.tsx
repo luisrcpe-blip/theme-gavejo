@@ -46,7 +46,7 @@ export function LandingPage({ config }: LandingPageProps) {
 
       <main>
         {isThermoLanding ? (
-          <section className="hero termo-video-hero">
+          <section id="seccion-principal" className="seccion-principal seccion-principal-termo">
             <div className="termo-hero-media" aria-hidden="true">
               <img
                 className="termo-hero-image"

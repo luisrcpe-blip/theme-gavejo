@@ -70,7 +70,7 @@ function getLegacyHeroTargetHeight() {
 
 function getLegacyViewportFeedbackCorrection() {
   const heroTargetHeight = getLegacyHeroTargetHeight();
-  const viewportLinkedHeroes = Array.from(document.body.querySelectorAll("section.hero"));
+  const viewportLinkedHeroes = Array.from(document.body.querySelectorAll("section.seccion-principal, section.hero"));
 
   return viewportLinkedHeroes.reduce((correction, element) => {
     if (!(element instanceof HTMLElement)) {
@@ -88,7 +88,7 @@ function getLegacyViewportFeedbackCorrection() {
 
 function stabilizeLegacyViewportLinkedHeroes() {
   const heroTargetHeight = getLegacyHeroTargetHeight();
-  const viewportLinkedHeroes = Array.from(document.body.querySelectorAll("section.hero"));
+  const viewportLinkedHeroes = Array.from(document.body.querySelectorAll("section.seccion-principal, section.hero"));
 
   viewportLinkedHeroes.forEach((element) => {
     if (!(element instanceof HTMLElement)) {
@@ -102,7 +102,7 @@ function stabilizeLegacyViewportLinkedHeroes() {
 
     element.style.minHeight = `${heroTargetHeight}px`;
 
-    if (element.classList.contains("termo-video-hero")) {
+    if (element.classList.contains("seccion-principal-termo")) {
       element.style.height = `${heroTargetHeight}px`;
       element.style.maxHeight = `${heroTargetHeight}px`;
     }
