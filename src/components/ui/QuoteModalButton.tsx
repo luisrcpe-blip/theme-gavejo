@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, ReactNode, useEffect, useId, useState } from "react";
+import { CSSProperties, MouseEvent, ReactNode, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { trackTemplateEvent } from "@/lib/runtime";
@@ -15,6 +15,18 @@ type QuoteModalButtonProps = {
   style?: CSSProperties;
 };
 
+type QuoteModalStyle = CSSProperties & {
+  "--quote-modal-y"?: string;
+};
+
+function isNukloEmbedded() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return window.parent !== window || document.documentElement.dataset.nukloEmbed === "true";
+}
+
 export function QuoteModalButton({
   children,
   className = "btn btn-primary",
@@ -25,6 +37,7 @@ export function QuoteModalButton({
   style
 }: QuoteModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [viewportAnchorY, setViewportAnchorY] = useState<number | null>(null);
   const titleId = useId();
   const descriptionId = useId();
 
@@ -54,9 +67,15 @@ export function QuoteModalButton({
   const modalDescription =
     description ??
     "Dejanos tus datos y una idea breve del proyecto. El equipo de Gavejo podra orientarte sobre material, sistema y siguiente paso.";
+  const modalShellStyle: QuoteModalStyle =
+    viewportAnchorY === null ? {} : { "--quote-modal-y": `${viewportAnchorY}px` };
 
   const modal = isOpen ? (
-    <div className="quote-modal-shell" role="presentation">
+    <div
+      className={`quote-modal-shell ${viewportAnchorY === null ? "" : "is-viewport-anchored"}`}
+      role="presentation"
+      style={modalShellStyle}
+    >
       <button
         type="button"
         className="quote-modal-backdrop"
@@ -99,7 +118,8 @@ export function QuoteModalButton({
         type="button"
         className={className}
         style={style}
-        onClick={() => {
+        onClick={(event: MouseEvent<HTMLButtonElement>) => {
+          setViewportAnchorY(isNukloEmbedded() ? Math.max(260, event.clientY) : null);
           trackTemplateEvent("cta_click", originLanding, { intent, interaction: "open_quote_modal" });
           setIsOpen(true);
         }}
