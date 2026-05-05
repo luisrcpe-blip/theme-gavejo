@@ -15,9 +15,9 @@ function getScreenBoundedHeight() {
   const viewportHeight = window.visualViewport?.height || window.innerHeight || 0;
   const screenHeight = window.screen?.height || viewportHeight;
   const measuredHeight = Math.min(viewportHeight || screenHeight, screenHeight || viewportHeight);
-  const upperLimit = window.innerWidth <= 640 ? 900 : 980;
+  const upperLimit = window.innerWidth <= 640 ? 840 : 920;
 
-  return Math.round(Math.max(680, Math.min(measuredHeight || upperLimit, upperLimit)));
+  return Math.round(Math.max(620, Math.min(measuredHeight || upperLimit, upperLimit)));
 }
 
 function getContentHeight() {

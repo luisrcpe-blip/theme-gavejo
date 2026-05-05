@@ -3,7 +3,16 @@
 html[data-nuklo-embed="true"] section#seccion-principal {
   min-height: var(--nuklo-screen-height, 860px);
   height: var(--nuklo-screen-height, 860px) !important;
-  max-height: 980px;
+  max-height: 920px;
+}
+
+html[data-nuklo-embed="true"],
+html[data-nuklo-embed="true"] body {
+  height: var(--nuklo-screen-height, 860px) !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
 }
 
 html[data-nuklo-embed="true"] .site-footer {
@@ -17,7 +26,7 @@ html[data-nuklo-embed="true"] .mobile-menu-panel {
 @media (max-width: 640px) {
   html[data-nuklo-embed="true"] section#seccion-principal {
     height: auto !important;
-    min-height: min(var(--nuklo-screen-height, 860px), 860px);
+    min-height: min(var(--nuklo-screen-height, 820px), 820px);
     max-height: none;
   }
 
