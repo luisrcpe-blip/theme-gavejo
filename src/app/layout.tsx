@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { NukloLegacyMount } from "@/components/ui/NukloLegacyMount";
 import { TemplateVersionBadge } from "@/components/ui/TemplateVersionBadge";
 import "./globals.css";
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={poppins.variable}>
+        <NukloLegacyMount />
         <TemplateVersionBadge />
         {children}
       </body>
