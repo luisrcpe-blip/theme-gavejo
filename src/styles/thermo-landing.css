@@ -8,6 +8,7 @@
 
 section#seccion-principal {
   height: 100dvh !important;
+  max-height: 920px;
 }
 
 .seccion-principal-termo {
@@ -232,6 +233,10 @@ section#seccion-principal {
 }
 
 @media (max-width: 640px) {
+  section#seccion-principal {
+    max-height: 860px;
+  }
+
   .termo-hero-frame {
     padding: 7.2rem 0 2.4rem;
   }
