@@ -20,19 +20,33 @@ function getScreenBoundedHeight() {
   return Math.round(Math.max(620, Math.min(measuredHeight || upperLimit, upperLimit)));
 }
 
-function getContentHeight() {
-  const body = document.body;
-  const html = document.documentElement;
+function getElementBottom(element: Element) {
+  if (!(element instanceof HTMLElement)) {
+    return 0;
+  }
 
-  return Math.ceil(
-    Math.max(
-      body.scrollHeight,
-      body.offsetHeight,
-      html.clientHeight,
-      html.scrollHeight,
-      html.offsetHeight
-    )
-  );
+  const style = window.getComputedStyle(element);
+  if (style.display === "none" || style.position === "fixed") {
+    return 0;
+  }
+
+  const rect = element.getBoundingClientRect();
+  if (rect.height <= 0) {
+    return 0;
+  }
+
+  return rect.bottom + window.scrollY;
+}
+
+function getContentHeight() {
+  const measuredNodes = Array.from(document.body.querySelectorAll("main, main > section, body > footer"));
+  const measuredBottom = Math.max(0, ...measuredNodes.map(getElementBottom));
+
+  if (measuredBottom > 0) {
+    return Math.ceil(measuredBottom);
+  }
+
+  return Math.ceil(getScreenBoundedHeight());
 }
 
 export function NukloLegacyMount() {
@@ -85,7 +99,6 @@ export function NukloLegacyMount() {
     syncViewportHeight();
 
     const observer = new ResizeObserver(postHeight);
-    observer.observe(document.body);
     Array.from(document.body.querySelectorAll("main, main > section, body > footer")).forEach((element) =>
       observer.observe(element)
     );
