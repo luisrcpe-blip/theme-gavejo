@@ -21,8 +21,6 @@ El formulario no debe hablar con la base de datos ni conocer secretos. `ContactF
 
 La navegacion interna usa rutas normales del sitio, por ejemplo `/blog`, `/contacto` o `/soluciones`.
 
-Mientras Nuklo termina el cambio a HTML nativo, `NukloCompatibilityBridge` mantiene compatibilidad con el montaje legacy en iframe solo para publicar altura/navegacion al parent. En render nativo no modifica estilos, scroll ni layout.
-
 ## Scripts
 
 ```bash
@@ -37,7 +35,6 @@ npm run check:contract
 - `nuklo.template.json`: manifest de compatibilidad Nuklo Template Kit.
 - `src/app`: rutas publicas del front Gavejo adaptadas a CAPTURE.
 - `src/components/ui/ContactForm.tsx`: formulario CAPTURE que envia leads a Nuklo Core.
-- `src/components/ui/NukloCompatibilityBridge.tsx`: compatibilidad temporal para el montaje legacy en iframe; no aplica estilos ni altera layout nativo.
 - `src/components/landing`: landing reutilizable para fachadas y madera termotratada.
 - `src/lib/landing-data.ts`: contenido estatico del front publico.
 - `scripts/check-contract.mjs`: validacion local minima del manifest CAPTURE.
