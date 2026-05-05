@@ -1,0 +1,43 @@
+/* Compatibility only for the legacy Nuklo wrapper while production is being moved to native HTML runtime. */
+
+html[data-nuklo-embed="true"] .home-wrap,
+html[data-nuklo-embed="true"] .hero,
+html[data-nuklo-embed="true"] .hero-content {
+  min-height: auto !important;
+}
+
+html[data-nuklo-embed="true"] section#seccion-principal {
+  height: clamp(680px, 58vw, 920px) !important;
+  max-height: 920px !important;
+}
+
+html[data-nuklo-embed="true"] .site-footer {
+  margin-bottom: 0 !important;
+}
+
+html[data-nuklo-embed="true"],
+html[data-nuklo-embed="true"] body {
+  overflow: hidden !important;
+  scrollbar-width: none;
+}
+
+html[data-nuklo-embed="true"]::-webkit-scrollbar,
+html[data-nuklo-embed="true"] body::-webkit-scrollbar {
+  display: none;
+}
+
+html[data-nuklo-embed="true"]:has(.site-footer),
+html[data-nuklo-embed="true"]:has(.site-footer) body {
+  background: #111827 !important;
+}
+
+html[data-nuklo-embed="true"] .mobile-menu-panel {
+  height: auto !important;
+}
+
+@media (max-width: 640px) {
+  html[data-nuklo-embed="true"] section#seccion-principal {
+    height: 760px !important;
+    max-height: 760px !important;
+  }
+}
