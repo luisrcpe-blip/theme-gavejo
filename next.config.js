@@ -1,18 +1,18 @@
 const isGithubPages = process.env.GITHUB_PAGES === "true";
-const githubPagesBasePath = isGithubPages ? "/theme-gavejo" : "";
+const githubPagesBasePath = "/theme-gavejo";
+const githubPagesAppUrl = "https://luisrcpe-blip.github.io/theme-gavejo";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
   env: {
-    NEXT_PUBLIC_THEME_BASE_PATH: githubPagesBasePath
+    NEXT_PUBLIC_THEME_ASSET_BASE_URL: isGithubPages ? githubPagesAppUrl : ""
   },
   ...(isGithubPages
     ? {
         output: "export",
         trailingSlash: true,
-        basePath: githubPagesBasePath,
-        assetPrefix: `${githubPagesBasePath}/`
+        assetPrefix: `${githubPagesAppUrl}/`
       }
     : {}),
   images: {

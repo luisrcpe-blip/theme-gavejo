@@ -7,15 +7,15 @@
 }
 
 section#seccion-principal {
-  min-height: 100svh;
-  height: 100svh !important;
-  max-height: none;
+  min-height: clamp(640px, 90svh, 860px);
+  height: auto;
+  max-height: 860px;
 }
 
-@supports (height: 100dvh) {
+@media (min-width: 1180px) {
   section#seccion-principal {
-    min-height: 100dvh;
-    height: 100dvh !important;
+    min-height: clamp(680px, 56vw, 820px);
+    max-height: 820px;
   }
 }
 

@@ -56,3 +56,18 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Sync Nuklo Theme Pack
+        run: |
+          if [ -z "$NUKLO_THEME_SYNC_SECRET" ]; then
+            echo "NUKLO_THEME_SYNC_SECRET is not configured; skipping Nuklo theme-pack sync."
+            exit 0
+          fi
+
+          MANIFEST_URL="${{ steps.deployment.outputs.page_url }}nuklo.template.json"
+          curl -fsS -X POST "https://gavejo.nuklo.cloud/api/internal/theme-packs/sync" \
+            -H "Authorization: Bearer $NUKLO_THEME_SYNC_SECRET" \
+            -H "Content-Type: application/json" \
+            -d "{\"manifestUrl\":\"${MANIFEST_URL}\",\"status\":\"active\"}"
+        env:
+          NUKLO_THEME_SYNC_SECRET: ${{ secrets.NUKLO_THEME_SYNC_SECRET }}

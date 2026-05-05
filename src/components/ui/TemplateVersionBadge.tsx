@@ -1,4 +1,6 @@
-const templateVersion = "v2.4.6";
+import { NUKLO_TEMPLATE_VERSION } from "@/lib/runtime";
+
+const templateVersion = `v${NUKLO_TEMPLATE_VERSION}`;
 
 export function TemplateVersionBadge() {
   return (

@@ -3,12 +3,12 @@
   "name": "Theme Gavejo",
   "mode": "capture",
   "contractVersion": "capture@1.0.0",
-  "templateVersion": "2.4.6",
-  "description": "Theme CAPTURE completo para Maderas Gavejo con home, contacto, blog, paginas internas, captacion de leads por postMessage y narrativa tecnica para proyectos en madera.",
+  "templateVersion": "2.4.7",
+  "description": "Theme Pack CAPTURE para Maderas Gavejo con HTML estatico importable por Nuklo, contrato NukloTheme, captacion de leads y narrativa tecnica para proyectos en madera.",
   "repository": "https://github.com/luisrcpe-blip/theme-gavejo",
   "sourceBranch": "main",
   "sourceCommit": "resolved-during-build",
-  "entry": "/",
+  "entry": "index.html",
   "renderer": "remote-static-app",
   "appUrl": "https://luisrcpe-blip.github.io/theme-gavejo/",
   "previewUrl": "https://gavejo.nuklo.cloud",
@@ -23,6 +23,7 @@
     "tracking",
     "leadLanding",
     "leadForm",
+    "singleLanding",
     "multiPageTheme",
     "contentPage"
   ],
@@ -846,9 +847,9 @@
   ],
   "notes": [
     "Theme CAPTURE completo: no implementar superficies SALES ni flujos comerciales.",
-    "El theme no hace fetch directo a /api/leads; envia leads a Nuklo por window.postMessage en la misma ventana.",
+    "El theme no hace fetch directo a /api/leads; envia leads mediante window.NukloTheme.submitLead y conserva postMessage como fallback de contrato.",
     "Nuklo Core agrega tenantId, landingId y saveMode y guarda el lead en Nuklo CRM.",
     "Mailrelay, tracking, dominio, SSL, CRM y media final viven en Nuklo por tenant.",
-    "Esta plantilla se publica como app estatica en GitHub Pages; Nuklo descarga el HTML publicado y lo sirve como HTML real del dominio del cliente."
+    "Esta plantilla se publica como build estatico en GitHub Pages solo como fuente de importacion; Nuklo importa el HTML y lo guarda en su snapshot/core sin iframe."
   ]
 }

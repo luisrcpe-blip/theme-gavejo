@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { withThemeBasePath } from "@/lib/runtime";
 
 type NavLink = {
   href: string;
@@ -125,12 +125,11 @@ export function PublicHeader() {
         <div className="container topbar-inner">
           <Link href="/" className="brand-link" aria-label="Volver al inicio">
             <span className="brand-logo-shell">
-              <Image
-                src="https://maderasgavejo.com/wp-content/uploads/2023/09/gavejo-logo4.png"
+              <img
+                src={withThemeBasePath("/media/gavejo/gavejo-logo4.png")}
                 alt="Gavejo Maderas y Tableros"
                 width={180}
                 height={64}
-                priority
                 className="brand-logo"
               />
             </span>

@@ -1,7 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { PRIVACY_URL, buildWhatsappHref, readLeadAttribution, trackTemplateEvent } from "@/lib/runtime";
+import {
+  PRIVACY_URL,
+  buildWhatsappHref,
+  readLeadAttribution,
+  submitLeadToNuklo,
+  trackTemplateEvent
+} from "@/lib/runtime";
 
 type ContactFormProps = {
   originLanding: string;
@@ -17,23 +23,6 @@ type LeadResponse = {
   error?: string;
 };
 
-type LeadPayload = {
-  fullName: string;
-  email?: string;
-  phone?: string;
-  phoneCountryCode?: string;
-  attribution?: Partial<ReturnType<typeof readLeadAttribution>> & {
-    sourcePage?: string;
-    sourceType?: string;
-  };
-  geo?: Record<string, string>;
-  answers: Array<{
-    questionKey: string;
-    questionLabel: string;
-    value: string;
-  }>;
-};
-
 function splitContact(contact: string) {
   const trimmed = contact.trim();
   const looksLikeEmail = trimmed.includes("@") && trimmed.includes(".");
@@ -42,72 +31,6 @@ function splitContact(contact: string) {
     email: looksLikeEmail ? trimmed : undefined,
     phone: looksLikeEmail ? undefined : trimmed
   };
-}
-
-function createRequestId() {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return crypto.randomUUID();
-  }
-
-  return `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
-}
-
-function submitLeadThroughNuklo(payload: LeadPayload) {
-  return new Promise<LeadResponse>((resolve, reject) => {
-    const requestId = createRequestId();
-    const timeout = window.setTimeout(() => {
-      window.removeEventListener("message", handleMessage);
-      reject(new Error("Nuklo no respondio a tiempo. Intenta nuevamente."));
-    }, 15000);
-
-    function handleMessage(event: MessageEvent) {
-      const message = event.data as {
-        type?: string;
-        requestId?: string;
-        ok?: boolean;
-        payload?: LeadResponse;
-      };
-
-      if (event.source !== window) {
-        return;
-      }
-
-      if (message?.type !== "nuklo-template:lead-result" || message.requestId !== requestId) {
-        return;
-      }
-
-      window.clearTimeout(timeout);
-      window.removeEventListener("message", handleMessage);
-
-      if (!message.ok || message.payload?.success === false) {
-        reject(new Error(message.payload?.error ?? "No se pudo registrar la consulta."));
-        return;
-      }
-
-      resolve({
-        success: true,
-        ...message.payload
-      });
-    }
-
-    window.addEventListener("message", handleMessage);
-
-    const message = {
-      type: "nuklo-template:submit-lead",
-      requestId,
-      payload
-    };
-
-    window.postMessage(message, window.location.origin);
-  });
-}
-
-async function submitLead(payload: LeadPayload) {
-  if (typeof window === "undefined") {
-    throw new Error("Este formulario necesita ejecutarse en el navegador.");
-  }
-
-  return submitLeadThroughNuklo(payload);
 }
 
 export function ContactForm({ originLanding, leadIntent }: ContactFormProps) {
@@ -135,42 +58,23 @@ export function ContactForm({ originLanding, leadIntent }: ContactFormProps) {
 
     try {
       const attribution = readLeadAttribution();
-      const result = await submitLead({
+      const result: LeadResponse = await submitLeadToNuklo({
         fullName: name.trim(),
         email: contactData.email,
         phone: contactData.phone,
         phoneCountryCode: "+34",
+        message: message.trim(),
         attribution: {
           ...attribution,
           sourcePage: originLanding,
           sourceType: leadIntent ? "modal_form" : "lead_form"
         },
-        answers: [
-          {
-            questionKey: "origin_landing",
-            questionLabel: "Landing de origen",
-            value: originLanding
-          },
-          ...(leadIntent
-            ? [
-                {
-                  questionKey: "lead_intent",
-                  questionLabel: "Intencion del CTA",
-                  value: leadIntent
-                }
-              ]
-            : []),
-          {
-            questionKey: "project_message",
-            questionLabel: "Proyecto",
-            value: message.trim()
-          },
-          {
-            questionKey: "privacy_consent",
-            questionLabel: "Acepta politica de privacidad",
-            value: consent ? "si" : "no"
-          }
-        ]
+        answers: {
+          origin_landing: originLanding,
+          lead_intent: leadIntent,
+          project_message: message.trim(),
+          privacy_consent: consent ? "si" : "no"
+        }
       });
 
       trackTemplateEvent("form_submit", originLanding, { hasConsent: consent });

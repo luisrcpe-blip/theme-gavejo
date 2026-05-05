@@ -659,7 +659,7 @@
     inset: 68px 0 auto 0;
     display: block;
     max-height: none !important;
-    height: calc(100dvh - 68px);
+    height: calc(100svh - 68px);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
