@@ -290,6 +290,15 @@ section#seccion-principal {
     border-right: 0;
     border-top: 1px solid rgba(80, 63, 48, 0.16);
   }
+
+  .termo-performance-points article .termo-strip-icon {
+    grid-row: 1 / span 2;
+  }
+
+  .termo-performance-points article h3,
+  .termo-performance-points article p {
+    grid-column: 2;
+  }
 }
 
 @media (max-width: 520px) {
