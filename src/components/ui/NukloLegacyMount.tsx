@@ -20,61 +20,18 @@ function getScreenBoundedHeight() {
   return Math.round(Math.max(620, Math.min(measuredHeight || upperLimit, upperLimit)));
 }
 
-function getElementBottom(element: Element) {
-  if (!(element instanceof HTMLElement)) {
-    return 0;
-  }
-
-  const style = window.getComputedStyle(element);
-  if (style.display === "none" || style.position === "fixed") {
-    return 0;
-  }
-
-  const rect = element.getBoundingClientRect();
-  if (rect.height <= 0) {
-    return 0;
-  }
-
-  return rect.bottom + window.scrollY;
-}
-
-function getContentHeight() {
-  const measuredNodes = Array.from(document.body.querySelectorAll("main, main > section, body > footer"));
-  const measuredBottom = Math.max(0, ...measuredNodes.map(getElementBottom));
-
-  if (measuredBottom > 0) {
-    return Math.ceil(measuredBottom);
-  }
-
-  return Math.ceil(getScreenBoundedHeight());
-}
-
 export function NukloLegacyMount() {
   useEffect(() => {
     if (!isLegacyNukloMount()) {
       return;
     }
 
-    let frame = 0;
     const root = document.documentElement;
     const previousFlag = root.dataset.nukloEmbed;
     const previousHeight = root.style.getPropertyValue("--nuklo-screen-height");
 
     function syncViewportHeight() {
       root.style.setProperty("--nuklo-screen-height", `${getScreenBoundedHeight()}px`);
-    }
-
-    function postHeight() {
-      window.cancelAnimationFrame(frame);
-      frame = window.requestAnimationFrame(() => {
-        window.parent.postMessage(
-          {
-            type: "nuklo-template:height",
-            height: getContentHeight()
-          },
-          "*"
-        );
-      });
     }
 
     function handleMessage(event: MessageEvent) {
@@ -91,29 +48,15 @@ export function NukloLegacyMount() {
 
       if (event.source === window.parent && message.type === "nuklo-template:lead-result") {
         window.postMessage(message, window.location.origin);
-        postHeight();
       }
     }
 
     root.dataset.nukloEmbed = "true";
     syncViewportHeight();
-
-    const observer = new ResizeObserver(postHeight);
-    Array.from(document.body.querySelectorAll("main, main > section, body > footer")).forEach((element) =>
-      observer.observe(element)
-    );
-
-    window.parent.postMessage({ type: "nuklo-template:ready" }, "*");
-    postHeight();
     window.addEventListener("message", handleMessage);
     window.addEventListener("resize", syncViewportHeight);
-    window.addEventListener("resize", postHeight);
-    window.addEventListener("load", postHeight);
 
     return () => {
-      window.cancelAnimationFrame(frame);
-      observer.disconnect();
-
       if (previousFlag === undefined) {
         delete root.dataset.nukloEmbed;
       } else {
@@ -128,8 +71,6 @@ export function NukloLegacyMount() {
 
       window.removeEventListener("message", handleMessage);
       window.removeEventListener("resize", syncViewportHeight);
-      window.removeEventListener("resize", postHeight);
-      window.removeEventListener("load", postHeight);
     };
   }, []);
 
