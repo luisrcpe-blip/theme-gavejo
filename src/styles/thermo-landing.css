@@ -7,8 +7,16 @@
 }
 
 section#seccion-principal {
-  height: 100dvh !important;
-  max-height: 920px;
+  min-height: 100svh;
+  height: 100svh !important;
+  max-height: none;
+}
+
+@supports (height: 100dvh) {
+  section#seccion-principal {
+    min-height: 100dvh;
+    height: 100dvh !important;
+  }
 }
 
 .seccion-principal-termo {
@@ -233,10 +241,6 @@ section#seccion-principal {
 }
 
 @media (max-width: 640px) {
-  section#seccion-principal {
-    max-height: 860px;
-  }
-
   .termo-hero-frame {
     padding: 7.2rem 0 2.4rem;
   }
