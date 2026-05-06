@@ -7,16 +7,9 @@
 }
 
 section#seccion-principal {
-  min-height: clamp(640px, 90svh, 860px);
-  height: auto;
-  max-height: 860px;
-}
-
-@media (min-width: 1180px) {
-  section#seccion-principal {
-    min-height: clamp(680px, 56vw, 820px);
-    max-height: 820px;
-  }
+  min-height: 100dvh !important;
+  height: 100dvh !important;
+  max-height: none !important;
 }
 
 .seccion-principal-termo {
