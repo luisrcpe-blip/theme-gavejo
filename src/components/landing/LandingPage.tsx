@@ -8,6 +8,7 @@ import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { buildWhatsappHref, trackTemplateEvent, withThemeBasePath } from "@/lib/runtime";
 import { LandingConfig } from "@/lib/types";
+import type { ReactNode } from "react";
 
 type LandingPageProps = {
   config: LandingConfig;
@@ -33,6 +34,56 @@ function toSpanishVisibleText(value: string) {
     .replace(/\bVisual hero\b/g, "Imagen principal")
     .replace(/\bDashboard\b/g, "Panel")
     .replace(/\bLead\b/g, "Consulta");
+}
+
+type TermoIconName = "leaf" | "shield" | "thermo" | "sun" | "stack";
+
+function TermoIcon({ name, variant }: { name: TermoIconName; variant: "value" | "strip" }) {
+  const paths: Record<TermoIconName, ReactNode> = {
+    leaf: (
+      <>
+        <path d="M38 9C24.5 10 13.3 18.4 10 34.2c14.7 1.2 26.4-7.1 30-22.2.5-2-.1-3.1-2-3Z" />
+        <path d="M15.2 33.1c6.1-8.3 13.4-14.8 22.9-21" />
+        <path d="M20.4 31.1c-1-4.2-.4-8.4 1.8-12.6" />
+      </>
+    ),
+    shield: (
+      <>
+        <path d="M24 6.5 38 12.2v10.9c0 8.8-5.8 15.5-14 18.9-8.2-3.4-14-10.1-14-18.9V12.2L24 6.5Z" />
+        <path d="m17.4 24.3 4.4 4.5 9-10" />
+      </>
+    ),
+    thermo: (
+      <>
+        <path d="M24 7.5a5 5 0 0 0-5 5v16.2a9 9 0 1 0 10 0V12.5a5 5 0 0 0-5-5Z" />
+        <path d="M24 15.2v17.4" />
+        <path d="M16.4 10.8c-2.8 1.3-4.8 3.4-5.9 6.2" />
+        <path d="M31.6 10.8c2.8 1.3 4.8 3.4 5.9 6.2" />
+      </>
+    ),
+    sun: (
+      <>
+        <circle cx="24" cy="24" r="7.4" />
+        <path d="M24 5.6v6.2M24 36.2v6.2M5.6 24h6.2M36.2 24h6.2M10.9 10.9l4.4 4.4M32.7 32.7l4.4 4.4M37.1 10.9l-4.4 4.4M15.3 32.7l-4.4 4.4" />
+      </>
+    ),
+    stack: (
+      <>
+        <path d="m9 16.8 15-6.8 15 6.8-15 6.9-15-6.9Z" />
+        <path d="m9 24.4 15 6.9 15-6.9" />
+        <path d="m9 31.8 15 6.9 15-6.9" />
+        <path d="M16.2 16.9h15.6" />
+      </>
+    )
+  };
+
+  return (
+    <span className={`termo-icon termo-icon-${variant} termo-icon-${name}`} aria-hidden="true">
+      <svg viewBox="0 0 48 48" focusable="false" role="presentation">
+        {paths[name]}
+      </svg>
+    </span>
+  );
 }
 
 export function LandingPage({ config }: LandingPageProps) {
@@ -68,17 +119,17 @@ export function LandingPage({ config }: LandingPageProps) {
                 </div>
                 <div className="termo-hero-values" aria-label="Fortalezas de la madera termotratada">
                   <article>
-                    <span className="termo-value-icon termo-value-leaf" aria-hidden="true" />
+                    <TermoIcon name="leaf" variant="value" />
                     <strong>Estabilidad</strong>
                     <p>Mayor resistencia al movimiento.</p>
                   </article>
                   <article>
-                    <span className="termo-value-icon termo-value-shield" aria-hidden="true" />
+                    <TermoIcon name="shield" variant="value" />
                     <strong>Durabilidad</strong>
                     <p>Resistente a humedad y agentes externos.</p>
                   </article>
                   <article>
-                    <span className="termo-value-icon termo-value-thermo" aria-hidden="true" />
+                    <TermoIcon name="thermo" variant="value" />
                     <strong>Sostenible</strong>
                     <p>Proceso natural sin quimicos anadidos.</p>
                   </article>
@@ -157,22 +208,22 @@ export function LandingPage({ config }: LandingPageProps) {
               </div>
               <div className="termo-performance-points">
                 <article>
-                  <span className="termo-strip-icon termo-strip-sun" aria-hidden="true" />
+                  <TermoIcon name="sun" variant="strip" />
                   <h3>Estetica</h3>
                   <p>Color calido y uniforme que realza cualquier espacio.</p>
                 </article>
                 <article>
-                  <span className="termo-strip-icon termo-strip-shield" aria-hidden="true" />
+                  <TermoIcon name="shield" variant="strip" />
                   <h3>Proteccion natural</h3>
                   <p>Mayor resistencia a hongos, insectos y cambios de temperatura.</p>
                 </article>
                 <article>
-                  <span className="termo-strip-icon termo-strip-stack" aria-hidden="true" />
+                  <TermoIcon name="stack" variant="strip" />
                   <h3>Estabilidad</h3>
                   <p>Menor dilatacion y contraccion, maxima estabilidad dimensional.</p>
                 </article>
                 <article>
-                  <span className="termo-strip-icon termo-strip-leaf" aria-hidden="true" />
+                  <TermoIcon name="leaf" variant="strip" />
                   <h3>Compromiso</h3>
                   <p>Madera sostenible, duradera y respetuosa con el entorno.</p>
                 </article>
