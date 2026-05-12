@@ -291,11 +291,11 @@ section#seccion-principal {
 @media (max-width: 640px) {
   section#seccion-principal {
     min-height: 75dvh !important;
-    height: 75dvh !important;
+    height: auto !important;
   }
 
   .termo-hero-frame {
-    padding: 5.25rem 0 1.35rem;
+    padding: 5.25rem 0 max(1.75rem, calc(env(safe-area-inset-bottom) + 1.35rem));
   }
 
   .termo-hero-copy h1 {
