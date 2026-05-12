@@ -36,9 +36,9 @@ function toSpanishVisibleText(value: string) {
     .replace(/\bLead\b/g, "Consulta");
 }
 
-type TermoIconName = "leaf" | "shield" | "thermo" | "sun" | "stack";
+type TermoIconName = "leaf" | "shield" | "thermo";
 
-function TermoIcon({ name, variant }: { name: TermoIconName; variant: "value" | "strip" }) {
+function TermoIcon({ name }: { name: TermoIconName }) {
   const paths: Record<TermoIconName, ReactNode> = {
     leaf: (
       <>
@@ -60,29 +60,188 @@ function TermoIcon({ name, variant }: { name: TermoIconName; variant: "value" | 
         <path d="M16.4 10.8c-2.8 1.3-4.8 3.4-5.9 6.2" />
         <path d="M31.6 10.8c2.8 1.3 4.8 3.4 5.9 6.2" />
       </>
-    ),
-    sun: (
-      <>
-        <circle cx="24" cy="24" r="7.4" />
-        <path d="M24 5.6v6.2M24 36.2v6.2M5.6 24h6.2M36.2 24h6.2M10.9 10.9l4.4 4.4M32.7 32.7l4.4 4.4M37.1 10.9l-4.4 4.4M15.3 32.7l-4.4 4.4" />
-      </>
-    ),
-    stack: (
-      <>
-        <path d="m9 16.8 15-6.8 15 6.8-15 6.9-15-6.9Z" />
-        <path d="m9 24.4 15 6.9 15-6.9" />
-        <path d="m9 31.8 15 6.9 15-6.9" />
-        <path d="M16.2 16.9h15.6" />
-      </>
     )
   };
 
   return (
-    <span className={`termo-icon termo-icon-${variant} termo-icon-${name}`} aria-hidden="true">
+    <span className={`termo-icon termo-icon-${name}`} aria-hidden="true">
       <svg viewBox="0 0 48 48" focusable="false" role="presentation">
         {paths[name]}
       </svg>
     </span>
+  );
+}
+
+const termoAdvantages = [
+  "Menor absorcion de humedad y mejor estabilidad dimensional.",
+  "Buen comportamiento para exterior sin depender de tratamientos quimicos pesados.",
+  "Color calido y veta marcada para proyectos arquitectonicos limpios.",
+  "Compatible con fachadas, decking, revestimientos, lamas y celosias."
+];
+
+const termoSystemSteps = [
+  "Elegir especie y perfil segun exposicion, uso y lenguaje del proyecto.",
+  "Resolver subestructura, ventilacion, fijacion oculta y juntas desde el inicio.",
+  "Definir acabado, mantenimiento y respaldo tecnico con catalogo Tantimber."
+];
+
+function ThermoBriefBody({ config, heroWhatsappHref }: { config: LandingConfig; heroWhatsappHref: string }) {
+  return (
+    <>
+      <section id="intro" className="section container termo-brief-section termo-brief-intro">
+        <div className="termo-brief-lead">
+          <Reveal>
+            <p className="section-kicker">Que es</p>
+            <h2>Madera modificada con calor para ganar estabilidad y presencia.</h2>
+            <p className="lead-text">
+              La madera termo-tratada se somete a un proceso controlado de temperatura y vapor. El resultado es una madera mas estable, con menor absorcion de humedad y una estetica natural pensada para arquitectura exterior e interior.
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <NeonPlaceholder
+              label="Textura termo-tratada"
+              caption="Detalle de madera termo-tratada"
+              assetKey="PH-TERMO-SYS-01"
+              minHeight={360}
+              aspectRatio="4 / 3"
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="applications" className="section section-soft termo-brief-section">
+        <div className="container">
+          <Reveal>
+            <p className="section-kicker">Aplicaciones</p>
+            <h2>Donde tiene mas sentido usarla</h2>
+            <p className="lead-text termo-brief-copy">
+              Se recomienda cuando el proyecto necesita madera natural con respuesta tecnica clara, buena lectura visual y mantenimiento razonable.
+            </p>
+          </Reveal>
+          <div className="termo-brief-card-grid">
+            {config.applications.map((item, index) => (
+              <Reveal key={item.title} delay={index * 70}>
+                <article className="termo-brief-card">
+                  <NeonPlaceholder
+                    label={toSpanishVisibleText(item.title)}
+                    caption={item.alt}
+                    assetKey={item.image}
+                    minHeight={190}
+                    aspectRatio="4 / 3"
+                  />
+                  <div>
+                    <h3>{toSpanishVisibleText(item.title)}</h3>
+                    <p>{toSpanishVisibleText(item.text)}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section container termo-brief-section">
+        <div className="termo-brief-split">
+          <Reveal>
+            <p className="section-kicker">Ventajas tecnicas</p>
+            <h2>Lo importante, sin convertirlo en ficha tecnica.</h2>
+            <ul className="termo-check-list">
+              {termoAdvantages.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={90}>
+            <div className="termo-system-panel">
+              <p className="section-kicker">Sistema constructivo</p>
+              <h3>Material, fijacion y acabado deben pensarse juntos.</h3>
+              <div className="termo-system-steps">
+                {termoSystemSteps.map((step, index) => (
+                  <article key={step}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <p>{step}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="materials" className="section section-soft termo-brief-section">
+        <div className="container">
+          <Reveal>
+            <p className="section-kicker">Especies principales</p>
+            <h2>Opciones segun rendimiento, veta y presupuesto</h2>
+          </Reveal>
+          <div className="grid grid-3">
+            {config.materials.map((item, index) => (
+              <Reveal key={item.title} delay={index * 80}>
+                <article className="card card-pad termo-species-card">
+                  <p className="mini-kicker">{toSpanishVisibleText(item.subtitle)}</p>
+                  <h3>{toSpanishVisibleText(item.title)}</h3>
+                  <p>{toSpanishVisibleText(item.text)}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section container termo-catalog-section">
+        <Reveal>
+          <div className="termo-catalog-card">
+            <div>
+              <p className="section-kicker">Catalogo y asesoria</p>
+              <h2>Usa el catalogo como respaldo tecnico, no como punto de partida.</h2>
+              <p>
+                Si el proyecto encaja, revisamos aplicacion, especie, sistema y acabado. Luego el catalogo Tantimber sirve para validar datos y detalles.
+              </p>
+            </div>
+            <div className="hero-actions termo-catalog-actions">
+              <a
+                className="btn btn-secondary"
+                href={withThemeBasePath("/documentos/tantimber.pdf")}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackTemplateEvent("cta_click", config.slug, { section: "catalog", ctaLabel: "Descargar catalogo" })}
+              >
+                Descargar catalogo
+              </a>
+              <QuoteModalButton className="btn btn-primary" originLanding={config.navName} intent="Solicitar asesoria">
+                Solicitar asesoria
+              </QuoteModalButton>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <section id="contact" className="section section-dark">
+        <div className="container two-col contact-wrap">
+          <Reveal>
+            <p className="section-kicker section-kicker-light">Contacto</p>
+            <h2>Cuentanos donde ira la madera y te orientamos.</h2>
+            <p className="lead-text">
+              Indicanos si es fachada, decking, interior o celosia, y el equipo te ayudara a elegir especie, sistema y siguiente paso.
+            </p>
+            <div className="hero-actions" style={{ marginTop: "1rem" }}>
+              <a
+                className="btn btn-light"
+                href={heroWhatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "brief_contact" })}
+              >
+                Abrir WhatsApp
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <ContactForm originLanding={config.navName} />
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -119,17 +278,17 @@ export function LandingPage({ config }: LandingPageProps) {
                 </div>
                 <div className="termo-hero-values" aria-label="Fortalezas de la madera termotratada">
                   <article>
-                    <TermoIcon name="leaf" variant="value" />
+                    <TermoIcon name="leaf" />
                     <strong>Estabilidad</strong>
                     <p>Mayor resistencia al movimiento.</p>
                   </article>
                   <article>
-                    <TermoIcon name="shield" variant="value" />
+                    <TermoIcon name="shield" />
                     <strong>Durabilidad</strong>
                     <p>Resistente a humedad y agentes externos.</p>
                   </article>
                   <article>
-                    <TermoIcon name="thermo" variant="value" />
+                    <TermoIcon name="thermo" />
                     <strong>Sostenible</strong>
                     <p>Proceso natural sin quimicos anadidos.</p>
                   </article>
@@ -196,42 +355,10 @@ export function LandingPage({ config }: LandingPageProps) {
           </section>
         )}
 
-        {isThermoLanding && (
-          <section className="termo-performance-strip" aria-label="Resumen de beneficios de madera termotratada">
-            <div className="container termo-performance-grid">
-              <div className="termo-performance-copy">
-                <p className="section-kicker">Madera termo tratada</p>
-                <h2>Belleza natural. Desempeno superior.</h2>
-                <p>
-                  Tratamiento termico que realza la veta y el color de la madera, mejorando su comportamiento frente al paso del tiempo.
-                </p>
-              </div>
-              <div className="termo-performance-points">
-                <article>
-                  <TermoIcon name="sun" variant="strip" />
-                  <h3>Estetica</h3>
-                  <p>Color calido y uniforme que realza cualquier espacio.</p>
-                </article>
-                <article>
-                  <TermoIcon name="shield" variant="strip" />
-                  <h3>Proteccion natural</h3>
-                  <p>Mayor resistencia a hongos, insectos y cambios de temperatura.</p>
-                </article>
-                <article>
-                  <TermoIcon name="stack" variant="strip" />
-                  <h3>Estabilidad</h3>
-                  <p>Menor dilatacion y contraccion, maxima estabilidad dimensional.</p>
-                </article>
-                <article>
-                  <TermoIcon name="leaf" variant="strip" />
-                  <h3>Compromiso</h3>
-                  <p>Madera sostenible, duradera y respetuosa con el entorno.</p>
-                </article>
-              </div>
-            </div>
-          </section>
-        )}
-
+        {isThermoLanding ? (
+          <ThermoBriefBody config={config} heroWhatsappHref={heroWhatsappHref} />
+        ) : (
+          <>
         <section id="intro" className="section container">
           <div className="two-col">
             <Reveal>
@@ -475,6 +602,8 @@ export function LandingPage({ config }: LandingPageProps) {
             </Reveal>
           </div>
         </section>
+          </>
+        )}
       </main>
 
       <FloatingWhatsApp sourcePage={config.slug} />
