@@ -67,7 +67,7 @@ export function SiteFooter() {
 
         <div className="footer-contact">
           <p>Contacto</p>
-          <span>Cuéntanos el proyecto y te orientamos sobre material, sistema y siguiente paso.</span>
+          <span>Cuentanos el proyecto y te orientamos sobre material, sistema y siguiente paso.</span>
           <QuoteModalButton className="footer-contact-cta" originLanding="Footer" intent="Hablar de un proyecto">
             Hablar de un proyecto
           </QuoteModalButton>

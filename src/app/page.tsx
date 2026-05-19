@@ -5,7 +5,6 @@ import { PublicHeader } from "@/components/ui/PublicHeader";
 import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { SiteFooter } from "@/components/ui/SiteFooter";
 import { Reveal } from "@/components/ui/Reveal";
-import { HomePrimaryRoutes } from "@/components/home/HomePrimaryRoutes";
 
 const kpiItems = [
   {
@@ -165,7 +164,13 @@ export default function HomePage() {
             <Reveal>
               <p className="section-kicker">Rutas principales</p>
               <h2>Elige por aplicacion o dejanos orientar el proyecto</h2>
-              <HomePrimaryRoutes />
+              <div className="home-editorial-links" aria-label="Accesos principales">
+                <Link href="/soluciones/fachadas">Ver landing principal</Link>
+                <Link href="/soluciones">Ver todas las soluciones</Link>
+                <QuoteModalButton className="home-editorial-link-button" originLanding="Home" intent="Contactar ahora">
+                  Contactar ahora
+                </QuoteModalButton>
+              </div>
               <div className="home-mini-points">
                 <div className="home-mini-point">
                   <strong>Arquitectura</strong>
@@ -187,7 +192,7 @@ export default function HomePage() {
         <section className="section section-soft">
           <div className="container home-proof-band">
             {kpiItems.map((item) => (
-              <article className="card card-pad" key={item.kicker}>
+              <article className="home-proof-item" key={item.kicker}>
                 <p className="mini-kicker">{item.kicker}</p>
                 <h3>{item.value}</h3>
                 <p>{item.description}</p>
@@ -246,12 +251,12 @@ export default function HomePage() {
                 <h2>Base material para exterior, interior y proyectos con identidad</h2>
               </div>
             </Reveal>
-            <div className="grid grid-3">
+            <div className="home-material-grid">
               {materialCards.map((item, idx) => (
                 <Reveal key={item.title} delay={idx * 90}>
-                  <article className="card card-pad">
+                  <article className="home-material-item">
                     <NeonPlaceholder label={item.title} caption={item.placeholder} assetKey={item.assetKey} minHeight={210} aspectRatio="4 / 3" />
-                    <h3 style={{ marginTop: "1rem" }}>{item.title}</h3>
+                    <h3>{item.title}</h3>
                     <p>{item.copy}</p>
                   </article>
                 </Reveal>
@@ -319,7 +324,7 @@ export default function HomePage() {
         <section className="section home-final-cta">
           <div className="container">
             <Reveal>
-              <div className="home-final-card">
+              <div className="home-final-editorial">
                 <p className="chip chip-light">Maderas Gavejo</p>
                 <h2>Cuentanos que quieres construir y buscamos la solucion adecuada</h2>
                 <p className="lead-text">
