@@ -60,6 +60,7 @@ section#seccion-principal {
 .termo-hero-copy h1 {
   max-width: 680px;
   margin-top: 0.82rem;
+  color: #fff8ec;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(3.25rem, 6.1vw, 6.2rem);
   font-weight: 500;
@@ -67,13 +68,24 @@ section#seccion-principal {
   letter-spacing: -0.055em;
   text-transform: uppercase;
   text-wrap: balance;
+  text-shadow: 0 22px 54px rgba(0, 0, 0, 0.66);
 }
 
 .termo-hero-copy p {
   max-width: 480px;
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(255, 248, 236, 0.88);
   font-size: clamp(1rem, 1.3vw, 1.12rem);
   line-height: 1.64;
+  text-shadow: 0 12px 34px rgba(0, 0, 0, 0.52);
+}
+
+.landing-page .seccion-principal-termo .chip-light,
+.landing-page .seccion-principal-termo .termo-hero-copy h1 {
+  color: #fff8ec;
+}
+
+.landing-page .seccion-principal-termo .termo-hero-copy p {
+  color: rgba(255, 248, 236, 0.88);
 }
 
 .termo-hero-values {
