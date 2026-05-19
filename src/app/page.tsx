@@ -148,16 +148,6 @@ function HomeVideoHero() {
             </Link>
           </div>
         </div>
-
-        <div className="home-video-hero-routes" aria-label="Soluciones destacadas">
-          {solutionCards.slice(0, 4).map((solution, index) => (
-            <Link href={solution.href} className="home-video-hero-route" key={solution.href}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{solution.title}</strong>
-              <small>{solution.placeholderCaption}</small>
-            </Link>
-          ))}
-        </div>
       </div>
     </section>
   );
