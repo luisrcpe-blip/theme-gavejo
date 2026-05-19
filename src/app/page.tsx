@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
-import { IndexHeroSlider, type IndexHeroSlide } from "@/components/ui/IndexHeroSlider";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
@@ -115,30 +114,61 @@ const materialCards = [
   }
 ];
 
-const homeHeroSlides: IndexHeroSlide[] = solutionCards.slice(0, 5).map((solution) => ({
-  title: solution.title,
-  eyebrow: solution.placeholderCaption,
-  description: solution.caption,
-  href: solution.href,
-  cta: `Ver ${solution.title}`,
-  assetKey: solution.assetKey
-}));
+const homeHeroVideo = "https://3kkb5uvxojhzy.ok.kimi.link/videos/nature-hero.mp4";
+
+function HomeVideoHero() {
+  return (
+    <section className="home-video-hero">
+      <video
+        className="home-video-hero-media"
+        src={homeHeroVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      />
+      <div className="home-video-hero-overlay" aria-hidden="true" />
+
+      <div className="container home-video-hero-grid">
+        <div className="home-video-hero-copy">
+          <span className="chip chip-light">Maderas Gavejo</span>
+          <h1>Madera para fachadas, terrazas e interiores con criterio tecnico</h1>
+          <p>
+            Soluciones para arquitectura exterior e interior: fachadas ventiladas, decking, revestimientos, madera termo tratada,
+            madera quemada y piezas recuperadas con identidad mediterranea.
+          </p>
+          <div className="hero-actions">
+            <QuoteModalButton className="btn btn-light" originLanding="Maderas Gavejo" intent="Solicitar informacion">
+              Solicitar informacion
+            </QuoteModalButton>
+            <Link href="/soluciones" className="btn btn-outline-light">
+              Ver soluciones
+            </Link>
+          </div>
+        </div>
+
+        <div className="home-video-hero-routes" aria-label="Soluciones destacadas">
+          {solutionCards.slice(0, 4).map((solution, index) => (
+            <Link href={solution.href} className="home-video-hero-route" key={solution.href}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{solution.title}</strong>
+              <small>{solution.placeholderCaption}</small>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function HomePage() {
   return (
     <>
       <PublicHeader />
       <main className="home-wrap">
-        <IndexHeroSlider
-          badge="Maderas Gavejo"
-          title="Madera para fachadas, terrazas e interiores con criterio tecnico"
-          description="Soluciones para arquitectura exterior e interior: fachadas ventiladas, decking, revestimientos, madera termo tratada, madera quemada y piezas recuperadas con identidad mediterranea."
-          slides={homeHeroSlides}
-          primaryCtaHref="/contacto"
-          primaryCtaLabel="Solicitar informacion"
-          secondaryCtaHref="/soluciones"
-          secondaryCtaLabel="Ver soluciones"
-        />
+        <HomeVideoHero />
 
         <section className="section section-soft home-route-strip" id="inicio">
           <div className="container">

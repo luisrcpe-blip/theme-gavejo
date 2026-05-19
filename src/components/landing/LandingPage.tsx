@@ -1,11 +1,11 @@
 "use client";
 
-import { ContactForm } from "@/components/ui/ContactForm";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { Reveal } from "@/components/ui/Reveal";
+import { SiteFooter } from "@/components/ui/SiteFooter";
 import { buildWhatsappHref, trackTemplateEvent, withThemeBasePath } from "@/lib/runtime";
 import { LandingConfig } from "@/lib/types";
 import type { ReactNode } from "react";
@@ -216,17 +216,22 @@ function ThermoBriefBody({ config, heroWhatsappHref }: { config: LandingConfig; 
         </Reveal>
       </section>
 
-      <section id="contact" className="section section-dark">
-        <div className="container two-col contact-wrap">
+      <section id="contact" className="section landing-final-cta">
+        <div className="container landing-final-cta-inner">
           <Reveal>
-            <p className="section-kicker section-kicker-light">Contacto</p>
+            <p className="section-kicker">Contacto</p>
             <h2>Cuentanos donde ira la madera y te orientamos.</h2>
             <p className="lead-text">
               Indicanos si es fachada, decking, interior o celosia, y el equipo te ayudara a elegir especie, sistema y siguiente paso.
             </p>
-            <div className="hero-actions" style={{ marginTop: "1rem" }}>
+          </Reveal>
+          <Reveal delay={80}>
+            <div className="hero-actions landing-final-actions">
+              <QuoteModalButton className="btn btn-primary" originLanding={config.navName} intent="Solicitar asesoria">
+                Solicitar asesoria
+              </QuoteModalButton>
               <a
-                className="btn btn-light"
+                className="btn btn-ghost"
                 href={heroWhatsappHref}
                 target="_blank"
                 rel="noreferrer"
@@ -235,9 +240,6 @@ function ThermoBriefBody({ config, heroWhatsappHref }: { config: LandingConfig; 
                 Abrir WhatsApp
               </a>
             </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <ContactForm originLanding={config.navName} />
           </Reveal>
         </div>
       </section>
@@ -583,22 +585,30 @@ export function LandingPage({ config }: LandingPageProps) {
           </div>
         </section>
 
-        <section id="contact" className="section section-dark">
-          <div className="container two-col contact-wrap">
+        <section id="contact" className="section landing-final-cta">
+          <div className="container landing-final-cta-inner">
             <Reveal>
-              <p className="section-kicker section-kicker-light">Contacto</p>
+              <p className="section-kicker">Contacto</p>
               <h2>Solicita orientacion tecnica para tu proyecto</h2>
               <p className="lead-text">
                 Cuentanos que tipo de proyecto estas preparando y el equipo podra orientarte sobre material, sistema y siguiente paso.
               </p>
-              <div className="hero-actions" style={{ marginTop: "1rem" }}>
-                <QuoteModalButton className="btn btn-light" originLanding={config.navName} intent="Hablar con asesor tecnico">
+            </Reveal>
+            <Reveal delay={80}>
+              <div className="hero-actions landing-final-actions">
+                <QuoteModalButton className="btn btn-primary" originLanding={config.navName} intent="Hablar con asesor tecnico">
                   Hablar con asesor tecnico
                 </QuoteModalButton>
+                <a
+                  className="btn btn-ghost"
+                  href={heroWhatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "landing_final_cta" })}
+                >
+                  WhatsApp
+                </a>
               </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <ContactForm originLanding={config.navName} />
             </Reveal>
           </div>
         </section>
@@ -606,6 +616,7 @@ export function LandingPage({ config }: LandingPageProps) {
         )}
       </main>
 
+      <SiteFooter />
       <FloatingWhatsApp sourcePage={config.slug} />
     </div>
   );

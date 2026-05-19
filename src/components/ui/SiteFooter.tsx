@@ -21,10 +21,13 @@ const balearLinks = [
   { href: "/mader-balear", label: "Mader Balear" },
   { href: "/mader-balear/madera-vieja", label: "Madera vieja" },
   { href: "/mader-balear/puertas", label: "Puertas" },
-  { href: "/mader-balear/tableros-reclaimed", label: "Tableros reclaimed" },
-  { href: "/mader-balear/revestimientos", label: "Revestimientos" },
-  { href: "/mader-balear/frentes-cocina", label: "Frentes cocina" },
-  { href: "/mader-balear/decoracion", label: "Decoracion" }
+  { href: "/mader-balear/revestimientos", label: "Revestimientos" }
+];
+
+const utilityLinks = [
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/blog", label: "Blog tecnico" },
+  { href: "/privacidad", label: "Privacidad" }
 ];
 
 export function SiteFooter() {
@@ -37,7 +40,7 @@ export function SiteFooter() {
         <div className="footer-brand-block">
           <Link href="/" className="footer-wordmark" aria-label="Ir al inicio">gavejo</Link>
           <p>
-            Soluciones tecnicas en madera para fachadas, decking, revestimientos interiores y proyectos con identidad material.
+            Madera tecnica y recuperada para arquitectura exterior, interior y proyectos con identidad material.
           </p>
           <div className="footer-badges" aria-label="Enfoque de trabajo">
             <span>Arquitectura</span>
@@ -64,21 +67,20 @@ export function SiteFooter() {
 
         <div className="footer-contact">
           <p>Contacto</p>
-          <Link href="/contacto">Formulario de proyecto</Link>
-          <a href={whatsappHref} target="_blank" rel="noreferrer">Abrir WhatsApp</a>
-          <Link href="/proyectos">Proyectos</Link>
-          <Link href="/blog">Blog tecnico</Link>
-          <Link href="/privacidad">Privacidad</Link>
-          <span>Respuesta orientada a proyecto, material y sistema.</span>
-          <QuoteModalButton className="footer-contact-cta" originLanding="Footer" intent="Solicitar informacion">
-            Solicitar informacion
+          <span>Cuéntanos el proyecto y te orientamos sobre material, sistema y siguiente paso.</span>
+          <QuoteModalButton className="footer-contact-cta" originLanding="Footer" intent="Hablar de un proyecto">
+            Hablar de un proyecto
           </QuoteModalButton>
+          <Link href="/contacto">Formulario de proyecto</Link>
+          <a href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp directo</a>
         </div>
       </div>
 
       <div className="container footer-bottom">
         <span>{"\u00a9"} {year} Maderas Gavejo</span>
-        <span>Fachadas, decking, revestimientos y materiales tecnicos en madera.</span>
+        <nav className="footer-utility" aria-label="Enlaces secundarios">
+          {utilityLinks.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+        </nav>
       </div>
     </footer>
   );
