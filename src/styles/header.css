@@ -925,16 +925,14 @@
   z-index: 2;
   display: inline-flex;
   justify-self: start;
-  width: 52px;
+  width: 54px;
   height: 48px;
-  border-radius: 2px;
-  border: 0;
-  border-left: 1px solid rgba(255, 255, 255, 0.32);
-  border-right: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035));
   color: #fff;
   box-shadow: none;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   transition:
     background var(--transition-fast) var(--ease-main),
     border-color var(--transition-fast) var(--ease-main),
@@ -942,8 +940,8 @@
 }
 
 .mobile-menu-toggle:hover {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
-  border-left-color: rgba(255, 255, 255, 0.62);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.055));
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
 }
 

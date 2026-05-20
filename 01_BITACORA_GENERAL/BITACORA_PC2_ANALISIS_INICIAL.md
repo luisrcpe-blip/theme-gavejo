@@ -1,5 +1,12 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Ajuste forma menu hamburguesa
+
+- Solicitud: el boton hamburguesa habia quedado demasiado cuadrado.
+- Archivo modificado: `src/styles/header.css`.
+- Cambio realizado: se cambio a una pastilla suave con radio moderado, borde sutil y fondo tipo vidrio, evitando tanto el circulo pesado como el cuadrado rigido.
+- Validacion: `npm run check:contract` paso correctamente.
+
 ## 2026-05-20 - Ajuste controles carrusel y menu
 
 - Solicitud: asegurar que los puntos de navegacion del carrusel se vean dentro del 100% de alto de pantalla y mejorar estetica del menu hamburguesa/flechas.
