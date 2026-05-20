@@ -1,5 +1,15 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Correccion real 100dvh landing termo
+
+- Solicitud: corregir que la seccion principal no crezca mas alla del 100% de la pantalla y que los dots no se vean forzados hacia arriba.
+- Archivos modificados: `src/styles/thermo-landing.css` y `src/styles/landing.css`.
+- Cambio realizado: `#seccion-principal` vuelve a `height: 100dvh` y `max-height: 100dvh`, con `overflow: hidden`.
+- Cambio realizado: el contenido termo se compacta dentro del hero usando menor escala de H1, texto, iconos y espaciados; no se deja que la seccion crezca.
+- Cambio realizado: los dots vuelven al borde inferior natural del carrusel, porque ahora el contenido deja espacio real para ellos.
+- Revision navegador: se midio la URL publica en viewport `1900x916`; el hero publico ya mide `916px`, pero los dots estaban chocando con la zona de acciones. El ajuste local corrige la causa: contenido y padding inferior dentro de `100dvh`.
+- Validacion: `npm run check:contract` paso correctamente.
+
 ## 2026-05-20 - Ajuste forma menu hamburguesa
 
 - Solicitud: el boton hamburguesa habia quedado demasiado cuadrado.

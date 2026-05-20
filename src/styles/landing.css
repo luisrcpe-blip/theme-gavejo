@@ -699,8 +699,7 @@
 .hero-cover-dots {
   position: absolute;
   left: 50%;
-  top: calc(100dvh - max(3.6rem, calc(env(safe-area-inset-bottom) + 3rem)));
-  bottom: auto;
+  bottom: max(1.25rem, calc(env(safe-area-inset-bottom) + 0.95rem));
   z-index: 4;
   display: inline-flex;
   align-items: center;

@@ -8,8 +8,8 @@
 
 section#seccion-principal {
   min-height: 100dvh !important;
-  height: auto !important;
-  max-height: none !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
 }
 
 .seccion-principal-termo {
@@ -18,6 +18,7 @@ section#seccion-principal {
   align-items: end;
   color: #fff;
   background: #120b07;
+  overflow: hidden;
 }
 
 .termo-hero-overlay {
@@ -43,7 +44,10 @@ section#seccion-principal {
 .termo-hero-frame {
   position: relative;
   z-index: 1;
-  padding: 112px 0 max(56px, calc(env(safe-area-inset-bottom) + 42px));
+  height: 100dvh;
+  display: grid;
+  align-content: end;
+  padding: clamp(7.25rem, 11dvh, 8.75rem) 0 max(6rem, calc(env(safe-area-inset-bottom) + 5.1rem));
 }
 
 .termo-hero-frame .reveal {
@@ -52,12 +56,12 @@ section#seccion-principal {
 
 .termo-hero-copy h1 {
   max-width: 680px;
-  margin-top: 0.82rem;
+  margin-top: 0.68rem;
   color: #fff8ec;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3.25rem, 6.1vw, 6.2rem);
+  font-size: clamp(3rem, 5.35vw, 5.45rem);
   font-weight: 500;
-  line-height: 0.88;
+  line-height: 0.9;
   letter-spacing: -0.055em;
   text-transform: uppercase;
   text-wrap: balance;
@@ -67,8 +71,8 @@ section#seccion-principal {
 .termo-hero-copy p {
   max-width: 480px;
   color: rgba(255, 248, 236, 0.88);
-  font-size: clamp(1rem, 1.3vw, 1.12rem);
-  line-height: 1.64;
+  font-size: clamp(0.96rem, 1.16vw, 1.04rem);
+  line-height: 1.52;
   text-shadow: 0 12px 34px rgba(0, 0, 0, 0.52);
 }
 
@@ -82,7 +86,7 @@ section#seccion-principal {
 }
 
 .termo-hero-values {
-  margin-top: 24px;
+  margin-top: clamp(0.85rem, 2dvh, 1.2rem);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 132px));
   gap: clamp(0.9rem, 2vw, 1.35rem);
@@ -110,7 +114,7 @@ section#seccion-principal {
 }
 
 .termo-icon {
-  --termo-icon-size: 2.52rem;
+  --termo-icon-size: 2.18rem;
   --termo-icon-color: #d9ae73;
   --termo-icon-bg-a: rgba(217, 174, 115, 0.18);
   --termo-icon-bg-b: rgba(255, 255, 255, 0.055);
@@ -296,23 +300,25 @@ section#seccion-principal {
 @media (max-width: 640px) {
   section#seccion-principal {
     min-height: 100dvh !important;
-    height: auto !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
   }
 
   .termo-hero-frame {
-    padding: 5.25rem 0 max(2.75rem, calc(env(safe-area-inset-bottom) + 2.35rem));
+    height: 100dvh;
+    padding: 4.65rem 0 max(4.7rem, calc(env(safe-area-inset-bottom) + 4.2rem));
   }
 
   .termo-hero-copy h1 {
     max-width: 330px;
-    font-size: clamp(2.55rem, 12.4vw, 3.7rem);
-    line-height: 0.9;
+    font-size: clamp(2.18rem, 10.2vw, 3.15rem);
+    line-height: 0.92;
   }
 
   .termo-hero-copy p {
     max-width: 315px;
-    font-size: 0.88rem;
-    line-height: 1.5;
+    font-size: 0.82rem;
+    line-height: 1.42;
   }
 
   .termo-hero-values {
@@ -337,23 +343,23 @@ section#seccion-principal {
 
   .termo-hero-values p {
     max-width: 90px;
-    font-size: 0.65rem;
-    line-height: 1.22;
+    font-size: 0.62rem;
+    line-height: 1.18;
   }
 
   .landing-page .termo-hero-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     width: min(100%, 345px);
-    margin-top: 1.15rem;
+    margin-top: 0.85rem;
     gap: 0.55rem;
   }
 
   .landing-page .termo-hero-actions .btn {
     width: 100%;
-    min-height: 42px;
-    padding: 0.75rem 1rem;
-    border-radius: 14px;
+    min-height: 40px;
+    padding: 0.66rem 0.8rem;
+    border-radius: 12px;
   }
 }
 
