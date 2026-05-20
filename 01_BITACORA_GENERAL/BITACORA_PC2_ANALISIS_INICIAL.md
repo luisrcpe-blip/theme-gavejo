@@ -1,5 +1,14 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Ajuste controles carrusel y menu
+
+- Solicitud: asegurar que los puntos de navegacion del carrusel se vean dentro del 100% de alto de pantalla y mejorar estetica del menu hamburguesa/flechas.
+- Archivos modificados: `src/styles/landing.css` y `src/styles/header.css`.
+- Cambio realizado: los dots del carrusel se posicionan dentro del primer `100dvh`, no al final de la seccion cuando el contenido crece.
+- Cambio realizado: las flechas laterales se posicionan a `50dvh` para mantenerse a media pantalla visible.
+- Cambio realizado: se elimino el estilo circular pesado de flechas y menu hamburguesa; ahora usan controles rectos, sutiles y con vidrio ligero.
+- Validacion: `npm run check:contract` paso correctamente.
+
 ## 2026-05-20 - Carruseles multimedia
 
 - Solicitud: agregar soporte multimedia a los carruseles para probar imagenes y videos.

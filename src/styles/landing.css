@@ -652,17 +652,17 @@
 
 .hero-cover-arrow {
   position: absolute;
-  top: 50%;
+  top: 50dvh;
   z-index: 4;
-  width: clamp(42px, 4vw, 58px);
-  height: clamp(42px, 4vw, 58px);
+  width: clamp(38px, 3.2vw, 46px);
+  height: clamp(64px, 7vw, 82px);
   display: inline-grid;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 999px;
-  background: rgba(12, 16, 24, 0.34);
+  border: 0;
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(9, 12, 18, 0.08), rgba(9, 12, 18, 0.34));
   color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+  box-shadow: none;
   backdrop-filter: blur(12px);
   cursor: pointer;
   transform: translateY(-50%);
@@ -674,16 +674,16 @@
 }
 
 .hero-cover-arrow:hover {
-  border-color: rgba(255, 255, 255, 0.66);
-  background: rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(9, 12, 18, 0.42));
   color: #fff;
-  transform: translateY(-50%) scale(1.03);
+  transform: translateY(-50%) translateX(0);
 }
 
 .hero-cover-arrow span {
   display: block;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.55rem, 2.2vw, 2.25rem);
+  font-family: var(--font-primary);
+  font-size: clamp(1.65rem, 2vw, 2.2rem);
+  font-weight: 300;
   line-height: 1;
   transform: translateY(-0.06em);
 }
@@ -699,7 +699,8 @@
 .hero-cover-dots {
   position: absolute;
   left: 50%;
-  bottom: max(1.1rem, calc(env(safe-area-inset-bottom) + 0.8rem));
+  top: calc(100dvh - max(3.6rem, calc(env(safe-area-inset-bottom) + 3rem)));
+  bottom: auto;
   z-index: 4;
   display: inline-flex;
   align-items: center;
@@ -709,13 +710,13 @@
 }
 
 .hero-cover-dots button {
-  width: 0.48rem;
-  height: 0.48rem;
+  width: 0.44rem;
+  height: 0.44rem;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.48);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: none;
   cursor: pointer;
   transition:
     width var(--transition-fast) var(--ease-main),
@@ -724,7 +725,7 @@
 }
 
 .hero-cover-dots button.is-active {
-  width: 1.45rem;
+  width: 1.35rem;
   border-color: #fff;
   background: #fff;
 }
@@ -869,8 +870,8 @@
   }
 
   .hero-cover-arrow {
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 58px;
   }
 
   .hero-cover-arrow-prev {
