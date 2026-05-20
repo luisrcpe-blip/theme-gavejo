@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { ComingSoonNotice } from "@/components/ui/ComingSoonNotice";
 import { NukloThemeBridge } from "@/components/ui/NukloThemeBridge";
 import "./globals.css";
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" suppressHydrationWarning>
       <body className={poppins.variable}>
         <NukloThemeBridge />
+        <ComingSoonNotice />
         {children}
       </body>
     </html>
