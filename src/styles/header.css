@@ -1237,3 +1237,57 @@ body:has(.mobile-menu-panel.is-open) {
     font-size: 0.9rem !important;
   }
 }
+
+/* Glassier open-menu backdrop */
+.mobile-menu-panel {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(210, 156, 90, 0.14), transparent 38%),
+    linear-gradient(180deg, rgba(7, 10, 13, 0.62) 0%, rgba(7, 10, 13, 0.4) 48%, rgba(7, 10, 13, 0.68) 100%);
+  backdrop-filter: blur(8px) saturate(0.88) brightness(0.78);
+}
+
+.mobile-menu-panel::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.34), transparent 24%, transparent 76%, rgba(0, 0, 0, 0.34)),
+    radial-gradient(circle at 50% 42%, transparent 0%, rgba(0, 0, 0, 0.18) 70%);
+}
+
+.mobile-menu-nav {
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background:
+    linear-gradient(135deg, rgba(31, 33, 29, 0.9), rgba(14, 18, 17, 0.86)),
+    rgba(18, 21, 18, 0.86);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.mobile-menu-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045), transparent 38%),
+    radial-gradient(circle at 16% 0%, rgba(210, 156, 90, 0.1), transparent 34%);
+}
+
+.mobile-menu-group {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 840px) {
+  .mobile-menu-panel {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(210, 156, 90, 0.12), transparent 42%),
+      linear-gradient(180deg, rgba(7, 10, 13, 0.58), rgba(7, 10, 13, 0.72)) !important;
+    backdrop-filter: blur(7px) saturate(0.9) brightness(0.76);
+  }
+}
