@@ -39,6 +39,7 @@ export function ComingSoonNotice() {
 
       event.preventDefault();
       event.stopPropagation();
+      window.dispatchEvent(new CustomEvent("gavejo:coming-soon"));
       showNotice();
     };
 

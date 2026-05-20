@@ -18,8 +18,7 @@ type NavGroup = {
 
 const PRIMARY_LINKS: NavLink[] = [
   { href: "/", label: "Inicio" },
-  { href: "/materiales/termo-tratada", label: "Termo tratada" },
-  { href: "/proximamente", label: "Proximamente" }
+  { href: "/materiales/termo-tratada", label: "Termo tratada" }
 ];
 
 const NAV_GROUPS: NavGroup[] = [
@@ -77,15 +76,6 @@ export function PublicHeader() {
   }, [pathname]);
 
   useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth > 840) setMobileOpen(false);
-    };
-
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  useEffect(() => {
     const onPointerDown = (event: PointerEvent) => {
       if (!(event.target instanceof Element)) return;
       if (!event.target.closest(".topnav-group")) {
@@ -107,6 +97,16 @@ export function PublicHeader() {
     };
   }, []);
 
+  useEffect(() => {
+    const closeMenu = () => {
+      setMobileOpen(false);
+      setOpenGroup(null);
+    };
+
+    window.addEventListener("gavejo:coming-soon", closeMenu);
+    return () => window.removeEventListener("gavejo:coming-soon", closeMenu);
+  }, []);
+
   return (
     <>
       <header
@@ -115,6 +115,22 @@ export function PublicHeader() {
         }`}
       >
         <div className="container topbar-inner">
+          <button
+            type="button"
+            className={`mobile-menu-toggle ${mobileOpen ? "is-open" : ""}`}
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu-panel"
+          >
+            <span className="sr-only">{mobileOpen ? "Cerrar menu" : "Abrir menu"}</span>
+            <span className="mobile-menu-bars" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          </button>
+
           <Link href="/" className="brand-link" aria-label="Volver al inicio">
             <span className="brand-logo-shell">
               <img
@@ -174,26 +190,12 @@ export function PublicHeader() {
             ))}
           </nav>
 
-          <button
-            type="button"
-            className={`mobile-menu-toggle ${mobileOpen ? "is-open" : ""}`}
-            onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-menu-panel"
-          >
-            <span className="sr-only">{mobileOpen ? "Cerrar menu" : "Abrir menu"}</span>
-            <span className="mobile-menu-bars" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </span>
-          </button>
+          <span className="topbar-spacer" aria-hidden="true" />
         </div>
       </header>
 
       <div id="mobile-menu-panel" className={`mobile-menu-panel ${mobileOpen ? "is-open" : ""}`}>
-        <nav className="container mobile-menu-nav" aria-label="Navegacion movil">
+        <nav className="container mobile-menu-nav" aria-label="Menu principal">
           {PRIMARY_LINKS.map((item) => (
             <Link
               key={item.href}
