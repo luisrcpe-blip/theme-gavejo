@@ -1,5 +1,14 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Ajuste alto hero y CTAs visibles
+
+- Solicitud: corregir secciones principales para respetar alto completo de pantalla y evitar que los botones queden cortados, especialmente en `/materiales/termo-tratada`.
+- Archivos modificados: `src/styles/landing.css` y `src/styles/thermo-landing.css`.
+- Cambio realizado: se unificaron los heroes principales a `min-height: 100dvh` y se elimino la altura rigida en la landing termo para permitir crecimiento si el contenido no cabe.
+- Cambio realizado: se aumento el padding inferior con `env(safe-area-inset-bottom)` para que los CTAs no queden pegados ni cortados por el borde inferior del viewport.
+- Validacion: `npm run check:contract` paso correctamente.
+- Pendiente de entorno: `npm run build`/`npm run dev` siguen bloqueados en PC2 por la ruta local inexistente `C:\Users\Edgar`, detectada previamente.
+
 ## 2026-05-20 - Verificacion Git y version
 
 - Contexto: revision realizada desde PC2 / PC secundaria sobre carpeta compartida por red hacia la PC principal.

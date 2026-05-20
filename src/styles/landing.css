@@ -465,7 +465,7 @@
 .home-video-hero {
   position: relative;
   display: grid;
-  min-height: 92svh;
+  min-height: 100dvh;
   overflow: hidden;
   padding: 0 !important;
   align-items: stretch;
@@ -503,11 +503,11 @@
 .home-video-hero-grid {
   position: relative;
   z-index: 2;
-  min-height: 92svh;
+  min-height: 100dvh;
   display: grid;
   grid-template-columns: 1fr;
   align-content: center;
-  padding: clamp(7.6rem, 12vw, 10rem) 0 clamp(4.8rem, 8vw, 7rem);
+  padding: clamp(7.6rem, 12vw, 10rem) 0 max(clamp(5.4rem, 8vw, 7.4rem), calc(env(safe-area-inset-bottom) + 4.6rem));
 }
 
 .home-video-hero-copy {
@@ -703,13 +703,13 @@
   }
 
   .home-video-hero {
-    min-height: 88svh;
+    min-height: 100dvh;
   }
 
   .home-video-hero-grid {
-    min-height: 88svh;
+    min-height: 100dvh;
     align-content: end;
-    padding: 6.1rem 0 2.4rem;
+    padding: 6.1rem 0 max(3.25rem, calc(env(safe-area-inset-bottom) + 2.75rem));
   }
 
   .home-video-hero-copy h1 {
