@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { pergolasLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function Page() {
-  return <LandingPage config={pergolasLanding} />;
+  return <ComingSoonPage title="Pergolas y cerramientos en preparacion" />;
 }

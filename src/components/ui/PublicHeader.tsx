@@ -18,45 +18,37 @@ type NavGroup = {
 
 const PRIMARY_LINKS: NavLink[] = [
   { href: "/", label: "Inicio" },
-  { href: "/proyectos", label: "Proyectos" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contacto", label: "Contacto" }
+  { href: "/materiales/termo-tratada", label: "Termo tratada" },
+  { href: "/proximamente", label: "Proximamente" }
 ];
 
 const NAV_GROUPS: NavGroup[] = [
   {
     label: "Soluciones",
-    href: "/soluciones",
+    href: "/proximamente",
     links: [
-      { href: "/soluciones", label: "Todas las soluciones" },
-      { href: "/soluciones/fachadas", label: "Fachadas" },
-      { href: "/soluciones/decking-exterior", label: "Decking exterior" },
-      { href: "/soluciones/revestimientos-interiores", label: "Interiores" },
-      { href: "/soluciones/pergolas-cerramientos", label: "Pergolas" },
-      { href: "/soluciones/suelos-interior", label: "Suelos interior" }
+      { href: "/proximamente", label: "Todas las soluciones" },
+      { href: "/proximamente", label: "Fachadas" },
+      { href: "/proximamente", label: "Decking exterior" },
+      { href: "/proximamente", label: "Interiores" }
     ]
   },
   {
     label: "Materiales",
-    href: "/materiales",
+    href: "/proximamente",
     links: [
-      { href: "/materiales", label: "Todos los materiales" },
       { href: "/materiales/termo-tratada", label: "Madera termotratada" },
-      { href: "/materiales/madera-quemada", label: "Madera quemada" },
-      { href: "/materiales/vigueria", label: "Vigueria" }
+      { href: "/proximamente", label: "Otros materiales" }
     ]
   },
   {
     label: "Mader Balear",
-    href: "/mader-balear",
+    href: "/proximamente",
     links: [
-      { href: "/mader-balear", label: "Linea Mader Balear" },
-      { href: "/mader-balear/madera-vieja", label: "Madera vieja" },
-      { href: "/mader-balear/puertas", label: "Puertas" },
-      { href: "/mader-balear/tableros-reclaimed", label: "Tableros reclaimed" },
-      { href: "/mader-balear/revestimientos", label: "Revestimientos" },
-      { href: "/mader-balear/frentes-cocina", label: "Frentes cocina" },
-      { href: "/mader-balear/decoracion", label: "Decoracion" }
+      { href: "/proximamente", label: "Linea Mader Balear" },
+      { href: "/proximamente", label: "Madera vieja" },
+      { href: "/proximamente", label: "Puertas" },
+      { href: "/proximamente", label: "Revestimientos" }
     ]
   }
 ];

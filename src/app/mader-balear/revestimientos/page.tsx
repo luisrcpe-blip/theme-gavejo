@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { balearRevestimientosLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function Page() {
-  return <LandingPage config={balearRevestimientosLanding} />;
+  return <ComingSoonPage title="Revestimientos en preparacion" />;
 }

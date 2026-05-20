@@ -32,7 +32,7 @@ const kpiItems = [
 const solutionCards = [
   {
     title: "Fachadas y revestimientos exteriores",
-    href: "/soluciones/fachadas",
+    href: "/proximamente",
     caption: "Madera termo tratada, madera quemada, Mader Balear, WPC y fijaciones tecnicas.",
     placeholderLabel: "Fachadas arquitectonicas",
     placeholderCaption: "Revestimiento exterior",
@@ -41,7 +41,7 @@ const solutionCards = [
   },
   {
     title: "Decking exterior",
-    href: "/soluciones/decking-exterior",
+    href: "/proximamente",
     caption: "Tarimas para terrazas, piscinas y espacios exteriores de alto uso.",
     placeholderLabel: "Decking exterior",
     placeholderCaption: "Terrazas y piscinas",
@@ -50,7 +50,7 @@ const solutionCards = [
   },
   {
     title: "Revestimientos interiores",
-    href: "/soluciones/revestimientos-interiores",
+    href: "/proximamente",
     caption: "Madera natural, termo tratada, quemada y recuperada para espacios con atmosfera.",
     placeholderLabel: "Interiores en madera",
     placeholderCaption: "Textura, calidez y presencia",
@@ -68,7 +68,7 @@ const solutionCards = [
   },
   {
     title: "Pergolas y cerramientos",
-    href: "/soluciones/pergolas-cerramientos",
+    href: "/proximamente",
     caption: "Estructuras, lamas y control solar para exterior mediterraneo.",
     placeholderLabel: "Pergolas y cerramientos",
     placeholderCaption: "Sombra, estructura y privacidad",
@@ -77,7 +77,7 @@ const solutionCards = [
   },
   {
     title: "Suelos interiores",
-    href: "/soluciones/suelos-interior",
+    href: "/proximamente",
     caption: "Madera recuperada, multicapa y superficies tecnicas para interiores.",
     placeholderLabel: "Suelos interiores",
     placeholderCaption: "Flooring y textura interior",
@@ -142,7 +142,7 @@ function HomeVideoHero() {
             <QuoteModalButton className="btn btn-light" originLanding="Maderas Gavejo" intent="Solicitar informacion">
               Solicitar informacion
             </QuoteModalButton>
-            <Link href="/soluciones" className="btn btn-outline-light">
+            <Link href="/proximamente" className="btn btn-outline-light">
               Ver soluciones
             </Link>
           </div>
@@ -165,8 +165,8 @@ export default function HomePage() {
               <p className="section-kicker">Rutas principales</p>
               <h2>Elige por aplicacion o dejanos orientar el proyecto</h2>
               <div className="home-editorial-links" aria-label="Accesos principales">
-                <Link href="/soluciones/fachadas">Ver landing principal</Link>
-                <Link href="/soluciones">Ver todas las soluciones</Link>
+                <Link href="/proximamente">Ver landing principal</Link>
+                <Link href="/proximamente">Ver todas las soluciones</Link>
                 <QuoteModalButton className="home-editorial-link-button" originLanding="Home" intent="Contactar ahora">
                   Contactar ahora
                 </QuoteModalButton>
@@ -304,7 +304,7 @@ export default function HomePage() {
                 <QuoteModalButton className="btn btn-primary" originLanding="Home" intent="Ir a Contacto">
                   Ir a Contacto
                 </QuoteModalButton>
-                <Link href="/blog" className="btn btn-secondary">
+                <Link href="/proximamente" className="btn btn-secondary">
                   Ver blog tecnico
                 </Link>
               </div>
@@ -334,7 +334,7 @@ export default function HomePage() {
                   <QuoteModalButton className="btn btn-light" originLanding="Home" intent="Solicitar informacion">
                     Solicitar informacion
                   </QuoteModalButton>
-                  <Link href="/soluciones/fachadas" className="btn btn-outline-light">
+                  <Link href="/proximamente" className="btn btn-outline-light">
                     Ver soluciones
                   </Link>
                 </div>

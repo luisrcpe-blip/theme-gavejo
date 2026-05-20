@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { balearTablerosLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function Page() {
-  return <LandingPage config={balearTablerosLanding} />;
+  return <ComingSoonPage title="Tableros reclaimed en preparacion" />;
 }

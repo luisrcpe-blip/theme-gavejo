@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { maderaQuemadaLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function Page() {
-  return <LandingPage config={maderaQuemadaLanding} />;
+  return <ComingSoonPage title="Madera quemada en preparacion" />;
 }

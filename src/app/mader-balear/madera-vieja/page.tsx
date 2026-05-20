@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { balearMaderaViejaLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function Page() {
-  return <LandingPage config={balearMaderaViejaLanding} />;
+  return <ComingSoonPage title="Madera vieja en preparacion" />;
 }

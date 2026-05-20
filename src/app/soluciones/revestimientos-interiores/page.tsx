@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { interioresLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function RevestimientosInterioresPage() {
-  return <LandingPage config={interioresLanding} />;
+  return <ComingSoonPage title="Revestimientos interiores en preparacion" />;
 }

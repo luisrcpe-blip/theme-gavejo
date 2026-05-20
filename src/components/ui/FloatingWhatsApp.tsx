@@ -9,6 +9,7 @@ type FloatingWhatsAppProps = {
 
 export function FloatingWhatsApp({ sourcePage }: FloatingWhatsAppProps) {
   const [hidden, setHidden] = useState(false);
+  const temporaryComingSoonMode = true;
 
   useEffect(() => {
     const onFocusIn = (event: FocusEvent) => {
@@ -36,14 +37,17 @@ export function FloatingWhatsApp({ sourcePage }: FloatingWhatsAppProps) {
     };
   }, []);
 
-  const href = useMemo(() => buildWhatsappHref(sourcePage), [sourcePage]);
+  const href = useMemo(
+    () => (temporaryComingSoonMode ? "/proximamente" : buildWhatsappHref(sourcePage)),
+    [sourcePage, temporaryComingSoonMode]
+  );
 
   return (
     <a
       className={`wa-float ${hidden ? "is-hidden" : ""}`}
       href={href}
-      target="_blank"
-      rel="noreferrer"
+      target={temporaryComingSoonMode ? undefined : "_blank"}
+      rel={temporaryComingSoonMode ? undefined : "noreferrer"}
       onClick={() => trackTemplateEvent("whatsapp_click", sourcePage, { placement: "floating" })}
       aria-label="Abrir WhatsApp"
     >

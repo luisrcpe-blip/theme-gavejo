@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { CSSProperties, ReactNode, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import { ContactForm } from "@/components/ui/ContactForm";
@@ -27,6 +28,7 @@ export function QuoteModalButton({
   const [isOpen, setIsOpen] = useState(false);
   const titleId = useId();
   const descriptionId = useId();
+  const temporaryComingSoonMode = true;
 
   useEffect(() => {
     if (!isOpen) {
@@ -92,6 +94,14 @@ export function QuoteModalButton({
       </section>
     </div>
   ) : null;
+
+  if (temporaryComingSoonMode) {
+    return (
+      <Link href="/proximamente" className={className} style={style}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <>

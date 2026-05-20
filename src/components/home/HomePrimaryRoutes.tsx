@@ -1,21 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 
 const PRIMARY_ROUTES = [
   {
-    href: "/soluciones/fachadas",
+    href: "/proximamente",
     buttonLabel: "Ver landing principal",
     buttonClass: "btn-primary",
   },
   {
-    href: "/soluciones",
+    href: "/proximamente",
     buttonLabel: "Ver todas las soluciones",
     buttonClass: "btn-secondary",
   },
   {
-    href: "/contacto",
+    href: "/proximamente",
     buttonLabel: "Contactar ahora",
     buttonClass: "btn-ghost",
   }
@@ -26,24 +25,13 @@ export function HomePrimaryRoutes() {
     <div className="home-primary-routes">
       <div className="hero-actions home-primary-actions">
         {PRIMARY_ROUTES.map((route) => (
-          route.href === "/contacto" ? (
-            <QuoteModalButton
-              key={route.href + route.buttonLabel}
-              className={`btn ${route.buttonClass}`}
-              originLanding="Home"
-              intent={route.buttonLabel}
-            >
-              {route.buttonLabel}
-            </QuoteModalButton>
-          ) : (
-            <Link
-              key={route.href + route.buttonLabel}
-              href={route.href}
-              className={`btn ${route.buttonClass}`}
-            >
-              {route.buttonLabel}
-            </Link>
-          )
+          <Link
+            key={route.href + route.buttonLabel}
+            href={route.href}
+            className={`btn ${route.buttonClass}`}
+          >
+            {route.buttonLabel}
+          </Link>
         ))}
       </div>
     </div>

@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { fachadasLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function FachadasPage() {
-  return <LandingPage config={fachadasLanding} />;
+  return <ComingSoonPage title="Fachadas en preparacion" />;
 }

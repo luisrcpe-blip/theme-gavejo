@@ -6,7 +6,7 @@ import { PublicHeader } from "@/components/ui/PublicHeader";
 import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { SiteFooter } from "@/components/ui/SiteFooter";
-import { buildWhatsappHref, trackTemplateEvent, withThemeBasePath } from "@/lib/runtime";
+import { trackTemplateEvent, withThemeBasePath } from "@/lib/runtime";
 import { LandingConfig } from "@/lib/types";
 import type { ReactNode } from "react";
 
@@ -201,9 +201,7 @@ function ThermoBriefBody({ config, heroWhatsappHref }: { config: LandingConfig; 
             <div className="hero-actions termo-catalog-actions">
               <a
                 className="btn btn-secondary"
-                href={withThemeBasePath("/documentos/tantimber.pdf")}
-                target="_blank"
-                rel="noreferrer"
+                href="/proximamente"
                 onClick={() => trackTemplateEvent("cta_click", config.slug, { section: "catalog", ctaLabel: "Descargar catalogo" })}
               >
                 Descargar catalogo
@@ -233,8 +231,6 @@ function ThermoBriefBody({ config, heroWhatsappHref }: { config: LandingConfig; 
               <a
                 className="btn btn-ghost"
                 href={heroWhatsappHref}
-                target="_blank"
-                rel="noreferrer"
                 onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "brief_contact" })}
               >
                 Abrir WhatsApp
@@ -249,7 +245,7 @@ function ThermoBriefBody({ config, heroWhatsappHref }: { config: LandingConfig; 
 
 export function LandingPage({ config }: LandingPageProps) {
   const heroCta = "Solicitar informacion";
-  const heroWhatsappHref = buildWhatsappHref(config.slug);
+  const heroWhatsappHref = "/proximamente";
   const isThermoLanding = config.slug === "termo-tratada";
 
   return (
@@ -307,8 +303,6 @@ export function LandingPage({ config }: LandingPageProps) {
                   <a
                     className="btn btn-outline-light"
                     href={heroWhatsappHref}
-                    target="_blank"
-                    rel="noreferrer"
                     onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "video_hero" })}
                   >
                     WhatsApp
@@ -335,8 +329,6 @@ export function LandingPage({ config }: LandingPageProps) {
                   <a
                     className="btn btn-outline-light"
                     href={heroWhatsappHref}
-                    target="_blank"
-                    rel="noreferrer"
                     onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "hero" })}
                   >
                     WhatsApp
@@ -460,9 +452,7 @@ export function LandingPage({ config }: LandingPageProps) {
                       ) : (
                         <a
                           className="btn btn-ghost"
-                          href={withThemeBasePath(item.ctaHref)}
-                          target="_blank"
-                          rel="noreferrer"
+                          href="/proximamente"
                           onClick={() =>
                             trackTemplateEvent("cta_click", config.slug, {
                               section: "materials",
@@ -602,8 +592,6 @@ export function LandingPage({ config }: LandingPageProps) {
                 <a
                   className="btn btn-ghost"
                   href={heroWhatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
                   onClick={() => trackTemplateEvent("whatsapp_click", config.slug, { placement: "landing_final_cta" })}
                 >
                   WhatsApp

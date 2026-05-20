@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { balearDecoracionLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function Page() {
-  return <LandingPage config={balearDecoracionLanding} />;
+  return <ComingSoonPage title="Decoracion en preparacion" />;
 }

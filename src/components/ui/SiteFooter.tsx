@@ -1,38 +1,35 @@
 import Link from "next/link";
-import { buildWhatsappHref } from "@/lib/runtime";
 import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 
 const solutionLinks = [
-  { href: "/soluciones/fachadas", label: "Fachadas" },
-  { href: "/soluciones/decking-exterior", label: "Decking exterior" },
-  { href: "/soluciones/revestimientos-interiores", label: "Interiores" },
-  { href: "/soluciones/pergolas-cerramientos", label: "Pergolas" },
-  { href: "/soluciones/suelos-interior", label: "Suelos interior" }
+  { href: "/proximamente", label: "Fachadas" },
+  { href: "/proximamente", label: "Decking exterior" },
+  { href: "/proximamente", label: "Interiores" },
+  { href: "/proximamente", label: "Pergolas" },
+  { href: "/proximamente", label: "Suelos interior" }
 ];
 
 const materialLinks = [
-  { href: "/materiales", label: "Materiales" },
   { href: "/materiales/termo-tratada", label: "Termotratada" },
-  { href: "/materiales/madera-quemada", label: "Madera quemada" },
-  { href: "/materiales/vigueria", label: "Vigueria" }
+  { href: "/proximamente", label: "Madera quemada" },
+  { href: "/proximamente", label: "Vigueria" }
 ];
 
 const balearLinks = [
-  { href: "/mader-balear", label: "Mader Balear" },
-  { href: "/mader-balear/madera-vieja", label: "Madera vieja" },
-  { href: "/mader-balear/puertas", label: "Puertas" },
-  { href: "/mader-balear/revestimientos", label: "Revestimientos" }
+  { href: "/proximamente", label: "Mader Balear" },
+  { href: "/proximamente", label: "Madera vieja" },
+  { href: "/proximamente", label: "Puertas" },
+  { href: "/proximamente", label: "Revestimientos" }
 ];
 
 const utilityLinks = [
-  { href: "/proyectos", label: "Proyectos" },
-  { href: "/blog", label: "Blog tecnico" },
-  { href: "/privacidad", label: "Privacidad" }
+  { href: "/proximamente", label: "Proyectos" },
+  { href: "/proximamente", label: "Blog tecnico" },
+  { href: "/proximamente", label: "Privacidad" }
 ];
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
-  const whatsappHref = buildWhatsappHref("footer");
 
   return (
     <footer id="footer" className="site-footer">
@@ -71,8 +68,8 @@ export function SiteFooter() {
           <QuoteModalButton className="footer-contact-cta" originLanding="Footer" intent="Hablar de un proyecto">
             Hablar de un proyecto
           </QuoteModalButton>
-          <Link href="/contacto">Formulario de proyecto</Link>
-          <a href={whatsappHref} target="_blank" rel="noreferrer">WhatsApp directo</a>
+          <Link href="/proximamente">Formulario de proyecto</Link>
+          <Link href="/proximamente">WhatsApp directo</Link>
         </div>
       </div>
 

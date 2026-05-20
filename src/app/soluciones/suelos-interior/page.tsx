@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { suelosInteriorLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function Page() {
-  return <LandingPage config={suelosInteriorLanding} />;
+  return <ComingSoonPage title="Suelos interiores en preparacion" />;
 }

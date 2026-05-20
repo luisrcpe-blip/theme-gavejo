@@ -1531,6 +1531,59 @@ p {
   color: #1e293b;
 }
 
+.coming-soon-page {
+  min-height: 72vh;
+  display: grid;
+  align-items: center;
+  padding: clamp(7rem, 12vw, 10rem) 0 clamp(4rem, 8vw, 6rem);
+  background: #fffdfa;
+}
+
+.coming-soon-inner {
+  display: grid;
+  gap: 1rem;
+  max-width: 860px;
+}
+
+.coming-soon-inner h1 {
+  max-width: 760px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: 0;
+  color: #17130f;
+}
+
+.coming-soon-inner p:not(.chip) {
+  max-width: 620px;
+  color: rgba(23, 19, 15, 0.64);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+}
+
+.coming-soon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.coming-soon-actions .btn {
+  border-radius: 0;
+}
+
+@media (max-width: 640px) {
+  .coming-soon-page {
+    min-height: 70vh;
+    padding-top: 6rem;
+  }
+
+  .coming-soon-actions {
+    display: grid;
+  }
+}
+
 .table th,
 .table td {
   border-color: #e8edf4;

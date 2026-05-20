@@ -1,6 +1,5 @@
-import { LandingPage } from "@/components/landing/LandingPage";
-import { deckingLanding } from "@/lib/landing-data";
+import { ComingSoonPage } from "@/components/ui/ComingSoonPage";
 
 export default function DeckingExteriorPage() {
-  return <LandingPage config={deckingLanding} />;
+  return <ComingSoonPage title="Decking exterior en preparacion" />;
 }
