@@ -162,6 +162,10 @@ function photoFor(tone: string, label: string, caption: string, assetKey?: strin
   return pool[hashText(`${tone}:${label}:${caption}`) % pool.length];
 }
 
+export function resolveMediaAssetPath(assetKey: string, fallback = "/media/gavejo/landing/fachadas-hero.jpg") {
+  return IMAGE_BY_KEY[assetKey] ?? fallback;
+}
+
 export function NeonPlaceholder({
   label,
   caption = "Visual editorial Gavejo",

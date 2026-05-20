@@ -1,5 +1,16 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Carruseles en covers de inicio y landings
+
+- Solicitud: convertir los covers principales del index y landings en carruseles con flechas laterales y puntos de navegacion inferiores.
+- Archivos modificados: `src/app/page.tsx`, `src/components/landing/LandingPage.tsx`, `src/components/ui/NeonPlaceholder.tsx`, `src/styles/landing.css` y `src/styles/thermo-landing.css`.
+- Archivo creado: `src/components/ui/HeroCoverCarousel.tsx`.
+- Cambio realizado: el inicio usa carrusel de imagenes en lugar del video estatico como cover principal.
+- Cambio realizado: la landing termo y las landings generales usan carrusel de cover con flechas izquierda/derecha y dots inferiores.
+- Decision PC2: se reutilizaron imagenes existentes del proyecto y fallbacks por tipo de landing para evitar depender de assets nuevos.
+- Validacion: `npm run check:contract` paso correctamente.
+- Pendiente de entorno: preview local completo sigue bloqueado en PC2 por la ruta local inexistente `C:\Users\Edgar`.
+
 ## 2026-05-20 - Ajuste alto hero y CTAs visibles
 
 - Solicitud: corregir secciones principales para respetar alto completo de pantalla y evitar que los botones queden cortados, especialmente en `/materiales/termo-tratada`.

@@ -1,12 +1,14 @@
 "use client";
 
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { HeroCoverCarousel } from "@/components/ui/HeroCoverCarousel";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
+import { resolveMediaAssetPath } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { SiteFooter } from "@/components/ui/SiteFooter";
-import { trackTemplateEvent, withThemeBasePath } from "@/lib/runtime";
+import { trackTemplateEvent } from "@/lib/runtime";
 import { LandingConfig } from "@/lib/types";
 import type { ReactNode } from "react";
 
@@ -84,6 +86,60 @@ const termoSystemSteps = [
   "Resolver subestructura, ventilacion, fijacion oculta y juntas desde el inicio.",
   "Definir acabado, mantenimiento y respaldo tecnico con catalogo Tantimber."
 ];
+
+function fallbackHeroSlidesFor(slug: string) {
+  if (slug.includes("decking")) {
+    return [
+      "/media/gavejo/landing/decking-hero.jpg",
+      "/media/gavejo/landing/decking-app-01.jpg",
+      "/media/gavejo/landing/decking-app-02.jpg",
+      "/media/gavejo/landing/decking-app-04.jpg"
+    ];
+  }
+
+  if (slug.includes("interior") || slug.includes("cocina") || slug.includes("decoracion")) {
+    return [
+      "/media/gavejo/landing/interior-app-03.jpg",
+      "/media/gavejo/landing/interior-app-04.jpg",
+      "/media/gavejo/burned-wood-05.webp",
+      "/media/gavejo/landing/texture-warm.jpg"
+    ];
+  }
+
+  if (slug.includes("quemada")) {
+    return [
+      "/media/gavejo/landing/texture-charred.jpg",
+      "/media/gavejo/burned-wood-01.jpg",
+      "/media/gavejo/burned-wood-02.jpg",
+      "/media/gavejo/burned-wood-05.webp"
+    ];
+  }
+
+  if (slug.includes("balear") || slug.includes("madera-vieja") || slug.includes("puertas") || slug.includes("tableros") || slug.includes("revestimientos")) {
+    return [
+      "/media/gavejo/landing/texture-warm.jpg",
+      "/media/gavejo/burned-wood-04.webp",
+      "/media/gavejo/ldc-wood-03-clean.jpg",
+      "/media/gavejo/landing/interior-app-04.jpg"
+    ];
+  }
+
+  if (slug.includes("pergolas") || slug.includes("vigueria")) {
+    return [
+      "/media/gavejo/landing/texture-warm.jpg",
+      "/media/gavejo/ldc-wood-01-clean.jpg",
+      "/media/gavejo/ldc-wood-02-clean.jpg",
+      "/media/gavejo/landing/decking-app-04.jpg"
+    ];
+  }
+
+  return [
+    "/media/gavejo/landing/fachadas-hero.jpg",
+    "/media/gavejo/landing/fachadas-app-01.jpg",
+    "/media/gavejo/landing/fachadas-app-04.jpg",
+    "/media/gavejo/landing/fachadas-sys-02.jpg"
+  ];
+}
 
 function ThermoBriefBody({ config, heroWhatsappHref }: { config: LandingConfig; heroWhatsappHref: string }) {
   return (
@@ -247,6 +303,24 @@ export function LandingPage({ config }: LandingPageProps) {
   const heroCta = "Solicitar informacion";
   const heroWhatsappHref = "/proximamente";
   const isThermoLanding = config.slug === "termo-tratada";
+  const fallbackSlides = fallbackHeroSlidesFor(config.slug);
+  const landingHeroSlides = [
+    {
+      src: resolveMediaAssetPath(config.heroImage, fallbackSlides[0]),
+      alt: config.heroTitle
+    },
+    ...config.gallery.slice(0, 4).map((item, index) => ({
+      src: resolveMediaAssetPath(item.image, fallbackSlides[(index + 1) % fallbackSlides.length]),
+      alt: item.alt
+    }))
+  ];
+  const thermoHeroSlides = [
+    { src: "/media/gavejo/landing/termo-cover-premium.jpg", alt: "Interior premium con madera termo tratada" },
+    { src: "/media/gavejo/landing/termo-hero.jpg", alt: "Madera termo tratada para arquitectura" },
+    { src: "/media/gavejo/landing/termo-app-02.jpg", alt: "Decking exterior con madera termo tratada" },
+    { src: "/media/gavejo/landing/termo-app-03.jpg", alt: "Revestimiento interior con madera termo tratada" },
+    { src: "/media/gavejo/landing/termo-sys-01.jpg", alt: "Detalle tecnico de madera termo tratada" }
+  ];
 
   return (
     <div className="landing-page">
@@ -255,15 +329,7 @@ export function LandingPage({ config }: LandingPageProps) {
       <main>
         {isThermoLanding ? (
           <section id="seccion-principal" className="seccion-principal seccion-principal-termo">
-            <div className="termo-hero-media" aria-hidden="true">
-              <img
-                className="termo-hero-image"
-                src={withThemeBasePath("/media/gavejo/landing/termo-cover-premium.jpg")}
-                alt=""
-                loading="eager"
-                decoding="async"
-              />
-            </div>
+            <HeroCoverCarousel slides={thermoHeroSlides} className="termo-hero-carousel" />
             <div className="termo-hero-overlay" aria-hidden="true" />
             <div className="container termo-hero-frame">
               <Reveal>
@@ -313,6 +379,8 @@ export function LandingPage({ config }: LandingPageProps) {
           </section>
         ) : (
           <section className="hero hero-architectural">
+            <HeroCoverCarousel slides={landingHeroSlides} className="landing-hero-carousel" />
+            <div className="landing-hero-overlay" aria-hidden="true" />
             <div className="container hero-content hero-content-grid">
               <Reveal>
                 <span className="chip chip-light">{config.heroBadge}</span>

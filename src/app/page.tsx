@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { HeroCoverCarousel } from "@/components/ui/HeroCoverCarousel";
 import { NeonPlaceholder } from "@/components/ui/NeonPlaceholder";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 import { QuoteModalButton } from "@/components/ui/QuoteModalButton";
@@ -113,21 +114,18 @@ const materialCards = [
   }
 ];
 
-const homeHeroVideo = "https://3kkb5uvxojhzy.ok.kimi.link/videos/nature-hero.mp4";
+const homeHeroSlides = [
+  { src: "/media/gavejo/landing/fachadas-hero.jpg", alt: "Bosque y montanas como inspiracion para madera arquitectonica" },
+  { src: "/media/gavejo/landing/termo-cover-premium.jpg", alt: "Interior con madera termotratada en ambiente premium" },
+  { src: "/media/gavejo/landing/decking-hero.jpg", alt: "Terraza exterior con madera para decking" },
+  { src: "/media/gavejo/landing/interior-app-03.jpg", alt: "Interior revestido con madera natural" },
+  { src: "/media/gavejo/landing/texture-charred.jpg", alt: "Textura de madera quemada para proyectos arquitectonicos" }
+];
 
 function HomeVideoHero() {
   return (
     <section className="home-video-hero">
-      <video
-        className="home-video-hero-media"
-        src={homeHeroVideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      />
+      <HeroCoverCarousel slides={homeHeroSlides} className="home-hero-carousel" />
       <div className="home-video-hero-overlay" aria-hidden="true" />
 
       <div className="container home-video-hero-grid">

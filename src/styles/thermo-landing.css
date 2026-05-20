@@ -20,7 +20,6 @@ section#seccion-principal {
   background: #120b07;
 }
 
-.termo-hero-media,
 .termo-hero-overlay {
   position: absolute;
   inset: 0;
@@ -28,13 +27,7 @@ section#seccion-principal {
   height: 100%;
 }
 
-.termo-hero-media {
-  overflow: hidden;
-}
-
-.termo-hero-image {
-  width: 100%;
-  height: 100%;
+.termo-hero-carousel .hero-cover-slide {
   object-fit: cover;
   object-position: 58% center;
   filter: saturate(0.98) contrast(1.08) brightness(0.9);
@@ -379,14 +372,14 @@ section#seccion-principal {
     justify-content: flex-start;
   }
 
-  .termo-hero-image {
+  .termo-hero-carousel .hero-cover-slide {
     object-position: 64% center;
   }
 
 }
 
 @media (max-width: 520px) {
-  .termo-hero-image {
+  .termo-hero-carousel .hero-cover-slide {
     object-position: 68% center;
   }
 
