@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { withThemeBasePath } from "@/lib/runtime";
+import { TemplateVersionBadge } from "@/components/ui/TemplateVersionBadge";
 
 type NavLink = {
   href: string;
@@ -109,6 +110,8 @@ export function PublicHeader() {
 
   return (
     <>
+      <TemplateVersionBadge />
+
       <header
         className={`topbar topbar-overlay ${scrolled ? "is-scrolled" : ""} ${
           mobileOpen ? "is-mobile-open" : ""
