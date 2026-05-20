@@ -196,16 +196,19 @@ export function PublicHeader() {
 
       <div id="mobile-menu-panel" className={`mobile-menu-panel ${mobileOpen ? "is-open" : ""}`}>
         <nav className="container mobile-menu-nav" aria-label="Menu principal">
-          {PRIMARY_LINKS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={isActive(item.href) ? "is-active" : ""}
-              onClick={() => setMobileOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
+          <div className="mobile-menu-group mobile-menu-main">
+            <p>Principal</p>
+            {PRIMARY_LINKS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={isActive(item.href) ? "is-active" : ""}
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
           {NAV_GROUPS.map((group) => (
             <div key={group.href} className="mobile-menu-group">
               <p>{group.label}</p>

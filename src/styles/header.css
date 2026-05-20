@@ -1116,3 +1116,124 @@ body:has(.mobile-menu-panel.is-open) {
     padding-top: 78px !important;
   }
 }
+
+/* Refined hamburger panel layout */
+.mobile-menu-panel {
+  padding: 104px 0 1.6rem;
+  background:
+    linear-gradient(180deg, rgba(11, 14, 18, 0.72), rgba(11, 14, 18, 0.52)),
+    rgba(239, 237, 231, 0.78);
+}
+
+.mobile-menu-nav {
+  width: min(100% - 3rem, 1120px);
+  padding: clamp(1.1rem, 1.8vw, 1.45rem);
+  grid-template-columns: minmax(160px, 0.9fr) minmax(230px, 1.35fr) minmax(210px, 1.1fr) minmax(210px, 1.1fr);
+  align-items: start;
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+  background: rgba(24, 27, 24, 0.94);
+}
+
+.mobile-menu-group {
+  min-width: 0;
+  padding-top: 0;
+}
+
+.mobile-menu-group p {
+  margin-bottom: 0.65rem;
+}
+
+.mobile-menu-main {
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  padding-right: clamp(0.8rem, 1.4vw, 1.15rem);
+}
+
+.mobile-menu-nav > a,
+.mobile-menu-group a {
+  position: relative;
+  min-height: 46px;
+  padding: 0.78rem 2.6rem 0.78rem 0;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+}
+
+.mobile-menu-nav > a::after,
+.mobile-menu-group a::after {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  min-width: 1.8rem;
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+.mobile-menu-nav a[href="/proximamente"]::after,
+.mobile-menu-nav a[href="/proximamente/"]::after {
+  content: "Pronto";
+  min-width: 3.2rem;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mobile-menu-nav a[href="/"]::after,
+.mobile-menu-nav a[href="/materiales/termo-tratada"]::after,
+.mobile-menu-nav a[href="/materiales/termo-tratada/"]::after {
+  content: "->";
+}
+
+.mobile-menu-nav a[href="/proximamente"],
+.mobile-menu-nav a[href="/proximamente/"] {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.mobile-menu-group a.is-active {
+  color: #fff !important;
+}
+
+@media (max-width: 1080px) {
+  .mobile-menu-nav {
+    width: min(100% - 2rem, 780px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-menu-main {
+    border-right: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 840px) {
+  .mobile-menu-panel {
+    padding: 82px 0 1rem !important;
+  }
+
+  .mobile-menu-nav {
+    width: min(100% - 1rem, 430px) !important;
+    padding: 1rem !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+  }
+
+  .mobile-menu-group {
+    gap: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .mobile-menu-group + .mobile-menu-group {
+    padding-top: 0.15rem !important;
+  }
+
+  .mobile-menu-group p {
+    margin-bottom: 0.35rem !important;
+  }
+
+  .mobile-menu-nav > a,
+  .mobile-menu-group a {
+    min-height: 42px !important;
+    padding: 0.62rem 2.4rem 0.62rem 0 !important;
+    font-size: 0.9rem !important;
+  }
+}
