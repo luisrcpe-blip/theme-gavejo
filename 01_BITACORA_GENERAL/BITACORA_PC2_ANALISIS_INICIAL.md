@@ -1,5 +1,12 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Flechas carrusel en movil
+
+- Solicitud: en movil las flechas del carrusel tapaban el titulo.
+- Archivo modificado: `src/styles/landing.css`.
+- Cambio realizado: en pantallas menores a 640px las flechas bajan a la zona inferior junto a la navegacion del carrusel y reducen su tamano.
+- Validacion: `npm run check:contract` paso correctamente.
+
 ## 2026-05-20 - Correccion real 100dvh landing termo
 
 - Solicitud: corregir que la seccion principal no crezca mas alla del 100% de la pantalla y que los dots no se vean forzados hacia arriba.
