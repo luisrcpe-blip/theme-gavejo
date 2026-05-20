@@ -640,6 +640,11 @@
     transform 1200ms var(--ease-main);
 }
 
+.hero-cover-video {
+  display: block;
+  background: #0f0d0a;
+}
+
 .hero-cover-slide.is-active {
   opacity: 1;
   transform: scale(1);

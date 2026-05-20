@@ -316,6 +316,7 @@ export function LandingPage({ config }: LandingPageProps) {
   ];
   const thermoHeroSlides = [
     { src: "/media/gavejo/landing/termo-cover-premium.jpg", alt: "Interior premium con madera termo tratada" },
+    { src: "/media/gavejo/landing/termo-rain-drops.mp4", alt: "Video de lluvia sobre madera termo tratada", kind: "video" as const },
     { src: "/media/gavejo/landing/termo-hero.jpg", alt: "Madera termo tratada para arquitectura" },
     { src: "/media/gavejo/landing/termo-app-02.jpg", alt: "Decking exterior con madera termo tratada" },
     { src: "/media/gavejo/landing/termo-app-03.jpg", alt: "Revestimiento interior con madera termo tratada" },

@@ -1,5 +1,14 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Carruseles multimedia
+
+- Solicitud: agregar soporte multimedia a los carruseles para probar imagenes y videos.
+- Archivos modificados: `src/components/ui/HeroCoverCarousel.tsx`, `src/app/page.tsx`, `src/components/landing/LandingPage.tsx` y `src/styles/landing.css`.
+- Cambio realizado: `HeroCoverCarousel` ahora acepta slides de tipo imagen o video; detecta video por `kind: "video"` o extension `.mp4`, `.webm`, `.ogg`.
+- Cambio realizado: el index incluye como primer slide el video remoto `nature-hero.mp4`.
+- Cambio realizado: la landing termo incluye el video local `public/media/gavejo/landing/termo-rain-drops.mp4`.
+- Validacion: `npm run check:contract` paso correctamente.
+
 ## 2026-05-20 - Carruseles en covers de inicio y landings
 
 - Solicitud: convertir los covers principales del index y landings en carruseles con flechas laterales y puntos de navegacion inferiores.

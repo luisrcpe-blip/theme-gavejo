@@ -115,6 +115,11 @@ const materialCards = [
 ];
 
 const homeHeroSlides = [
+  {
+    src: "https://3kkb5uvxojhzy.ok.kimi.link/videos/nature-hero.mp4",
+    alt: "Video de naturaleza y bosque para portada de Maderas Gavejo",
+    kind: "video" as const
+  },
   { src: "/media/gavejo/landing/fachadas-hero.jpg", alt: "Bosque y montanas como inspiracion para madera arquitectonica" },
   { src: "/media/gavejo/landing/termo-cover-premium.jpg", alt: "Interior con madera termotratada en ambiente premium" },
   { src: "/media/gavejo/landing/decking-hero.jpg", alt: "Terraza exterior con madera para decking" },
