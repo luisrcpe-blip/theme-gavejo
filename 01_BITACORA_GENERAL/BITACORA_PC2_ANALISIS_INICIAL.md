@@ -1,5 +1,16 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-21 - Version 2.4.18 autoplay carruseles 4 segundos
+
+- Contexto: PC2 / computadora secundaria trabajando desde copia temporal porque la carpeta compartida de PC1 no esta disponible.
+- Solicitud: los carruseles de imagenes y videos deben pasar automaticamente al siguiente medio cada 4 segundos.
+- Archivos modificados: `src/components/ui/HeroCoverCarousel.tsx`, `src/components/ui/IndexHeroSlider.tsx`, `nuklo.template.json` y `src/lib/runtime.ts`.
+- Cambio realizado: el carrusel de covers avanza automaticamente cada `4000ms` cuando hay mas de un medio.
+- Cambio realizado: el slider del index tambien queda ajustado a `4000ms` para mantener el mismo ritmo.
+- Cambio realizado: version del template actualizada de `2.4.17` a `2.4.18`.
+- Validacion: `npm run check:contract` y `npm run typecheck` pasaron correctamente antes del push.
+- Pendiente PC1: cuando la PC1 vuelva, sincronizar con GitHub para traer este commit.
+
 ## 2026-05-20 - Version 2.4.17 flechas alineadas con dots movil
 
 - Contexto: PC1 apagada; trabajo realizado desde copia temporal PC2 clonada desde GitHub.

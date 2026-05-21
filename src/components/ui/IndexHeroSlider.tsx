@@ -43,7 +43,7 @@ export function IndexHeroSlider({
     if (slides.length < 2) return;
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % slides.length);
-    }, 5200);
+    }, 4000);
     return () => window.clearInterval(timer);
   }, [slides.length]);
 

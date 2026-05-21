@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { withThemeBasePath } from "@/lib/runtime";
 
 type HeroCoverSlide = {
@@ -17,6 +17,16 @@ type HeroCoverCarouselProps = {
 export function HeroCoverCarousel({ slides, className }: HeroCoverCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const hasMultipleSlides = slides.length > 1;
+
+  useEffect(() => {
+    if (!hasMultipleSlides) return;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % slides.length);
+    }, 4000);
+
+    return () => window.clearInterval(timer);
+  }, [hasMultipleSlides, slides.length]);
 
   const goToSlide = (index: number) => {
     if (!slides.length) return;
