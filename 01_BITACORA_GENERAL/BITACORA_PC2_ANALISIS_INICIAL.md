@@ -1,5 +1,15 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-21 - Version 2.4.19 ajuste de oscuridad y contraste hero
+
+- Contexto: PC2 trabajando sobre carpeta compartida de PC1 ya sincronizada con GitHub.
+- Solicitud: la parte izquierda del hero se veia muy oscura; ajustar sin perder contraste entre texto e imagen.
+- Archivos modificados: `src/styles/landing.css`, `src/styles/thermo-landing.css`, `nuklo.template.json` y `src/lib/runtime.ts`.
+- Cambio realizado: se redujo la opacidad del degradado lateral izquierdo en los covers principales.
+- Cambio realizado: se aclaro levemente la imagen de fondo y se mantuvo una sombra vertical para conservar lectura del texto.
+- Cambio realizado: version del template actualizada de `2.4.18` a `2.4.19`.
+- Validacion: `npm run check:contract` y `npm run typecheck` pasaron correctamente antes del push.
+
 ## 2026-05-21 - Version 2.4.18 autoplay carruseles 4 segundos
 
 - Contexto: PC2 / computadora secundaria trabajando desde copia temporal porque la carpeta compartida de PC1 no esta disponible.

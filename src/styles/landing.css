@@ -490,14 +490,14 @@
   object-fit: cover;
   object-position: center 42%;
   z-index: 0;
-  filter: saturate(0.78) contrast(1.08) brightness(0.78);
+  filter: saturate(0.88) contrast(1.06) brightness(0.88);
 }
 
 .home-video-hero-overlay {
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(8, 7, 5, 0.9), rgba(8, 7, 5, 0.58) 44%, rgba(8, 7, 5, 0.2) 74%),
-    linear-gradient(180deg, rgba(8, 7, 5, 0.48), rgba(8, 7, 5, 0.12) 44%, rgba(8, 7, 5, 0.86));
+    linear-gradient(90deg, rgba(8, 7, 5, 0.66), rgba(8, 7, 5, 0.43) 38%, rgba(8, 7, 5, 0.16) 72%),
+    linear-gradient(180deg, rgba(8, 7, 5, 0.42), rgba(8, 7, 5, 0.08) 42%, rgba(8, 7, 5, 0.72));
 }
 
 .home-video-hero-grid {
@@ -735,8 +735,8 @@
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(8, 6, 4, 0.9), rgba(12, 9, 7, 0.58) 46%, rgba(12, 9, 7, 0.2) 76%),
-    linear-gradient(180deg, rgba(8, 6, 4, 0.5), rgba(8, 6, 4, 0.16) 44%, rgba(8, 6, 4, 0.84));
+    linear-gradient(90deg, rgba(8, 6, 4, 0.68), rgba(12, 9, 7, 0.44) 42%, rgba(12, 9, 7, 0.16) 76%),
+    linear-gradient(180deg, rgba(8, 6, 4, 0.42), rgba(8, 6, 4, 0.1) 44%, rgba(8, 6, 4, 0.72));
 }
 
 .landing-page .hero-content,

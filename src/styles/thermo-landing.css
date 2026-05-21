@@ -31,14 +31,14 @@ section#seccion-principal {
 .termo-hero-carousel .hero-cover-slide {
   object-fit: cover;
   object-position: 58% center;
-  filter: saturate(0.98) contrast(1.08) brightness(0.9);
+  filter: saturate(1.02) contrast(1.06) brightness(0.96);
 }
 
 .termo-hero-overlay {
   background:
-    radial-gradient(circle at 62% 30%, rgba(191, 121, 57, 0.08), transparent 36%),
-    linear-gradient(90deg, rgba(6, 4, 3, 0.9) 0%, rgba(12, 7, 4, 0.74) 26%, rgba(24, 13, 6, 0.34) 58%, rgba(7, 4, 2, 0.28) 100%),
-    linear-gradient(180deg, rgba(6, 4, 3, 0.6) 0%, rgba(6, 4, 3, 0.12) 48%, rgba(6, 4, 3, 0.72) 100%);
+    radial-gradient(circle at 58% 28%, rgba(191, 121, 57, 0.12), transparent 34%),
+    linear-gradient(90deg, rgba(6, 4, 3, 0.68) 0%, rgba(12, 7, 4, 0.5) 30%, rgba(24, 13, 6, 0.22) 62%, rgba(7, 4, 2, 0.18) 100%),
+    linear-gradient(180deg, rgba(6, 4, 3, 0.48) 0%, rgba(6, 4, 3, 0.08) 48%, rgba(6, 4, 3, 0.62) 100%);
 }
 
 .termo-hero-frame {
@@ -393,8 +393,8 @@ section#seccion-principal {
 
   .termo-hero-overlay {
     background:
-      linear-gradient(90deg, rgba(6, 4, 3, 0.9) 0%, rgba(10, 6, 4, 0.7) 54%, rgba(10, 6, 4, 0.34) 100%),
-      linear-gradient(180deg, rgba(6, 4, 3, 0.74) 0%, rgba(6, 4, 3, 0.18) 44%, rgba(6, 4, 3, 0.82) 100%);
+      linear-gradient(90deg, rgba(6, 4, 3, 0.64) 0%, rgba(10, 6, 4, 0.48) 54%, rgba(10, 6, 4, 0.24) 100%),
+      linear-gradient(180deg, rgba(6, 4, 3, 0.58) 0%, rgba(6, 4, 3, 0.12) 44%, rgba(6, 4, 3, 0.72) 100%);
   }
 
   .termo-brief-card-grid {
