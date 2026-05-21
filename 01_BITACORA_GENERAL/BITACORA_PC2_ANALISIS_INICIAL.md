@@ -1,5 +1,16 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Correccion UX movil sin amontonamiento
+
+- Contexto: PC1 apagada; trabajo realizado desde una copia temporal de PC2 clonada desde GitHub.
+- Solicitud: en movil el hero no debe estar forzado a `height: 100dvh` si eso amontona contenido o genera superposiciones.
+- Archivos modificados: `src/styles/thermo-landing.css` y `src/styles/landing.css`.
+- Cambio realizado: en movil `#seccion-principal` vuelve a `height: auto` con `min-height` solo en el frame, permitiendo que el contenido respire.
+- Cambio realizado: se restauran tamanos y espacios moviles mas legibles para titulo, texto, valores y botones.
+- Cambio realizado: las flechas del carrusel se ocultan en movil para evitar que tapen titulo, texto o CTAs; quedan los dots como navegacion limpia.
+- Validacion: `npm run check:contract` paso correctamente.
+- Pendiente PC1: cuando la PC1 vuelva a estar disponible, sincronizar con GitHub para traer este commit.
+
 ## 2026-05-20 - Flechas carrusel en movil
 
 - Solicitud: en movil las flechas del carrusel tapaban el titulo.

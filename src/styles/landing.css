@@ -869,28 +869,11 @@
   }
 
   .hero-cover-arrow {
-    top: auto;
-    bottom: max(1.95rem, calc(env(safe-area-inset-bottom) + 1.65rem));
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
-    background: rgba(12, 16, 24, 0.34);
-  }
-
-  .hero-cover-arrow-prev {
-    left: calc(50% - 6.1rem);
-  }
-
-  .hero-cover-arrow-next {
-    right: calc(50% - 6.1rem);
-  }
-
-  .hero-cover-arrow span {
-    font-size: 1.35rem;
+    display: none;
   }
 
   .hero-cover-dots {
-    bottom: max(2.85rem, calc(env(safe-area-inset-bottom) + 2.55rem));
+    bottom: max(1.6rem, calc(env(safe-area-inset-bottom) + 1.25rem));
     gap: 0.45rem;
   }
 
