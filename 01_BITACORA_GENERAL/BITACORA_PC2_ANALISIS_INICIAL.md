@@ -1,5 +1,16 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Version 2.4.15 y flechas moviles refinadas
+
+- Contexto: PC1 apagada; trabajo realizado desde copia temporal PC2 clonada desde GitHub.
+- Solicitud: las flechas de navegacion en movil se veian mal esteticamente.
+- Archivos modificados: `src/styles/landing.css`, `nuklo.template.json` y `src/lib/runtime.ts`.
+- Cambio realizado: las flechas moviles dejan de verse como botones circulares oscuros y pasan a ser chevrons ligeros, transparentes, integrados con los dots.
+- Cambio realizado: se ajusto la posicion de flechas/dots para que funcionen como una navegacion discreta en la zona inferior del hero.
+- Cambio realizado: version del template actualizada de `2.4.14` a `2.4.15`.
+- Validacion: `npm run check:contract` paso correctamente antes del push.
+- Pendiente PC1: cuando la PC1 vuelva, sincronizar con GitHub para traer este commit.
+
 ## 2026-05-20 - Version 2.4.14 y navegacion movil
 
 - Contexto: PC1 apagada; trabajo realizado desde copia temporal PC2 clonada desde GitHub.

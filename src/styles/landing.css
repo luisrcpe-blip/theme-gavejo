@@ -870,29 +870,32 @@
 
   .hero-cover-arrow {
     top: auto;
-    bottom: max(1.45rem, calc(env(safe-area-inset-bottom) + 1.1rem));
-    width: 34px;
-    height: 34px;
+    bottom: max(1.52rem, calc(env(safe-area-inset-bottom) + 1.18rem));
+    width: 2rem;
+    height: 2rem;
     display: inline-grid;
-    border-radius: 999px;
-    background: rgba(12, 16, 24, 0.34);
-    backdrop-filter: blur(10px);
+    border-radius: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.86);
+    backdrop-filter: none;
+    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.46);
   }
 
   .hero-cover-arrow-prev {
-    left: calc(50% - 6.2rem);
+    left: calc(50% - 5.6rem);
   }
 
   .hero-cover-arrow-next {
-    right: calc(50% - 6.2rem);
+    right: calc(50% - 5.6rem);
   }
 
   .hero-cover-arrow span {
-    font-size: 1.35rem;
+    font-size: 1.22rem;
+    font-weight: 300;
   }
 
   .hero-cover-dots {
-    bottom: max(2.25rem, calc(env(safe-area-inset-bottom) + 1.9rem));
+    bottom: max(2.1rem, calc(env(safe-area-inset-bottom) + 1.75rem));
     gap: 0.45rem;
   }
 
