@@ -869,11 +869,30 @@
   }
 
   .hero-cover-arrow {
-    display: none;
+    top: auto;
+    bottom: max(1.45rem, calc(env(safe-area-inset-bottom) + 1.1rem));
+    width: 34px;
+    height: 34px;
+    display: inline-grid;
+    border-radius: 999px;
+    background: rgba(12, 16, 24, 0.34);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-cover-arrow-prev {
+    left: calc(50% - 6.2rem);
+  }
+
+  .hero-cover-arrow-next {
+    right: calc(50% - 6.2rem);
+  }
+
+  .hero-cover-arrow span {
+    font-size: 1.35rem;
   }
 
   .hero-cover-dots {
-    bottom: max(1.6rem, calc(env(safe-area-inset-bottom) + 1.25rem));
+    bottom: max(2.25rem, calc(env(safe-area-inset-bottom) + 1.9rem));
     gap: 0.45rem;
   }
 

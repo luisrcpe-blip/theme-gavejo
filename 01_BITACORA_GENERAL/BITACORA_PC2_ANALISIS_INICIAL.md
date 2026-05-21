@@ -1,5 +1,16 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Version 2.4.14 y navegacion movil
+
+- Contexto: PC1 apagada; trabajo realizado desde copia temporal PC2 clonada desde GitHub.
+- Solicitud: en movil volver a mostrar flechas de navegacion sin superponer contenido y usar un alto aproximado de `85dvh`.
+- Archivos modificados: `src/styles/thermo-landing.css`, `src/styles/landing.css`, `nuklo.template.json` y `src/lib/runtime.ts`.
+- Cambio realizado: el hero termo en movil usa `min-height: 85dvh` y espaciado compacto.
+- Cambio realizado: las flechas del carrusel vuelven a mostrarse en movil, pequenas y ubicadas abajo alrededor de los dots.
+- Cambio realizado: se actualizo la version del template de `2.4.13` a `2.4.14`.
+- Validacion pendiente en navegador despues del deploy remoto; validacion de contrato ejecutada antes del commit.
+- Pendiente PC1: cuando la PC1 vuelva, sincronizar con GitHub para traer este commit.
+
 ## 2026-05-20 - Correccion UX movil sin amontonamiento
 
 - Contexto: PC1 apagada; trabajo realizado desde una copia temporal de PC2 clonada desde GitHub.
