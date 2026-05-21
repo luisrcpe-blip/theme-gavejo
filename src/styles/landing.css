@@ -870,7 +870,7 @@
 
   .hero-cover-arrow {
     top: auto;
-    bottom: max(5.7rem, calc(env(safe-area-inset-bottom) + 5.35rem));
+    bottom: max(1.2rem, calc(env(safe-area-inset-bottom) + 0.85rem));
     width: 2.25rem;
     height: 2.25rem;
     display: inline-grid;
@@ -879,14 +879,19 @@
     color: rgba(255, 255, 255, 0.86);
     backdrop-filter: none;
     text-shadow: 0 8px 22px rgba(0, 0, 0, 0.46);
+    transform: none;
+  }
+
+  .hero-cover-arrow:hover {
+    transform: none;
   }
 
   .hero-cover-arrow-prev {
-    left: 0.45rem;
+    left: 0.7rem;
   }
 
   .hero-cover-arrow-next {
-    right: 0.45rem;
+    right: 0.7rem;
   }
 
   .hero-cover-arrow span {

@@ -1,5 +1,16 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Version 2.4.17 flechas alineadas con dots movil
+
+- Contexto: PC1 apagada; trabajo realizado desde copia temporal PC2 clonada desde GitHub.
+- Solicitud: las flechas moviles no deben quedar encima de textos ni botones; deben alinearse con los puntos de navegacion.
+- Archivos modificados: `src/styles/landing.css`, `nuklo.template.json` y `src/lib/runtime.ts`.
+- Cambio realizado: se corrigio la posicion movil de flechas, anulando el desplazamiento vertical heredado de escritorio.
+- Cambio realizado: las flechas moviles quedan en la misma linea visual que los dots y cerca de los bordes laterales.
+- Cambio realizado: version del template actualizada de `2.4.16` a `2.4.17`.
+- Validacion: `npm run check:contract` paso correctamente antes del push; queda comprobar en navegador despues del deploy publico.
+- Pendiente PC1: cuando la PC1 vuelva, sincronizar con GitHub para traer este commit.
+
 ## 2026-05-20 - Version 2.4.16 flechas laterales movil
 
 - Contexto: PC1 apagada; trabajo realizado desde copia temporal PC2 clonada desde GitHub.
