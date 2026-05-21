@@ -1,5 +1,16 @@
 # Bitacora PC2 - Analisis inicial
 
+## 2026-05-20 - Version 2.4.16 flechas laterales movil
+
+- Contexto: PC1 apagada; trabajo realizado desde copia temporal PC2 clonada desde GitHub.
+- Solicitud: en movil las flechas se veian mal; deben estar a la altura de los botones y mas cerca del borde. Tambien se pidio mas espacio entre `Cotizar` y `WhatsApp`.
+- Archivos modificados: `src/styles/landing.css`, `src/styles/thermo-landing.css`, `nuklo.template.json` y `src/lib/runtime.ts`.
+- Cambio realizado: las flechas moviles se reposicionan a los bordes laterales y a la altura visual de los CTAs.
+- Cambio realizado: se aumenta el espacio entre los botones principales moviles.
+- Cambio realizado: version del template actualizada de `2.4.15` a `2.4.16`.
+- Validacion: `npm run check:contract` paso correctamente antes del push.
+- Pendiente PC1: cuando la PC1 vuelva, sincronizar con GitHub para traer este commit.
+
 ## 2026-05-20 - Version 2.4.15 y flechas moviles refinadas
 
 - Contexto: PC1 apagada; trabajo realizado desde copia temporal PC2 clonada desde GitHub.

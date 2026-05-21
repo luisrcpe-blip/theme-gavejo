@@ -870,9 +870,9 @@
 
   .hero-cover-arrow {
     top: auto;
-    bottom: max(1.52rem, calc(env(safe-area-inset-bottom) + 1.18rem));
-    width: 2rem;
-    height: 2rem;
+    bottom: max(5.7rem, calc(env(safe-area-inset-bottom) + 5.35rem));
+    width: 2.25rem;
+    height: 2.25rem;
     display: inline-grid;
     border-radius: 0;
     background: transparent;
@@ -882,15 +882,15 @@
   }
 
   .hero-cover-arrow-prev {
-    left: calc(50% - 5.6rem);
+    left: 0.45rem;
   }
 
   .hero-cover-arrow-next {
-    right: calc(50% - 5.6rem);
+    right: 0.45rem;
   }
 
   .hero-cover-arrow span {
-    font-size: 1.22rem;
+    font-size: 1.38rem;
     font-weight: 300;
   }
 
