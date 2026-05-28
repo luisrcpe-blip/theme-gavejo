@@ -415,3 +415,127 @@ section#seccion-principal {
     width: 100%;
   }
 }
+
+/* v2.4.25: no boxed panels; make the opening image carry the section. */
+.landing-page .termo-brief-intro.container {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: 0 !important;
+}
+
+.termo-brief-intro .termo-brief-lead {
+  position: relative;
+  min-height: clamp(560px, 70dvh, 780px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  overflow: hidden;
+  background: #17130f;
+}
+
+.termo-brief-intro .termo-brief-lead::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(12, 9, 6, 0.78) 0%, rgba(12, 9, 6, 0.5) 42%, rgba(12, 9, 6, 0.16) 100%),
+    linear-gradient(180deg, rgba(12, 9, 6, 0.18) 0%, rgba(12, 9, 6, 0.1) 45%, rgba(12, 9, 6, 0.42) 100%);
+}
+
+.termo-brief-intro .termo-brief-lead > .reveal {
+  min-width: 0;
+}
+
+.termo-brief-intro .termo-brief-lead > .reveal:first-child {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 58vw);
+  margin-left: max(5vw, calc((100vw - 1280px) / 2));
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+.termo-brief-intro .termo-brief-lead > .reveal:last-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.termo-brief-intro .termo-brief-lead > .reveal:last-child .neon-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 100% !important;
+  aspect-ratio: auto !important;
+}
+
+.termo-brief-intro .termo-brief-lead > .reveal:last-child .visual-photo {
+  transform: scale(1.04);
+  filter: saturate(0.94) contrast(1.04) brightness(0.82);
+}
+
+.termo-brief-intro .section-kicker,
+.termo-brief-intro h2,
+.termo-brief-intro .lead-text {
+  color: #fff8ec !important;
+  text-shadow: 0 18px 48px rgba(0, 0, 0, 0.58);
+}
+
+.termo-brief-intro h2 {
+  max-width: 700px;
+}
+
+.termo-brief-intro .lead-text {
+  max-width: 560px;
+  color: rgba(255, 248, 236, 0.82) !important;
+}
+
+.termo-system-panel,
+.termo-catalog-card {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.termo-system-panel {
+  padding: 0 !important;
+}
+
+.landing-page .termo-catalog-section.container {
+  width: min(1280px, 92vw);
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.termo-catalog-card {
+  padding: 0 !important;
+  padding-block: clamp(2rem, 4vw, 3.3rem) !important;
+}
+
+.termo-system-steps article {
+  border-top: 0 !important;
+}
+
+@media (max-width: 980px) {
+  .termo-brief-intro .termo-brief-lead {
+    min-height: 620px;
+  }
+
+  .termo-brief-intro .termo-brief-lead > .reveal:first-child {
+    width: min(82vw, 680px);
+  }
+}
+
+@media (max-width: 640px) {
+  .termo-brief-intro .termo-brief-lead {
+    min-height: 540px;
+  }
+
+  .termo-brief-intro .termo-brief-lead > .reveal:first-child {
+    width: min(88vw, 520px);
+    margin-left: 6vw;
+    padding: 3rem 0;
+  }
+}

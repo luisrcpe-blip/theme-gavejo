@@ -2682,3 +2682,52 @@ textarea.input-field {
     height: 25px !important;
   }
 }
+
+/* v2.4.25: remove editorial content boxes across the public site. */
+.landing-page .card,
+.landing-page .system-card,
+.landing-page .card-pad,
+.landing-page .termo-brief-card,
+.landing-page .termo-species-card,
+.landing-page .termo-system-panel,
+.landing-page .termo-catalog-card,
+.landing-page .landing-final-cta-inner,
+.home-wrap .card,
+.home-wrap .solution-card,
+.home-wrap .home-highlight-card,
+.home-wrap .home-workflow-panel,
+.home-wrap .home-final-card,
+.footer-cta-card,
+.project-card,
+.card,
+.system-card,
+.solution-card {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.landing-page .card-pad,
+.landing-page .card-body,
+.landing-page .system-copy,
+.landing-page .termo-system-panel,
+.landing-page .termo-catalog-card,
+.home-wrap .home-highlight-card,
+.home-wrap .home-workflow-panel,
+.home-wrap .home-final-card,
+.footer-cta-card,
+.card-pad,
+.system-copy {
+  padding-inline: 0 !important;
+}
+
+.landing-page .card:hover,
+.landing-page .system-card:hover,
+.home-wrap .card:hover,
+.home-wrap .solution-card:hover,
+.home-wrap .home-highlight-card:hover,
+.project-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
