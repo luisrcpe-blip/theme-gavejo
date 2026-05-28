@@ -2014,3 +2014,34 @@ body:has(.mobile-menu-panel.is-open) {
     gap: 0.18rem !important;
   }
 }
+
+/* v2.4.26: keep the hamburger as a clean icon, without a visible button box. */
+.topbar .mobile-menu-toggle,
+.mobile-menu-toggle {
+  width: 48px !important;
+  height: 48px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.topbar .mobile-menu-toggle:hover,
+.topbar .mobile-menu-toggle:focus-visible,
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle:focus-visible {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.topbar .mobile-menu-toggle:hover,
+.mobile-menu-toggle:hover {
+  transform: none !important;
+}
+
+.mobile-menu-toggle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.72);
+  outline-offset: 4px;
+}
