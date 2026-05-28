@@ -332,8 +332,13 @@ export function PublicHeader() {
           <div
             className="mega-menu-preview"
             aria-hidden="true"
-            style={{ backgroundImage: `url(${withThemeBasePath(PREVIEW_IMAGES[activePreview] ?? PREVIEW_IMAGES.home)})` }}
-          />
+          >
+            <span
+              key={activePreview}
+              className="mega-menu-preview-image"
+              style={{ backgroundImage: `url(${withThemeBasePath(PREVIEW_IMAGES[activePreview] ?? PREVIEW_IMAGES.home)})` }}
+            />
+          </div>
 
           <nav className="mega-menu-primary" aria-label={copy.menuLabel}>
             {menu.primary.map((item) => (

@@ -1765,3 +1765,252 @@ body:has(.mobile-menu-panel.is-open) {
     display: none;
   }
 }
+
+/* v2.4.23: roomier fullscreen mega menu with aligned columns and animated previews. */
+.mobile-menu-panel {
+  --mega-menu-top-space: clamp(112px, 13dvh, 128px);
+  --mega-menu-bottom-space: clamp(1.05rem, 2.4dvh, 1.6rem);
+  padding: var(--mega-menu-top-space) 0 var(--mega-menu-bottom-space) !important;
+  background: #151515 !important;
+}
+
+.mega-menu {
+  height: calc(100dvh - var(--mega-menu-top-space) - var(--mega-menu-bottom-space)) !important;
+  grid-template-columns: minmax(240px, 0.78fr) minmax(390px, 1fr) minmax(380px, 0.96fr) !important;
+  gap: clamp(1.6rem, 3vw, 3.4rem) !important;
+  align-items: stretch !important;
+}
+
+.mega-menu-preview {
+  position: relative;
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden;
+  background: #0f0f0f;
+  isolation: isolate;
+}
+
+.mega-menu-preview-image {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.9) contrast(1.02) brightness(0.86);
+  transform: scale(1.02);
+  transform-origin: center;
+  animation: mega-preview-reveal 860ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    transform 920ms var(--ease-main),
+    filter 920ms var(--ease-main);
+}
+
+.mega-menu:hover .mega-menu-preview-image {
+  transform: scale(1.055);
+  filter: saturate(0.98) contrast(1.04) brightness(0.92);
+}
+
+@keyframes mega-preview-reveal {
+  from {
+    opacity: 0.72;
+    transform: scale(1.09);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.mega-menu-primary {
+  align-content: start !important;
+  gap: 0 !important;
+  padding-top: clamp(0.2rem, 0.9dvh, 0.7rem);
+}
+
+.mega-menu-row {
+  display: grid;
+  gap: clamp(0.22rem, 0.6dvh, 0.42rem);
+  padding: clamp(0.48rem, 1dvh, 0.76rem) 0 !important;
+  border-color: rgba(248, 243, 234, 0.2) !important;
+  transition: border-color var(--transition-base) var(--ease-main);
+}
+
+.mega-menu-row:hover,
+.mega-menu-row:focus-within {
+  border-color: rgba(248, 243, 234, 0.42) !important;
+}
+
+.mega-menu-link {
+  color: rgba(248, 243, 234, 0.56) !important;
+  font-size: clamp(2.05rem, 5.45dvh, 3.55rem) !important;
+  font-weight: 760 !important;
+  line-height: 0.98 !important;
+  transform: translateX(0);
+  transition:
+    color var(--transition-base) var(--ease-main),
+    transform var(--transition-base) var(--ease-main),
+    opacity var(--transition-base) var(--ease-main) !important;
+}
+
+.mega-menu-link:hover,
+.mega-menu-link:focus-visible,
+.mega-menu-link.is-active {
+  color: rgba(248, 243, 234, 0.98) !important;
+  transform: translateX(0.45rem);
+}
+
+.mega-menu-sublinks {
+  gap: clamp(0.45rem, 1vw, 0.9rem) clamp(0.8rem, 1.6vw, 1.35rem) !important;
+  margin-top: 0 !important;
+}
+
+.mega-menu-sublinks a,
+.mega-menu-column a,
+.mega-menu-socials span {
+  display: inline-flex;
+  width: fit-content;
+  color: rgba(248, 243, 234, 0.58) !important;
+  font-size: clamp(0.86rem, 1.25dvh, 1.02rem) !important;
+  line-height: 1.35 !important;
+  transform: translateX(0);
+  transition:
+    color var(--transition-base) var(--ease-main),
+    transform var(--transition-base) var(--ease-main) !important;
+}
+
+.mega-menu-sublinks a:hover,
+.mega-menu-sublinks a:focus-visible,
+.mega-menu-column a:hover,
+.mega-menu-column a:focus-visible,
+.mega-menu-column a.is-active {
+  color: rgba(248, 243, 234, 0.96) !important;
+  transform: translateX(0.28rem);
+}
+
+.mega-menu-side {
+  grid-template-rows: minmax(0, 1fr) auto !important;
+  gap: clamp(1rem, 2.2dvh, 1.8rem) !important;
+  padding-top: clamp(1.45rem, 4dvh, 2.8rem) !important;
+  overflow: hidden !important;
+}
+
+.mega-menu-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: start !important;
+  align-content: start !important;
+  gap: clamp(1.25rem, 3vw, 2.6rem) !important;
+}
+
+.mega-menu-column {
+  align-content: start !important;
+  gap: clamp(0.9rem, 1.8dvh, 1.25rem) !important;
+  min-width: 0;
+}
+
+.mega-menu-column h2 {
+  min-height: 1.15em;
+  margin: 0 !important;
+  color: rgba(248, 243, 234, 0.96) !important;
+  font-family: var(--font-primary) !important;
+  font-size: clamp(0.82rem, 1.8dvh, 1.04rem) !important;
+  font-weight: 850 !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase;
+}
+
+.mega-menu-column div {
+  gap: clamp(0.44rem, 0.9dvh, 0.62rem) !important;
+}
+
+.mega-menu-socials {
+  align-self: end;
+  gap: clamp(0.9rem, 2.1vw, 1.5rem) !important;
+}
+
+@media (max-width: 1180px) {
+  .mobile-menu-panel {
+    --mega-menu-top-space: 104px;
+  }
+
+  .mega-menu {
+    grid-template-columns: minmax(190px, 0.68fr) minmax(330px, 1fr) minmax(300px, 0.9fr) !important;
+    gap: clamp(1rem, 2.2vw, 1.8rem) !important;
+  }
+
+  .mega-menu-link {
+    font-size: clamp(1.8rem, 5dvh, 3.05rem) !important;
+  }
+
+  .mega-menu-side {
+    padding-top: clamp(1rem, 2.8dvh, 1.8rem) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .mobile-menu-panel {
+    --mega-menu-top-space: 84px;
+    --mega-menu-bottom-space: 0.75rem;
+  }
+
+  .mega-menu {
+    height: calc(100dvh - var(--mega-menu-top-space) - var(--mega-menu-bottom-space)) !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: minmax(0, 1fr) minmax(108px, 0.48fr) auto !important;
+    gap: 0.75rem !important;
+  }
+
+  .mega-menu-primary {
+    padding-top: 0;
+  }
+
+  .mega-menu-row {
+    padding: 0.2rem 0 !important;
+    gap: 0.12rem;
+  }
+
+  .mega-menu-link {
+    font-size: clamp(1.46rem, 7.5vw, 2.15rem) !important;
+    line-height: 1.02 !important;
+    white-space: normal !important;
+  }
+
+  .mega-menu-link:hover,
+  .mega-menu-link:focus-visible,
+  .mega-menu-link.is-active {
+    transform: translateX(0.28rem);
+  }
+
+  .mega-menu-sublinks {
+    gap: 0.25rem 0.62rem !important;
+  }
+
+  .mega-menu-sublinks a,
+  .mega-menu-column a,
+  .mega-menu-socials span {
+    font-size: clamp(0.74rem, 3vw, 0.9rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .mega-menu-side {
+    padding-top: 0 !important;
+    gap: 0.55rem !important;
+  }
+
+  .mega-menu-columns {
+    gap: 0.85rem !important;
+  }
+
+  .mega-menu-column {
+    gap: 0.36rem !important;
+  }
+
+  .mega-menu-column h2 {
+    font-size: 0.72rem !important;
+  }
+
+  .mega-menu-column div {
+    gap: 0.18rem !important;
+  }
+}
