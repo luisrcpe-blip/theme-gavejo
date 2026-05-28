@@ -32,6 +32,7 @@ export function ComingSoonNotice() {
 
       const anchor = event.target.closest("a[href]");
       if (!(anchor instanceof HTMLAnchorElement)) return;
+      if (anchor.closest(".language-switcher")) return;
 
       const href = anchor.getAttribute("href");
       if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;

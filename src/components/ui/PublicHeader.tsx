@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getLocaleFromPathname,
   getLocalizedEquivalent,
@@ -180,7 +180,9 @@ export function PublicHeader() {
   const copy = MENU_COPY[locale];
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState(false);
   const [activePreview, setActivePreview] = useState(() => getPreviewFromPath(basePathname));
+  const languageSwitcherRef = useRef<HTMLDetailsElement>(null);
 
   const isActive = (href: string) => {
     if (href === "/") return basePathname === "/";
@@ -196,6 +198,7 @@ export function PublicHeader() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setLanguageOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -222,6 +225,28 @@ export function PublicHeader() {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!languageOpen) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target as Node | null;
+      if (target && languageSwitcherRef.current?.contains(target)) return;
+      setLanguageOpen(false);
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setLanguageOpen(false);
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [languageOpen]);
 
   const renderMenuLink = (item: MegaMenuLink, className?: string) => (
     <Link
@@ -255,7 +280,12 @@ export function PublicHeader() {
           </Link>
 
           <div className="topbar-actions">
-            <details className="language-switcher">
+            <details
+              className="language-switcher"
+              open={languageOpen}
+              onToggle={(event) => setLanguageOpen(event.currentTarget.open)}
+              ref={languageSwitcherRef}
+            >
               <summary aria-label={copy.languageLabel}>
                 <span>{locale.toUpperCase()}</span>
               </summary>
@@ -267,6 +297,7 @@ export function PublicHeader() {
                     className={targetLocale === locale ? "is-active" : ""}
                     hrefLang={targetLocale}
                     lang={targetLocale}
+                    onClick={() => setLanguageOpen(false)}
                   >
                     {targetLocale.toUpperCase()}
                   </Link>
@@ -277,7 +308,10 @@ export function PublicHeader() {
             <button
               type="button"
               className={`mobile-menu-toggle ${mobileOpen ? "is-open" : ""}`}
-              onClick={() => setMobileOpen((current) => !current)}
+              onClick={() => {
+                setLanguageOpen(false);
+                setMobileOpen((current) => !current);
+              }}
               aria-label={mobileOpen ? copy.close : copy.open}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu-panel"

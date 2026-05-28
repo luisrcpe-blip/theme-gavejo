@@ -90,7 +90,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     solutionKicker: "Soluciones",
     solutionTitle: "Tres puertas claras para elegir la solucion adecuada",
     solutionText:
-      "La descripcion aparece al pasar el cursor para que la franja visual respire con un solo titulo protagonista.",
+      "Maderas, tableros y contract se presentan como tres entradas visuales para orientar cada necesidad de obra.",
     solutions: [
       {
         title: "Maderas",
@@ -213,7 +213,7 @@ const HOME_COPY: Record<Locale, HomeCopy> = {
     solutionKicker: "Solutions",
     solutionTitle: "Three clear paths to choose the right solution",
     solutionText:
-      "The description appears on hover so the visual strip keeps one clean title as the protagonist.",
+      "Wood, boards and contract projects are grouped as three visual entries to orient each project need.",
     solutions: [
       {
         title: "Woods",
@@ -370,35 +370,35 @@ export function HomePageTemplate({ locale }: HomePageTemplateProps) {
           </div>
         </section>
 
-        <section className="section" id="soluciones">
-          <div className="container">
+        <section className="section home-solutions-section" id="soluciones">
+          <div className="container home-solutions-copy">
             <Reveal>
-              <div className="home-section-head">
+              <div className="home-section-head home-solutions-head">
                 <p className="section-kicker">{copy.solutionKicker}</p>
                 <h2>{copy.solutionTitle}</h2>
                 <p className="lead-text">{copy.solutionText}</p>
               </div>
             </Reveal>
+          </div>
 
-            <div className="home-solution-grid">
-              {copy.solutions.map((solution, idx) => (
-                <Reveal key={solution.title} delay={idx * 90}>
-                  <article className="solution-card solution-panel-card">
-                    <NeonPlaceholder
-                      label={solution.title}
-                      caption={solution.caption}
-                      assetKey={solution.assetKey}
-                      minHeight={520}
-                      aspectRatio="4 / 5"
-                    />
-                    <Link href={localizePath(solution.href, locale)} className="solution-body solution-panel-link">
-                      <h3>{solution.title}</h3>
-                      <p>{solution.caption}</p>
-                    </Link>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
+          <div className="home-solution-grid home-solution-grid-full">
+            {copy.solutions.map((solution, idx) => (
+              <Reveal key={solution.title} delay={idx * 90}>
+                <article className="solution-card solution-panel-card">
+                  <NeonPlaceholder
+                    label={solution.title}
+                    caption={solution.caption}
+                    assetKey={solution.assetKey}
+                    minHeight={520}
+                    aspectRatio="4 / 5"
+                  />
+                  <Link href={localizePath(solution.href, locale)} className="solution-body solution-panel-link">
+                    <h3>{solution.title}</h3>
+                    <p>{solution.caption}</p>
+                  </Link>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </section>
 
