@@ -1492,3 +1492,103 @@
     min-height: 360px !important;
   }
 }
+
+/* v2.4.24: tighten home vertical rhythm so sections never read as blank or clipped. */
+.home-wrap .home-route-strip {
+  padding: clamp(2.8rem, 5vw, 4.6rem) 0 clamp(2.1rem, 3.8vw, 3.4rem) !important;
+}
+
+.home-wrap .home-proof-section {
+  padding: clamp(1.65rem, 3vw, 2.7rem) 0 !important;
+}
+
+.home-wrap .home-proof-band {
+  min-height: 0;
+}
+
+.home-wrap .home-proof-item {
+  min-height: 0 !important;
+  align-content: center !important;
+  padding: clamp(0.8rem, 1.5vw, 1.05rem) clamp(0.9rem, 1.8vw, 1.3rem) clamp(0.85rem, 1.4vw, 1.1rem) 0 !important;
+}
+
+.home-wrap .home-proof-item h3 {
+  font-size: clamp(1.2rem, 1.85vw, 1.85rem) !important;
+  line-height: 1.05 !important;
+}
+
+.home-wrap .home-proof-item p:not(.mini-kicker) {
+  font-size: 0.88rem !important;
+  line-height: 1.42 !important;
+}
+
+.home-wrap #soluciones.home-solutions-section {
+  padding: clamp(2.4rem, 4.2vw, 3.9rem) 0 0 !important;
+  overflow: visible;
+}
+
+.home-solutions-copy {
+  margin-bottom: clamp(1.65rem, 2.8vw, 2.65rem) !important;
+}
+
+.home-wrap #soluciones .home-solutions-head {
+  grid-template-columns: minmax(0, 0.96fr) minmax(320px, 0.52fr) !important;
+  row-gap: clamp(0.65rem, 1.2vw, 1rem) !important;
+  align-items: end !important;
+}
+
+.home-wrap #soluciones .home-solutions-head h2 {
+  max-width: 840px !important;
+  padding-bottom: 0.07em;
+  font-size: clamp(2.45rem, 4.25vw, 4.65rem) !important;
+  line-height: 1.04 !important;
+}
+
+.home-wrap #soluciones .home-solutions-head .lead-text {
+  align-self: end;
+  margin-bottom: clamp(0.35rem, 0.8vw, 0.75rem) !important;
+}
+
+.home-wrap #soluciones .home-solution-grid-full .solution-panel-card,
+.home-wrap #soluciones .home-solution-grid-full .solution-panel-card .neon-placeholder {
+  min-height: clamp(390px, 39vw, 560px) !important;
+}
+
+@media (max-width: 980px) {
+  .home-wrap #soluciones .home-solutions-head {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-wrap #soluciones .home-solutions-head h2 {
+    max-width: 760px !important;
+  }
+
+  .home-wrap #soluciones .home-solutions-head .lead-text {
+    max-width: 620px !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-wrap .home-route-strip {
+    padding: 2.55rem 0 2.2rem !important;
+  }
+
+  .home-wrap .home-proof-section {
+    padding: 1.6rem 0 !important;
+  }
+
+  .home-wrap #soluciones.home-solutions-section {
+    padding-top: 2.6rem !important;
+  }
+
+  .home-wrap #soluciones .home-solutions-head h2 {
+    font-size: clamp(2.05rem, 10vw, 3.15rem) !important;
+    line-height: 1.04 !important;
+  }
+
+  .home-wrap #soluciones .home-solution-grid-full .solution-panel-card,
+  .home-wrap #soluciones .home-solution-grid-full .solution-panel-card .neon-placeholder {
+    min-height: 330px !important;
+  }
+}

@@ -358,7 +358,7 @@ export function HomePageTemplate({ locale }: HomePageTemplateProps) {
           </div>
         </section>
 
-        <section className="section section-soft">
+        <section className="section section-soft home-proof-section">
           <div className="container home-proof-band">
             {copy.kpiItems.map((item) => (
               <article className="home-proof-item" key={item.kicker}>

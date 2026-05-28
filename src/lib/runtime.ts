@@ -1,5 +1,5 @@
 export const DEFAULT_WHATSAPP_NUMBER = "+34963520806";
-export const NUKLO_TEMPLATE_VERSION = "2.4.23";
+export const NUKLO_TEMPLATE_VERSION = "2.4.24";
 
 const THEME_ASSET_BASE_URL = process.env.NEXT_PUBLIC_THEME_ASSET_BASE_URL ?? "";
 
