@@ -1291,3 +1291,318 @@ body:has(.mobile-menu-panel.is-open) {
     backdrop-filter: blur(7px) saturate(0.9) brightness(0.76);
   }
 }
+
+/* v2.4.20 header: logo left, language and hamburger right, fullscreen editorial menu. */
+.topbar .topbar-inner {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  min-height: 82px !important;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.4rem);
+}
+
+.topbar .brand-link {
+  grid-column: 1 !important;
+  justify-self: start !important;
+}
+
+.topbar .brand-logo {
+  width: clamp(138px, 14vw, 190px) !important;
+}
+
+.topbar-actions {
+  grid-column: 3;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.65rem, 1.2vw, 1rem);
+}
+
+.language-switcher {
+  position: relative;
+  color: #fff;
+}
+
+.language-switcher summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0 0.15rem;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.language-switcher summary::-webkit-details-marker {
+  display: none;
+}
+
+.language-switcher summary::after {
+  content: "";
+  width: 0.38rem;
+  height: 0.38rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  opacity: 0.74;
+}
+
+.language-options {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  right: 0;
+  display: grid;
+  min-width: 82px;
+  padding: 0.42rem;
+  border: 1px solid rgba(248, 243, 234, 0.18);
+  background: rgba(23, 19, 15, 0.94);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.3);
+}
+
+.language-options a {
+  padding: 0.48rem 0.54rem;
+  color: rgba(248, 243, 234, 0.68);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.language-options a:hover,
+.language-options a.is-active {
+  color: #fff;
+}
+
+.topbar .mobile-menu-toggle {
+  grid-column: auto !important;
+  justify-self: end !important;
+  display: inline-flex !important;
+  width: 58px !important;
+  height: 52px !important;
+  border-radius: 18px !important;
+}
+
+.topbar .topnav,
+.topbar-spacer {
+  display: none !important;
+}
+
+.mobile-menu-panel {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 125 !important;
+  display: block !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 96px 0 2rem !important;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background: #171717 !important;
+  backdrop-filter: none !important;
+  transition:
+    opacity var(--transition-base) var(--ease-main),
+    visibility var(--transition-base) var(--ease-main);
+}
+
+.mobile-menu-panel::before {
+  content: none !important;
+}
+
+.mobile-menu-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mega-menu {
+  min-height: calc(100svh - 128px);
+  display: grid;
+  grid-template-columns: minmax(260px, 0.92fr) minmax(300px, 0.95fr) minmax(320px, 1.25fr);
+  gap: clamp(1.4rem, 3vw, 3.4rem);
+  align-items: stretch;
+}
+
+.mega-menu-preview {
+  min-height: min(64svh, 640px);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.9);
+  transition: background-image var(--transition-slow) var(--ease-main);
+}
+
+.mega-menu-primary,
+.mega-menu-side,
+.mega-menu-columns,
+.mega-menu-column,
+.mega-menu-column div {
+  display: grid;
+  align-content: start;
+}
+
+.mega-menu-primary {
+  gap: 0;
+}
+
+.mega-menu-row {
+  min-width: 0;
+  padding: clamp(0.55rem, 1.2vw, 0.95rem) 0;
+  border-top: 1px solid rgba(248, 243, 234, 0.18);
+}
+
+.mega-menu-row:last-child {
+  border-bottom: 1px solid rgba(248, 243, 234, 0.18);
+}
+
+.mega-menu-link {
+  display: block;
+  color: rgba(248, 243, 234, 0.38);
+  font-size: clamp(2.5rem, 5.6vw, 5.9rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0;
+  transition: color var(--transition-fast) var(--ease-main);
+}
+
+.mega-menu-link:hover,
+.mega-menu-link:focus-visible,
+.mega-menu-link.is-active {
+  color: rgba(248, 243, 234, 0.92);
+}
+
+.mega-menu-sublinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.4rem;
+  margin-top: 0.45rem;
+}
+
+.mega-menu-sublinks a,
+.mega-menu-column a,
+.mega-menu-socials span {
+  color: rgba(248, 243, 234, 0.36);
+  font-size: clamp(0.95rem, 1.4vw, 1.22rem);
+  line-height: 1.45;
+  transition: color var(--transition-fast) var(--ease-main);
+}
+
+.mega-menu-sublinks a:hover,
+.mega-menu-sublinks a:focus-visible,
+.mega-menu-column a:hover,
+.mega-menu-column a:focus-visible,
+.mega-menu-column a.is-active {
+  color: rgba(248, 243, 234, 0.9);
+}
+
+.mega-menu-side {
+  grid-template-rows: 1fr auto;
+  gap: 2rem;
+  padding-top: clamp(0.8rem, 2vw, 1.6rem);
+}
+
+.mega-menu-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.mega-menu-column {
+  gap: clamp(1.1rem, 2vw, 1.7rem);
+}
+
+.mega-menu-column h2 {
+  margin: 0;
+  color: rgba(248, 243, 234, 0.92);
+  font-size: clamp(1rem, 1.5vw, 1.32rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.mega-menu-column div {
+  gap: 0.55rem;
+}
+
+.mega-menu-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.mega-menu-socials span {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1040px) {
+  .mega-menu {
+    grid-template-columns: minmax(220px, 0.82fr) minmax(0, 1fr);
+  }
+
+  .mega-menu-side {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar .topbar-inner {
+    min-height: 70px !important;
+  }
+
+  .topbar .brand-logo {
+    width: clamp(116px, 34vw, 148px) !important;
+  }
+
+  .topbar-actions {
+    gap: 0.45rem;
+  }
+
+  .language-switcher summary {
+    min-height: 40px;
+    font-size: 0.75rem;
+  }
+
+  .topbar .mobile-menu-toggle {
+    width: 46px !important;
+    height: 44px !important;
+    border-radius: 15px !important;
+  }
+
+  .mobile-menu-panel {
+    padding: 84px 0 1rem !important;
+  }
+
+  .mega-menu {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .mega-menu-preview {
+    min-height: 34svh;
+    order: 2;
+  }
+
+  .mega-menu-primary {
+    order: 1;
+  }
+
+  .mega-menu-side {
+    order: 3;
+    gap: 1.4rem;
+  }
+
+  .mega-menu-columns {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .mega-menu-link {
+    font-size: clamp(2.2rem, 14vw, 4.2rem);
+  }
+}

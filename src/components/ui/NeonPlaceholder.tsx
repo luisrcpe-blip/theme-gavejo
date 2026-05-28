@@ -89,6 +89,9 @@ const IMAGE_BY_KEY: Record<string, string> = {
   "PH-INTERIOR-BANNER-01": "/media/gavejo/landing/texture-warm.jpg",
 
   "home-hero": "/media/gavejo/landing/fachadas-hero.jpg",
+  "home-maderas": "/media/gavejo/thermo-nature-01-clean.jpg",
+  "home-tableros": "/media/gavejo/ldc-wood-02-clean.jpg",
+  "home-contract": "/media/gavejo/landing/fachadas-app-04.jpg",
   "home-fachadas": "/media/gavejo/landing/fachadas-app-04.jpg",
   "home-decking": "/media/gavejo/landing/decking-hero.jpg",
   "home-interiores": "/media/gavejo/landing/interior-app-03.jpg",

@@ -1,6 +1,8 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { getLocaleFromPathname, localizePath } from "@/lib/i18n";
 import { buildWhatsappHref, trackTemplateEvent } from "@/lib/runtime";
 
 type FloatingWhatsAppProps = {
@@ -8,6 +10,8 @@ type FloatingWhatsAppProps = {
 };
 
 export function FloatingWhatsApp({ sourcePage }: FloatingWhatsAppProps) {
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
   const [hidden, setHidden] = useState(false);
   const temporaryComingSoonMode = true;
 
@@ -38,8 +42,8 @@ export function FloatingWhatsApp({ sourcePage }: FloatingWhatsAppProps) {
   }, []);
 
   const href = useMemo(
-    () => (temporaryComingSoonMode ? "/proximamente" : buildWhatsappHref(sourcePage)),
-    [sourcePage, temporaryComingSoonMode]
+    () => (temporaryComingSoonMode ? localizePath("/proximamente", locale) : buildWhatsappHref(sourcePage)),
+    [locale, sourcePage, temporaryComingSoonMode]
   );
 
   return (
@@ -49,7 +53,7 @@ export function FloatingWhatsApp({ sourcePage }: FloatingWhatsAppProps) {
       target={temporaryComingSoonMode ? undefined : "_blank"}
       rel={temporaryComingSoonMode ? undefined : "noreferrer"}
       onClick={() => trackTemplateEvent("whatsapp_click", sourcePage, { placement: "floating" })}
-      aria-label="Abrir WhatsApp"
+      aria-label={locale === "en" ? "Open WhatsApp" : "Abrir WhatsApp"}
     >
       <svg
         aria-hidden="true"

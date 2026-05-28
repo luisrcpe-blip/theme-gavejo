@@ -3,65 +3,188 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import {
+  getLocaleFromPathname,
+  getLocalizedEquivalent,
+  Locale,
+  localizePath,
+  stripLocalePrefix,
+  SUPPORTED_LOCALES
+} from "@/lib/i18n";
 import { withThemeBasePath } from "@/lib/runtime";
 import { TemplateVersionBadge } from "@/components/ui/TemplateVersionBadge";
 
-type NavLink = {
+type MegaMenuLink = {
   href: string;
   label: string;
+  preview: string;
+  sublinks?: MegaMenuLink[];
 };
 
-type NavGroup = {
-  label: string;
-  href: string;
-  links: NavLink[];
+type MegaMenuColumn = {
+  title: string;
+  links: MegaMenuLink[];
 };
 
-const PRIMARY_LINKS: NavLink[] = [
-  { href: "/", label: "Inicio" },
-  { href: "/materiales/termo-tratada", label: "Termo tratada" }
-];
+type MegaMenuConfig = {
+  primary: MegaMenuLink[];
+  columns: MegaMenuColumn[];
+  socials: string[];
+};
 
-const NAV_GROUPS: NavGroup[] = [
-  {
-    label: "Soluciones",
-    href: "/proximamente",
-    links: [
-      { href: "/proximamente", label: "Todas las soluciones" },
-      { href: "/proximamente", label: "Fachadas" },
-      { href: "/proximamente", label: "Decking exterior" },
-      { href: "/proximamente", label: "Interiores" }
-    ]
+const PREVIEW_IMAGES: Record<string, string> = {
+  home: "/media/gavejo/landing/fachadas-hero.jpg",
+  solutions: "/media/gavejo/landing/fachadas-app-04.jpg",
+  decking: "/media/gavejo/landing/decking-hero.jpg",
+  interiors: "/media/gavejo/landing/interior-app-03.jpg",
+  materials: "/media/gavejo/thermo-nature-01-clean.jpg",
+  balear: "/media/gavejo/landing/texture-warm.jpg",
+  projects: "/media/gavejo/landing/fachadas-sys-03.jpg",
+  contact: "/media/gavejo/landing/termo-sys-01.jpg"
+};
+
+const MENU_COPY: Record<Locale, { homeLabel: string; menuLabel: string; languageLabel: string; close: string; open: string }> = {
+  es: {
+    homeLabel: "Volver al inicio",
+    menuLabel: "Menu principal",
+    languageLabel: "Cambiar idioma",
+    close: "Cerrar menu",
+    open: "Abrir menu"
   },
-  {
-    label: "Materiales",
-    href: "/proximamente",
-    links: [
-      { href: "/materiales/termo-tratada", label: "Madera termotratada" },
-      { href: "/proximamente", label: "Otros materiales" }
-    ]
-  },
-  {
-    label: "Mader Balear",
-    href: "/proximamente",
-    links: [
-      { href: "/proximamente", label: "Linea Mader Balear" },
-      { href: "/proximamente", label: "Madera vieja" },
-      { href: "/proximamente", label: "Puertas" },
-      { href: "/proximamente", label: "Revestimientos" }
-    ]
+  en: {
+    homeLabel: "Back to home",
+    menuLabel: "Main menu",
+    languageLabel: "Change language",
+    close: "Close menu",
+    open: "Open menu"
   }
-];
+};
+
+const MEGA_MENU: Record<Locale, MegaMenuConfig> = {
+  es: {
+    primary: [
+      { href: "/", label: "Inicio", preview: "home" },
+      {
+        href: "/soluciones",
+        label: "Soluciones",
+        preview: "solutions",
+        sublinks: [
+          { href: "/soluciones/fachadas", label: "Fachadas", preview: "solutions" },
+          { href: "/soluciones/decking-exterior", label: "Decking", preview: "decking" },
+          { href: "/soluciones/revestimientos-interiores", label: "Interiores", preview: "interiors" }
+        ]
+      },
+      {
+        href: "/materiales",
+        label: "Materiales",
+        preview: "materials",
+        sublinks: [
+          { href: "/materiales/termo-tratada", label: "Termotratada", preview: "materials" },
+          { href: "/materiales/madera-quemada", label: "Madera quemada", preview: "interiors" },
+          { href: "/materiales/vigueria", label: "Vigueria", preview: "balear" }
+        ]
+      },
+      { href: "/mader-balear", label: "Mader Balear", preview: "balear" },
+      { href: "/proyectos", label: "Proyectos", preview: "projects" },
+      { href: "/contacto", label: "Contacto", preview: "contact" }
+    ],
+    columns: [
+      {
+        title: "Mader Balear",
+        links: [
+          { href: "/mader-balear/madera-vieja", label: "Madera vieja", preview: "balear" },
+          { href: "/mader-balear/puertas", label: "Puertas", preview: "balear" },
+          { href: "/mader-balear/revestimientos", label: "Revestimientos", preview: "interiors" },
+          { href: "/mader-balear/tableros-reclaimed", label: "Tableros reclaimed", preview: "materials" }
+        ]
+      },
+      {
+        title: "Contacto",
+        links: [
+          { href: "/contacto", label: "Formulario de proyecto", preview: "contact" },
+          { href: "/contacto", label: "WhatsApp directo", preview: "contact" },
+          { href: "/blog", label: "Blog tecnico", preview: "projects" },
+          { href: "/privacidad", label: "Privacidad", preview: "home" }
+        ]
+      }
+    ],
+    socials: ["Instagram", "LinkedIn", "Facebook", "YouTube"]
+  },
+  en: {
+    primary: [
+      { href: "/", label: "Home", preview: "home" },
+      {
+        href: "/soluciones",
+        label: "Solutions",
+        preview: "solutions",
+        sublinks: [
+          { href: "/soluciones/fachadas", label: "Facades", preview: "solutions" },
+          { href: "/soluciones/decking-exterior", label: "Decking", preview: "decking" },
+          { href: "/soluciones/revestimientos-interiores", label: "Interiors", preview: "interiors" }
+        ]
+      },
+      {
+        href: "/materiales",
+        label: "Materials",
+        preview: "materials",
+        sublinks: [
+          { href: "/materiales/termo-tratada", label: "Thermowood", preview: "materials" },
+          { href: "/materiales/madera-quemada", label: "Burned wood", preview: "interiors" },
+          { href: "/materiales/vigueria", label: "Beams", preview: "balear" }
+        ]
+      },
+      { href: "/mader-balear", label: "Mader Balear", preview: "balear" },
+      { href: "/proyectos", label: "Projects", preview: "projects" },
+      { href: "/contacto", label: "Contact", preview: "contact" }
+    ],
+    columns: [
+      {
+        title: "Mader Balear",
+        links: [
+          { href: "/mader-balear/madera-vieja", label: "Reclaimed wood", preview: "balear" },
+          { href: "/mader-balear/puertas", label: "Doors", preview: "balear" },
+          { href: "/mader-balear/revestimientos", label: "Cladding", preview: "interiors" },
+          { href: "/mader-balear/tableros-reclaimed", label: "Reclaimed boards", preview: "materials" }
+        ]
+      },
+      {
+        title: "Contact",
+        links: [
+          { href: "/contacto", label: "Project form", preview: "contact" },
+          { href: "/contacto", label: "Direct WhatsApp", preview: "contact" },
+          { href: "/blog", label: "Technical blog", preview: "projects" },
+          { href: "/privacidad", label: "Privacy", preview: "home" }
+        ]
+      }
+    ],
+    socials: ["Instagram", "LinkedIn", "Facebook", "YouTube"]
+  }
+};
+
+function getPreviewFromPath(pathname: string) {
+  if (pathname.startsWith("/soluciones/decking")) return "decking";
+  if (pathname.startsWith("/soluciones/revestimientos")) return "interiors";
+  if (pathname.startsWith("/soluciones")) return "solutions";
+  if (pathname.startsWith("/materiales")) return "materials";
+  if (pathname.startsWith("/mader-balear")) return "balear";
+  if (pathname.startsWith("/proyectos") || pathname.startsWith("/blog")) return "projects";
+  if (pathname.startsWith("/contacto")) return "contact";
+  return "home";
+}
 
 export function PublicHeader() {
   const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const basePathname = stripLocalePrefix(pathname || "/");
+  const menu = MEGA_MENU[locale];
+  const copy = MENU_COPY[locale];
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const [activePreview, setActivePreview] = useState(() => getPreviewFromPath(basePathname));
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname === href || pathname.startsWith(`${href}/`);
+    if (href === "/") return basePathname === "/";
+    return basePathname === href || basePathname.startsWith(`${href}/`);
   };
 
   useEffect(() => {
@@ -73,68 +196,53 @@ export function PublicHeader() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setOpenGroup(null);
   }, [pathname]);
 
   useEffect(() => {
-    const onPointerDown = (event: PointerEvent) => {
-      if (!(event.target instanceof Element)) return;
-      if (!event.target.closest(".topnav-group")) {
-        setOpenGroup(null);
-      }
-    };
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpenGroup(null);
-      }
-    };
-
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, []);
+    setActivePreview(getPreviewFromPath(basePathname));
+  }, [basePathname]);
 
   useEffect(() => {
-    const closeMenu = () => {
-      setMobileOpen(false);
-      setOpenGroup(null);
+    if (!mobileOpen) return;
+
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalRootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
     };
 
-    window.addEventListener("gavejo:coming-soon", closeMenu);
-    return () => window.removeEventListener("gavejo:coming-soon", closeMenu);
-  }, []);
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalRootOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mobileOpen]);
+
+  const renderMenuLink = (item: MegaMenuLink, className?: string) => (
+    <Link
+      key={`${item.href}-${item.label}`}
+      href={localizePath(item.href, locale)}
+      className={`${className ?? ""} ${isActive(item.href) ? "is-active" : ""}`.trim()}
+      onClick={() => setMobileOpen(false)}
+      onFocus={() => setActivePreview(item.preview)}
+      onMouseEnter={() => setActivePreview(item.preview)}
+    >
+      {item.label}
+    </Link>
+  );
 
   return (
     <>
       <TemplateVersionBadge />
 
-      <header
-        className={`topbar topbar-overlay ${scrolled ? "is-scrolled" : ""} ${
-          mobileOpen ? "is-mobile-open" : ""
-        }`}
-      >
+      <header className={`topbar topbar-overlay ${scrolled ? "is-scrolled" : ""} ${mobileOpen ? "is-mobile-open" : ""}`}>
         <div className="container topbar-inner">
-          <button
-            type="button"
-            className={`mobile-menu-toggle ${mobileOpen ? "is-open" : ""}`}
-            onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-menu-panel"
-          >
-            <span className="sr-only">{mobileOpen ? "Cerrar menu" : "Abrir menu"}</span>
-            <span className="mobile-menu-bars" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </span>
-          </button>
-
-          <Link href="/" className="brand-link" aria-label="Volver al inicio">
+          <Link href={localizePath("/", locale)} className="brand-link" aria-label={copy.homeLabel}>
             <span className="brand-logo-shell">
               <img
                 src={withThemeBasePath("/media/gavejo/gavejo-logo4.png")}
@@ -146,90 +254,83 @@ export function PublicHeader() {
             </span>
           </Link>
 
-          <nav className="topnav">
-            <Link href="/" className={isActive("/") ? "is-active" : ""}>
-              Inicio
-            </Link>
-
-            {NAV_GROUPS.map((group) => (
-              <div
-                key={group.href}
-                className={`topnav-group ${isActive(group.href) ? "is-active" : ""} ${
-                  openGroup === group.href ? "is-open" : ""
-                }`}
-              >
-                <button
-                  type="button"
-                  className="topnav-trigger"
-                  aria-expanded={openGroup === group.href}
-                  onClick={() => setOpenGroup((current) => (current === group.href ? null : group.href))}
-                >
-                  {group.label}
-                </button>
-                <div className="topnav-menu">
-                  {group.links.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={isActive(item.href) ? "is-active" : ""}
-                      onClick={() => setOpenGroup(null)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
+          <div className="topbar-actions">
+            <details className="language-switcher">
+              <summary aria-label={copy.languageLabel}>
+                <span>{locale.toUpperCase()}</span>
+              </summary>
+              <div className="language-options">
+                {SUPPORTED_LOCALES.map((targetLocale) => (
+                  <Link
+                    key={targetLocale}
+                    href={getLocalizedEquivalent(pathname, targetLocale)}
+                    className={targetLocale === locale ? "is-active" : ""}
+                    hrefLang={targetLocale}
+                    lang={targetLocale}
+                  >
+                    {targetLocale.toUpperCase()}
+                  </Link>
+                ))}
               </div>
-            ))}
+            </details>
 
-            {PRIMARY_LINKS.slice(1).map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={isActive(item.href) ? "is-active" : ""}
-                onClick={() => setOpenGroup(null)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <span className="topbar-spacer" aria-hidden="true" />
+            <button
+              type="button"
+              className={`mobile-menu-toggle ${mobileOpen ? "is-open" : ""}`}
+              onClick={() => setMobileOpen((current) => !current)}
+              aria-label={mobileOpen ? copy.close : copy.open}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu-panel"
+            >
+              <span className="sr-only">{mobileOpen ? copy.close : copy.open}</span>
+              <span className="mobile-menu-bars" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 
       <div id="mobile-menu-panel" className={`mobile-menu-panel ${mobileOpen ? "is-open" : ""}`}>
-        <nav className="container mobile-menu-nav" aria-label="Menu principal">
-          <div className="mobile-menu-group mobile-menu-main">
-            <p>Principal</p>
-            {PRIMARY_LINKS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={isActive(item.href) ? "is-active" : ""}
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
+        <div className="container mega-menu">
+          <div
+            className="mega-menu-preview"
+            aria-hidden="true"
+            style={{ backgroundImage: `url(${withThemeBasePath(PREVIEW_IMAGES[activePreview] ?? PREVIEW_IMAGES.home)})` }}
+          />
+
+          <nav className="mega-menu-primary" aria-label={copy.menuLabel}>
+            {menu.primary.map((item) => (
+              <div className="mega-menu-row" key={item.label}>
+                {renderMenuLink(item, "mega-menu-link")}
+                {item.sublinks ? (
+                  <div className="mega-menu-sublinks">
+                    {item.sublinks.map((subitem) => renderMenuLink(subitem))}
+                  </div>
+                ) : null}
+              </div>
             ))}
-          </div>
-          {NAV_GROUPS.map((group) => (
-            <div key={group.href} className="mobile-menu-group">
-              <p>{group.label}</p>
-              {group.links.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={isActive(item.href) ? "is-active" : ""}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
+          </nav>
+
+          <aside className="mega-menu-side">
+            <div className="mega-menu-columns">
+              {menu.columns.map((column) => (
+                <section className="mega-menu-column" key={column.title}>
+                  <h2>{column.title}</h2>
+                  <div>{column.links.map((item) => renderMenuLink(item))}</div>
+                </section>
               ))}
             </div>
-          ))}
-        </nav>
+            <div className="mega-menu-socials" aria-label="Social links">
+              {menu.socials.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </aside>
+        </div>
       </div>
     </>
   );
 }
-

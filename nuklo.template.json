@@ -3,7 +3,7 @@
   "name": "Theme Gavejo",
   "mode": "capture",
   "contractVersion": "capture@1.0.0",
-  "templateVersion": "2.4.19",
+  "templateVersion": "2.4.20",
   "description": "Theme Pack CAPTURE para Maderas Gavejo con HTML estatico importable por Nuklo, contrato NukloTheme, captacion de leads y narrativa tecnica para proyectos en madera.",
   "repository": "https://github.com/luisrcpe-blip/theme-gavejo",
   "sourceBranch": "main",
@@ -716,6 +716,13 @@
       "title": "Maderas Gavejo | Soluciones tecnicas en madera",
       "description": "Fachadas, decking, interiores, materiales tecnicos y madera recuperada para proyectos de arquitectura.",
       "canonical": "https://gavejo.nuklo.cloud",
+      "ogImage": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-hero.jpg"
+    },
+    {
+      "path": "/en",
+      "title": "Maderas Gavejo | Technical wood solutions",
+      "description": "Facades, decking, interiors, technical materials and reclaimed wood for architecture projects.",
+      "canonical": "https://gavejo.nuklo.cloud/en",
       "ogImage": "https://luisrcpe-blip.github.io/theme-gavejo/media/gavejo/landing/fachadas-hero.jpg"
     },
     {

@@ -2655,3 +2655,30 @@ textarea.input-field {
     font-size: 0.68rem;
   }
 }
+
+/* v2.4.20 WhatsApp affordance. */
+.wa-float {
+  width: 64px !important;
+  height: 64px !important;
+  right: 1.15rem !important;
+  bottom: calc(1.15rem + env(safe-area-inset-bottom)) !important;
+}
+
+.wa-float svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+@media (max-width: 640px) {
+  .wa-float {
+    width: 56px !important;
+    height: 56px !important;
+    right: 0.95rem !important;
+    bottom: calc(0.95rem + env(safe-area-inset-bottom)) !important;
+  }
+
+  .wa-float svg {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}

@@ -1,16 +1,24 @@
 import Link from "next/link";
 import { PublicHeader } from "@/components/ui/PublicHeader";
 import { SiteFooter } from "@/components/ui/SiteFooter";
+import { Locale, localizePath } from "@/lib/i18n";
 
 type ComingSoonPageProps = {
   title?: string;
   eyebrow?: string;
+  locale?: Locale;
 };
 
 export function ComingSoonPage({
   title = "Pagina en preparacion",
-  eyebrow = "Proximamente"
+  eyebrow = "Proximamente",
+  locale = "es"
 }: ComingSoonPageProps) {
+  const bodyCopy =
+    locale === "en"
+      ? "We are preparing this section before publishing it. In the meantime, you can return home or review the active thermo treated wood page."
+      : "Estamos dejando esta seccion lista antes de publicarla. Mientras tanto, puedes volver al inicio o revisar la pagina activa de madera termo tratada.";
+
   return (
     <>
       <PublicHeader />
@@ -18,12 +26,14 @@ export function ComingSoonPage({
         <section className="container coming-soon-inner">
           <p className="chip">{eyebrow}</p>
           <h1>{title}</h1>
-          <p>
-            Estamos dejando esta seccion lista antes de publicarla. Mientras tanto, puedes volver al inicio o revisar la pagina activa de madera termo tratada.
-          </p>
+          <p>{bodyCopy}</p>
           <div className="coming-soon-actions">
-            <Link href="/" className="btn btn-primary">Ir al inicio</Link>
-            <Link href="/materiales/termo-tratada" className="btn btn-secondary">Ver termo tratada</Link>
+            <Link href={localizePath("/", locale)} className="btn btn-primary">
+              {locale === "en" ? "Go home" : "Ir al inicio"}
+            </Link>
+            <Link href={localizePath("/materiales/termo-tratada", locale)} className="btn btn-secondary">
+              {locale === "en" ? "View thermowood" : "Ver termo tratada"}
+            </Link>
           </div>
         </section>
       </main>
